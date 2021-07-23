@@ -389,8 +389,9 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center d-flex form-group margin-bottom-0 "
                             id="buttonWrapper">
-                            <button type="submit" class="btn btn-info btn-sm waves-effect waves-light">Submit</button>
                             <a class="btn btn-primary" href="{{ route('job.index') }}"> Cancle</a>
+                            <button type="submit" class="btn btn-info btn-sm waves-effect waves-light">Submit</button>
+                            
                         </div>
                     </div>
                 </form>
