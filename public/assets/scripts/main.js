@@ -1,5 +1,24 @@
 (function($) {
 	"use strict"; 
+
+	// $("#imageUpload_logo").on('change', function(e){
+	// 	$('#imagePreview_logo').css("background-image", "url("+URL.createObjectURL(event.target.files[0])+")");
+
+	//  })
+
+	// $("#imageUpload_photo").on('change', function(e){
+	// 	$('#imagePreview_photo').css("background-image", "url("+URL.createObjectURL(event.target.files[0])+")");
+	//  })
+
+
+	// $("#imageUpload_license").on('change', function(e){
+	// 	$('#imagePreview_license').css("background-image", "url("+URL.createObjectURL(event.target.files[0])+")");
+	//  })
+
+
+
+
+
 	
 	var Core = {};
 	NProgress.start();
@@ -8,7 +27,7 @@
 		Core.module.init();
 		Core.plugin.init();
 		if ($('[data-toggle="tooltip"]').length) $('[data-toggle="tooltip"]').tooltip() //Enable tooltip
-		return false;
+			return false;
 	});
 
 	$(window).on("load",function(){
@@ -196,9 +215,9 @@
 		todo: function(){
 			$(".js__todo_widget").each(function(){
 				var selector = $(this),
-					list = $(this).find(".js__todo_list"),
-					val = $(this).find(".js__todo_value"),
-					button = $(this).find(".js__todo_button");
+				list = $(this).find(".js__todo_list"),
+				val = $(this).find(".js__todo_value"),
+				button = $(this).find(".js__todo_button");
 				button.on("click",function(){
 					if (val.val() != ""){
 						var rnd = Math.floor((Math.random() * 100000000) + 1);
@@ -257,7 +276,7 @@
 		},
 		getResponsiveSettings: function(selector){
 			var responsive = selector.data("responsive"),
-				json = [];
+			json = [];
 			if (responsive){
 				while(responsive.indexOf("'") > -1){
 					responsive = responsive.replace("'",'"');
@@ -278,14 +297,14 @@
 		getChart: function(){
 			$(".js__chart").each(function(){
 				var selector = $(this),
-					chart = selector.data("chart"),
-					json = [],
-					id = selector.attr("id"),
-					type = selector.data("type"),
-					options, dataTable,chart_draw,themes = ($(this).hasClass('black-chart') ? '#1b1c1c' : '#ffffff');
+				chart = selector.data("chart"),
+				json = [],
+				id = selector.attr("id"),
+				type = selector.data("type"),
+				options, dataTable,chart_draw,themes = ($(this).hasClass('black-chart') ? '#1b1c1c' : '#ffffff');
 				if (chart){
 					var json_temp = chart.split("|"),
-						i,j;
+					i,j;
 					for (i = 0; i < json_temp.length; i++){
 						json_temp[i] = json_temp[i].trim();
 						json[i] = json_temp[i].split("/");
@@ -308,390 +327,390 @@
 					if ($(this).hasClass('black-chart')){
 						switch (type){
 							case "circle": 
-								options = {
-									chartArea:{left:0,top:0,width:'100%',height:'75%'},
-									colors: ["#304ffe", "#f60e0e","#ffa000"],
-									fontName: 'Poppins',
-									backgroundColor: themes,
-									legend:{
-										position: 'bottom',
-										textStyle: {
-											color: '#484848'
-										}
+							options = {
+								chartArea:{left:0,top:0,width:'100%',height:'75%'},
+								colors: ["#304ffe", "#f60e0e","#ffa000"],
+								fontName: 'Poppins',
+								backgroundColor: themes,
+								legend:{
+									position: 'bottom',
+									textStyle: {
+										color: '#484848'
+									}
+								},
+								vAxis: {
+									baselineColor: '#484848',
+									gridlines: {
+										color: "#484848"
 									},
-									vAxis: {
-										baselineColor: '#484848',
-										gridlines: {
-											color: "#484848"
-										},
-										textStyle:{
-											color: '#484848'
-										}
-									},
-									hAxis: {
-										textStyle:{
-											color: '#484848'
-										}
+									textStyle:{
+										color: '#484848'
+									}
+								},
+								hAxis: {
+									textStyle:{
+										color: '#484848'
 									}
 								}
-								chart_draw = new google.visualization.PieChart(document.getElementById(id));
-								break;
+							}
+							chart_draw = new google.visualization.PieChart(document.getElementById(id));
+							break;
 							case "donut": 
-								options = {
-									pieHole: 0.3,
-									chartArea:{left:0,top:0,width:'100%',height:'75%'},
-									legend:{
-										position: 'bottom',
-										textStyle: {
-											color: '#484848'
-										}
-									},
-									colors: ["#304ffe", "#f60e0e","#ffa000"],
-									fontName: 'Poppins',
-									backgroundColor: themes
-								}
-								chart_draw = new google.visualization.PieChart(document.getElementById(id));
-								break;
+							options = {
+								pieHole: 0.3,
+								chartArea:{left:0,top:0,width:'100%',height:'75%'},
+								legend:{
+									position: 'bottom',
+									textStyle: {
+										color: '#484848'
+									}
+								},
+								colors: ["#304ffe", "#f60e0e","#ffa000"],
+								fontName: 'Poppins',
+								backgroundColor: themes
+							}
+							chart_draw = new google.visualization.PieChart(document.getElementById(id));
+							break;
 							case "column":
-								options = {
-									chartArea:{left:30,top:10,width:'100%',height:'80%'},
-									colors: ["#304ffe"],
-									fontName: 'Poppins',
-									backgroundColor: themes,
-									vAxis: {
-										baselineColor: '#484848',
-										gridlines: {
-											color: "#484848"
-										},
-										textStyle:{
-											color: '#484848'
-										}
+							options = {
+								chartArea:{left:30,top:10,width:'100%',height:'80%'},
+								colors: ["#304ffe"],
+								fontName: 'Poppins',
+								backgroundColor: themes,
+								vAxis: {
+									baselineColor: '#484848',
+									gridlines: {
+										color: "#484848"
 									},
-									hAxis: {
-										textStyle:{
-											color: '#484848'
-										}
+									textStyle:{
+										color: '#484848'
+									}
+								},
+								hAxis: {
+									textStyle:{
+										color: '#484848'
 									}
 								}
-								chart_draw = new google.visualization.ColumnChart(document.getElementById(id));
-								break;
+							}
+							chart_draw = new google.visualization.ColumnChart(document.getElementById(id));
+							break;
 							case "curve":
-								options = {
-									chartArea:{left:30,top:10,width:'90%',height:'80%'},
-									curveType: 'function',
-									colors: ["#304ffe", "#f60e0e","#ffa000"],
-									fontName: 'Poppins',
-									backgroundColor: themes,
-									vAxis: {
-										baselineColor: '#484848',
-										gridlines: {
-											color: "#484848"
-										},
-										textStyle:{
-											color: '#484848'
-										}
+							options = {
+								chartArea:{left:30,top:10,width:'90%',height:'80%'},
+								curveType: 'function',
+								colors: ["#304ffe", "#f60e0e","#ffa000"],
+								fontName: 'Poppins',
+								backgroundColor: themes,
+								vAxis: {
+									baselineColor: '#484848',
+									gridlines: {
+										color: "#484848"
 									},
-									hAxis: {
-										textStyle:{
-											color: '#484848'
-										}
+									textStyle:{
+										color: '#484848'
+									}
+								},
+								hAxis: {
+									textStyle:{
+										color: '#484848'
 									}
 								}
-								chart_draw = new google.visualization.LineChart(document.getElementById(id));
-								break;
+							}
+							chart_draw = new google.visualization.LineChart(document.getElementById(id));
+							break;
 							case "line":
-								options = {
-									chartArea:{left:30,top:10,width:'90%',height:'80%'},
-									fontName: 'Poppins',
-									backgroundColor: themes,
-									vAxis: {
-										baselineColor: '#484848',
-										gridlines: {
-											color: "#484848"
-										},
-										textStyle:{
-											color: '#484848'
-										}
+							options = {
+								chartArea:{left:30,top:10,width:'90%',height:'80%'},
+								fontName: 'Poppins',
+								backgroundColor: themes,
+								vAxis: {
+									baselineColor: '#484848',
+									gridlines: {
+										color: "#484848"
 									},
-									hAxis: {
-										textStyle:{
-											color: '#484848'
-										}
+									textStyle:{
+										color: '#484848'
+									}
+								},
+								hAxis: {
+									textStyle:{
+										color: '#484848'
 									}
 								}
-								chart_draw = new google.visualization.LineChart(document.getElementById(id));
-								break;
+							}
+							chart_draw = new google.visualization.LineChart(document.getElementById(id));
+							break;
 							case "area":
-								options = {
-									chartArea:{left:50,top:20,width:'100%',height:'70%'},
-									legend: {
-										position: 'bottom'
+							options = {
+								chartArea:{left:50,top:20,width:'100%',height:'70%'},
+								legend: {
+									position: 'bottom'
+								},
+								fontName: 'Poppins',
+								backgroundColor: themes,
+								vAxis: {
+									baselineColor: '#484848',
+									gridlines: {
+										color: "#484848"
 									},
-									fontName: 'Poppins',
-									backgroundColor: themes,
-									vAxis: {
-										baselineColor: '#484848',
-										gridlines: {
-											color: "#484848"
-										},
-										textStyle:{
-											color: '#484848'
-										}
-									},
-									hAxis: {
-										textStyle:{
-											color: '#484848'
-										}
+									textStyle:{
+										color: '#484848'
+									}
+								},
+								hAxis: {
+									textStyle:{
+										color: '#484848'
 									}
 								}
-								chart_draw = new google.visualization.AreaChart(document.getElementById(id));
-								break;
+							}
+							chart_draw = new google.visualization.AreaChart(document.getElementById(id));
+							break;
 						}
 					}else{
 						switch (type){
 							case "circle": 
-								options = {
-									chartArea:{left:0,top:0,width:'100%',height:'75%'},
-									legend:{
-										position: 'bottom'
-									},
-									colors: ["#304ffe", "#f60e0e","#ffa000"],
-									fontName: 'Poppins',
-									backgroundColor: themes
-								}
-								chart_draw = new google.visualization.PieChart(document.getElementById(id));
-								break;
+							options = {
+								chartArea:{left:0,top:0,width:'100%',height:'75%'},
+								legend:{
+									position: 'bottom'
+								},
+								colors: ["#304ffe", "#f60e0e","#ffa000"],
+								fontName: 'Poppins',
+								backgroundColor: themes
+							}
+							chart_draw = new google.visualization.PieChart(document.getElementById(id));
+							break;
 							case "donut": 
-								options = {
-									pieHole: 0.3,
-									chartArea:{left:0,top:0,width:'100%',height:'75%'},
-									legend:{
-										position: 'bottom',
-									},
-									colors: ["#304ffe", "#f60e0e","#ffa000"],
-									fontName: 'Poppins',
-									backgroundColor: themes
-								}
-								chart_draw = new google.visualization.PieChart(document.getElementById(id));
-								break;
+							options = {
+								pieHole: 0.3,
+								chartArea:{left:0,top:0,width:'100%',height:'75%'},
+								legend:{
+									position: 'bottom',
+								},
+								colors: ["#304ffe", "#f60e0e","#ffa000"],
+								fontName: 'Poppins',
+								backgroundColor: themes
+							}
+							chart_draw = new google.visualization.PieChart(document.getElementById(id));
+							break;
 							case "column":
-								options = {
-									chartArea:{left:30,top:10,width:'100%',height:'80%'},
-									colors: ["#304ffe"],
-									fontName: 'Poppins',
-									backgroundColor: themes
-								}
-								chart_draw = new google.visualization.ColumnChart(document.getElementById(id));
-								break;
+							options = {
+								chartArea:{left:30,top:10,width:'100%',height:'80%'},
+								colors: ["#304ffe"],
+								fontName: 'Poppins',
+								backgroundColor: themes
+							}
+							chart_draw = new google.visualization.ColumnChart(document.getElementById(id));
+							break;
 							case "curve":
-								options = {
-									chartArea:{left:30,top:10,width:'90%',height:'80%'},
-									curveType: 'function',
-									colors: ["#304ffe", "#f60e0e","#ffa000"],
-									fontName: 'Poppins',
-									backgroundColor: themes
-								}
-								chart_draw = new google.visualization.LineChart(document.getElementById(id));
-								break;
+							options = {
+								chartArea:{left:30,top:10,width:'90%',height:'80%'},
+								curveType: 'function',
+								colors: ["#304ffe", "#f60e0e","#ffa000"],
+								fontName: 'Poppins',
+								backgroundColor: themes
+							}
+							chart_draw = new google.visualization.LineChart(document.getElementById(id));
+							break;
 							case "line":
-								options = {
-									chartArea:{left:30,top:10,width:'90%',height:'80%'},
-									fontName: 'Poppins',
-									backgroundColor: themes
-								}
-								chart_draw = new google.visualization.LineChart(document.getElementById(id));
-								break;
+							options = {
+								chartArea:{left:30,top:10,width:'90%',height:'80%'},
+								fontName: 'Poppins',
+								backgroundColor: themes
+							}
+							chart_draw = new google.visualization.LineChart(document.getElementById(id));
+							break;
 							case "area":
-								options = {
-									chartArea:{left:50,top:20,width:'100%',height:'70%'},
-									legend: {
-										position: 'bottom'
-									},
-									fontName: 'Poppins',
-									backgroundColor: themes
-								}
-								chart_draw = new google.visualization.AreaChart(document.getElementById(id));
-								break;
+							options = {
+								chartArea:{left:50,top:20,width:'100%',height:'70%'},
+								legend: {
+									position: 'bottom'
+								},
+								fontName: 'Poppins',
+								backgroundColor: themes
+							}
+							chart_draw = new google.visualization.AreaChart(document.getElementById(id));
+							break;
 						}
 					}
-	        		chart_draw.draw(dataTable, options);
+					chart_draw.draw(dataTable, options);
 				}
 			});
-		},
-		resizeNotice : function(){
-			$(".notice-popup").each(function(){
-				var selector = $(this),
-					space = (parseInt(selector.data("space"),10) > 0) ? parseInt(selector.data("space"),10) : 75,
-					window_height = $(window).height() - space;
-				selector.attr("style","");
-				if (selector.height() > window_height){
-					selector.css({
-						"height" : window_height
-					});
-				}
+},
+resizeNotice : function(){
+	$(".notice-popup").each(function(){
+		var selector = $(this),
+		space = (parseInt(selector.data("space"),10) > 0) ? parseInt(selector.data("space"),10) : 75,
+		window_height = $(window).height() - space;
+		selector.attr("style","");
+		if (selector.height() > window_height){
+			selector.css({
+				"height" : window_height
 			});
 		}
-	}
-	
-	Core.plugin = {
+	});
+}
+}
+
+Core.plugin = {
+	init : function(){
+		Core.plugin.chart();
+		Core.plugin.mCustomScrollbar();
+		Core.plugin.select2();
+		Core.plugin.ui.accordion();
+		Core.plugin.ui.slider();
+		Core.plugin.ui.sortable();
+		Core.plugin.ui.tabs();
+		Core.plugin.waves();
+		Core.plugin.isotope.filter();
+		return false;
+	},
+	chart: function(){
+		if ($(".js__chart").length){
+			google.charts.load("current", {packages:["corechart"]});
+			google.charts.setOnLoadCallback(Core.func.getChart);
+		}
+		return false;
+	},
+	isotope : {
 		init : function(){
-			Core.plugin.chart();
-			Core.plugin.mCustomScrollbar();
-			Core.plugin.select2();
-			Core.plugin.ui.accordion();
-			Core.plugin.ui.slider();
-			Core.plugin.ui.sortable();
-			Core.plugin.ui.tabs();
-			Core.plugin.waves();
-			Core.plugin.isotope.filter();
-			return false;
-		},
-		chart: function(){
-			if ($(".js__chart").length){
-				google.charts.load("current", {packages:["corechart"]});
-				google.charts.setOnLoadCallback(Core.func.getChart);
-			}
-			return false;
-		},
-		isotope : {
-			init : function(){
-				setTimeout(function(){
-					$(".js__filter_isotope").each(function(){
-						var selector = $(this);
-						selector.find(".js__isotope_items").isotope({
-							itemSelector: ".js__isotope_item",
-							layoutMode: 'cellsByRow'
-						});
-					});
-				},100);
-				return false;
-			},
-			filter : function(){
+			setTimeout(function(){
 				$(".js__filter_isotope").each(function(){
 					var selector = $(this);
-					selector.on("click",".js__filter_control",function(event){
-						event.preventDefault();
-						if (!($(this).hasClass(".js__active"))){
-							selector.find(".js__filter_control").removeClass("js__active");
-							$(this).addClass("js__active");
-							selector.find(".js__isotope_items").isotope({
-								filter : $(this).data("filter")
-							});
-						}
-						return false;
+					selector.find(".js__isotope_items").isotope({
+						itemSelector: ".js__isotope_item",
+						layoutMode: 'cellsByRow'
 					});
 				});
-				return false;
-			}
+			},100);
+			return false;
 		},
-		mCustomScrollbar:function(){
-			if ($(".main-menu").length){
-				$(".main-menu .content").mCustomScrollbar();
+		filter : function(){
+			$(".js__filter_isotope").each(function(){
+				var selector = $(this);
+				selector.on("click",".js__filter_control",function(event){
+					event.preventDefault();
+					if (!($(this).hasClass(".js__active"))){
+						selector.find(".js__filter_control").removeClass("js__active");
+						$(this).addClass("js__active");
+						selector.find(".js__isotope_items").isotope({
+							filter : $(this).data("filter")
+						});
+					}
+					return false;
+				});
+			});
+			return false;
+		}
+	},
+	mCustomScrollbar:function(){
+		if ($(".main-menu").length){
+			$(".main-menu .content").mCustomScrollbar();
+		}
+		if ($(".notice-popup").length){
+			$(".notice-popup .content").mCustomScrollbar();
+		}
+		return false;
+	},
+	select2 : function(){
+		$(".js__select2").each(function(){
+			var minResults = $(this).data("min-results"),
+			classContainer = $(this).data("container-class");
+			if (minResults){
+				if (minResults === "Infinity"){
+					$(this).select2({
+						minimumResultsForSearch: Infinity,
+					});
+				}else{
+					$(this).select2({
+						minimumResultsForSearch: parseInt(minResults,10)
+					});
+				}
+				if (classContainer){
+					$(this).on("select2:open", function(){
+						$(".select2-container--open").addClass(classContainer);
+						return false;
+					});
+				}
+			}else{
+				$(this).select2();
 			}
-			if ($(".notice-popup").length){
-				$(".notice-popup .content").mCustomScrollbar();
+		});
+		return false;
+	},
+	ui: {
+		accordion: function(){
+			if ($( ".js__ui_accordion" ).length){
+				$( ".js__ui_accordion" ).accordion({
+					heightStyle: "content",
+					collapsible: true
+				});
 			}
 			return false;
 		},
-		select2 : function(){
-			$(".js__select2").each(function(){
-				var minResults = $(this).data("min-results"),
-					classContainer = $(this).data("container-class");
-				if (minResults){
-					if (minResults === "Infinity"){
-						$(this).select2({
-							minimumResultsForSearch: Infinity,
-						});
-					}else{
-						$(this).select2({
-							minimumResultsForSearch: parseInt(minResults,10)
-						});
-					}
-					if (classContainer){
-						$(this).on("select2:open", function(){
-							$(".select2-container--open").addClass(classContainer);
-							return false;
-						});
-					}
+		slider: function(){
+			$(".js__ui_slider").each(function(){
+				var selector = $(this),
+				slider = selector.find(".js__slider_range"),
+				amount = selector.find(".js__slider_amount"),
+				min = parseInt(selector.data("min"),10),
+				max = parseInt(selector.data("max"),10),
+				start = parseInt(selector.data("value-1"),10),
+				end = parseInt(selector.data("value-2"),10),
+				range = selector.data("range");
+
+				if (end > 0){
+					slider.slider({
+						range: true,
+						min: min,
+						max: max,
+						values: [ start, end ],
+						slide: function( event, ui ) {
+							amount.val( "$" + ui.values[0] + " - $" + ui.values[1] );
+						}
+					});
+					amount.val( "$" + slider.slider( "values", 0 ) + " - $" + slider.slider( "values", 1 ) );
 				}else{
-					$(this).select2();
+					slider.slider({
+						range: range,
+						min: min,
+						max: max,
+						value: start,
+						slide: function( event, ui ) {
+							amount.val( "$" +  ui.value );
+						}
+					});
+					amount.val("$" + slider.slider( "value" ) );
 				}
 			});
 			return false;
 		},
-		ui: {
-			accordion: function(){
-				if ($( ".js__ui_accordion" ).length){
-					$( ".js__ui_accordion" ).accordion({
-						heightStyle: "content",
-						collapsible: true
-					});
-				}
-				return false;
-			},
-			slider: function(){
-				$(".js__ui_slider").each(function(){
-					var selector = $(this),
-						slider = selector.find(".js__slider_range"),
-						amount = selector.find(".js__slider_amount"),
-						min = parseInt(selector.data("min"),10),
-						max = parseInt(selector.data("max"),10),
-						start = parseInt(selector.data("value-1"),10),
-						end = parseInt(selector.data("value-2"),10),
-						range = selector.data("range");
-
-					if (end > 0){
-						slider.slider({
-							range: true,
-							min: min,
-							max: max,
-							values: [ start, end ],
-							slide: function( event, ui ) {
-								amount.val( "$" + ui.values[0] + " - $" + ui.values[1] );
-							}
-						});
-						amount.val( "$" + slider.slider( "values", 0 ) + " - $" + slider.slider( "values", 1 ) );
-					}else{
-						slider.slider({
-							range: range,
-							min: min,
-							max: max,
-							value: start,
-							slide: function( event, ui ) {
-								amount.val( "$" +  ui.value );
-							}
-						});
-						amount.val("$" + slider.slider( "value" ) );
+		sortable: function(){
+			if ($(".js__sortable").length){
+				$(".js__sortable").sortable({
+					revert: true,
+					start: function(e, ui){
+						ui.placeholder.height(ui.item.height() - 20);
+						ui.placeholder.css('visibility', 'visible');
 					}
 				});
-				return false;
-			},
-			sortable: function(){
-				if ($(".js__sortable").length){
-					$(".js__sortable").sortable({
-						revert: true,
-						start: function(e, ui){
-							ui.placeholder.height(ui.item.height() - 20);
-							ui.placeholder.css('visibility', 'visible');
-						}
-					});
-				}
-				return false;
-			},
-			tabs : function(){
-				if ($(".js__ui_tab").length){
-					$(".js__ui_tab").tabs();
-				}
-				return false;
 			}
+			return false;
 		},
-		waves: function(){
-			if ($('.js__control').length){
-				Waves.attach('.js__control');
-				Waves.init();
+		tabs : function(){
+			if ($(".js__ui_tab").length){
+				$(".js__ui_tab").tabs();
 			}
 			return false;
 		}
+	},
+	waves: function(){
+		if ($('.js__control').length){
+			Waves.attach('.js__control');
+			Waves.init();
+		}
+		return false;
 	}
-	
+}
+
 })(jQuery);

@@ -6,10 +6,10 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Create New Role</h2>
+            <h2>Create New Status</h2>
         </div>
         <div class="pull-right">
-            <!-- <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a> -->
+            <!-- <a class="btn btn-primary" href="{{ route('status.index') }}"> Back</a> -->
         </div>
     </div>
 </div>
@@ -27,7 +27,7 @@
 @endif
 
 
-{!! Form::open(array('route' => 'roles.store','method'=>'POST')) !!}
+{!! Form::open(array('route' => 'status.store','method'=>'POST')) !!}
 <div class="row">
     <div class="col-xs-6 col-sm-6 col-md-6">
         <div class="form-group">
@@ -38,10 +38,10 @@
     <div class="col-xs-6 col-sm-6 col-md-6">
         <div class="form-group role-wrapper">
             <strong>Status:</strong>
-            <input type="hidden" name="status" id="create_role_status" value="1">
+            <input type="hidden" name="status" id="create_status_status" value="1">
             <div class="switch" id="submit">
                 <input type="checkbox" checked id="switch-2"
-                onclick="update_company_status($(this),'create_role_status');">
+                onclick="update_company_status($(this),'create_status_status');">
                 <label for="switch-2"></label> 
             </div>
         </div>
@@ -55,17 +55,10 @@
             @endforeach
         </div> -->
     </div>
-  <!--   <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div> -->
-
     <div class="col-xs-12 col-sm-12 col-md-12 text-center d-flex" id="buttonWrapper">
-            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('status.index') }}"> Back</a>
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-
-
-
 </div>
 {!! Form::close() !!}
 

@@ -88,7 +88,7 @@
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 mb-3">
                     <div class="form-group">
-                            <label for="CompanySecondaryEmailAddress" class="col-md-3 col-12 control-label"> Secondary Email Address <span class="fa fa-asterisk"></span></label>
+                            <label for="CompanySecondaryEmailAddress" class="col-md-3 col-12 control-label"> Secondary Email Address <!-- <span class="fa fa-asterisk"></span> --></label>
                             <div class="col-md-9 col-12">
                                 <input type="email" class="form-control" id="CompanySecondaryEmailAddress"
                                     placeholder="Enter Secondary Email Address " name="company_secondary_email"
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="CompanyWebsite" class="col-md-3 col-12 control-label">Website <span class="fa fa-asterisk"></span></label>
+                            <label for="CompanyWebsite" class="col-md-3 col-12 control-label">Website <!-- <span class="fa fa-asterisk"></span> --></label>
                             <div class="col-md-9 col-12">
                                 <input type="text" class="form-control" id="CompanyWebsite"
                                     placeholder="Enter website" name="company_website"
@@ -104,16 +104,17 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="CompanyDescription" class="col-md-3 col-12 control-label">Description <span class="fa fa-asterisk"></span></label>
+                            <label for="CompanyDescription" class="col-md-3 col-12 control-label">Description <!-- <span class="fa fa-asterisk"></span> --></label>
                             <div class="col-md-9 col-12">
-                                <input type="text" class="form-control" id="CompanyDescription"
+                                <textarea class="form-control" rows="3"  id="CompanyDescription"
                                     placeholder="Enter Description" name="company_description"
                                     value="{{$company->company_description}}" require>
+                                </textarea>
                             </div>
                         </div>
                           <!-- Company status ( enable / disable) -->
                           <div id="container" class="form-group">
-                            <label for="CompanyStatus" class="col-md-3 col-12 control-label">status <span class="fa fa-asterisk"></span></label>
+                            <label for="CompanyStatus" class="col-md-3 col-12 control-label">status <!-- <span class="fa fa-asterisk"></span> --></label>
                             <div class="col-md-9 col-12">
 
                                 <div class="col-sm-2 col-12">

@@ -85,8 +85,8 @@
                         <div class="form-group">
                             <label for="CompanyDescription" class="col-md-3 col-12 control-label">Description <!-- <span class="fa fa-asterisk"></span> --></label>
                             <div class="col-md-9 col-12">
-                                    <textarea class="form-control" name="" rows="3" class="form-control" id="CompanyDescription"
-                                    placeholder="Enter Description" name="company_description"></textarea>
+                                <input type="text" class="form-control" id="CompanyDescription"
+                                    placeholder="Enter Description" name="company_description">
                             </div>
                         </div>
                          <!-- Company status ( enable / disable) -->

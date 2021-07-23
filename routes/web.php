@@ -7,6 +7,9 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\StatusController;
+use App\Http\Controllers\InstallerController;
+use App\Http\Controllers\JobController;
   
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +39,13 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('products', ProductController::class);
     Route::post('companyStatus', [CompanyController::class,'change_status'])->name('company.companyStatus');
     Route::resource('company', CompanyController::class); 
+
+    Route::post('installerStatus', [InstallerController::class,'change_status'])->name('installer.installerStatus');
+    Route::resource('installer', InstallerController::class); 
+
+     Route::post('statusStatus', [StatusController::class,'change_status'])->name('status.statusStatus');
+    Route::resource('status', StatusController::class);
+
+     Route::resource('job', JobController::class);
+     Route::post('jobStatus', [JobController::class,'change_status'])->name('job.jobStatus');
 });

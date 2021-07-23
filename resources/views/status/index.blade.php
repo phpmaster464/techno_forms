@@ -8,11 +8,11 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Roles</h2>
+                <h2>Status</h2>
             </div>
             <div class="pull-right">
-                @can('role-create')
-            <a class="btn btn-success" href="{{ route('roles.create') }}"> Create</a>
+                @can('status-create')
+            <a class="btn btn-success" href="{{ route('status.create') }}"> Create</a>
             @endcan
             </div>
         </div>
@@ -53,24 +53,27 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @php $i = 0; @endphp
-                                        @foreach ($roles as $key => $role)
+                                        @php $i = 0;
+                                        $all_status = $status;
+                                        @endphp
+
+                                        @foreach ($all_status as $key => $status)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            <td>{{ $role->name }}</td>
+                                            <td>{{ $status->name }}</td>
                                             <td >
                                                     
-                                              @can('role-edit')
+                                              @can('status-edit')
 
-                                              @if($role->status == 1)
+                                              @if($status->status == 1)
 
                                                <div class="switch" id="submit"> 
-                                                   <input type="checkbox" checked id="switch-{{$i}}" onclick="set_role_status('{{$role->id}}');" @if($role->id == '1' || $role->id == '3' || $role->id == '8') disabled style='display:none;' @endif>
+                                                   <input type="checkbox" checked id="switch-{{$i}}" onclick="set_status_status('{{$status->id}}');" >
                                                    <label for="switch-{{$i}}"><!-- Switch 2 --></label>
                                                </div> 
                                                @else
                                                <div class="switch" id="submit">
-                                                   <input type="checkbox" id="switch-{{$i}}" onclick="set_role_status('{{$role->id}}');" @if($role->id == '1' || $role->id == '3' || $role->id == '8') disabled style='display:none;' @endif >
+                                                   <input type="checkbox" id="switch-{{$i}}" onclick="set_status_status('{{$status->id}}');">
                                                    <label for="switch-{{$i}}"><!-- Switch 2 --></label>
                                                </div>
                                                @endif
@@ -79,20 +82,12 @@
 
                                             </td>
                                             <td id="td10">
-                                                @if($role->id == '1' || $role->id == '3' || $role->id == '8') 
-                                                @can('role-edit')
-                                                <a class="btn btn-primary" href="#" style="display:none;">Edit</a>
+                                                
+                                                @can('status-edit')
+                                                <a class="btn btn-primary" href="{{ route('status.edit',$status->id) }}">Edit</a>
                                                 @endcan
-
-                                                @else
-                                                @can('role-edit')
-                                                <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">Edit</a>
-                                                @endcan
-                                                @endif
-
-                                               
-                                                <!-- @can('role-delete')
-                                                {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
+                                                <!-- @can('status-delete')
+                                                {!! Form::open(['method' => 'DELETE','route' => ['status.destroy', $status->id],'style'=>'display:inline']) !!}
                                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                                 {!! Form::close() !!}
                                                 @endcan -->
@@ -114,57 +109,5 @@
 </div>
 
 
-<!-- <div class="box-content">
-
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Role Management</h2>
-        </div>
-        <div class="pull-right">
-        @can('role-create')
-            <a class="btn btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
-            @endcan
-        </div>
-    </div>
-</div>
-
-
-@if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
-    </div>
-@endif
-
-
-<table class="table table-bordered">
-  <tr>
-     <th>No</th>
-     <th>Name</th>
-     <th width="280px">Action</th>
-  </tr>
-    @foreach ($roles as $key => $role)
-    <tr>
-        <td>{{ ++$i }}</td>
-        <td>{{ $role->name }}</td>
-        <td>
-            <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">Show</a>
-            @can('role-edit')
-                <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">Edit</a>
-            @endcan
-            @can('role-delete')
-                {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
-                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                {!! Form::close() !!}
-            @endcan
-        </td>
-    </tr>
-    @endforeach
-</table>
-
-
-
-
-</div> -->
 
 @endsection

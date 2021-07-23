@@ -3,13 +3,14 @@
 
 @section('content')
 <div class="box-content">
+
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Create New Role</h2>
+            <h2>Edit Status</h2>
         </div>
         <div class="pull-right">
-            <!-- <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a> -->
+            <a class="btn btn-primary" href="{{ route('status.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -27,48 +28,38 @@
 @endif
 
 
-{!! Form::open(array('route' => 'roles.store','method'=>'POST')) !!}
+{!! Form::model($status, ['method' => 'PATCH','route' => ['status.update', $status->id]]) !!}
 <div class="row">
-    <div class="col-xs-6 col-sm-6 col-md-6">
+    <div class="col-xs-6 col-sm-12 col-md-6">
         <div class="form-group">
             <strong>Name<span class="fa fa-asterisk"></span>:</strong>
             {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
         </div>
     </div>
     <div class="col-xs-6 col-sm-6 col-md-6">
-        <div class="form-group role-wrapper">
+        <div class="form-group">
             <strong>Status:</strong>
-            <input type="hidden" name="status" id="create_role_status" value="1">
+            <br/>
+            <input type="hidden" name="status" id="create_status_status" value="1">
             <div class="switch" id="submit">
+                @if($status->status == 1)
                 <input type="checkbox" checked id="switch-2"
-                onclick="update_company_status($(this),'create_role_status');">
+                onclick="update_company_status($(this),'create_status_status');">
+                @else
+                <input type="checkbox" id="switch-2"
+                onclick="update_company_status($(this),'create_status_status');">
+                @endif
+                
                 <label for="switch-2"></label> 
             </div>
         </div>
-        <!-- <div class="form-group">
-            <strong>Permission:</strong>
-            <br/>
-            @foreach($permission as $value)
-                <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
-                {{ $value->name }}</label>
-            <br/>
-            @endforeach
-        </div> -->
+       
     </div>
-  <!--   <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
-    </div> -->
-
-    <div class="col-xs-12 col-sm-12 col-md-12 text-center d-flex" id="buttonWrapper">
-            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-
-
-
+    </div>
 </div>
 {!! Form::close() !!}
-
 
 </div>
 @endsection

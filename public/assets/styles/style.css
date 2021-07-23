@@ -429,6 +429,14 @@ h4 strong {
     -webkit-box-shadow: none !important;
 }
 
+a.btn.btn-primary {
+    padding: 6px 25px;
+}
+
+button.btn.btn-primary {
+    padding: 6px 25px;
+}
+
 .btn.btn-bordered {
     background: #ffffff;
     color: #435966;
@@ -645,7 +653,6 @@ h4 strong {
 
 .btn-success {
     background: #ff0000;
-    
 }
 
 .btn-success:hover, .btn-success:active, .btn-success:focus {
@@ -762,7 +769,8 @@ h4 strong {
     line-height: 30px;
     padding: 0 10px;
 }
-.list-inline{
+
+.list-inline {
     text-align: center;
     width: 90%;
     display: flex;
@@ -1652,16 +1660,18 @@ Version 1.0
         display: none;
     }
     .menu-active .navigation .menu>li:hover>a {
-        width: 260px;
+        /*width: 260px;*/
+        width: 75px;
         background: #ff0000;
         color: #ffffff;
-        padding-left: 90px;
+        /*padding-left: 90px;*/
     }
     .menu-active .navigation .menu>li:hover>a i {
         color: #ffffff;
     }
     .menu-active .navigation .menu>li:hover>a span {
-        display: block;
+        /*display: block;*/
+        display: none;
     }
     .menu-active .navigation .menu>li:hover>a .notice {
         display: none;
@@ -2875,12 +2885,15 @@ table.focus-on>tbody>tr.focused.unfocused>th, table.focus-on>tbody>tr.focused.un
 /*-----------------------------------------------------------------------
 10. Jquery UI
 */
+
 .form-control::placeholder {
     color: #000 !important;
 }
-.form-control{
+
+.form-control {
     color: #000;
 }
+
 .ui-sortable-placeholder {
     border: 2px dashed #435966;
     background: #ccc;
@@ -3503,9 +3516,11 @@ table.focus-on>tbody>tr.focused.unfocused>th, table.focus-on>tbody>tr.focused.un
 /*-----------------------------------------------------------------------
 19. Switch
 */
+
 #example .switch {
     justify-content: center;
 }
+
 .switch {
     display: flex;
     align-items: center;
@@ -5975,8 +5990,6 @@ textarea.form-control {
 
 /* Login forms */
 
-
-
 /* Loader */
 
 :root {
@@ -6055,12 +6068,13 @@ textarea.form-control {
     justify-content: center;
 } */
 
-#login,#email,#reset {
+#login, #email, #reset {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
+
 /* 
 #confirm main.py-4, #login main.py-4, #email main.py-4, #reset main.py-4 {
     width: 100%;
@@ -6106,7 +6120,6 @@ textarea.form-control {
     font-family: inherit;
     color: #343a40;
     background-color: #fff;
-   
 }
 
 .asm-form__header {
@@ -6158,8 +6171,8 @@ textarea.form-control {
 
 #email .asm-form__icon {
     top: 69%;
-
 }
+
 .asm-form__icon {
     position: absolute;
     top: 55%;
@@ -6423,6 +6436,7 @@ textarea.form-control {
     .table-bordered {
         border: 1px solid transparent;
     }
+    
 }
 
 /* Company Field */
@@ -6473,6 +6487,8 @@ table.table-bordered.dataTable th, table.table-bordered.dataTable td {
     color: #18385f;
     padding-bottom: 15px;
     padding-left: 0;
+    position: relative;
+    font-weight: 400 !important;
 }
 
 .form-horizontal .form-group {
@@ -6526,10 +6542,30 @@ main.py-4 {
 
 /* Create Form */
 
+.select2-container .select2-selection--single {
+    display: flex !important;
+    height: 45px !important;
+    width: 100%;
+    align-items: center;
+    border: 1px solid #dee0e4 !important;
+    border-radius: 0px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    position: absolute;
+    top: 8px !important;
+    right: 8px !important;
+    width: 20px;
+}
+
 .avatar-upload {
     position: relative;
     max-width: 205px;
     margin: 0px auto;
+}
+
+.avatar-upload~label {
+    margin: 25px auto;
 }
 
 .avatar-upload .avatar-edit {
@@ -6620,22 +6656,75 @@ main.py-4 {
     justify-content: center;
     height: 100%;
 }
+
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
     background-color: #18385f !important;
     border-color: #18385f !important;
 }
 
-.control-label span.fa-asterisk{
+.control-label span.fa-asterisk {
     color: red;
     font-size: 10px;
+    position: absolute;
+    margin-left: 2px;
+    top: 14px;
 }
-.sorting,.sorting_asc{
+
+.sorting, .sorting_asc {
     text-align: center;
 }
-#submit{
+
+#submit {
     display: flex;
     justify-content: flex-start;
 }
+
+#buttonWrapper{
+    margin-bottom: 30px !important;
+}
+
+#buttonWrapper .pull-right {
+    float: none !important;
+}
+
+/* job Modul style */
+
+.job-form-wrapper .row {
+    margin-bottom: 10px;
+}
+
+.job-detail-wrapper, .owner-details-wrapper, .installation-address-wrapper {
+    padding: 30px 50px;
+}
+
+.job-detail-wrapper, .owner-details-wrapper {
+    border-bottom: 1px solid #18385f;
+    margin-bottom: 30px;
+}
+
+.job-form-wrapper h3 {
+    text-align: center;
+    box-shadow: 0px 1px 7px 2px #2c609e;
+    padding: 15px;
+    width: 50%;
+    margin: 0 auto 35px;
+    color: #18385f !important;
+}
+
+.form-check-input-reverse {
+    margin: 4px 0 0 15px !important;
+}
+
+.form-check-label {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+}
+.installation-address-wrapper .form-check{
+    display:flex;
+}
+
+
 /* ---------------------------- Media Query------------------------ */
 
 @media only screen and (max-width: 1440px) {
@@ -6644,6 +6733,12 @@ main.py-4 {
     }
     input[type=file] {
         margin-top: 47px !important;
+    }
+    /* .table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th {
+        font-size: 12px;
+    } */
+    .table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th {
+        font-size: 0.97rem;
     }
 }
 
@@ -6703,11 +6798,22 @@ main.py-4 {
         padding: 20px;
         margin-bottom: 10%;
     }
+    .job-form-wrapper h3 {
+        padding: 9px;
+        font-size: 14px;
+    }
 }
 
 @media only screen and (max-width: 767px) {
     .btn-group-vertical>.btn-group:after, .btn-group-vertical>.btn-group:before, .btn-toolbar:after, .btn-toolbar:before, .clearfix:after, .clearfix:before, .container-fluid:after, .container-fluid:before, .container:after, .container:before, .dl-horizontal dd:after, .dl-horizontal dd:before, .form-horizontal .form-group:after, .form-horizontal .form-group:before, .modal-footer:after, .modal-footer:before, .modal-header:after, .modal-header:before, .nav:after, .nav:before, .navbar-collapse:after, .navbar-collapse:before, .navbar-header:after, .navbar-header:before, .navbar:after, .navbar:before, .pager:after, .pager:before, .panel-body:after, .panel-body:before, .row:after, .row:before {
         content: unset;
+    }
+    .control-label span.fa-asterisk {
+        top: 0px;
+    }
+    .installation-address-wrapper .form-check {
+        display: flex;
+        justify-content: center;
     }
 }
 

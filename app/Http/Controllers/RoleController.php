@@ -76,9 +76,6 @@ class RoleController extends Controller
             'name' => 'required|unique:roles,name',
             // 'permission' => 'required',
         ]);
-        
-
-        $input['updated_by'] = $userId;
         $role = Role::create(['name' => $request->input('name'),'status' => $request->input('status'),'created_by'=>Auth::id()]);
         $role->syncPermissions($request->input('permission'));
     
@@ -128,7 +125,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($id == '1' || $id == '3')
+        if($id == '1' || $id == '3' || $id == '8')
         {
             return redirect()->route('roles.index')
                         ->with('error','This Role cannot be Updated');

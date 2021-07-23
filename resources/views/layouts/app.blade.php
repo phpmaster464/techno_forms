@@ -48,7 +48,8 @@
     <link rel="stylesheet" href="{{ asset('assets/plugin/datatables/media/css/dataTables.bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css')}}">
 
-
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('assets/plugin/select2/css/select2.min.css')}}">
 
 
     @if(Auth::check())
@@ -126,7 +127,7 @@
 
     <div class="main-menu">
         <header class="header" >
-            <a href="index.html" class="logo">
+            <a href="{{url('/')}}" class="logo">
                 <img src="{{ asset('assets/images/logo/TF-logo-1.png') }}" id="user_image">
             </a>
             <button type="button" class="button-close fa fa-times js__menu_close"></button>
@@ -154,16 +155,25 @@
             <div class="navigation">
                 <!-- /.title -->
                 <ul class="menu js__accordion">
-                    <li class="current" onclick="change_current_menu($(this));">
-                        <a class="waves-effect" href="{{route('home')}}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Dashboard</span></a>
+                    <li class="nav_li current" >
+                        <a class="waves-effect nav_a" href="{{route('home')}}" id="nav_dashboard"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Dashboard</span></a>
                     </li>
 
-                    <li class="" onclick="change_current_menu($(this));" id="company_li">
-                        <a class="waves-effect" href="{{route('company.index')}}"><i class="menu-icon mdi mdi-desktop-mac"></i><span>Company</span></a>
+                    <li class="nav_li"  id="company_li">
+                        <a class="waves-effect nav_a" href="{{route('company.index')}}" id="nav_company"><i class="menu-icon mdi mdi-desktop-mac"></i><span>Company</span></a>
                     </li>
-                    <li class="" onclick="change_current_menu($(this));" id="company_li">
-                        <a class="waves-effect" href="{{route('roles.index')}}"><i class="menu-icon mdi mdi-account-star"></i><span>Roles</span></a>
+                    <li class="nav_li"  id="roles_li">
+                        <a class="waves-effect nav_a" href="{{route('roles.index')}}" id="nav_roles"><i class="menu-icon mdi mdi-account-star"></i><span>Roles</span></a>
                     </li>
+                    <li class="nav_li"  id="status_li">
+                        <a class="waves-effect nav_a" href="{{route('status.index')}}" id="nav_status"><i class="menu-icon mdi mdi-chart-pie"></i><span>Status</span></a>
+                    </li> 
+                    <li class="nav_li"  id="installer_li">
+                        <a class="waves-effect nav_a" href="{{route('installer.index')}}" id="nav_installer"><i class="menu-icon fa fa-download"></i><span>Installer</span></a>
+                    </li> 
+                     <li class="nav_li"  id="job_li">
+                        <a class="waves-effect nav_a" href="{{route('job.index')}}" id="nav_job"><i class="menu-icon mdi mdi-briefcase"></i><span>Jobs</span></a>
+                    </li> 
                 </ul>
                 <!-- /.menu js__accordion -->
 
@@ -179,6 +189,7 @@
         <div class="pull-left">
             <input type="hidden" id="current_state" value="system">
             <input type="hidden" id="app_url" value="{{url('/')}}">
+            <input type="hidden" id="menu_state" value="full">
             <button type="button" class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile" id="menu_button"></button>
             <!-- <h1 class="page-title">Home</h1> -->
             <!-- /.page-title -->
@@ -318,6 +329,7 @@
 <!-- /.main-content -->
 </div>
 @endif
+
 <!--/#wrapper -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -328,6 +340,8 @@
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="{{ asset('assets/scripts/jquery.min.js') }}"></script>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
         <script src="{{ asset('assets/scripts/modernizr.min.js') }}"></script>
         <script src="{{ asset('assets/plugin/bootstrap/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js') }}"></script>
@@ -363,99 +377,245 @@
         <script src="{{ asset('assets/plugin/datatables/extensions/Responsive/js/dataTables.responsive.min.js')}}"></script>
         <script src="{{ asset('assets/plugin/datatables/extensions/Responsive/js/responsive.bootstrap.min.js')}}"></script>
         <script src="{{ asset('assets/scripts/datatables.demo.min.js')}}"></script>
-
-
         <script src="{{ asset('assets/scripts/main.js') }}"></script>
+        <script src="{{ asset('assets/plugin/select2/js/select2.min.js')}}" defer></script>
+
+
+        @if (\Request::is('installer/*')) 
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSR5vFOoB3SvPTNoPG1ZAEqX1N84m-7fc&callback=initAutocomplete&libraries=places&v=weekly"
+        async
+        ></script>
+
+        @endif
+
+        
+ 
+        
+
+
+<script type="text/javascript"> 
+
+    
+
+
+    // This sample uses the Places Autocomplete widget to:
+// 1. Help the user select a place
+// 2. Retrieve the address components associated with that place
+// 3. Populate the form fields with those address components.
+// This sample requires the Places library, Maps JavaScript API.
+// Include the libraries=places parameter when you first load the API.
+// For example: <script
+// src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+if(window.location.href.indexOf('installer') > -1)
+    {
+        
+
+        let autocomplete;
+        let address1Field;
+        let address2Field;
+        let postalField;
+
+function initAutocomplete() {
+    address1Field = document.querySelector("#SearchAddress");
+    // address2Field = document.querySelector("#street_name");
+    // postalField = document.querySelector("#postcode");
+    // Create the autocomplete object, restricting the search predictions to
+    // addresses in the US and Canada.
+    autocomplete = new google.maps.places.Autocomplete(address1Field, {
+        componentRestrictions: {
+            country: ["au"]
+        },
+        fields: ["address_components", "geometry"],
+        types: ["address"],
+    });
+    address1Field.focus();
+    // When the user selects an address from the drop-down, populate the
+    // address fields in the form.
+    autocomplete.addListener("place_changed", fillInAddress);
+}
+
+function fillInAddress() {
+    // Get the place details from the autocomplete object.
+    const place = autocomplete.getPlace();
+    let address1 = "";
+    let postcode = "";
+
+
+    // Get each component of the address from the place details,
+    // and then fill-in the corresponding field on the form.
+    // place.address_components are google.maps.GeocoderAddressComponent objects
+    // which are documented at http://goo.gle/3l5i5Mr
+    for (const component of place.address_components) {
+        const componentType = component.types[0];
+
+        console.log(componentType);
+        console.log(component.long_name);        
+        console.log(component.short_name);  
+
+        switch(componentType){
+            
+            case "subpremise":{
+                $('#unit_number').val(component.long_name);
+            }
+
+            case "street_number":{
+                $('#street_number').val(component.long_name);
+            }
+
+            case "route":{
+                $('#street_name').val(component.short_name);
+            }
+
+            case "locality":{
+                $('#suburb').val(component.long_name);
+            }
+
+            case "administrative_area_level_1":{
+                $('#state').val(component.short_name).trigger('change');;
+            }
+
+            case "postal_code":{
+                $('#postcode').val(component.short_name);
+            }
+
+        }      
+
+        // switch (componentType) {
+        //     case "street_number": {
+        //         address1 = `${component.long_name} ${address1}`;
+        //         break;
+        //     }
+
+        //     case "route": {
+        //         address1 += component.short_name;
+        //         break;
+        //     }
+
+        //     case "postal_code": {
+        //         postcode = `${component.long_name}${postcode}`;
+        //         break;
+        //     }
+
+        //     case "postal_code_suffix": {
+        //         postcode = `${postcode}-${component.long_name}`;
+        //         break;
+        //     }
+        //     case "locality":
+        //         document.querySelector("#locality").value = component.long_name;
+        //         break;
+
+        //     case "administrative_area_level_1": {
+        //         document.querySelector("#state").value = component.short_name;
+        //         break;
+        //     }
+        //     case "country":
+        //         document.querySelector("#country").value = component.long_name;
+        //         break;
+        // }
+    }
+    // address1Field.value = address1;
+    // postalField.value = postcode;
+    // After filling the form with address components from the Autocomplete
+    // prediction, set cursor focus on the second address line to encourage
+    // entry of subpremise information such as apartment, unit, or floor number.
+    //address2Field.focus();
+}
+
+    }
 
 
 
-        <script type="text/javascript">
-            function reset_password_email()
-            {
-                var email = $('#email').val();
-                jQuery.ajax({
-                    type:"POST",
-                    url:"{{ route('password.email') }}",
-                    data:{
-                        "_token": "{{ csrf_token() }}",
-                        "email": email
-                    },
-                    dataType:'json',
-                    beforeSend:function(){
-                     $("#btnFetch").prop("disabled", true);
-                     $("#email").prop("disabled", true);
-                     $("#btnFetch").html('<i class="fa fa-circle-o-notch fa-spin"></i> loading...');
-                 },
-                 success:function(data){
-                    $("#btnFetch").prop("disabled", false);
-                    $("#btnFetch").html('Send Password Reset Link');
-                    swal({
-                        title : "Password Reset Successfull", 
-                        type: "success",
-                        confirmButtonColor: '#f60e0e',
-                    });
-                    window.location.replace("{{url('/')}}/login");
-                }, 
-                
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    $("#btnFetch").prop("disabled", false);
-                    $("#btnFetch").html('Send Password Reset Link'); 
-                    $("#email").val('');
-                    var error = JSON.parse(XMLHttpRequest.responseText);
-                    var err_text = "Something went wrong";
-                    if(typeof error.errors.email[0] != "undefined"){
-                        var err_text =  error.errors.email[0];
-                    }
-                    swal({
-                        title : err_text, 
-                        type: "error",
-                        confirmButtonColor: '#f60e0e',
-                    });
-                    
-                }
-            });
-            } 
 
-            function reset_password()
-            {   
-                var token = $('#res_token').val();
-                var email = $('#email').val();
-                var password = $('#password').val();
-                var password_confirmation = $('#password-confirm').val();
 
-                jQuery.ajax({
-                    type:"POST",
-                    url:"{{ route('password.update') }}",
-                    data:{
-                        "_token": "{{ csrf_token() }}", 
-                        "token":token,   
-                        "email":email,
-                        "password":password,
-                        "password_confirmation":password_confirmation,
-                    }, 
-                    dataType:'json',
-                    beforeSend:function(){
-                     $("#btnFetch").prop("disabled", true);
-                     $("#email").prop("disabled", true);
-                     $("#btnFetch").html('<i class="fa fa-circle-o-notch fa-spin"></i> loading...');
-                 },
-                 success:function(data){
-                    $("#btnFetch").prop("disabled", false);
-                    $("#btnFetch").html('Send Password Reset Link');
-                    swal({
-                        title : "Password Reset Successfull", 
-                        type: "success",
-                        confirmButtonColor: '#f60e0e',
-                    });
-                    window.location.replace("{{url('/')}}/logout");
-                }, 
-                
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    $("#btnFetch").prop("disabled", false);
-                    $("#btnFetch").html('Send Password Reset Link'); 
-                    $("#email").val('');
-                    var error = JSON.parse(XMLHttpRequest.responseText);
-                    var err_text = "Something went wrong";
+
+
+function reset_password_email()
+{
+    var email = $('#email').val();
+    jQuery.ajax({
+        type:"POST",
+        url:"{{ route('password.email') }}",
+        data:{
+            "_token": "{{ csrf_token() }}",
+            "email": email
+        },
+        dataType:'json',
+        beforeSend:function(){
+         $("#btnFetch").prop("disabled", true);
+         $("#email").prop("disabled", true);
+         $("#btnFetch").html('<i class="fa fa-circle-o-notch fa-spin"></i> loading...');
+     },
+     success:function(data){
+        $("#btnFetch").prop("disabled", false);
+        $("#btnFetch").html('Send Password Reset Link');
+        swal({
+            title : "Password Reset Successfull", 
+            type: "success",
+            confirmButtonColor: '#f60e0e',
+        });
+        window.location.replace("{{url('/')}}/login");
+    }, 
+
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+        $("#btnFetch").prop("disabled", false);
+        $("#btnFetch").html('Send Password Reset Link'); 
+        $("#email").val('');
+        var error = JSON.parse(XMLHttpRequest.responseText);
+        var err_text = "Something went wrong";
+        if(typeof error.errors.email[0] != "undefined"){
+            var err_text =  error.errors.email[0];
+        }
+        swal({
+            title : err_text, 
+            type: "error",
+            confirmButtonColor: '#f60e0e',
+        });
+
+    }
+});
+} 
+
+function reset_password()
+{   
+    var token = $('#res_token').val();
+    var email = $('#email').val();
+    var password = $('#password').val();
+    var password_confirmation = $('#password-confirm').val();
+
+    jQuery.ajax({
+        type:"POST",
+        url:"{{ route('password.update') }}",
+        data:{
+            "_token": "{{ csrf_token() }}", 
+            "token":token,   
+            "email":email,
+            "password":password,
+            "password_confirmation":password_confirmation,
+        }, 
+        dataType:'json',
+        beforeSend:function(){
+         $("#btnFetch").prop("disabled", true);
+         $("#email").prop("disabled", true);
+         $("#btnFetch").html('<i class="fa fa-circle-o-notch fa-spin"></i> loading...');
+     },
+     success:function(data){
+        $("#btnFetch").prop("disabled", false);
+        $("#btnFetch").html('Send Password Reset Link');
+        swal({
+            title : "Password Reset Successfull", 
+            type: "success",
+            confirmButtonColor: '#f60e0e',
+        });
+        window.location.replace("{{url('/')}}/logout");
+    }, 
+
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+        $("#btnFetch").prop("disabled", false);
+        $("#btnFetch").html('Send Password Reset Link'); 
+        $("#email").val('');
+        var error = JSON.parse(XMLHttpRequest.responseText);
+        var err_text = "Something went wrong";
                     // if(typeof error.errors.email[0] != "undefined"){
                     //     var err_text =  error.errors.email[0];
                     // }
@@ -467,80 +627,236 @@
 
                  }
              });
-            }
+}
 
 
-            function update_company_status(obj,id){
-                var status = obj.is(':checked'); 
-                if(status == true)
-                {
-                    $('#'+id).val(1);
-                }
-                else
-                {
-                    $('#'+id).val(0); 
-                }
-            }
+function update_company_status(obj,id){
+    var status = obj.is(':checked'); 
+    if(status == true)
+    {
+        $('#'+id).val(1);
+    }
+    else
+    {
+        $('#'+id).val(0); 
+    }
+}
 
-            function set_company_status(id)
-            {
+function set_company_status(id)
+{
 
-                jQuery.ajax({
-                    type:"POST",
-                    url:"{{ route('company.companyStatus') }}",
-                    data:{
-                        "_token": "{{ csrf_token() }}", 
-                        "id" : id
-                    }, 
-                    dataType:'json',
-                    beforeSend:function(){
+    jQuery.ajax({
+        type:"POST",
+        url:"{{ route('company.companyStatus') }}",
+        data:{
+            "_token": "{{ csrf_token() }}",  
+            "id" : id
+        }, 
+        dataType:'json',
+        beforeSend:function(){
 
-                    },
-                    success:function(data){
-                     alert('done');
-                 }
-             });
+        },
+        success:function(data){
+         alert('done');
+     }
+ });
 
-            } 
+} 
 
-            function set_role_status(id)
-            {
+function set_role_status(id)
+{
 
-                jQuery.ajax({
-                    type:"POST",
-                    url:"{{ route('role.roleStatus') }}",
-                    data:{
-                        "_token": "{{ csrf_token() }}", 
-                        "id" : id
-                    }, 
-                    dataType:'json',
-                    beforeSend:function(){
+    jQuery.ajax({
+        type:"POST",
+        url:"{{ route('role.roleStatus') }}",
+        data:{
+            "_token": "{{ csrf_token() }}", 
+            "id" : id
+        }, 
+        dataType:'json',
+        beforeSend:function(){
 
-                    },
-                    success:function(data){
-                     alert('done');
-                 }
-             });
+        },
+        success:function(data){
+         alert('done');
+     }
+ });
 
-            }
+}
 
-            $(document).ready(function(){
-                // var url  = window.location.href;
-                // var data = url.search('company');
-                // if(data != -1)
-                // {   
-                //     $(".menu li").removeClass("current");
-                //     $("#company_li").addClass('current');
-                //     return false;
-                // }
+function set_status_status(id)
+{
 
-                $('#menu_button').click(function(){
-                    var current_state = $('#current_state').val();
-                    var app_url = $('#app_url').val();
+    jQuery.ajax({
+        type:"POST",
+        url:"{{ route('status.statusStatus') }}",
+        data:{
+            "_token": "{{ csrf_token() }}", 
+            "id" : id
+        }, 
+        dataType:'json',
+        beforeSend:function(){
 
-                    if(current_state == 'system')
-                    {
-                        $('#current_state').val('mobile');
+        },
+        success:function(data){
+         alert('done');
+     }
+ });
+
+}
+
+function set_installer_status(id)
+{
+
+    jQuery.ajax({
+        type:"POST",
+        url:"{{ route('installer.installerStatus') }}",
+        data:{
+            "_token": "{{ csrf_token() }}", 
+            "id" : id
+        }, 
+        dataType:'json',
+        beforeSend:function(){
+
+        },
+        success:function(data){
+         alert('done');
+     }
+ });
+
+}
+
+function set_job_status(id)
+{
+
+    jQuery.ajax({
+        type:"POST",
+        url:"{{ route('job.jobStatus') }}",
+        data:{
+            "_token": "{{ csrf_token() }}",  
+            "id" : id
+        }, 
+        dataType:'json',
+        beforeSend:function(){
+
+        },
+        success:function(data){
+         alert('done');
+     }
+ });
+
+}
+
+function set_installation_add(e)
+{
+   if($(e).is(":checked")){
+    alert("add value for instalation address"); //when checked
+  }/*else{
+    alert("Not checked"); //when not checked
+  }*/
+
+}
+
+function changeAddressType()
+{
+    var address_type = $('#installer_address_type').val();
+    if(address_type == 'Physical')
+    {
+        $('.physical_address').show();
+        $('.postal_address').hide();
+    }
+    else
+    {
+       $('.physical_address').hide();
+       $('.postal_address').show();
+   }
+
+}
+
+function change_installer_job_type(jtype_obj)
+{    
+    $('.type1').prop("checked", false);
+    $('.type2').prop("checked", false);
+    $('.type_all').prop("checked", false);
+    var jtype_id = jtype_obj.attr('id');
+    if(jtype_id == 'jtype1'){
+       $('.type1').show();
+       $('.type11').show();
+       $('.type2').hide();
+       $('.type22').hide();
+   }
+   else if(jtype_id == 'jtype2')
+   {
+       $('.type1').hide();
+       $('.type11').hide();
+       $('.type2').show();
+       $('.type22').show();
+   }
+   else
+   {
+       $('.type1').show();
+       $('.type11').show();
+       $('.type2').show();
+       $('.type22').show();
+   }
+
+/*var type1checked = 0;
+var type2checked = 0;
+var typeallchecked = 0;
+
+   $('.type1').each(function (index, obj) {
+        if (this.checked === true) {
+            type1checked = 1;
+        }
+    });
+
+   $('.type2').each(function (index, obj) {
+        if (this.checked === true) {
+            type2checked = 1;
+        }
+    });
+
+ $('.type2').each(function (index, obj) {
+        if (this.checked === true) {
+            typeallchecked = 1;
+        }
+    });
+
+if(type1checked == 0 && type2checked == 0 && typeallchecked == 0)
+{
+    $('.type1').show();
+         $('.type1').show();
+         $('.type11').show();
+         $('.type2').show();
+         $('.type22').show();
+     }*/
+
+ }
+
+ $(document).ready(function(){
+    $(function(){
+     $('.nav_a').each(function(){
+      var a_tag = $(this).attr('id').replace('nav_','');
+      var url = window.location.href;
+      var requested = a_tag.toLowerCase();
+      var matched = url.toLowerCase(); 
+      if(window.location.href.indexOf(requested) > -1)
+      {
+       $('.nav_li').removeClass('current');
+       $(this).parents('li').addClass('current'); 
+   }
+
+});
+ });
+
+    $('#menu_button').click(function(){
+        var current_state = $('#current_state').val();
+        var app_url = $('#app_url').val();
+        var menu_state = $('#menu_state').val();
+
+        if(current_state == 'system')
+        {
+            $('#current_state').val('mobile');
                         // var src = '/assets/images/circle-icon.png';
                         var src = 'assets/images/logo/TF-Logo.png';
                     }
@@ -552,44 +868,96 @@
 
                     var origin   = window.location.origin;;
                     $('#user_image').attr('src',app_url+'/'+src);
+
+                    if(menu_state == 'full')
+                    {
+                        $('#menu_state').val('collapse');
+                        $.cookie("menu_state", 'collapse');
+                    }
+                    else
+                    {
+                        $('#menu_state').val('full');
+                        $.cookie("menu_state", 'full');
+                    }
+
                 });
 
 
+    if ($("#unit_type").length > 0)
+    {
+        $("#unit_type").select2({
+            placeholder: "Not a Unit",
+            allowClear: true
+        });
+    }
 
-            });
+    if ($("#street_type").length > 0)
+    {
+        $("#street_type").select2({
+            placeholder: "Select a street type",
+            allowClear: true
+        });
+    }
 
-            function change_current_menu(menu_link)
-            {
-                $(".menu li").removeClass("current");
+    if ($("#state").length > 0)
+    {
+        $("#state").select2({
+            placeholder: "Select a state",
+            allowClear: true
+        });
+    }
 
-                menu_link.addClass("current");
-            }
 
-            function loadImg(){
-                $('#frame').attr('src', URL.createObjectURL(event.target.files[0]));
-                $('#frame').css("border","1px solid black");
-                $('#frame').show();
-            }
 
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
-                        $('#imagePreview').hide();
-                        $('#imagePreview').fadeIn(650);
-                    }
-                    reader.readAsDataURL(input.files[0]);
-                } 
-            }
-            $("#imageUpload").change(function() {
-                readURL(this);
-            });
+});
 
-        </script>
+ function change_current_menu(menu_link)
+ {
+    $(".menu li").removeClass("current");
 
-    </body>
-    </html>
+    menu_link.addClass("current");
+}
+
+
+function loadImg(){
+    $('#frame').attr('src', URL.createObjectURL(event.target.files[0]));
+    $('#frame').css("border","1px solid black");
+    $('#frame').show();
+}
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    } 
+}
+$("#imageUpload").change(function() {
+    readURL(this);
+});
+
+    $("#imageUpload_logo").on('change', function(e){
+        $('#imagePreview_logo').css("background-image", "url("+URL.createObjectURL(event.target.files[0])+")");
+
+     })
+
+    $("#imageUpload_photo").on('change', function(e){
+        $('#imagePreview_photo').css("background-image", "url("+URL.createObjectURL(event.target.files[0])+")");
+     })
+
+
+    $("#imageUpload_license").on('change', function(e){
+        $('#imagePreview_license').css("background-image", "url("+URL.createObjectURL(event.target.files[0])+")");
+     })
+
+</script>
+
+</body>
+</html>
 
 
 </body>
