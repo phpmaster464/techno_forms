@@ -749,11 +749,29 @@ function set_job_status(id)
 
 function set_installation_add(e)
 {
-   if($(e).is(":checked")){
-    alert("add value for instalation address"); //when checked
-  }/*else{
-    alert("Not checked"); //when not checked
-  }*/
+ if($(e).is(":checked")){
+    $('#PostalAddressType1').val($('#PostalAddressType').val());
+    $('#UnitType1').val($('#UnitType').val());
+    $('#UnitNumber1').val($('#UnitNumber').val());
+    $('#StreetNumber1').val($('#StreetNumber').val());
+    $('#StreetName1').val($('#StreetName').val());
+    $('#StreetType1').val($('#StreetType').val());
+    $('#Town1').val($('#Town').val());
+    $('#State1').val($('#State').val());
+    $('#PostCode1').val($('#PostCode').val());
+
+}else{
+    $('#PostalAddressType1').val();
+    $('#UnitType1').val();
+    $('#UnitNumber1').val();
+    $('#StreetNumber1').val();
+    $('#StreetName1').val();
+    $('#StreetType1').val();
+    $('#Town1').val();
+    $('#State1').val();
+    $('#PostCode1').val();
+    
+}
 
 }
 
