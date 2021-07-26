@@ -30,7 +30,7 @@
                             <h3>Job Details :</h3>
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="JobType" class="control-label">Job Type: <span
                                                 class="fa fa-asterisk"></span></label>
                                         <select class="form-control" id="JobType" name="job_type">
@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="JobStage" class="control-label">Job Stage: <span></span></label>
                                         <select class="form-control" id="JobStage" name="job_stage">
                                             <option value="">Select</option>
@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="Priority" class="control-label">Priority: <span></span></label>
                                         <select class="form-control" id="Priority" name="priority">
                                             <option value="">Select</option>
@@ -107,7 +107,7 @@
                             <h3>Owner Details :</h3>
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="JobType" class="control-label">Owner Type: <span
                                                 class="fa fa-asterisk"></span></label>
                                         <select class="form-control" id="JobType" name="owner_type">
@@ -116,7 +116,6 @@
                                             <option value="Government body">Government body</option>
                                             <option value="Corporate body">Corporate body</option>
                                             <option value="Trustee">Trustee</option>
-                                        </select>
                                         </select>
                                     </div>
                                 </div>
@@ -129,7 +128,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="OrganisationName" class="control-label">Organisation Name:
                                             <span class="fa fa-asterisk"></span></label>
                                         <select class="form-control" id="OrganisationName" name="organisation_name" {{-- disabled --}}>
@@ -171,17 +170,24 @@
                                         <input type="text" class="form-control" id="Phone" name="phone" value="{{old('phone')}}">
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                <!-- <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="Mobile" class="control-label"> Mobile: {{-- <span
                                                 class="fa fa-asterisk"></span></label> --}}
+                                        <input type="text" class="form-control" id="Mobile" name="mobile" value="{{old('mobile')}}">
+                                    </div>
+                                </div> -->
+                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="Mobile" class="control-label"> Mobile: <span
+                                                class="fa fa-asterisk"></span></label>
                                         <input type="text" class="form-control" id="Mobile" name="mobile" value="{{old('mobile')}}">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="PostalAddressType" class="control-label">Postal Address Type:
                                             <span class="fa fa-asterisk"></span></label>
                                         <select class="form-control" id="PostalAddressType" name="owner_postal_address_type">
@@ -192,7 +198,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="UnitType" class="control-label">Unit Type:
                                             <span class="fa fa-asterisk"></span></label>
                                         <select class="form-control" id="UnitType" name="owner_unit_type">
@@ -230,7 +236,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="StreetType" class="control-label">Street Type:
                                             <span class="fa fa-asterisk"></span></label>
                                         <select class="form-control" id="StreetType" name="owner_street_type">
@@ -284,7 +290,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="PostalAddressType" class="control-label">Postal Address Type:
                                             <span class="fa fa-asterisk"></span></label>
                                         <select class="form-control" id="PostalAddressType1" name="installation_postal_address_type">
@@ -295,7 +301,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="UnitType" class="control-label">Unit Type:
                                             <span class="fa fa-asterisk"></span></label>
                                         <select class="form-control" id="UnitType1" name="installation_unit_type">
@@ -333,7 +339,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="StreetType" class="control-label">Street Type:
                                             <span class="fa fa-asterisk"></span></label>
                                         <select class="form-control" id="StreetType1" name="installation_street_type">
