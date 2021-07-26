@@ -95,6 +95,8 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {   
+
+
         request()->validate([
             'job_type' => 'required',
             'reference_number' => 'required',
@@ -170,7 +172,16 @@ class JobController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Jobs $job)
-    {
+    {   
+
+            if(isset($request['same_as_owner_address']))
+            {
+                $request['same_as_owner_address'] = 1;
+            }
+            else
+            {
+                $request['same_as_owner_address'] = 0;
+            }
 
            request()->validate([
             'job_type' => 'required',
