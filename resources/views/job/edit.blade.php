@@ -274,7 +274,7 @@
                                     <label class="form-check-label" for="sameAsOwnerAddre">
                                     Same as Owner Address:
                                     </label>
-                                    <input class="form-check-input-reverse" type="checkbox" value="" id="sameAsOwnerAddre" name="same_as_owner_address" @if($job->same_as_owner_address == 1) checked="true" @endif onclick="set_installation_add(this);">
+                                    <input class="form-check-input-reverse" type="checkbox" value="" id="sameAsOwnerAddre" name="same_as_owner_address" @if($job->same_as_owner_address == 1) checked="checked" @endif onclick="set_installation_add(this);">
                                 </div>
                             </div>
                             <div class="row">

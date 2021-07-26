@@ -176,13 +176,14 @@ class JobController extends Controller
 
             if(isset($request['same_as_owner_address']))
             {
-                $request['same_as_owner_address'] = 1;
+                $request['same_as_owner_address'] = "1";
             }
             else
             {
-                $request['same_as_owner_address'] = 0;
+                $request['same_as_owner_address'] = "0";
             }
 
+           
            request()->validate([
             'job_type' => 'required',
             'reference_number' => 'required',
