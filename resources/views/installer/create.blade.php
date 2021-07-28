@@ -75,7 +75,7 @@
       <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
           <div class="form-group">
-            <label for="FirstName" class="col-md-3 col-12 control-label">First Name <span class="fa fa-asterisk"></span></label>
+            <label for="FirstName" class="col-md-3 col-12 control-label">First Name <span class="mdi mdi-multiplication"></span></label>
             <div class="col-md-9 col-12">
                 <input type="text" class="form-control" id="FirstName"
                 placeholder="Enter First Name" name="first_name">
@@ -85,7 +85,7 @@
 
     <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
       <div class="form-group">
-        <label for="LastName" class="col-md-3 col-12 control-label">Last Name <span class="fa fa-asterisk"></span></label>
+        <label for="LastName" class="col-md-3 col-12 control-label">Last Name <span class="mdi mdi-multiplication"></span></label>
         <div class="col-md-9 col-12">
             <input type="text" class="form-control" id="LastName"
             placeholder="Enter Last Name" name="last_name">
@@ -97,7 +97,7 @@
 <div class="row">
     <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
       <div class="form-group">
-        <label for="email" class="col-md-3 col-12 control-label">Email Address <span class="fa fa-asterisk"></span></label>
+        <label for="email" class="col-md-3 col-12 control-label">Email Address <span class="mdi mdi-multiplication"></span></label>
         <div class="col-md-9 col-12">
             <input type="text" class="form-control" id="Email"
             placeholder="Enter Email" name="email">
@@ -107,7 +107,7 @@
 
 <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
   <div class="form-group">
-    <label for="Mobile" class="col-md-3 col-12 control-label">Mobile Number <span class="fa fa-asterisk"></span></label>
+    <label for="Mobile" class="col-md-3 col-12 control-label">Mobile Number <span class="mdi mdi-multiplication"></span></label>
     <div class="col-md-9 col-12">
         <input type="text" class="form-control" id="Mobile"
         placeholder="Enter Mobile Number" name="mobile">
@@ -119,7 +119,7 @@
 <div class="row">
     <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
       <div class="form-group">
-        <label for="Phone" class="col-md-3 col-12 control-label">Phone Number <span class="fa fa-asterisk"></span></label>
+        <label for="Phone" class="col-md-3 col-12 control-label">Phone Number <span class="mdi mdi-multiplication"></span></label>
         <div class="col-md-9 col-12">
             <input type="text" class="form-control" id="Phone"
             placeholder="Enter Phone Number" name="phone">
@@ -156,7 +156,7 @@
 <div class="row">
     <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
       <div class="form-group">
-        <label for="SearchAddress" class="col-md-3 col-12 control-label">Search Address<span class="fa fa-asterisk"></span></label>
+        <label for="SearchAddress" class="col-md-3 col-12 control-label">Search Address<span class="mdi mdi-multiplication"></span></label>
         <div class="col-md-9 col-12">
             <input type="text" class="form-control" id="SearchAddress"
             placeholder="Search Address" name="search_address" autocomplete="off">
@@ -166,7 +166,7 @@
 
 <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
   <div class="form-group">
-    <label for="AddressType" class="col-md-3 col-12 control-label">Address Type<span class="fa fa-asterisk"></span></label>
+    <label for="AddressType" class="col-md-3 col-12 control-label">Address Type<span class="mdi mdi-multiplication"></span></label>
     <div class="col-md-9 col-12">
                                 <!-- <input type="text" class="form-control" id="CompanyName"
                                     placeholder="Search Address" name="company_name"> -->
@@ -182,7 +182,7 @@
                     <div class="row physical_address">
                       <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                           <div class="form-group">
-                            <label for="UnitType" class="col-md-3 col-12 control-label">Unit Type<span class="fa fa-asterisk"></span></label>
+                            <label for="UnitType" class="col-md-3 col-12 control-label">Unit Type<span class="mdi mdi-multiplication"></span></label>
                             <div class="col-md-9 col-12">
                                 <!-- <input type="text" class="form-control" id="unit_type"
                                 placeholder="Unit Type" name="unit_type"> -->
@@ -198,7 +198,7 @@
 
                     <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                       <div class="form-group">
-                        <label for="UnitNumber" class="col-md-3 col-12 control-label">Unit Number<span class="fa fa-asterisk"></span></label>
+                        <label for="UnitNumber" class="col-md-3 col-12 control-label">Unit Number<span class="mdi mdi-multiplication"></span></label>
                         <div class="col-md-9 col-12">
                             <input type="text" class="form-control" id="unit_number"
                             placeholder="Unit Number" name="unit_number">
@@ -208,7 +208,7 @@
 
                 <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                   <div class="form-group">
-                    <label for="StreetNumber" class="col-md-3 col-12 control-label">Street Number<span class="fa fa-asterisk"></span></label>
+                    <label for="StreetNumber" class="col-md-3 col-12 control-label">Street Number<span class="mdi mdi-multiplication"></span></label>
                     <div class="col-md-9 col-12">
                         <input type="text" class="form-control" id="street_number"
                         placeholder="Street Number" name="street_number">
@@ -218,7 +218,7 @@
 
             <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
               <div class="form-group">
-                <label for="StreetName" class="col-md-3 col-12 control-label">Street Name<span class="fa fa-asterisk"></span></label>
+                <label for="StreetName" class="col-md-3 col-12 control-label">Street Name<span class="mdi mdi-multiplication"></span></label>
                 <div class="col-md-9 col-12">
                     <input type="text" class="form-control" id="street_name"
                     placeholder="Street Name" name="street_name">
@@ -228,7 +228,7 @@
 
         <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
           <div class="form-group">
-            <label for="StreetType" class="col-md-3 col-12 control-label">Street Type<span class="fa fa-asterisk"></span></label>
+            <label for="StreetType" class="col-md-3 col-12 control-label">Street Type<span class="mdi mdi-multiplication"></span></label>
             <div class="col-md-9 col-12">
                 <!-- <input type="text" class="form-control" id="street_type"
                 placeholder="Street Type" name="street_type"> -->
@@ -247,7 +247,7 @@
 <div class="row postal_address" style="display:none;">
   <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
       <div class="form-group"> 
-        <label for="PostalDeliveryType" class="col-md-3 col-12 control-label">Postal Delivery Type<span class="fa fa-asterisk"></span></label>
+        <label for="PostalDeliveryType" class="col-md-3 col-12 control-label">Postal Delivery Type<span class="mdi mdi-multiplication"></span></label>
         <div class="col-md-9 col-12">
             <input type="text" class="form-control" id="postal_delivery_type"
             placeholder="Postal Delivery Type" name="postal_delivery_type">
@@ -256,7 +256,7 @@
 </div>
 <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
   <div class="form-group">
-    <label for="PostalDeliveryNumber" class="col-md-3 col-12 control-label">Postal Delivery Number<span class="fa fa-asterisk"></span></label>
+    <label for="PostalDeliveryNumber" class="col-md-3 col-12 control-label">Postal Delivery Number<span class="mdi mdi-multiplication"></span></label>
     <div class="col-md-9 col-12">
         <input type="text" class="form-control" id="postal_delivery_number"
         placeholder="Postal Delivery Number" name="postal_delivery_number">
@@ -268,7 +268,7 @@
 <div class="row">
     <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
       <div class="form-group">
-        <label for="Suburb" class="col-md-3 col-12 control-label">Suburb<span class="fa fa-asterisk"></span></label>
+        <label for="Suburb" class="col-md-3 col-12 control-label">Suburb<span class="mdi mdi-multiplication"></span></label>
         <div class="col-md-9 col-12">
             <input type="text" class="form-control" id="suburb"
             placeholder="Suburb" name="suburb">
@@ -278,7 +278,7 @@
 
 <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
   <div class="form-group">
-    <label for="State" class="col-md-3 col-12 control-label">State<span class="fa fa-asterisk"></span></label>
+    <label for="State" class="col-md-3 col-12 control-label">State<span class="mdi mdi-multiplication"></span></label>
     <div class="col-md-9 col-12">
         <!-- <input type="text" class="form-control" id="state"
         placeholder="State" name="state"> -->
@@ -294,7 +294,7 @@
 
 <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
   <div class="form-group">
-    <label for="Postcode" class="col-md-3 col-12 control-label">Postcode<span class="fa fa-asterisk"></span></label>
+    <label for="Postcode" class="col-md-3 col-12 control-label">Postcode<span class="mdi mdi-multiplication"></span></label>
     <div class="col-md-9 col-12">
         <input type="text" class="form-control" id="postcode"
         placeholder="Postcode" name="postcode">
@@ -307,7 +307,7 @@
 <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
     <!-- Installer status ( enable / disable) -->
     <div id="container" class="form-group">
-        <label for="Status" class="col-md-3 col-12 control-label">Status <!-- <span class="fa fa-asterisk"></span> --></label>
+        <label for="Status" class="col-md-3 col-12 control-label">Status <!-- <span class="mdi mdi-multiplication"></span> --></label>
         <div class="col-md-9 col-12">
             <input type="hidden" name="installer_status" id="create_company_status" value="1">
             <div class="switch" id="submit">

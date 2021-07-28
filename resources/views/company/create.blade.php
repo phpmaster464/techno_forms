@@ -40,7 +40,7 @@
                     <div class="col-xl-8 col-lg-8 col-md-12 mb-3">
 
                         <div class="form-group">
-                            <label for="CompanyName" class="col-md-3 col-12 control-label">Name <span class="fa fa-asterisk"></span></label>
+                            <label for="CompanyName" class="col-md-3 col-12 control-label">Name <span class="mdi mdi-multiplication"></span></label>
                             <div class="col-md-9 col-12">
                                 <input type="text" class="form-control" id="CompanyName"
                                     placeholder="Enter Name" name="company_name">
@@ -48,7 +48,7 @@
                         </div>
                         <div class="form-group">
                             <label for="CompanyPrimaryEmailAddress " class="col-md-3 col-12 control-label">
-                                Primary Email Address <span class="fa fa-asterisk"></span></label>
+                                Primary Email Address <span class="mdi mdi-multiplication"></span></label>
                             <div class="col-md-9 col-12">
                                 <input type="email" class="form-control" id="CompanyPrimaryEmailAddress"
                                     placeholder="Enter Primary Email Address " name="company_primary_email">
@@ -56,7 +56,7 @@
                         </div>
                         <div class="form-group">
                             <label for="CompanyContactNumber" class="col-md-3 col-12 control-label">Contact
-                                Number <span class="fa fa-asterisk"></span></label>
+                                Number <span class="mdi mdi-multiplication"></span></label>
                             <div class="col-md-9 col-12">
                                 <input type="text" class="form-control" id="CompanyContactNumber"
                                     placeholder="Enter Contact Number" name="company_contact_number">
@@ -69,21 +69,21 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 mb-3">
                         <div class="form-group">
                             <label for="CompanySecondaryEmailAddress" class="col-md-3 col-12 control-label">
-                                Secondary Email Address <!-- <span class="fa fa-asterisk"> --></span></label>
+                                Secondary Email Address <!-- <span class="mdi mdi-multiplication"> --></span></label>
                             <div class="col-md-9 col-12">
                                 <input type="email" class="form-control" id="CompanySecondaryEmailAddress"
                                     placeholder="Enter Secondary Email Address " name="company_secondary_email">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="CompanyWebsite" class="col-md-3 col-12 control-label">Website <!-- <span class="fa fa-asterisk"></span> --></label>
+                            <label for="CompanyWebsite" class="col-md-3 col-12 control-label">Website <!-- <span class="mdi mdi-multiplication"></span> --></label>
                             <div class="col-md-9 col-12">
                                 <input type="text" class="form-control" id="CompanyWebsite"
                                     placeholder="Enter website" name="company_website">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="CompanyDescription" class="col-md-3 col-12 control-label">Description <!-- <span class="fa fa-asterisk"></span> --></label>
+                            <label for="CompanyDescription" class="col-md-3 col-12 control-label">Description <!-- <span class="mdi mdi-multiplication"></span> --></label>
                             <div class="col-md-9 col-12">
                                     <textarea class="form-control" name="" rows="3" class="form-control" id="CompanyDescription"
                                     placeholder="Enter Description" name="company_description"></textarea>
@@ -91,7 +91,7 @@
                         </div>
                          <!-- Company status ( enable / disable) -->
                          <div id="container" class="form-group">
-                            <label for="CompanyStatus" class="col-md-3 col-12 control-label">Status <!-- <span class="fa fa-asterisk"></span> --></label>
+                            <label for="CompanyStatus" class="col-md-3 col-12 control-label">Status <!-- <span class="mdi mdi-multiplication"></span> --></label>
                             <div class="col-md-9 col-12">
                                 <input type="hidden" name="company_status" id="create_company_status" value="1">
                                 <div class="switch" id="submit">

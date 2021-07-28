@@ -174,6 +174,9 @@
                      <li class="nav_li"  id="job_li">
                         <a class="waves-effect nav_a" href="{{route('job.index')}}" id="nav_job"><i class="menu-icon mdi mdi-briefcase"></i><span>Jobs</span></a>
                     </li> 
+                     <li class="nav_li"  id="inventory_li">
+                        <a class="waves-effect nav_a" href="{{route('inventory.index')}}" id="nav_inventory"><i class="menu-icon mdi mdi-briefcase"></i><span>Inventory</span></a>
+                    </li> 
                 </ul>
                 <!-- /.menu js__accordion -->
 
@@ -850,6 +853,49 @@ if(type1checked == 0 && type2checked == 0 && typeallchecked == 0)
      }*/
 
  }
+
+ //code fot inventory cascading dropdown
+
+        $('select[name="manufacturer"]').on('change', function() {
+            var manufacturerID = $(this).val();
+            if(manufacturerID) {
+                $.ajax({
+                    url: '{{url('inventory/model/')}}/'+manufacturerID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
+                        console.log(data);
+                        $('#select_model').replaceWith(data);
+                    }
+                });
+            }else{
+                $('select[name="model"]').empty();
+            }
+        }); 
+  
+
+
+   $('select[name="model"]').on('change', function() {
+            var supplierID = $(this).val();
+            if(supplierID) {
+                $.ajax({
+                    url: '{{url('inventory/supplier/')}}/'+supplierID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
+                        console.log(data);
+                        console.log("in supplier");
+                        $('#select_supplier').replaceWith(data);
+                    }
+                });
+            }else{
+                $('select[name="select_supplier"]').empty();
+            }
+        }); 
+
+
+
+ //end of code for inventory cascading dropdown
 
  $(document).ready(function(){
     $(function(){

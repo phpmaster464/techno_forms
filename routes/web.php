@@ -10,6 +10,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\InstallerController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\InventoryController;
   
 /*
 |--------------------------------------------------------------------------
@@ -48,4 +49,9 @@ Route::group(['middleware' => ['auth']], function() {
 
      Route::resource('job', JobController::class);
      Route::post('jobStatus', [JobController::class,'change_status'])->name('job.jobStatus');
+
+    Route::resource('inventory', InventoryController::class);
+    Route::post('inventoryStatus', [InventoryController::class,'change_status'])->name('inventory.inventoryStatus');
+    Route::get('inventory/model/{id}', [InventoryController::class,'model'])->name('inventory.model');
+    Route::get('inventory/supplier/{id}', [InventoryController::class,'supplier'])->name('inventory.supplier');
 });
