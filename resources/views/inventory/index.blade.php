@@ -32,88 +32,43 @@
                                 <table id="example" class="table table-striped table-bordered display" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>Job Type</th>
-                                            <th>Reference Number</th>
-                                            <th>Installation Date</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th> 
+                                            <th>Sr no </th>
+                                            <th>Manufacturer</th>
+                                            <th>Model</th>
+                                            <th>Supplier</th>
+                                            <th>Pallet No</th>
+                                            <th>Pallet Serials</th>
+                                            <th>Wattage</th> 
                                             <th>Created By </th>
                                             <th>Updated By </th> 
-                                            <th>Status</th> 
                                             <th>Edit</th>
                                         </tr>
                                     </thead>
-                                    <!-- <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Logo </th>
-                                            <th>Primary Email Address</th>
-                                            <th>Secondary Email Address </th>
-                                            <th>Contact Number</th>
-                                            <th>Website</th>
-                                            <th>Description </th>
-                                            <th>Code</th>
-                                            <th>Creation Date </th>
-                                            <th>Updated date</th>
-                                            <th>Status</th> 
-                                        </tr>
-                                    </tfoot> -->
                                     <tbody>
-                                       {{--  @php $i = 0; @endphp
-                                        @foreach ($jobs as $job)
+                                     @php $i = 0; @endphp
+                                        @foreach ($inventories as $inventory)
                                         @php ++$i; @endphp
                                         <tr>
-                                            <td id="td1">{{$job->job_type}}</td>
-                                            <td id="td2">{{$job->reference_number}}</td>
-                                            <td id="td3">{{$job->installation_date}}</td> 
-                                            <td id="td4">{{$job->first_name}}</td>
-                                            <td id="td5">{{$job->last_name}}</td>
-                                            <td id="td6">{{$job->email}}</td>
-                                            <td id="td7">{{$job->phone}}</td>
-                                            <td id="td8">{{$job->created_by}}</td>
-                                            <td id="td8">{{$job->updated_by}}</td>
-                                            <td id="td9"><!-- {{$job->job_status}} -->
-        
-                                                @can('job-edit')
-        
-                                                @if($job->job_status == 1)
-                                                 <div class="switch" id="submit"> 
-                                                     <input type="checkbox" checked id="switch-{{$i}}" onclick="set_job_status('{{$job->id}}');">
-                                                     <label for="switch-{{$i}}"><!-- Switch 2 --></label>
-                                                 </div> 
-                                                 @else
-                                                 <div class="switch" id="submit">
-                                                     <input type="checkbox" id="switch-{{$i}}" onclick="set_job_status('{{$job->id}}');">
-                                                     <label for="switch-{{$i}}"><!-- Switch 2 --></label>
-                                                 </div>
-                                                 @endif
-                                                 @endcan
-        
-                                            </td>
+                                            <td id="td1">{{$i}}</td>
+                                            <td id="td2">{{$inventory->Manufacturer}}</td>
+                                            <td id="td3">{{$inventory->Model}}</td> 
+                                            <td id="td4">{{$inventory->Supplier}}</td>
+                                            <td id="td5">{{$inventory->pallet_number}}</td>
+                                            <td id="td6">{{$inventory->unverified_panel_serials}}</td>
+                                            <td id="td7">{{$inventory->wattage}}</td>
+                                            <td id="td8">{{$inventory->created_by}}</td>
+                                            <td id="td8">{{$inventory->updated_by}}</td>
+                                         
                                             <td id="td10">
-                                            @can('job-edit')
-                                                <a class="btn btn-primary" href="{{ route('job.edit',$job->id) }}">Edit</a>
-                                            @endcan
+                                            
+                                                <a class="btn btn-primary" href="{{ route('inventory.edit',$inventory->id) }}">Edit</a>
+                                            
                                            </td>
                                             
                                         </tr>
-                                         @endforeach --}}
+                                         @endforeach 
 
-                                         <tr>
-                                            <td>Job Type</td>
-                                            <td>Reference Number</td>
-                                            <td>Installation Date</td>
-                                            <td>First Name</td>
-                                            <td>Last Name</td>
-                                            <td>Email</td>
-                                            <td>Phone</td> 
-                                            <td>Created By </td>
-                                            <td>Updated By </td> 
-                                            <td>Status</td> 
-                                            <td>Edit</td>
-                                        </tr>
+                                        
                                     </tbody>
                                 </table>
                                 

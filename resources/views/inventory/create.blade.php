@@ -34,7 +34,7 @@
                                             col-12 control-label">Select Manufacturer</label>
                                         <div class="col-md-9 col-12">
                                             <select class="form-control"
-                                                id="select_manufacturer" name="manufacturer">
+                                                id="select_manufacturer" name="manufacturer_id" onchange="fetch_model($(this).val());">
                                                 <option>Select Manufacturer</option>
                                                 @php
                                                 foreach($manufacturer as $k=>$manufac){
@@ -51,7 +51,7 @@
                                             col-12 control-label">Select Model</label>
                                         <div class="col-md-9 col-12">
                                             <select class="form-control"
-                                                id="select_model" name="model">
+                                                id="select_model" name="model_id" onchange="fetch_supplier($(this).val();">
                                                 <option>Select Model</option>
                                             </select>
                                         </div>
@@ -61,7 +61,7 @@
                                             col-12 control-label">Select Responsible Supplier</label>
                                         <div class="col-md-9 col-12">
                                             <select class="form-control"
-                                                id="select_supplier" name="select_supplier">
+                                                id="select_supplier" name="supplier_id">
                                                 <option>Select Supplier</option>
                                             </select>
                                         </div>
@@ -73,7 +73,7 @@
                                         <div class="col-md-9 col-12">
                                             <input type="text"
                                                 class="form-control"
-                                                id="pallet_num"
+                                                id="pallet_num" name="pallet_number"
                                                 placeholder="Pallet Number (optionl)">
                                         </div>
                                         <p class="help-block">This is a way to group your panels which then can be easily assigned to jobs in the future.</p>
@@ -83,7 +83,7 @@
                                         <label for="inp-type-5" class="col-md-3
                                         col-12 control-label">Unverified Panel Serials</label>
                                         <div class="col-md-9 col-12">
-                                            <textarea class="form-control" id="inp-type-5" placeholder="Write your meassage"></textarea>
+                                            <textarea class="form-control" id="inp-type-5" name="unverified_panel_serials" placeholder="Write your meassage"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -93,10 +93,10 @@
                                         <div class="col-md-9 col-12">
                                             <input type="number"
                                                 class="form-control"
-                                                id="enter_wattage" name="enter_wattage">
+                                                id="enter_wattage" name="wattage">
                                         </div>
                                         <p class="help-block">Enter value in kW</p>
-                                    </div>
+                                    </div> 
                 
                                     <div class="form-group margin-bottom-0 Add_Panel">
                                         <div class="col-12">

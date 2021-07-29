@@ -856,9 +856,12 @@ if(type1checked == 0 && type2checked == 0 && typeallchecked == 0)
 
  //code fot inventory cascading dropdown
 
-        $('select[name="manufacturer"]').on('change', function() {
-            var manufacturerID = $(this).val();
-            if(manufacturerID) {
+
+ function fetch_model(manufacturer_id)
+ {
+    var manufacturerID = manufacturer_id;
+
+      if(manufacturerID) {
                 $.ajax({
                     url: '{{url('inventory/model/')}}/'+manufacturerID,
                     type: "GET",
@@ -871,12 +874,11 @@ if(type1checked == 0 && type2checked == 0 && typeallchecked == 0)
             }else{
                 $('select[name="model"]').empty();
             }
-        }); 
-  
+ }
 
-
-   $('select[name="model"]').on('change', function() {
-            var supplierID = $(this).val();
+function fetch_supplier(supplier_id)
+{
+     var supplierID = supplier_id;
             if(supplierID) {
                 $.ajax({
                     url: '{{url('inventory/supplier/')}}/'+supplierID,
@@ -888,10 +890,16 @@ if(type1checked == 0 && type2checked == 0 && typeallchecked == 0)
                         $('#select_supplier').replaceWith(data);
                     }
                 });
-            }else{
+            }else{ 
                 $('select[name="select_supplier"]').empty();
             }
-        }); 
+}
+
+
+ 
+
+      
+
 
 
 
