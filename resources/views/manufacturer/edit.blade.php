@@ -24,13 +24,17 @@
     </div>
     @endif
 
+    <form class="form-horizontal" method="post" action="{{ route('manufacturer.update',$manufacturer->id) }}"  enctype="multipart/form-data">
 
-    {!! Form::model($manufacturer, ['method' => 'PATCH','route' => ['manufacturer.update', $manufacturer->id]]) !!}
+                    @csrf
+                    @method('PUT')
+
     <div class="row">
         <div class="col-xs-6 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>Name<span class="fa fa-asterisk"></span>:</strong>
-                {!! Form::text('manufacturer_name', null, array('placeholder' => 'Manufacturer','class' => 'form-control')) !!}
+                <input type="text"  class="form-control" id="manufacturer_name" name="manufacturer_name" value="{{$manufacturer->manufacturer_name}}">
+
             </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
@@ -57,7 +61,7 @@
             <button type="submit" class="btn btn-info btn-sm waves-effect waves-light">Submit</button>
         </div>
     </div>
-    {!! Form::close() !!}
+    </form>
 
 </div>
 @endsection

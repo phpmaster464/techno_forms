@@ -26,8 +26,8 @@
     </div>
 @endif
 
-
-{!! Form::open(array('route' => 'manufacturer.store','method'=>'POST')) !!}
+<form class="form-horizontal" method="post" action="{{ route('manufacturer.store') }}"  enctype="multipart/form-data">
+    @csrf
 <div class="row">
     <div class="col-xs-6 col-sm-6 col-md-6">
         <div class="form-group">
@@ -60,7 +60,7 @@
             <button type="submit" class="btn btn-info btn-sm waves-effect waves-light">Submit</button>
         </div>
 </div>
-{!! Form::close() !!}
+</form>
 
 
 </div>
