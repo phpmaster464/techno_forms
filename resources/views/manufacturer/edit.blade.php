@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Role</h2>
+                <h2>Manufacturer Edit</h2>
             </div>
         </div>
     </div>
@@ -25,42 +25,35 @@
     @endif
 
 
-    {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
+    {!! Form::model($manufacturer, ['method' => 'PATCH','route' => ['manufacturer.update', $manufacturer->id]]) !!}
     <div class="row">
         <div class="col-xs-6 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>Name<span class="fa fa-asterisk"></span>:</strong>
-                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                {!! Form::text('manufacturer_name', null, array('placeholder' => 'Manufacturer','class' => 'form-control')) !!}
             </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                 <strong>Status:</strong>
                 <br />
-                <input type="hidden" name="status" id="create_role_status" value="1">
+                <input type="hidden" name="manufacturer" id="create_manufacturer_status" value="1">
                 <div class="switch" id="submit">
-                    @if($role->status == 1)
+                    @if($manufacturer->status == 1)
                     <input type="checkbox" checked id="switch-2"
-                        onclick="update_company_status($(this),'create_role_status');">
+                        onclick="update_company_status($(this),'create_manufacturer_status');">
                     @else
-                    <input type="checkbox" id="switch-2" onclick="update_company_status($(this),'create_role_status');">
+                    <input type="checkbox" id="switch-2"
+                        onclick="update_company_status($(this),'create_manufacturer_status');">
                     @endif
 
                     <label for="switch-2"></label>
                 </div>
             </div>
-           <!-- <div class="form-group">
-            <strong>Permission:</strong>
-            <br/>
-            @foreach($permission as $value)
-                <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                {{ $value->name }}</label>
-            <br/>
-            @endforeach
-        </div>  --> 
+
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center d-flex" id="buttonWrapper">
-            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('manufacturer.index') }}"> Back</a>
             <button type="submit" class="btn btn-info btn-sm waves-effect waves-light">Submit</button>
         </div>
     </div>

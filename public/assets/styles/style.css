@@ -6797,7 +6797,7 @@ table.table-bordered.dataTable tbody th,
 table.table-bordered.dataTable tbody td {
     text-align: center;
     vertical-align: inherit;
-    padding: 0;
+   // padding: 0;
 }
 
 main.py-4 {

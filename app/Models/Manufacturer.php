@@ -15,6 +15,5 @@ class Manufacturer extends Model
      * @var array
      */
     protected $table = "manufacturer";
-    protected $fillable = ['id','manufacturer_name','status','created_at','updated_at'
-    ];
+    protected $fillable = ['id','manufacturer_name','status','created_at','updated_at','created_by','updated_by'];
 }

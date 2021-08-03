@@ -175,7 +175,16 @@
                         <a class="waves-effect nav_a" href="{{route('job.index')}}" id="nav_job"><i class="menu-icon mdi mdi-briefcase"></i><span>Jobs</span></a>
                     </li> 
                      <li class="nav_li"  id="inventory_li">
-                        <a class="waves-effect nav_a" href="{{route('inventory.index')}}" id="nav_inventory"><i class="menu-icon mdi mdi-briefcase"></i><span>Inventory</span></a>
+                        <a class="waves-effect nav_a" href="{{route('inventory.index')}}" id="nav_inventory"><i class="menu-icon fa fa-cube"></i><span>Inventory</span></a>
+                    </li> 
+                    <li class="nav_li"  id="manufacturer_li">
+                        <a class="waves-effect nav_a" href="{{route('manufacturer.index')}}" id="nav_manufacturer"><i class="menu-icon fa fa-building"></i><span>Manufacturer</span></a>
+                    </li> 
+                    <li class="nav_li"  id="model_li">
+                        <a class="waves-effect nav_a" href="{{route('model.index')}}" id="nav_model"><i class="menu-icon mdi fa-modx"></i><span>Model</span></a>
+                    </li>
+                    <li class="nav_li"  id="supplier_li">
+                        <a class="waves-effect nav_a" href="{{route('supplier.index')}}" id="nav_supplier"><i class="menu-icon mdi mdi-truck"></i><span>Supplier</span></a>
                     </li> 
                 </ul>
                 <!-- /.menu js__accordion -->
@@ -707,6 +716,73 @@ function set_status_status(id)
  });
 
 }
+
+
+function set_manufacturer_status(id)
+{
+
+    jQuery.ajax({
+        type:"POST",
+        url:"{{ route('manufacturer.manufacturerStatus') }}",
+        data:{
+            "_token": "{{ csrf_token() }}", 
+            "id" : id
+        }, 
+        dataType:'json',
+        beforeSend:function(){
+
+        },
+        success:function(data){
+         alert('done');
+     }
+ });
+
+}
+
+function set_model_status(id)
+{
+    
+
+    jQuery.ajax({
+        type:"POST",
+        url:"{{ route('model.modelStatus') }}",
+        data:{
+            "_token": "{{ csrf_token() }}", 
+            "id" : id
+        }, 
+        dataType:'json',
+        beforeSend:function(){
+
+        },
+        success:function(data){
+         alert('done');
+     }
+ });
+
+}
+
+function set_supplier_status(id)
+{
+    
+
+    jQuery.ajax({
+        type:"POST",
+        url:"{{ route('supplier.supplierStatus') }}",
+        data:{
+            "_token": "{{ csrf_token() }}", 
+            "id" : id
+        }, 
+        dataType:'json',
+        beforeSend:function(){
+
+        },
+        success:function(data){
+         alert('done');
+     }
+ });
+
+}
+
 
 function set_installer_status(id)
 {

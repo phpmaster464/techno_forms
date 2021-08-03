@@ -106,6 +106,12 @@ class RoleController extends Controller
      */
     public function edit($id)
     {   
+        if($id == '1' || $id == '3' || $id == '8')
+        {
+            return redirect()->route('roles.index')
+                        ->with('error','This Role cannot be Updated');
+        }
+        
         $role = Role::find($id);
         $permission = Permission::get();
         $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)

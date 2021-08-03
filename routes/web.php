@@ -11,6 +11,9 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\InstallerController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\ManufacturerController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\ModelController;
   
 /*
 |--------------------------------------------------------------------------
@@ -54,4 +57,16 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('inventoryStatus', [InventoryController::class,'change_status'])->name('inventory.inventoryStatus');
     Route::get('inventory/model/{id}', [InventoryController::class,'model'])->name('inventory.model');
     Route::get('inventory/supplier/{id}', [InventoryController::class,'supplier'])->name('inventory.supplier');
+
+       Route::resource('manufacturer', ManufacturerController::class);
+	   Route::post('manufacturerStatus', [ManufacturerController::class,'change_status'])->name('manufacturer.manufacturerStatus');
+	   
+       Route::resource('model', ModelController::class);
+	   Route::post('modelStatus', [ModelController::class,'change_status'])->name('model.modelStatus');
+       
+       Route::resource('supplier', SupplierController::class);
+	   Route::post('supplierStatus', [SupplierController::class,'change_status'])->name('supplier.supplierStatus');
+
+
+    
 });

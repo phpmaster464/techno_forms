@@ -15,6 +15,5 @@ class Supplier extends Model
      * @var array
      */
     protected $table = "supplier";
-    protected $fillable = ['id','supplier_name','model_id','status','created_at','updated_at'
-    ];
+    protected $fillable = ['id','supplier_name','model_id','status','created_at','updated_at','created_by','updated_by'];
 }
