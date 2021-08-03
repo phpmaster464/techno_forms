@@ -8,7 +8,7 @@
 
     <div class="col-12 ">
         <div class="box-content card white">
-            <h3 class="box-title">Create A Job</h3>
+            <h4 class="box-title">Create A Job</h4>
             <!-- /.box-title -->
             <div class="card-content">
                 @if ($errors->any())
@@ -27,12 +27,12 @@
                     <div class="job-form-wrapper">
                         <!-- job-detail -->
                         <div class="job-detail-wrapper">
-                            <h3>Job Details :</h3>
+                            <h4>Job Details :</h4>
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="JobType" class="control-label">Job Type: <span
-                                                class="fa fa-asterisk"></span></label>
+                                                class="mdi mdi-multiplication"></span></label>
                                         <select class="form-control" id="JobType" name="job_type">
                                             <option value="PVD">PVD</option>
                                             <option value="SWH">SWH</option>
@@ -42,13 +42,13 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="ReferenceNumber" class="control-label">
-                                            Reference Number <span class="fa fa-asterisk"></span></label>
+                                            Reference Number <span class="mdi mdi-multiplication"></span></label>
                                         <input type="text" class="form-control" id="ReferenceNumber"
                                             name="reference_number">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="JobStage" class="control-label">Job Stage: <span></span></label>
                                         <select class="form-control" id="JobStage" name="job_stage">
                                             <option value="">Select</option>
@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="Priority" class="control-label">Priority: <span></span></label>
                                         <select class="form-control" id="Priority" name="priority">
                                             <option value="">Select</option>
@@ -104,12 +104,12 @@
                         </div>
                         <!-- owner-details -->
                         <div class="owner-details-wrapper">
-                            <h3>Owner Details :</h3>
+                            <h4>Owner Details :</h4>
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="JobType" class="control-label">Owner Type: <span
-                                                class="fa fa-asterisk"></span></label>
+                                                class="mdi mdi-multiplication"></span></label>
                                         <select class="form-control" id="JobType" name="owner_type">
                                             <option value="">Select</option>
                                             <option value="Individual">Individual</option>
@@ -117,21 +117,20 @@
                                             <option value="Corporate body">Corporate body</option>
                                             <option value="Trustee">Trustee</option>
                                         </select>
-                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for=" CompanyABN" class="control-label">
-                                            Company ABN: <span class="fa fa-asterisk"></span></label>
+                                            Company ABN: <span class="mdi mdi-multiplication"></span></label>
                                         <input type="text" class="form-control" id="CompanyABN" name="company_abn"
                                             {{-- disabled --}} value="{{old('company_abn')}}">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="OrganisationName" class="control-label">Organisation Name:
-                                            <span class="fa fa-asterisk"></span></label>
+                                            <span class="mdi mdi-multiplication"></span></label>
                                         <select class="form-control" id="OrganisationName" name="organisation_name" {{-- disabled --}}>
                                             <option value="">Select selected</option>
                                             <option value="1">Select 1</option>
@@ -145,14 +144,14 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="FirstName" class="control-label"> First Name: <span
-                                                class="fa fa-asterisk"></span></label>
+                                                class="mdi mdi-multiplication"></span></label>
                                         <input type="text" class="form-control" id="FirstName" name="first_name" value="{{old('first_name')}}">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="LastName" class="control-label"> Last Name: <span
-                                                class="fa fa-asterisk"></span></label>
+                                                class="mdi mdi-multiplication"></span></label>
                                         <input type="text" class="form-control" id="LastName" name="last_name" value="{{old('first_name')}}">
                                     </div>
                                 </div>
@@ -167,23 +166,30 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="Phone" class="control-label"> Phone: <span
-                                                class="fa fa-asterisk"></span></label>
+                                                class="mdi mdi-multiplication"></span></label>
                                         <input type="text" class="form-control" id="Phone" name="phone" value="{{old('phone')}}">
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                <!-- <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="Mobile" class="control-label"> Mobile: {{-- <span
-                                                class="fa fa-asterisk"></span></label> --}}
+                                                class="mdi mdi-multiplication"></span></label> --}}
+                                        <input type="text" class="form-control" id="Mobile" name="mobile" value="{{old('mobile')}}">
+                                    </div>
+                                </div> -->
+                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="Mobile" class="control-label"> Mobile: <span
+                                                class="mdi mdi-multiplication"></span></label>
                                         <input type="text" class="form-control" id="Mobile" name="mobile" value="{{old('mobile')}}">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="PostalAddressType" class="control-label">Postal Address Type:
-                                            <span class="fa fa-asterisk"></span></label>
+                                            <span class="mdi mdi-multiplication"></span></label>
                                         <select class="form-control" id="PostalAddressType" name="owner_postal_address_type">
                                             <option value="">select</option>
                                             <option value="1">physical address</option>
@@ -192,9 +198,9 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="UnitType" class="control-label">Unit Type:
-                                            <span class="fa fa-asterisk"></span></label>
+                                            <span class="mdi mdi-multiplication"></span></label>
                                         <select class="form-control" id="UnitType" name="owner_unit_type">
                                             <option value="">Select</option>
                                             @php
@@ -218,21 +224,21 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="StreetNumber" class="control-label"> Street Number: <span
-                                                class="fa fa-asterisk"></span> </label>
+                                                class="mdi mdi-multiplication"></span> </label>
                                         <input type="text" class="form-control" id="StreetNumber" name="owner_street_number" value="{{old('owner_street_number')}}">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="StreetName" class="control-label"> Street Name: <span
-                                                class="fa fa-asterisk"></span> </label>
+                                                class="mdi mdi-multiplication"></span> </label>
                                         <input type="text" class="form-control" id="StreetName" name="owner_street_name"  value="{{old('owner_street_name')}}">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="StreetType" class="control-label">Street Type:
-                                            <span class="fa fa-asterisk"></span></label>
+                                            <span class="mdi mdi-multiplication"></span></label>
                                         <select class="form-control" id="StreetType" name="owner_street_type">
                                              <option value="">Select</option>
                                             @php
@@ -250,7 +256,7 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="Town" class="control-label"> Town: <span
-                                                class="fa fa-asterisk"></span>
+                                                class="mdi mdi-multiplication"></span>
                                         </label>
                                         <input type="text" class="form-control" id="Town" name="owner_town" value="{{old('owner_town')}}">
                                     </div>
@@ -258,14 +264,14 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="State" class="control-label"> State: <span
-                                                class="fa fa-asterisk"></span> </label>
+                                                class="mdi mdi-multiplication"></span> </label>
                                         <input type="text" class="form-control" id="State" name="owner_state" {{-- disabled --}} value="{{old('owner_state')}}">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="PostCode" class="control-label"> Post Code: <span
-                                                class="fa fa-asterisk"></span> </label>
+                                                class="mdi mdi-multiplication"></span> </label>
                                         <input type="text" class="form-control" id="PostCode" name="owner_post_code" value="{{old('owner_post_code')}}">
                                     </div>
                                 </div>
@@ -273,7 +279,7 @@
                         </div>
                         <!-- Inastallation Adress -->
                         <div class="installation-address-wrapper">
-                            <h3>Installation Address :</h3>
+                            <h4>Installation Address :</h4>
                             <div class="form-group">
                                 <div class="form-check">
                                     <label class="form-check-label" for="sameAsOwnerAddre">
@@ -284,9 +290,9 @@
                             </div>
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="PostalAddressType" class="control-label">Postal Address Type:
-                                            <span class="fa fa-asterisk"></span></label>
+                                            <span class="mdi mdi-multiplication"></span></label>
                                         <select class="form-control" id="PostalAddressType1" name="installation_postal_address_type">
                                            <option value="">select</option>
                                             <option value="1">physical address</option>
@@ -295,9 +301,9 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="UnitType" class="control-label">Unit Type:
-                                            <span class="fa fa-asterisk"></span></label>
+                                            <span class="mdi mdi-multiplication"></span></label>
                                         <select class="form-control" id="UnitType1" name="installation_unit_type">
                                             <option value="">Select</option>
                                             @php
@@ -321,21 +327,21 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="StreetNumber" class="control-label"> Street Number: <span
-                                                class="fa fa-asterisk"></span> </label>
+                                                class="mdi mdi-multiplication"></span> </label>
                                         <input type="text" class="form-control" id="StreetNumber1" name="installation_street_number">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="StreetName" class="control-label"> Street Name: <span
-                                                class="fa fa-asterisk"></span> </label>
+                                                class="mdi mdi-multiplication"></span> </label>
                                         <input type="text" class="form-control" id="StreetName1" name="installation_street_name">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
+                                    <div class="form-group select-wrapper">
                                         <label for="StreetType" class="control-label">Street Type:
-                                            <span class="fa fa-asterisk"></span></label>
+                                            <span class="mdi mdi-multiplication"></span></label>
                                         <select class="form-control" id="StreetType1" name="installation_street_type">
                                             <option value="">Select</option>
                                              @php
@@ -353,7 +359,7 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="Town" class="control-label"> Town: <span
-                                                class="fa fa-asterisk"></span>
+                                                class="mdi mdi-multiplication"></span>
                                         </label>
                                         <input type="text" class="form-control" id="Town1" name="installation_town">
                                     </div>
@@ -361,14 +367,14 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="State" class="control-label"> State: <span
-                                                class="fa fa-asterisk"></span> </label>
+                                                class="mdi mdi-multiplication"></span> </label>
                                         <input type="text" class="form-control" id="State1" name="installation_state" {{-- disabled --}}>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="PostCode" class="control-label"> Post Code: <span
-                                                class="fa fa-asterisk"></span> </label>
+                                                class="mdi mdi-multiplication"></span> </label>
                                         <input type="text" class="form-control" id="PostCode1" name="installation_post_code">
                                     </div>
                                 </div>
@@ -394,8 +400,9 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center d-flex form-group margin-bottom-0 "
                             id="buttonWrapper">
+                            <a class="btn btn-primary" href="{{ route('job.index') }}"> Back</a>
                             <button type="submit" class="btn btn-info btn-sm waves-effect waves-light">Submit</button>
-                            <a class="btn btn-primary" href="{{ route('job.index') }}"> Cancle</a>
+                            
                         </div>
                     </div>
                 </form>

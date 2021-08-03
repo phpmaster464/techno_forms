@@ -2,7 +2,6 @@
 @import url(../fonts/font-awesome/css/font-awesome.min.css);
 @import url(../plugin/bootstrap/css/bootstrap.min.css);
 @import url(../plugin/nprogress/nprogress.css);
-
 html,
 body {
     position: relative;
@@ -68,6 +67,7 @@ label {
     margin-bottom: 10px;
 }
 
+
 /* Animation */
 
 @-moz-keyframes pulse {
@@ -75,22 +75,18 @@ label {
         -moz-transform: scale(0);
         opacity: 0.0;
     }
-
     25% {
         -moz-transform: scale(0);
         opacity: 0.1;
     }
-
     50% {
         -moz-transform: scale(0.1);
         opacity: 0.3;
     }
-
     75% {
         -moz-transform: scale(0.5);
         opacity: 0.5;
     }
-
     100% {
         -moz-transform: scale(1);
         opacity: 0.0;
@@ -102,27 +98,24 @@ label {
         -webkit-transform: scale(0);
         opacity: 0.0;
     }
-
     25% {
         -webkit-transform: scale(0);
         opacity: 0.1;
     }
-
     50% {
         -webkit-transform: scale(0.1);
         opacity: 0.3;
     }
-
     75% {
         -webkit-transform: scale(0.5);
         opacity: 0.5;
     }
-
     100% {
         -webkit-transform: scale(1);
         opacity: 0.0;
     }
 }
+
 
 /* Class */
 
@@ -178,7 +171,9 @@ label {
     outline: none;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 2. Layout/Boxed
@@ -210,7 +205,9 @@ label {
     padding-right: 10px;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 3. Hover
@@ -255,7 +252,9 @@ label {
     opacity: 0;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 4. Support Class
@@ -450,6 +449,7 @@ h4 strong {
 a.btn.btn-primary {
     padding: 6px 25px;
 }
+
 button.btn.btn-primary {
     padding: 6px 25px;
 }
@@ -860,6 +860,7 @@ button.btn.btn-primary {
     width: 500px !important;
 }
 
+
 /* Background colors */
 
 .bg-custom {
@@ -917,6 +918,7 @@ button.btn.btn-primary {
 .bg-orange {
     background-color: #ff460b !important;
 }
+
 
 /* Text colors */
 
@@ -1047,9 +1049,12 @@ button.btn.btn-primary {
     background: #fbbc05;
 }
 
+
 /*---------------------------------------------------------------------*/
 
+
 /* Header */
+
 
 /*
 Themes: My Admin
@@ -1063,6 +1068,7 @@ Version 1.0
 5. Navigation
 6. Fixed Navbar
 -------------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 1. Main Menu
@@ -1124,7 +1130,9 @@ Version 1.0
     padding-top: 95px;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 2. Structure
@@ -1201,21 +1209,17 @@ Version 1.0
         -o-transform: translate(-110%, 0);
         -ms-transform: translate(-110%, 0);
     }
-
     .main-menu .header {
         text-align: left;
         padding-left: 20px;
     }
-
     .main-menu .button-close {
         display: block;
     }
-
     .main-content {
         margin-left: 20px;
         padding-top: 82px;
     }
-
     .fixed-navbar {
         left: 0px;
         right: 0px;
@@ -1223,7 +1227,6 @@ Version 1.0
         -moz-box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
         -webkit-box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
     }
-
     .menu-active .main-menu {
         transform: translate(0, 0);
         -webkit-transform: translate(0, 0);
@@ -1243,11 +1246,9 @@ Version 1.0
         -moz-box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
         -webkit-box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
     }
-
     .fixed-navbar .searchform.active {
         width: 100%;
     }
-
     .fixed-navbar .searchform .input-search {
         width: 100%;
         border-radius: 0;
@@ -1256,7 +1257,9 @@ Version 1.0
     }
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 3. Header
@@ -1315,7 +1318,9 @@ Version 1.0
     height: auto;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 4. User Main Menu
@@ -1489,7 +1494,9 @@ Version 1.0
     border-radius: 100%;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 5. Navigation
@@ -1521,7 +1528,6 @@ Version 1.0
         color: #fff;
         background-color: #ff0000;
     }
-
     .navigation .menu a:hover i {
         color: #fff;
     }
@@ -1670,7 +1676,6 @@ Version 1.0
         -ms-transition: none;
         -webkit-transition: none;
     }
-
     .header .logo {
         transition: none;
         -moz-transition: none;
@@ -1682,13 +1687,11 @@ Version 1.0
         align-items: center;
         justify-content: center;
     }
-
     .menu-active .header {
         width: 75px;
         height: 0;
         padding: 0;
     }
-
     .menu-active .header .logo {
         position: fixed;
         z-index: 988;
@@ -1699,7 +1702,6 @@ Version 1.0
         color: #ff0000;
         background: transparent;
     }
-
     /* .menu-active .header .logo img{
     width: 72%;
       transform: translate(-29%, 35px);
@@ -1707,7 +1709,6 @@ Version 1.0
     .menu-active .header .logo::first-letter {
         font-size: 28px;
     }
-
     .menu-active .header .logo:before {
         content: '';
         position: absolute;
@@ -1718,7 +1719,6 @@ Version 1.0
         background: #18385f;
         z-index: -2;
     }
-
     .menu-active .header .logo:after {
         content: '';
         position: absolute;
@@ -1732,39 +1732,31 @@ Version 1.0
         -webkit-border-radius: 50%;
         -moz-border-radius: 50%;
     }
-
     .menu-active .header .logo .ico {
         margin-right: 0;
         top: 0;
     }
-
     .menu-active .main-menu {
         /* position   : absolute; */
         width: 75px;
         padding-top: 75px;
     }
-
     .menu-active .fixed-navbar {
         left: 75px;
         z-index: 40;
     }
-
     .menu-active .main-content {
         margin-left: 95px;
     }
-
     .menu-active .user {
         display: none;
     }
-
     .menu-active .navigation .title {
         display: none;
     }
-
     .menu-active .navigation .menu>li {
         position: relative;
     }
-
     .menu-active .navigation .menu>li>a {
         height: 48px;
         padding: 10px 30px;
@@ -1774,52 +1766,42 @@ Version 1.0
         -ms-transition: color 0.4s ease;
         -webkit-transition: color 0.4s ease;
     }
-
     .menu-active .navigation .menu>li>a span {
         display: none;
         font-size: 14px;
         line-height: 30px;
     }
-
     .menu-active .navigation .menu>li>a .menu-arrow,
     .menu-active .navigation .menu>li>a .notice {
         display: none;
     }
-
     .menu-active .navigation .menu>li:hover>a {
         /*width: 260px;*/
-            width: 75px;
+        width: 75px;
         background: #ff0000;
         color: #ffffff;
         /*padding-left: 90px;*/
     }
-
     .menu-active .navigation .menu>li:hover>a i {
         color: #ffffff;
     }
-
     .menu-active .navigation .menu>li:hover>a span {
         /*display: block;*/
         display: none;
     }
-
     .menu-active .navigation .menu>li:hover>a .notice {
         display: none;
     }
-
     .menu-active .navigation .menu>li:hover .sub-menu {
         display: block !important;
     }
-
     .menu-active .navigation .menu .menu-icon {
         font-size: 24px;
         width: 75px;
     }
-
     .menu-active .navigation .menu .menu-icon.mdi {
         font-size: 26px;
     }
-
     .menu-active .navigation .menu .sub-menu {
         display: none !important;
         position: absolute;
@@ -1827,24 +1809,23 @@ Version 1.0
         left: 75px;
         width: 185px;
     }
-
     .menu-active .navigation .menu .sub-menu a {
         background: #9fc4f1;
         padding: 10px 15px;
     }
-
     .menu-active .mCSB_container,
     .menu-active .mCustomScrollBox,
     .menu-active .content {
         overflow: visible;
     }
-
     .menu-active body {
         height: auto;
     }
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 6. Fixed Navbar
@@ -2095,15 +2076,17 @@ Version 1.0
     .fixed-navbar .ico-item {
         display: none;
     }
-
     .fixed-navbar .ico-item:first-child {
         display: inline-block;
     }
 }
 
+
 /*---------------------------------------------------------------------*/
 
+
 /* Style */
+
 
 /*
 Themes: My Admin
@@ -2156,6 +2139,7 @@ Version 1.0
 44. SweetAlert
 -------------------------------------------------------------------------*/
 
+
 /*-----------------------------------------------------------------------
 1. Footer
 */
@@ -2185,7 +2169,9 @@ Version 1.0
     }
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 2. Box Content
@@ -2503,7 +2489,9 @@ Version 1.0
     color: #f4f8fb;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 3. Calendar
@@ -2655,17 +2643,17 @@ Version 1.0
         margin-top: 15px;
         margin-bottom: 25px;
     }
-
     .fc .fc-view-container {
         overflow: auto;
     }
-
     .fc .fc-view-container .fc-view {
         width: 400px;
     }
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 4. Chartist Chart
@@ -2681,7 +2669,9 @@ Version 1.0
     fill: #fff;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 5. Checkbox
@@ -2797,7 +2787,9 @@ Version 1.0
     border-radius: 100%;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 6. Data Tables
@@ -2854,7 +2846,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     color: #ffffff;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 7. Dropcap
@@ -2892,7 +2886,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     text-align: center;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 8. Example Content
@@ -2949,7 +2945,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     clear: left;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 9. Inbox List
@@ -3037,7 +3035,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     text-align: center;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 10. Jquery UI
@@ -3060,7 +3060,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     opacity: 0.7;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 11. Menu Mobile Button
@@ -3081,7 +3083,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     background: #184b8a;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 12. Morris Chart
@@ -3115,7 +3119,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     display: none;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 13. Notice
@@ -3149,6 +3155,7 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     color: #ffffff;
     background: #ff1744;
 }
+
 
 /* Notice List */
 
@@ -3236,6 +3243,7 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     top: 17px;
 }
 
+
 /* Notice Popup */
 
 .notice-popup {
@@ -3269,7 +3277,6 @@ table.focus-on>tbody>tr.focused.unfocused>td {
         width: 100%;
         right: 0;
     }
-
     .notice-popup#message-popup {
         right: 0;
     }
@@ -3362,7 +3369,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     right: 60px;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 14. noUiSlider
@@ -3396,7 +3405,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     width: 70px;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 15. Process Bar
@@ -3430,7 +3441,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     width: 100%;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 16. Radio
@@ -3567,7 +3580,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     border-color: #212121;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 17. Search Form
@@ -3627,7 +3642,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     }
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 18. Statistics Box
@@ -3670,7 +3687,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     margin: 0px;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 19. Switch
@@ -3795,7 +3814,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     border-color: #212121;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 20. Tabs
@@ -3823,7 +3844,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     padding: 0px;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 21. Timepicke
@@ -3841,7 +3864,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     border: none;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 22. Title
@@ -3855,7 +3880,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     font-weight: 500;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 23. User Info
@@ -3911,7 +3938,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     font-size: 13px;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 24. Widget Stat
@@ -3962,7 +3991,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     overflow: hidden;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 25. Widget Stat Chart
@@ -3995,7 +4026,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     font-weight: 600;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 26. Misc
@@ -4045,7 +4078,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     color: #999;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 27. Mailbox
@@ -4608,7 +4643,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     height: auto;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 28. Login, Register, ... Form
@@ -4807,7 +4844,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     color: #999;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 29. 404,500 Page
@@ -4850,7 +4889,6 @@ table.focus-on>tbody>tr.focused.unfocused>td {
         min-height: 100%;
         height: auto;
     }
-
     #page-404 .content {
         transform: translate(0, 0);
         -webkit-transform: translate(0, 0);
@@ -4889,13 +4927,14 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     .title-on-desktop {
         display: none;
     }
-
     .title-on-mobile {
         display: block;
     }
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 30. Projects Page
@@ -5055,7 +5094,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     float: right;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 31. Task Board
@@ -5189,7 +5230,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     overflow: hidden;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 32. Profile
@@ -5254,7 +5297,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     display: block;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 33. Contact List
@@ -5352,7 +5397,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     background: #dd4b39;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 34. Pricing Plan
@@ -5568,7 +5615,6 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     .pricing-table .td .btn-order:hover {
         background: #ff0000;
     }
-
     .pricing-table .col:hover:before {
         opacity: 1;
     }
@@ -5584,7 +5630,6 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     .pricing-table .col-first {
         display: none !important;
     }
-
     .pricing-table .col:nth-child(2) .td {
         border-left: 1px solid #E9EAEB;
     }
@@ -5597,21 +5642,20 @@ table.focus-on>tbody>tr.focused.unfocused>td {
         margin: 0 auto 50px;
         max-width: 300px;
     }
-
     .pricing-table .col:last-child {
         margin-bottom: 0;
     }
-
     .pricing-table .col .td {
         border-left: 1px solid #E9EAEB;
     }
-
     .pricing-table .thead h4 {
         font-size: 18px;
     }
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 35. Invoice
@@ -5692,7 +5736,6 @@ table.focus-on>tbody>tr.focused.unfocused>td {
 }
 
 @media only screen and (max-width: 600px) {
-
     .invoice-box table tr.information table td,
     .invoice-box table tr.top table td {
         width: 100%;
@@ -5701,7 +5744,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     }
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 36. Gallery
@@ -5783,7 +5828,6 @@ table.focus-on>tbody>tr.focused.unfocused>td {
         -khtml-opacity: 1;
         opacity: 1;
     }
-
     .item-gallery:hover .title {
         transform: translate(0, -50%);
         -webkit-transform: translate(0, -50%);
@@ -5795,7 +5839,6 @@ table.focus-on>tbody>tr.focused.unfocused>td {
         -khtml-opacity: 1;
         opacity: 1;
     }
-
     .item-gallery:hover img {
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=35)";
         -moz-opacity: 0.35;
@@ -5803,6 +5846,7 @@ table.focus-on>tbody>tr.focused.unfocused>td {
         opacity: 0.35;
     }
 }
+
 
 /* .item-gallery */
 
@@ -5837,7 +5881,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     color: #ff0000;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 37. Modal
@@ -5857,7 +5903,9 @@ table.focus-on>tbody>tr.focused.unfocused>td {
     max-width: 100%;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 38. Form Control
@@ -5967,7 +6015,9 @@ textarea.form-control {
     font-size: 14px;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 39. Reviews Widget
@@ -6021,7 +6071,9 @@ textarea.form-control {
     line-height: 23px;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 40. Activity Widget
@@ -6082,7 +6134,9 @@ textarea.form-control {
     color: #435966;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 41. Todo Widget
@@ -6110,7 +6164,9 @@ textarea.form-control {
     padding-top: 10px;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 42. X-Editable
@@ -6128,7 +6184,9 @@ textarea.form-control {
     line-height: 32px;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 43. Sparkline Chart
@@ -6140,7 +6198,9 @@ textarea.form-control {
     box-sizing: content-box;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /*-----------------------------------------------------------------------
 44. SweetAlert
@@ -6192,11 +6252,15 @@ textarea.form-control {
     background: #ea4335;
 }
 
+
 /*---------------------------------------------------------------------*/
+
 
 /* Login Style */
 
+
 /* Login forms */
+
 
 /* Loader */
 
@@ -6270,6 +6334,7 @@ textarea.form-control {
     margin-top: 285px;
 }
 
+
 /* main.py-4>.container-fluid{
     display: flex;
     align-items: center;
@@ -6285,6 +6350,7 @@ textarea.form-control {
     height: 100%;
 }
 
+
 /* 
 #confirm main.py-4, #login main.py-4, #email main.py-4, #reset main.py-4 {
     width: 100%;
@@ -6293,6 +6359,7 @@ textarea.form-control {
     justify-content: center;
     align-items: center;
 } */
+
 
 /* #reset .asm-form {
     height: 643px !important;
@@ -6624,41 +6691,34 @@ textarea.form-control {
     .asm-form__body {
         padding: 25px 20px 10px;
     }
-
     #email .login-wrapper {
         padding: 25px 20px 10px;
     }
-
     .asm-form__leverbox {
         margin-top: 30px;
     }
-
     .asm-form__header img {
         width: 75%;
         padding: 18px;
     }
-
     .asm-form {
         max-height: 488px;
     }
-
     .main-content {
         margin-left: 0px;
         margin-right: 0px;
     }
-
     .asm-form__input::placeholder {
         font-size: 13px;
     }
-
     main.py-4 {
         margin: 5px 20px;
     }
-
     .table-bordered {
         border: 1px solid transparent;
     }
 }
+
 
 /* Company Field */
 
@@ -6701,6 +6761,7 @@ table.table-bordered.dataTable td {
     border-left-width: 0;
     font-size: 13px;
 }
+
 
 /* Company Form */
 
@@ -6767,6 +6828,7 @@ main.py-4 {
     display: none !important;
 }
 
+
 /* Create Form */
 
 .select2-container .select2-selection--single {
@@ -6791,7 +6853,7 @@ main.py-4 {
     margin: 0px auto;
 }
 
-.avatar-upload~label{
+.avatar-upload~label {
     margin: 25px auto;
 }
 
@@ -6894,12 +6956,14 @@ main.py-4 {
     border-color: #18385f !important;
 }
 
-.control-label span.fa-asterisk {
+.control-label span.fa-asterisk,
+.control-label span.mdi-multiplication {
     color: red;
-    font-size: 10px;
+    font-size: 9px;
     position: absolute;
     margin-left: 2px;
     top: 14px;
+    font-weight: 100;
 }
 
 .sorting,
@@ -6912,29 +6976,79 @@ main.py-4 {
     justify-content: flex-start;
 }
 
+#buttonWrapper {
+    margin-bottom: 30px !important;
+}
+
 #buttonWrapper .pull-right {
     float: none !important;
 }
 
+
+/* select {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: "<" !important;
+    transform: rotate( 270deg);
+    font-size: 2.4rem;
+    top: 52px;
+    right: 18px;
+    position: absolute;
+    z-index: 0;
+} */
+
+.select-wrapper select {
+    background: url("http://103.101.59.95/dev_techno_forms/public/assets/images/gallery/br_down.png") no-repeat right #fff;
+    -webkit-appearance: none;
+    background-position-x: 96%;
+}
+
+
 /* job Modul style */
-.job-form-wrapper .row{
+
+.job-form-wrapper .row {
     margin-bottom: 10px;
 }
 .job-detail-wrapper,
 .owner-details-wrapper,
-.installation-address-wrapper{
+.installation-address-wrapper {
     padding: 30px 50px;
 }
+
 .job-detail-wrapper,
-.owner-details-wrapper{
+.owner-details-wrapper {
     border-bottom: 1px solid #18385f;
     margin-bottom: 30px;
 }
-.job-form-wrapper h4{
-    margin-left: -45px;
+
+.job-form-wrapper h4 {
+    margin-left: -40px;
+    margin-bottom: 5px;
+    margin-top: -25px;
+    /* margin: 0 auto 25px -35px; */
+    color: #18385f !important;
 }
 
+.form-check-input-reverse {
+    margin: 4px 0 0 15px !important;
+}
 
+.form-check-label {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+.installation-address-wrapper .form-check {
+    display: flex;
+}
 
 
 /* ---------------------------- Media Query------------------------ */
@@ -6943,18 +7057,19 @@ main.py-4 {
     #CompanyPrimaryEmailAddress.control-label {
         margin-top: 48px !important;
     }
-
     input[type=file] {
         margin-top: 47px !important;
     }
-
+    /* .table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th {
+        font-size: 12px;
+    } */
     .table>caption+thead>tr:first-child>td,
     .table>caption+thead>tr:first-child>th,
     .table>colgroup+thead>tr:first-child>td,
     .table>colgroup+thead>tr:first-child>th,
     .table>thead:first-child>tr:first-child>td,
     .table>thead:first-child>tr:first-child>th {
-        font-size: 12px;
+        font-size: 0.97rem;
     }
 }
 
@@ -6968,7 +7083,6 @@ main.py-4 {
     .avatar-upload {
         margin: 17px auto 30px;
     }
-
     .company-submit .col-xl-12 {
         text-align: center;
     }
@@ -6978,12 +7092,10 @@ main.py-4 {
     .switch {
         justify-content: center;
     }
-
     .form-horizontal .control-label {
         text-align: left;
         padding-left: 0;
     }
-
     .box-content.card {
         height: 88% !important;
         margin: 0px 0px 31px 0px;
@@ -7001,7 +7113,6 @@ main.py-4 {
     div.dataTables_wrapper div.dataTables_filter label {
         text-align: right !important;
     }
-
     div.dataTables_wrapper div.dataTables_filter input {
         width: 59% !important;
     }
@@ -7011,19 +7122,20 @@ main.py-4 {
     .table-responsive {
         border: none;
     }
-
     .footer {
         text-align: center;
     }
-
     .box-content.card .card-content {
         padding: 20px;
         margin-bottom: 10%;
     }
+    .job-form-wrapper h3 {
+        padding: 9px;
+        font-size: 14px;
+    }
 }
 
 @media only screen and (max-width: 767px) {
-
     .btn-group-vertical>.btn-group:after,
     .btn-group-vertical>.btn-group:before,
     .btn-toolbar:after,
@@ -7058,9 +7170,13 @@ main.py-4 {
     .row:before {
         content: unset;
     }
-
-    .control-label span.fa-asterisk {
+    .control-label span.fa-asterisk,
+    .control-label span.mdi-multiplication {
         top: 0px;
+    }
+    .installation-address-wrapper .form-check {
+        display: flex;
+        justify-content: center;
     }
 }
 
@@ -7068,22 +7184,18 @@ main.py-4 {
     div.dataTables_wrapper div.dataTables_filter input {
         width: 40% !important;
     }
-
     .box-content {
         position: relative;
         padding: 20px;
         /* margin  : 0px 0px -71px 0px; */
         height: 98%;
     }
-
     .box-content .box-content {
         height: 92%;
     }
-
     .box-content .table-responsive {
         height: 94%;
     }
-
     div.table-responsive>div.dataTables_wrapper>div.row>div[class^="col-"]:first-child {
         padding-left: 0 !important;
         padding-right: 0 !important;
@@ -7093,7 +7205,6 @@ main.py-4 {
 }
 
 @media only screen and (max-width: 475px) {
-
     div.dataTables_wrapper div.dataTables_length,
     div.dataTables_wrapper div.dataTables_filter,
     div.dataTables_wrapper div.dataTables_info,
@@ -7106,13 +7217,11 @@ main.py-4 {
     .pull-right a.btn-success {
         font-size: 9px !important;
     }
-
     .footer {
         padding: 15px;
         text-align: center;
         width: 107vw;
     }
-
     .pagination>li>a,
     .pagination>li>span {
         float: right;
@@ -7127,67 +7236,54 @@ main.py-4 {
         margin-left: 0px !important;
         margin-right: 0px !important;
     }
-
     .box-content .row .small-spacing {
         width: 108% !important;
     }
-
     div.dataTables_wrapper div.dataTables_paginate ul.pagination {
         margin: 2px 0;
         display: flex;
     }
-
     .box-content .box-content {
         padding: 0;
     }
-
     .box-content,
     #example_wrapper .row {
         padding: 20;
     }
-
     .box-content .box-title {
         padding: 20px 20px 0;
     }
-
     .box-content,
     #example_wrapper .row:nth-child(1),
     .box-content,
     #example_wrapper .row:nth-child(3) {
         padding: 0 15px;
     }
-
     .box-content,
     #example_wrapper .row:nth-child(2) {
         padding: 0 20px;
     }
-
     .dataTables_wrapper .dataTables_paginate .pagination .paginate_button:nth-child(2) {
         margin-left: 0px;
     }
-
     .dataTables_wrapper .dataTables_paginate .pagination .paginate_button:first-child {
         margin-left: 6px;
     }
-
     .dataTables_wrapper .dataTables_paginate .pagination .paginate_button:last-child {
         margin-left: 0px;
     }
-
     .box-content,
     #example_wrapper .row:nth-child(1),
     .box-content,
     #example_wrapper .row:nth-child(3) {
         padding: 0 4% !important;
     }
-
     .list-inline>li {
         font-size: 1.2rem;
     }
 }
 
 @media only screen and (max-width: 375px) {
-
     .box-content,
     #example_wrapper .row:nth-child(1),
     .box-content,

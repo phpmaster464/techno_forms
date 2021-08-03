@@ -2,7 +2,10 @@
     
 namespace App\Http\Controllers;
     
-use App\Models\Jobs;
+use App\Models\Inventory;
+use App\Models\Manufacturer;
+use App\Models\Pmodel;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Auth;
 use Spatie\Permission\Models\Role;
@@ -10,7 +13,7 @@ use DB;
 use Hash;
 use Illuminate\Support\Arr;
     
-class JobController extends Controller
+class InventoryController extends Controller
 { 
     /**
      * Display a listing of the resource.
@@ -19,10 +22,10 @@ class JobController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:job-list|job-create|job-edit|job-delete', ['only' => ['index','show']]);
+         /*$this->middleware('permission:job-list|job-create|job-edit|job-delete', ['only' => ['index','show']]);
          $this->middleware('permission:job-create', ['only' => ['create','store']]);
          $this->middleware('permission:job-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:job-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:job-delete', ['only' => ['destroy']]);*/
     }
     /**
      * Display a listing of the resource.
@@ -31,46 +34,22 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Jobs::all();
+        $inventory = Inventory::all();
 
-        foreach($jobs as $key => $job)
-        {
-            
-            if($job->created_by != '')
-            {
-               $data =  DB::table('users')
-                ->select('users.id','users.name as Username','roles.name')
-                ->join('model_has_roles','model_has_roles.model_id','=','users.id')
-                ->join('roles','roles.id','=','model_has_roles.role_id')
-                ->where('users.id',$job->created_by)
-                ->get();
+            foreach ($inventory as $key => $value) {
 
-                 $jobs[$key]->created_by = $data[0]->name.'('.$data[0]->Username.')';
-            }
-            else
-            {
-            	$jobs[$key]->created_by = '';
+               $manufacturer = Manufacturer::where('id',$value->manufacturer_id)->select('manufacturer_name')->get();
+               $model = Pmodel::where('id',$value->model_id)->select('model_name')->get();
+               $supplier = Supplier::where('id',$value->supplier_id)->select('supplier_name')->get();
+               $inventory[$key]['Manufacturer'] = $manufacturer[0]->manufacturer_name;
+               $inventory[$key]['Model'] = $model[0]->model_name;
+               $inventory[$key]['Supplier'] = $supplier[0]->supplier_name;
+
             }
 
-            if($job->updated_by != '')
-            {
-               $data =  DB::table('users')
-                ->select('users.id','users.name as Username','roles.name')
-                ->join('model_has_roles','model_has_roles.model_id','=','users.id')
-                ->join('roles','roles.id','=','model_has_roles.role_id')
-                ->Where('users.id',$job->updated_by)
-                ->get();
+            $inventories = $inventory;
 
-                 $jobs[$key]->updated_by = $data[0]->name.'('.$data[0]->Username.')';
-            }
-            else
-            {
-            	$jobs[$key]->updated_by = '';
-            }
- 
-        }
- 
-        return view('job.index',compact('jobs'))
+        return view('inventory.index',compact('inventories'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
             
     }
@@ -81,11 +60,43 @@ class JobController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-          $unit_type =  DB::table('unit_types')->get()->toArray();
-          $street_types =  DB::table('street_types')->get()->toArray();
-          return view('job.create',compact('unit_type','street_types'));
+    {                 
+          //$model =  DB::table('model')->get()->toArray();
+          //$supplier =  DB::table('supplier')->get()->toArray();
+          $manufacturer =  DB::table('manufacturer')->where('status',1)->get()->toArray();
+          return view('inventory.create',compact('manufacturer'));
     }
+
+
+    public function model($id) 
+    {
+        $model = Pmodel::where("manufacturer_id",$id)
+                    ->where("status",1)
+                    ->select("model_name","id")->get();
+         $html = "<select class='form-control' id='select_model' name='model_id' onchange='fetch_supplier($(this).val());'><option>Select Model</option>";  
+         foreach ($model as $key => $value) { 
+            $html .= "<option value=".$value->id.">".$value->model_name."</option>";
+        }
+        $html .= '</select>';  
+        echo  json_encode($html);  
+    }
+
+    public function supplier($id) 
+    {
+        $model = Supplier::where("model_id",$id)
+        ->where("status",1)
+        ->select("supplier_name","id")->get();
+        $html = "<select class='form-control' id='select_supplier' name='supplier_id'><option>Select Supplier</option>";   
+        foreach ($model as $key => $value) {
+            $html .= "<option value=".$value->id.">".$value->supplier_name."</option>";
+        }
+        $html .= '</select>';  
+        echo  json_encode($html);  
+    }
+
+
+
+    
     
     /**
      * Store a newly created resource in storage.
@@ -97,7 +108,8 @@ class JobController extends Controller
     {   
 
 
-        request()->validate([
+
+       /* request()->validate([
             'job_type' => 'required',
             'reference_number' => 'required',
             'owner_type' => 'required',
@@ -123,21 +135,17 @@ class JobController extends Controller
             'installation_town' => 'required',
             'installation_state' =>  'required',
             'installation_post_code' => 'required'
-        ]);
+        ]);*/
  
         $userId = Auth::id();
 
-        $input = $request->all();
+        $input = $request->all(); 
         $input['created_by'] = $userId;
         
-        $job_data = Jobs::create($input);
-
-     /*   $jobs_input =  array('name'=>$request->company_name,'email'=>$request->company_primary_email); 
-
-        $this->send_company_email($user_input);*/
+        $inventory = Inventory::create($input);
     
-        return redirect()->route('job.index')
-                        ->with('success','Job Created Successfully.');
+        return redirect()->route('inventory.index')
+                        ->with('success','Inventory Created Successfully.');
     } 
     
     /** 
@@ -146,9 +154,9 @@ class JobController extends Controller
      * @param  \App\company  $company
      * @return \Illuminate\Http\Response
      */
-    public function show(Jobs $job)
+    public function show(Inventory $job)
     {
-        return view('job.show');
+        return view('inventory.show');
     }
     
     /**
@@ -157,11 +165,14 @@ class JobController extends Controller
      * @param  \App\company  $company
      * @return \Illuminate\Http\Response
      */
-    public function edit(Jobs $job)
+    public function edit(Inventory $inventory)
     {
-        $unit_type =  DB::table('unit_types')->get()->toArray();
-        $street_types =  DB::table('street_types')->get()->toArray();
-        return view('job.edit',compact('unit_type','street_types','job'));
+        
+        $manufacturer =  DB::table('manufacturer')->where('status',1)->get()->toArray();
+        $models =  DB::table('model')->where('manufacturer_id',$inventory->manufacturer_id)->where('status',1)->get()->toArray();
+        $suppliers =  DB::table('supplier')->where('model_id',$inventory->model_id)->where('status',1)->get()->toArray();
+
+        return view('inventory.edit',compact('manufacturer','models','suppliers','inventory')); 
     }
     
     /**
@@ -171,47 +182,8 @@ class JobController extends Controller
      * @param  \App\company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Jobs $job)
-    {   
-
-            if(isset($request['same_as_owner_address']))
-            {
-                $request['same_as_owner_address'] = "1";
-            }
-            else
-            {
-                $request['same_as_owner_address'] = "0";
-            }
-
-           
-           request()->validate([
-            'job_type' => 'required',
-            'reference_number' => 'required',
-            'owner_type' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'owner_postal_address_type' => 'required',
-            'owner_unit_type' => 'required',
-            'company_abn' => 'required',
-            'organisation_name' => 'required',
-            'owner_street_number' => 'required',
-            'owner_street_name' => 'required', 
-            'owner_street_type' => 'required', 
-            'owner_town' => 'required', 
-            'owner_state' => 'required', 
-            'owner_post_code' => 'required',
-            'installation_postal_address_type' => 'required',
-            'installation_unit_type' => 'required',
-            'installation_street_number' => 'required', 
-            'installation_street_name' => 'required', 
-            'installation_street_type' => 'required', 
-            'installation_town' => 'required',
-            'installation_state' =>  'required',
-            'installation_post_code' => 'required'
-        ]);
-        
+    public function update(Request $request, Inventory $inventory)
+    {       
 
         $input = $request->all();
 
@@ -219,10 +191,9 @@ class JobController extends Controller
 
         $input['updated_by'] = $userId;
     
-        // $company->update($request->all());
-        $job->update($input); 
+        $inventory->update($input); 
     
-        return redirect()->route('job.index')
+        return redirect()->route('inventory.index')
                         ->with('success','Job Updated Successfully');
     }
     
@@ -232,7 +203,7 @@ class JobController extends Controller
      * @param  \App\company  $company
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Jobs $company)
+    public function destroy(Inventory $company)
     {
         /*// $company->delete();
 
@@ -249,9 +220,9 @@ class JobController extends Controller
 
     public function change_status(Request $request)
     {
-       $job = Jobs::where('id',$request['id'])->select('job_status')->first();
+       $job = Inventory::where('id',$request['id'])->select('job_status')->first();
        $status = ($job->job_status == 1) ? '0' : '1';
-       Jobs::where('id',$request['id'])->update(['job_status'=>$status]); 
+       Inventory::where('id',$request['id'])->update(['job_status'=>$status]); 
     }
 
     public function send_company_email($user_array)

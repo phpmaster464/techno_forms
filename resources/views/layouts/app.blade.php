@@ -174,6 +174,9 @@
                      <li class="nav_li"  id="job_li">
                         <a class="waves-effect nav_a" href="{{route('job.index')}}" id="nav_job"><i class="menu-icon mdi mdi-briefcase"></i><span>Jobs</span></a>
                     </li> 
+                     <li class="nav_li"  id="inventory_li">
+                        <a class="waves-effect nav_a" href="{{route('inventory.index')}}" id="nav_inventory"><i class="menu-icon mdi mdi-briefcase"></i><span>Inventory</span></a>
+                    </li> 
                 </ul>
                 <!-- /.menu js__accordion -->
 
@@ -749,11 +752,29 @@ function set_job_status(id)
 
 function set_installation_add(e)
 {
-   if($(e).is(":checked")){
-    alert("add value for instalation address"); //when checked
-  }/*else{
-    alert("Not checked"); //when not checked
-  }*/
+ if($(e).is(":checked")){
+    $('#PostalAddressType1').val($('#PostalAddressType').val());
+    $('#UnitType1').val($('#UnitType').val());
+    $('#UnitNumber1').val($('#UnitNumber').val());
+    $('#StreetNumber1').val($('#StreetNumber').val());
+    $('#StreetName1').val($('#StreetName').val());
+    $('#StreetType1').val($('#StreetType').val());
+    $('#Town1').val($('#Town').val());
+    $('#State1').val($('#State').val());
+    $('#PostCode1').val($('#PostCode').val());
+
+}else{
+    $('#PostalAddressType1').val();
+    $('#UnitType1').val();
+    $('#UnitNumber1').val();
+    $('#StreetNumber1').val();
+    $('#StreetName1').val();
+    $('#StreetType1').val();
+    $('#Town1').val();
+    $('#State1').val();
+    $('#PostCode1').val();
+    
+}
 
 }
 
@@ -832,6 +853,57 @@ if(type1checked == 0 && type2checked == 0 && typeallchecked == 0)
      }*/
 
  }
+
+ //code fot inventory cascading dropdown
+
+
+ function fetch_model(manufacturer_id)
+ {
+    var manufacturerID = manufacturer_id;
+
+      if(manufacturerID) {
+                $.ajax({
+                    url: '{{url('inventory/model/')}}/'+manufacturerID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
+                        console.log(data);
+                        $('#select_model').replaceWith(data);
+                    }
+                });
+            }else{
+                $('select[name="model"]').empty();
+            }
+ }
+
+function fetch_supplier(supplier_id)
+{
+     var supplierID = supplier_id;
+            if(supplierID) {
+                $.ajax({
+                    url: '{{url('inventory/supplier/')}}/'+supplierID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
+                        console.log(data);
+                        console.log("in supplier");
+                        $('#select_supplier').replaceWith(data);
+                    }
+                });
+            }else{ 
+                $('select[name="select_supplier"]').empty();
+            }
+}
+
+
+ 
+
+      
+
+
+
+
+ //end of code for inventory cascading dropdown
 
  $(document).ready(function(){
     $(function(){
