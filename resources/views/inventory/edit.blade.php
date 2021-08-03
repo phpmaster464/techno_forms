@@ -130,6 +130,7 @@
                 
                                     <div class="form-group margin-bottom-0 Add_Panel">
                                         <div class="col-12">
+                                            <a class="btn btn-primary" href="{{ route('inventory.index') }}"> Back</a> &nbsp;
                                             <button type="submit" class="btn
                                                 btn-info btn-sm waves-effect
                                                 waves-light">Add as unverified panels</button>

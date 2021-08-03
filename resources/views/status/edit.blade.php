@@ -54,7 +54,7 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center d-flex" id="buttonWrapper">
             <a class="btn btn-primary" href="{{ route('status.index') }}"> Back</a>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-info btn-sm waves-effect waves-light">Submit</button>
         </div>
     </div>
     {!! Form::close() !!}
