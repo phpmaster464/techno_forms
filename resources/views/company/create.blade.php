@@ -104,6 +104,7 @@
                     </div>
                     <div class="form-group margin-bottom-0 company-submit text-center">
                         <div class="col-xl-12 col-lg-12 col-md-12 mb-3 ">
+                            <a class="btn btn-primary" href="{{ route('company.index') }}"> Back</a>
                             <button type="submit" class="btn btn-info btn-sm waves-effect waves-light">Submit</button>
                         </div>
                     </div>

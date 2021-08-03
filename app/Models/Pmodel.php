@@ -15,5 +15,5 @@ class Pmodel extends Model
      * @var array
      */
     protected $table = "model";
-    protected $fillable = ['id','model_name','manufacturer_id','status','created_at','updated_at'];
+    protected $fillable = ['id','model_name','manufacturer_id','status','created_at','updated_at','created_by','updated_by'];
 }
