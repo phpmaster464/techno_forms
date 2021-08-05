@@ -385,6 +385,26 @@
                                             rows="2" name="additional_installation_information" > {{$job->additional_installation_information}}</textarea>
                                     </div>
                                 </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
+                                    <div id="container" class="form-group">
+                                        <label for="Status" class="col-md-3 col-12 control-label">Status </label>
+                                        <div class="col-md-9 col-12">
+                                            <div class="switch" id="submit">
+                                                @if($job->job_status == "1")
+                                                <input type="hidden" name="job_status" id="edit_job_status" value="1">
+                                                    <input type="checkbox" checked id="switch-2"
+                                                onclick="update_company_status($(this),'edit_job_status');">
+                                                @else
+                                                <input type="hidden" name="job_status" id="edit_job_status" value="0">
+                                                    <input type="checkbox" id="switch-2"
+                                                onclick="update_company_status($(this),'edit_job_status');">
+                                                @endif 
+                                                
+                                                <label for="switch-2"></label>
+                                            </div>
+                                        </div>  
+                                    </div> 
+                                </div>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center d-flex form-group margin-bottom-0 "

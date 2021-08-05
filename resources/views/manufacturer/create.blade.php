@@ -26,41 +26,39 @@
     </div>
 @endif
 
-<form class="form-horizontal" method="post" action="{{ route('manufacturer.store') }}"  enctype="multipart/form-data">
+
+
+ <form class="form-horizontal" method="post" action="{{ route('manufacturer.store') }}"  enctype="multipart/form-data">
     @csrf
-<div class="row">
-    <div class="col-xs-6 col-sm-6 col-md-6">
-        <div class="form-group">
-            <strong>Name<span class="fa fa-asterisk"></span>:</strong>
-            {!! Form::text('manufacturer_name', null, array('placeholder' => 'Manufacturer','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-6 col-md-6">
-        <div class="form-group role-wrapper">
-            <strong>Status:</strong>
-            <input type="hidden" name="Manufacturer" id="create_Manufacturer_status" value="1">
-            <div class="switch" id="submit">
-                <input type="checkbox" checked id="switch-2"
-                onclick="update_company_status($(this),'create_Manufacturer_status');">
-                <label for="switch-2"></label> 
-            </div>
-        </div>
-        <!-- <div class="form-group">
-            <strong>Permission:</strong>
-            <br/>
-            @foreach($permission as $value)
-                <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
-                {{ $value->name }}</label>
-            <br/>
-            @endforeach
-        </div> -->
-    </div>
+ <div id="invoceWrapper">
+    
+<div class="form-group">
+                                        <label for="pallet_num"
+                                            class="col-md-3
+                                            col-12 control-label">Manufacturer</label>
+                                        <div class="col-md-6 col-6">
+                                            <input type="text"  class="form-control" id="Manufacturer" name="manufacturer_name"   placeholder="Manufacturer">
+                                        </div>                                       
+                                   </div>
+<div class="form-group">
+                                        <label for="status"
+                                            class="col-md-3  col-12 control-label">Status</label>
+                                            <input type="hidden" name="status" id="create_Manufacturer_status" value="1">
+                                        <div class="col-md-6 col-6">
+                                            <div class="switch" id="submit">
+                                                <input type="checkbox" checked id="switch-2"
+                                                onclick="update_company_status($(this),'create_Manufacturer_status');">
+                                                <label for="switch-2"></label> 
+                                            </div>
+                                        </div>                                       
+</div>
+                                    </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center d-flex" id="buttonWrapper">
-            <a class="btn btn-primary" href="{{ route('status.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('manufacturer.index') }}"> Back</a>
             <button type="submit" class="btn btn-info btn-sm waves-effect waves-light">Submit</button>
         </div>
 </div>
-</form>
+ </form>
 
 
 </div>

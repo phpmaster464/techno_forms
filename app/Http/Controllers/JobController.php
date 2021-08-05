@@ -95,8 +95,6 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {   
-
-
         request()->validate([
             'job_type' => 'required',
             'reference_number' => 'required',
@@ -159,8 +157,12 @@ class JobController extends Controller
      */
     public function edit(Jobs $job)
     {
+
+
         $unit_type =  DB::table('unit_types')->get()->toArray();
         $street_types =  DB::table('street_types')->get()->toArray();
+
+       
         return view('job.edit',compact('unit_type','street_types','job'));
     }
     
@@ -172,7 +174,7 @@ class JobController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Jobs $job)
-    {   
+    {    
 
             if(isset($request['same_as_owner_address']))
             {
@@ -218,10 +220,11 @@ class JobController extends Controller
         $userId = Auth::id();
 
         $input['updated_by'] = $userId;
-    
+
+       
         // $company->update($request->all());
         $job->update($input); 
-    
+
         return redirect()->route('job.index')
                         ->with('success','Job Updated Successfully');
     }

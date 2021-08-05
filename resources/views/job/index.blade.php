@@ -78,7 +78,7 @@
         
                                                 @can('job-edit')
         
-                                                @if($job->job_status == 1)
+                                                @if($job->job_status == "1")
                                                  <div class="switch" id="submit"> 
                                                      <input type="checkbox" checked id="switch-{{$i}}" onclick="set_job_status('{{$job->id}}');">
                                                      <label for="switch-{{$i}}"><!-- Switch 2 --></label>
