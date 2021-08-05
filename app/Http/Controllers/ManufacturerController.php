@@ -23,7 +23,6 @@ class ManufacturerController extends Controller
     {
         
         $manufacturer = manufacturer::all();
-
         return view('manufacturer.index',compact('manufacturer'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
@@ -44,7 +43,7 @@ class ManufacturerController extends Controller
         
         $manufacturer = manufacturer::create([
 		'manufacturer_name' => $request->input('manufacturer_name'),
-		'status' => $request->input('Manufacturer'),
+		'status' => $request->input('status'),
 		'created_by'=>Auth::id()]);
     
         return redirect()->route('manufacturer.index')
@@ -61,9 +60,8 @@ class ManufacturerController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $this->validate($request, [
-            //'manufacturer_name' => 'required|unique:manufacturer,manufacturer_name',
+         
             'manufacturer_name' => 'required|unique:manufacturer,manufacturer_name,'.$id.',id',
 
             // 'permission' => 'required',
@@ -71,8 +69,8 @@ class ManufacturerController extends Controller
     
         $manufacturer = manufacturer::find($id);
         $manufacturer->manufacturer_name = $request->input('manufacturer_name');
-        $manufacturer->status = $request->input('manufacturer');
-        //$manufacturer->updated_by = Auth::id();
+        $manufacturer->status = $request->input('status');
+        $manufacturer->updated_by = Auth::id();
         $manufacturer->save(); 
 
     

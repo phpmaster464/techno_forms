@@ -395,7 +395,7 @@
              <div class="switch" id="submit">
                 <input type="checkbox"  id="switch-2"
                 onclick="update_company_status($(this),'create_company_status');">
-                <label for="switch-2"></label>
+                <label for="switch-2"></label> 
             </div>
              @endif
 

@@ -396,6 +396,19 @@
                                             rows="2" name="additional_installation_information"></textarea>
                                     </div>
                                 </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
+                                    <div id="container" class="form-group">
+                                        <label for="Status" class="col-md-3 col-12 control-label">Status </label>
+                                        <div class="col-md-9 col-12">
+                                            <input type="hidden" name="installer_status" id="create_company_status" value="1">
+                                            <div class="switch" id="submit">
+                                                <input type="checkbox" checked id="switch-2"
+                                                onclick="update_company_status($(this),'create_company_status');">
+                                                <label for="switch-2"></label>
+                                            </div>
+                                        </div>  
+                                    </div> 
+                                </div>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center d-flex form-group margin-bottom-0 "
