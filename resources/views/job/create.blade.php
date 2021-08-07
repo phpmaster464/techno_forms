@@ -157,7 +157,9 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="Email" class="control-label"> Email:</label>
+                                        <label for="Email" class="control-label"> Email:
+                                            <span class="mdi mdi-multiplication"></span>
+                                        </label>
                                         <input type="email" class="form-control" id="Email" name="email" value="{{old('email')}}">
                                     </div>
                                 </div>

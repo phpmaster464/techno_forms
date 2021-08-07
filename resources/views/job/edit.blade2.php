@@ -153,9 +153,7 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="Email" class="control-label"> Email:
-                                            <span class="mdi mdi-multiplication"></span>
-                                        </label>
+                                        <label for="Email" class="control-label"> Email:</label>
                                         <input type="email" class="form-control" id="Email" name="email" value="{{$job->email}}">
                                     </div>
                                 </div>
@@ -170,9 +168,8 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="Mobile" class="control-label"> Mobile:</label>
-                                            <!-- {{-- <span
-                                                class="mdi mdi-multiplication"></span></label> --}} -->
+                                        <label for="Mobile" class="control-label"> Mobile: {{-- <span
+                                                class="mdi mdi-multiplication"></span></label> --}}
                                         <input type="text" class="form-control" id="Mobile" name="mobile" value="{{$job->mobile}}">
                                     </div>
                                 </div>

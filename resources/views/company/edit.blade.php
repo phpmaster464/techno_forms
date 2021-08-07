@@ -115,9 +115,8 @@
                           <!-- Company status ( enable / disable) -->
                           <div id="container" class="form-group">
                             <label for="CompanyStatus" class="col-md-3 col-12 control-label">status <!-- <span class="mdi mdi-multiplication"></span> --></label>
-                            <div class="col-md-9 col-12">
-
-                                <div class="col-sm-2 col-12">
+                            <div class="col-md-9 col-12 ">
+                                <div class="col-sm-2 col-12 p-0">
                                     <div class="switch" id="submit">
                                         @if($company->company_status == 1)
                                         <input type="hidden" name="company_status" id="edit_company_status" value="1" require>
