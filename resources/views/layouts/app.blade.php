@@ -874,11 +874,8 @@ function change_installer_job_type(jtype_obj)
     $('.type1').prop("checked", false);
     $('.type2').prop("checked", false);
     $('.type_all').prop("checked", false);
-    //var val=vale;
-    //alert(val);
     var jtype_id = jtype_obj.attr('id');
-   // alert(jtype_id);
-     var ischecked= jtype_obj.is(':checked');
+    var ischecked= jtype_obj.is(':checked');
      if($('#jtype1').is(':checked')){ // check if checkbox checked
         $('.type1').show();
        $('.type11').show();
@@ -901,35 +898,7 @@ function change_installer_job_type(jtype_obj)
        $('.type2').show();
        $('.type22').show();
     } 
-/*function change_installer_job_type(jtype_obj)
-{    
-    $('.type1').prop("checked", false);
-    $('.type2').prop("checked", false);
-    $('.type_all').prop("checked", false);
-    var jtype_id = jtype_obj.attr('id');
-    if(jtype_id == 'jtype1'){
-       $('.type1').show();
-       $('.type11').show();
-       $('.type2').hide();
-       $('.type22').hide();
-   }
-   else if(jtype_id == 'jtype2')
-   {
-       $('.type1').hide();
-       $('.type11').hide();
-       $('.type2').show();
-       $('.type22').show();
-   }
-   else
-   {
-       $('.type1').show();
-       $('.type11').show();
-       $('.type2').show();
-       $('.type22').show();
-   }
-
- }
- */
+}
 
  //code fot inventory cascading dropdown
 
