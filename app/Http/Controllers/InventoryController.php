@@ -105,6 +105,7 @@ class InventoryController extends Controller
     public function store(Request $request)
     {   
 		request()->validate([
+            
             'manufacturer_id' => 'required',
             'model_id' => 'required',
             'supplier_id' => 'required',
