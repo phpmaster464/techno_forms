@@ -67,14 +67,6 @@ label {
     margin-bottom: 10px;
 }
 
-/* General */
-.p-0{
-    padding:0;
-}
-.m-0{
-    margin:0;
-}
-
 
 /* Animation */
 
@@ -1056,6 +1048,7 @@ button.btn.btn-primary {
 .table>thead>tr>th.warning {
     background: #fbbc05;
 }
+
 
 /*---------------------------------------------------------------------*/
 
@@ -2845,7 +2838,6 @@ Version 1.0
     padding-left: 8px;
     padding-right: 8px;
     border-bottom-width: 1px;
-    text-align: center;
 }
 
 table.focus-on>tbody>tr.focused.unfocused>th,
@@ -6776,10 +6768,10 @@ table.table-bordered.dataTable td {
 .form-horizontal .control-label {
     text-align: right;
     color: #18385f;
+    padding-bottom: 15px;
     padding-left: 0;
     position: relative;
     font-weight: 400 !important;
-    padding-top:15px !important;
 }
 
 .form-horizontal .form-group {
@@ -6805,7 +6797,7 @@ table.table-bordered.dataTable tbody th,
 table.table-bordered.dataTable tbody td {
     text-align: center;
     vertical-align: inherit;
-    padding: 15px;
+   // padding: 0;
 }
 
 main.py-4 {
@@ -7056,6 +7048,25 @@ main.py-4 {
 
 .installation-address-wrapper .form-check {
     display: flex;
+}
+
+/* Invoce */
+#invoceWrapper .control-label{
+text-align: left;
+padding-left: 30px !important;
+}
+#invoceWrapper .help-block{
+        margin-top: 15px;
+        margin-left: 26%
+}
+#invoceWrapper .Add_Panel{
+    background-color: #e6e9ed;
+    padding: 15px 12px;
+    margin: 0 -30px 0 9px;
+}
+#invoceWrapper .Add_Panel div{
+   display:flex;
+   justify-content: flex-end;
 }
 
 
