@@ -71,7 +71,7 @@ class InventoryController extends Controller
         $model = Pmodel::where("manufacturer_id",$id)
                     ->where("status",1)
                     ->select("model_name","id")->get();
-         $html = "<select class='form-control' id='select_model' name='model_id' onchange='fetch_supplier($(this).val());'><option value=''>Select Model</option>";  
+         $html = "<select class='form-control' id='select_model' name='model_id' onchange='fetch_supplier($(this).val());'><option>Select Model</option>";  
          foreach ($model as $key => $value) { 
             $html .= "<option value=".$value->id.">".$value->model_name."</option>";
         }
@@ -84,7 +84,7 @@ class InventoryController extends Controller
         $model = Supplier::where("model_id",$id)
         ->where("status",1)
         ->select("supplier_name","id")->get();
-        $html = "<select class='form-control' id='select_supplier' name='supplier_id'><option value=''>Select Supplier</option>";   
+        $html = "<select class='form-control' id='select_supplier' name='supplier_id'><option>Select Supplier</option>";   
         foreach ($model as $key => $value) {
             $html .= "<option value=".$value->id.">".$value->supplier_name."</option>";
         }
@@ -105,7 +105,6 @@ class InventoryController extends Controller
     public function store(Request $request)
     {   
 		request()->validate([
-            
             'manufacturer_id' => 'required',
             'model_id' => 'required',
             'supplier_id' => 'required',
