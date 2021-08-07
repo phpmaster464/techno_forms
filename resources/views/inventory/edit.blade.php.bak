@@ -36,7 +36,7 @@
                                         <div class="col-md-9 col-12">
                                             <select class="form-control"
                                                 id="select_manufacturer" name="manufacturer_id" onchange="fetch_model($(this).val());">
-                                                <option value=''>Select Manufacturer</option>
+                                                <option>Select Manufacturer</option>
                                                 @php
                                                 foreach($manufacturer as $k=>$manufac){
                                                 @endphp
@@ -58,7 +58,7 @@
                                         <div class="col-md-9 col-12">
                                             <select class="form-control"
                                                 id="select_model" name="model_id" onchange="fetch_supplier($(this).val();">
-                                                <option value=''>Select Model</option>
+                                                <option>Select Model</option>
                                                 @php
                                                 foreach($models as $k=>$model){
                                                 @endphp
@@ -80,7 +80,7 @@
                                         <div class="col-md-9 col-12">
                                             <select class="form-control"
                                                 id="select_supplier" name="supplier_id">
-                                                <option value=''>Select Supplier</option>
+                                                <option>Select Supplier</option>
                                                 @php
                                                 foreach($suppliers as $k=>$supplier){
                                                 @endphp
