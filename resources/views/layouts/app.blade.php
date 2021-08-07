@@ -127,7 +127,7 @@
 
     <div class="main-menu">
         <header class="header" >
-            <a href="{{url('/')}}" class="logo">
+            <a href="{{url('/')}}/home" class="logo">
                 <img src="{{ asset('assets/images/logo/TF-logo-1.png') }}" id="user_image">
             </a>
             <button type="button" class="button-close fa fa-times js__menu_close"></button>
