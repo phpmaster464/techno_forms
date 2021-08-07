@@ -869,8 +869,39 @@ function changeAddressType()
    }
 
 }
-
 function change_installer_job_type(jtype_obj)
+{    
+    $('.type1').prop("checked", false);
+    $('.type2').prop("checked", false);
+    $('.type_all').prop("checked", false);
+    //var val=vale;
+    //alert(val);
+    var jtype_id = jtype_obj.attr('id');
+   // alert(jtype_id);
+     var ischecked= jtype_obj.is(':checked');
+     if($('#jtype1').is(':checked')){ // check if checkbox checked
+        $('.type1').show();
+       $('.type11').show();
+       $('.type2').hide();
+       $('.type22').hide();
+    } if ($('#jtype2').is(':checked')){ 
+        $('.type1').hide();
+       $('.type11').hide();
+       $('.type2').show();
+       $('.type22').show();
+    } if($('#jtype1').is(':checked') && $('#jtype2').is(':checked') ||  $('#jtype3').is(':checked') ){
+        $('.type1').show();
+       $('.type11').show();
+       $('.type2').show();
+       $('.type22').show();
+    } 
+    if(!$('#jtype1').is(':checked') &&  !$('#jtype2').is(':checked') ){
+       $('.type1').show();
+       $('.type11').show();
+       $('.type2').show();
+       $('.type22').show();
+    } 
+/*function change_installer_job_type(jtype_obj)
 {    
     $('.type1').prop("checked", false);
     $('.type2').prop("checked", false);
@@ -897,38 +928,8 @@ function change_installer_job_type(jtype_obj)
        $('.type22').show();
    }
 
-/*var type1checked = 0;
-var type2checked = 0;
-var typeallchecked = 0;
-
-   $('.type1').each(function (index, obj) {
-        if (this.checked === true) {
-            type1checked = 1;
-        }
-    });
-
-   $('.type2').each(function (index, obj) {
-        if (this.checked === true) {
-            type2checked = 1;
-        }
-    });
-
- $('.type2').each(function (index, obj) {
-        if (this.checked === true) {
-            typeallchecked = 1;
-        }
-    });
-
-if(type1checked == 0 && type2checked == 0 && typeallchecked == 0)
-{
-    $('.type1').show();
-         $('.type1').show();
-         $('.type11').show();
-         $('.type2').show();
-         $('.type22').show();
-     }*/
-
  }
+ */
 
  //code fot inventory cascading dropdown
 
