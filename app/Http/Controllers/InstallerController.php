@@ -102,7 +102,8 @@ class InstallerController extends Controller
             'last_name' => 'required',
             'email' => 'required|unique:installers,email',
             'mobile' => 'required|unique:installers,mobile', 
-            'phone' => 'required|unique:installers,phone', 
+            'phone' => 'required|unique:installers,phone',
+            'checkbox' =>'accepted' 
         ]);
  
  
