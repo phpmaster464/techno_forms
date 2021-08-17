@@ -85,7 +85,7 @@
                         <div class="form-group">
                             <label for="CompanyDescription" class="col-md-3 col-12 control-label">Description <!-- <span class="mdi mdi-multiplication"></span> --></label>
                             <div class="col-md-9 col-12">
-                                    <textarea class="form-control" name="" rows="3" class="form-control" id="CompanyDescription"
+                                    <textarea class="form-control" name="" rows="3" class="form-control" placeholder="Enter Description" id="CompanyDescription"
                                     placeholder="Enter Description" name="company_description"></textarea>
                             </div>
                         </div>

@@ -106,10 +106,13 @@
                         <div class="form-group">
                             <label for="CompanyDescription" class="col-md-3 col-12 control-label">Description <!-- <span class="mdi mdi-multiplication"></span> --></label>
                             <div class="col-md-9 col-12">
+                                @if($company->company_description != '')
                                 <textarea class="form-control" rows="3"  id="CompanyDescription"
-                                    placeholder="Enter Description" name="company_description"
-                                    value="{{$company->company_description}}" require>
-                                </textarea>
+                                    placeholder="Enter Description" name="company_description" require>{{$company->company_description}}</textarea>
+                                @else
+                                <textarea class="form-control" rows="3"  id="CompanyDescription"
+                                    placeholder="Enter Description" name="company_description" require></textarea>
+                                @endif
                             </div>
                         </div>
                           <!-- Company status ( enable / disable) -->

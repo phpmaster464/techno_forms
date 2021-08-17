@@ -2,6 +2,7 @@
     
 namespace App\Http\Controllers;
     
+use App\Models\UnverifiedInstaller;
 use App\Models\Installer;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ use DB;
 use Hash;
 use Illuminate\Support\Arr;
     
-class InstallerController extends Controller
+class UnverifiedInstallerController extends Controller
 {  
     /**
      * Display a listing of the resource.
@@ -20,10 +21,10 @@ class InstallerController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:installer-list|installer-create|installer-edit|installer-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:installer-create', ['only' => ['create','store']]);
-         $this->middleware('permission:installer-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:installer-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:unverifiedinstaller-list|unverifiedinstaller-create|unverifiedinstaller-edit|unverifiedinstaller-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:unverifiedinstaller-create', ['only' => ['create','store']]);
+         $this->middleware('permission:unverifiedinstaller-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:unverifiedinstaller-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -32,48 +33,11 @@ class InstallerController extends Controller
      */
     public function index()
     {
-        // $companies = Installer::latest()->paginate(5);
-        $installers = Installer::all();
-
-        foreach($installers as $key => $installer)
-        {
-            
-            if($installer->created_by != '')
-            {
-               $data =  DB::table('users')
-                ->select('users.id','users.name as Username','roles.name')
-                ->join('model_has_roles','model_has_roles.model_id','=','users.id')
-                ->join('roles','roles.id','=','model_has_roles.role_id')
-                ->where('users.id',$installer->created_by)
-                ->get();
-
-                 $installers[$key]->created_by = $data[0]->name.'('.$data[0]->Username.')';
-            }
-            else
-            {
-            	$installers[$key]->created_by = '';
-            }
-
-            if($installer->updated_by != '')
-            {
-               $data =  DB::table('users')
-                ->select('users.id','users.name as Username','roles.name')
-                ->join('model_has_roles','model_has_roles.model_id','=','users.id')
-                ->join('roles','roles.id','=','model_has_roles.role_id')
-                ->Where('users.id',$installer->updated_by)
-                ->get();
-
-                 $installers[$key]->updated_by = $data[0]->name.'('.$data[0]->Username.')';
-            }
-            else
-            {
-            	$installers[$key]->updated_by = '';
-            }
+        // $companies = UnverifiedInstaller::latest()->paginate(5);
+        $unverified_installers = UnverifiedInstaller::all();
+        
  
-        }
-
- 
-        return view('installer.index',compact('installers'))
+        return view('unverified_installer.index',compact('unverified_installers'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
@@ -169,7 +133,7 @@ class InstallerController extends Controller
         }
 
         
-        Installer::create($input);
+        UnverifiedInstaller::create($input);
 
         $user_input =  array('name'=>$request->first_name.''.$request->last_name,'email'=>$request->email); 
 
@@ -188,9 +152,10 @@ class InstallerController extends Controller
      * @param  \App\company  $company
      * @return \Illuminate\Http\Response
      */
-    public function show(installer $installer)
+    public function show($unverifiedinstaller)
     {
-        return view('installer.show',compact('installer'));
+    	$unverifiedinstaller = UnverifiedInstaller::where('id',$unverifiedinstaller)->first();
+        return view('unverified_installer.show',compact('unverifiedinstaller'));
     }
     
     /**
@@ -287,7 +252,7 @@ class InstallerController extends Controller
         $input['updated_by'] = $userId;
     
         // $company->update($request->all());
-        $installer->update($input); 
+        $unverifiedinstaller->update($input); 
     
         return redirect()->route('installer.index')
                         ->with('success','Installer updated successfully');
@@ -316,18 +281,26 @@ class InstallerController extends Controller
 
     public function change_status(Request $request)
     {
-       $installer = Installer::where('id',$request['id'])->select('installer_status')->first();
-       $status = ($installer->installer_status == 1) ? 0 : 1;
-       Installer::where('id',$request['id'])->update(['installer_status'=>$status]); 
+       $unverifiedinstaller = UnverifiedInstaller::where('id',$request['id'])->select('first_name','last_name','email','password','verified')->first();
+       $status = ($unverifiedinstaller->verified == 1) ? 0 : 1;
+       UnverifiedInstaller::where('id',$request['id'])->update(['verified'=>$status]); 
+       $user_input =  array('name'=>$unverifiedinstaller->first_name.''.$unverifiedinstaller->last_name,'email'=>$unverifiedinstaller->email,'password'=>$unverifiedinstaller->password); 
+
+
+        $this->send_installer_email($user_input);
+
     }
 
     public function send_installer_email($user_array)
     {   
-       
-        $roles = array('Installer');
 
-        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        $pass = substr(str_shuffle($chars),0,8);
+    	$unverifiedinstaller = UnverifiedInstaller::where('email',$user_array['email'])->first();
+
+    	$installer_array = array('first_name'=>$unverifiedinstaller->first_name,'last_name'=>$unverifiedinstaller->last_name,'email'=>$unverifiedinstaller->email,'mobile'=>$unverifiedinstaller->mobile,'phone'=>$unverifiedinstaller->phone,'unit_type'=>$unverifiedinstaller->unit_type,'unit_number'=>$unverifiedinstaller->unit_number,'street_number'=>$unverifiedinstaller->street_number,'street_name'=>$unverifiedinstaller->street_name,'street_type'=>$unverifiedinstaller->street_type,'suburb'=>$unverifiedinstaller->suburb,'state'=>$unverifiedinstaller->state,'postcode'=>$unverifiedinstaller->postcode,'created_by'=>$unverifiedinstaller->null,'updated_by'=>$unverifiedinstaller->null,'created_at'=>$unverifiedinstaller->null,'updated_at'=>$unverifiedinstaller->null);
+
+		Installer::create($installer_array);
+        $roles = array('Installer');
+        $pass = $user_array['password'];
 
 
         $user_array['password'] = Hash::make($pass);
@@ -338,6 +311,8 @@ class InstallerController extends Controller
         $user = User::create($input);
         $user->assignRole($input['roles']);
 
+        /* Create Installer Code here , just get the fields array and call create function will be done*/
+
         $email = $user_array['email'];
         /*Email Code */
         $data = array('name'=>$input['name'],'pass'=>$pass);
@@ -345,7 +320,150 @@ class InstallerController extends Controller
            $message->to($email, 'Installer Created')->subject
            ('Techno Forms');
            $message->from('techno@forms.com','techno forms');
-       });
+       }); 
+        
 
     }
+
+
+    public function register_unverified_technicians()
+    {
+    	Auth::logout();
+    	return view('unverified_installer.register');
+    } 
+
+
+    public function register_unverified_technicians_store(Request $request)
+    {
+
+
+    	
+
+        request()->validate([
+               'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|unique:unverified_installers,email',
+            'phone' => 'required|unique:unverified_installers,phone',
+            'mobile' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+            'companyabn' => 'required',
+            'companyname' => 'required',
+            'formdate' => 'required',
+            'todate' => 'required',
+            'companywebsite' => 'required',
+            'postaladdress' => 'required',
+            'unit_type' => '',
+            'unit_number' => '',
+            'street_number' => 'required',
+            'street_name' => 'required',
+            'street_type' => 'required',
+            'suburb' => 'required',
+            'state' => 'required',
+            'postcode' => 'required',
+            'cecaccnumber' => 'required',
+            'licensenumber' => 'required',
+            'cecdesignernumber' => 'required',
+            'serole' => 'required'
+            // 'signature' => 'required',
+            // 'proofidentity' => 'required' 
+            ]);
+
+
+
+
+
+        
+
+
+
+        $signature = '';
+        // if ($request->hasFile('signature')) {
+        //     $image=$request->file('signature');
+        //     $destination_path = 'uploads/unverified_installer/signature/'; 
+        //     $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
+
+        //     $image->move($destination_path, $filename);
+        //     $signature = $destination_path . $filename;
+        // }
+
+      if(isset($request->iamgeval) && $request->iamgeval != '')
+        {
+            $folderPath = public_path('uploads/unverified_installer/signature/');
+            $image_parts = explode(";base64,", $request->iamgeval);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $path_name = explode("/public/",$folderPath);
+            $uniqid = uniqid();
+            $file = $folderPath . $uniqid . '.'.$image_type;
+            file_put_contents($file, $image_base64); 
+            $signature = $path_name[1].$uniqid.".".$image_type;
+        } 
+
+       
+
+        $proofidentity = '';
+        if ($request->hasFile('proofidentity')) {
+            $image=$request->file('proofidentity');
+            $destination_path = 'uploads/unverified_installer/proof_id/'; 
+            $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
+
+            $image->move($destination_path, $filename);
+            $proofidentity = $destination_path . $filename;
+        }
+
+        $input = $request->all();
+        if($signature != '')
+        {
+            $input['signature'] = $signature;
+        }
+        if($proofidentity != '')
+        {
+            $input['proofidentity'] = $proofidentity;
+        }
+        
+        
+            try
+            {
+                /*$installer = new unverified_installers;
+                $installer->first_name = $data['first_name'];
+                $installer->last_name = $data['last_name'];
+                $installers->email = $data['email'];
+                $installers->phone = $data['phone'];
+                $installer->mobile = $data['mobile'];
+                $installer->username = $data['username'];
+                $installers->password = $data['password'];
+                $installers->companyabn = $data['companyabn'];
+                $installer->companyname = $data['companyname'];
+                $installer->formdate = $data['formdate'];
+                $installers->todate = $data['todate'];
+                $installers->companywebsite = $data['companywebsite'];
+                $installer->postaladdress = $data['postaladdress'];
+                $installer->unit_type = $data['unit_type'];
+                $installers->unit_number = $data['unit_number'];
+                $installers->street_number = $data['street_number'];
+                $installer->street_name = $data['street_name'];
+                $installer->street_type = $data['street_type'];
+                $installers->suburb = $data['suburb'];
+                $installers->state = $data['state'];
+                $installer->postcode = $data['postcode'];
+                $installer->cecaccnumber = $data['cecaccnumber'];
+                $installers->licensenumber = $data['licensenumber'];
+                $installers->cecdesignernumber = $data['cecdesignernumber'];
+                $installers->serole = $data['serole'];
+                $installers->signature = $data['signature'];
+                $installers->proofidentity = $data['proofidentity'];
+                $unverified_installers->save();*/
+                UnverifiedInstaller::create($input);
+                return redirect('register_technician')->with('success',"Insert successfully");
+            }
+            catch(Exception $e)
+            {
+                return redirect('register_technician')->with('failed',"operation failed");
+            }
+        
+    } 
+
+
 }

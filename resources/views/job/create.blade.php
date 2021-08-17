@@ -169,7 +169,7 @@
                                     <div class="form-group">
                                         <label for="Phone" class="control-label"> Phone: <span
                                                 class="mdi mdi-multiplication"></span></label>
-                                        <input type="text" class="form-control" id="Phone" name="phone" value="{{old('phone')}}">
+                                        <input type="text" class="form-control phone" id="Phone" name="phone" value="{{old('phone')}}">
                                     </div>
                                 </div>
                                 <!-- <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
@@ -183,7 +183,7 @@
                                     <div class="form-group">
                                         <label for="Mobile" class="control-label"> Mobile: <span
                                                 class="mdi mdi-multiplication"></span></label>
-                                        <input type="text" class="form-control" id="Mobile" name="mobile" value="{{old('mobile')}}">
+                                        <input type="text" class="form-control phone" id="Mobile" name="mobile" value="{{old('mobile')}}">
                                     </div>
                                 </div>
                             </div>
@@ -202,7 +202,7 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group select-wrapper">
                                         <label for="UnitType" class="control-label">Unit Type:
-                                            <span class="mdi mdi-multiplication"></span></label>
+                                            </label>
                                         <select class="form-control" id="UnitType" name="owner_unit_type">
                                             <option value="">Select</option>
                                             @php

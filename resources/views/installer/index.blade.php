@@ -50,10 +50,15 @@
                                     </thead>
                                    <tbody>
                                         @php $i = 0; @endphp
+
                                         @foreach ($installers as $installer)
                                         @php ++$i; 
                                         $roles = json_decode($installer->installer_job_type);
-                                        $role_types = implode(",",$roles);
+                                        $role_types = '';
+                                        if($roles != '')
+                                        {
+                                            $role_types = implode(",",$roles);
+                                        }
                                         @endphp
                                         <tr>
                                             <td>{{ $i }}</td>

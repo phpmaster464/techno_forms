@@ -67,12 +67,15 @@ label {
     margin-bottom: 10px;
 }
 
+
 /* General */
-.p-0{
-    padding:0;
+
+.p-0 {
+    padding: 0;
 }
-.m-0{
-    margin:0;
+
+.m-0 {
+    margin: 0;
 }
 
 
@@ -1056,6 +1059,7 @@ button.btn.btn-primary {
 .table>thead>tr>th.warning {
     background: #fbbc05;
 }
+
 
 /*---------------------------------------------------------------------*/
 
@@ -6779,7 +6783,7 @@ table.table-bordered.dataTable td {
     padding-left: 0;
     position: relative;
     font-weight: 400 !important;
-    padding-top:15px !important;
+    padding-top: 15px !important;
 }
 
 .form-horizontal .form-group {
@@ -6888,6 +6892,7 @@ main.py-4 {
     cursor: pointer;
     font-weight: normal;
     transition: all .2s ease-in-out;
+    position: relative;
 }
 
 .avatar-upload .avatar-edit input+label:hover {
@@ -7024,6 +7029,7 @@ main.py-4 {
 .job-form-wrapper .row {
     margin-bottom: 10px;
 }
+
 .job-detail-wrapper,
 .owner-details-wrapper,
 .installation-address-wrapper {
@@ -7058,6 +7064,56 @@ main.py-4 {
     display: flex;
 }
 
+#typeWrapper.form-group {
+    margin-bottom: 0;
+    margin-top: 15px;
+}
+
+.checkbox-grid {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.checkbox-grid li {
+    list-style-type: none;
+    display: flex;
+}
+
+#typeWrapper .control-label {
+    padding-top: 0px !important;
+}
+
+#registrationForm {
+    padding: 20px 30px;
+}
+
+#registrationForm .row {
+    padding: 10px 30px;
+}
+
+.se-radio input {
+    margin-left: 9px;
+    margin-right: 6px;
+}
+
+.se-radio {
+    display: flex;
+    align-items: center;
+    height: 7%;
+}
+
+.avatar-edit label:nth-child(1),
+.signature-lable {
+    position: relative;
+    top: 57px;
+}
+
+.signature-lable {
+    left: -21%;
+}
+
 
 /* ---------------------------- Media Query------------------------ */
 
@@ -7078,6 +7134,9 @@ main.py-4 {
     .table>thead:first-child>tr:first-child>td,
     .table>thead:first-child>tr:first-child>th {
         font-size: 0.97rem;
+    }
+    #registrationForm .select2-container {
+        width: 100% !important;
     }
 }
 
@@ -7114,6 +7173,11 @@ main.py-4 {
     .form-horizontal .control-label {
         text-align: right;
         padding-left: 18px;
+    }
+    #registrationForm .form-horizontal .control-label {
+        text-align: right;
+        padding-left: 0px;
+        padding-top: 0px !important;
     }
 }
 
@@ -7218,6 +7282,9 @@ main.py-4 {
     div.dataTables_wrapper div.dataTables_info,
     div.dataTables_wrapper div.dataTables_paginate {
         font-size: 11px;
+    }
+    #registrationForm {
+        padding: 0px 0px;
     }
 }
 
