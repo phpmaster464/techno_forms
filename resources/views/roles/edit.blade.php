@@ -49,7 +49,7 @@
                     <label for="switch-2"></label>
                 </div>
             </div>
-           <!-- <div class="form-group">
+         <!--   <div class="form-group">
             <strong>Permission:</strong>
             <br/>
             @foreach($permission as $value)

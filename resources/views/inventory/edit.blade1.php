@@ -32,7 +32,7 @@
                                             col-12 control-label">Select Manufacturer<span
                                                 class="mdi mdi-multiplication"></span></label> -->
                                                 <label for="select_manufacturer" class="col-md-3
-                                            col-12 control-label">Select Manufacturer <span class="mdi mdi-multiplication"></span></label>
+                                            col-12 control-label">Select Manufacturer</label>
                                         <div class="col-md-9 col-12">
                                             <select class="form-control"
                                                 id="select_manufacturer" name="manufacturer_id" onchange="fetch_model($(this).val());">
@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="select_model" class="col-md-3
-                                            col-12 control-label">Select Model <span class="mdi mdi-multiplication"></span></label>
+                                            col-12 control-label">Select Model</label>
                                         <div class="col-md-9 col-12">
                                             <select class="form-control"
                                                 id="select_model" name="model_id" onchange="fetch_supplier($(this).val();">
@@ -76,7 +76,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="select_supplier" class="col-md-3
-                                            col-12 control-label">Select Responsible Supplier <span class="mdi mdi-multiplication"></span></label>
+                                            col-12 control-label">Select Responsible Supplier</label>
                                         <div class="col-md-9 col-12">
                                             <select class="form-control"
                                                 id="select_supplier" name="supplier_id">
@@ -99,19 +99,19 @@
                                     <div class="form-group">
                                         <label for="pallet_num"
                                             class="col-md-3
-                                            col-12 control-label">Pallet Number (optional)</label>
+                                            col-12 control-label">Pallet Number (optionl)</label>
                                         <div class="col-md-9 col-12">
                                             <input type="text"
                                                 class="form-control"
                                                 id="pallet_num" name="pallet_number"
-                                                placeholder="Pallet Number (optional)" value="{{$inventory->pallet_number}}">
-                                                <p class="help-block">This is a way to group your panels which then can be easily assigned to jobs in the future.</p>
+                                                placeholder="Pallet Number (optionl)" value="{{$inventory->pallet_number}}">
                                         </div>
+                                        <p class="help-block">This is a way to group your panels which then can be easily assigned to jobs in the future.</p>
                                     </div>
                                     <hr>
                                     <div class="form-group">
                                         <label for="inp-type-5" class="col-md-3
-                                        col-12 control-label">Unverified Panel Serials <span class="mdi mdi-multiplication"></span></label>
+                                        col-12 control-label">Unverified Panel Serials</label>
                                         <div class="col-md-9 col-12">
                                             <textarea class="form-control" id="inp-type-5" name="unverified_panel_serials" placeholder="Write your meassage" >{{$inventory->unverified_panel_serials}}</textarea>
                                         </div>
@@ -119,17 +119,17 @@
                                     <div class="form-group">
                                         <label for="enter_wattage"
                                             class="col-md-3
-                                            col-12 control-label">Enter Wattage <span class="mdi mdi-multiplication"></span></label>
+                                            col-12 control-label">Enter Wattage</label>
                                         <div class="col-md-9 col-12">
                                             <input type="number"
                                                 class="form-control"
                                                 id="enter_wattage" name="wattage" value="{{$inventory->wattage}}">
-                                                <p class="help-block">Enter value in kW</p>
                                         </div>
+                                        <p class="help-block">Enter value in kW</p>
                                     </div> 
                 
                                     <div class="form-group margin-bottom-0 Add_Panel">
-                                        <div class="col-12 text-center">
+                                        <div class="col-12">
                                             <a class="btn btn-primary" href="{{ route('inventory.index') }}"> Back</a> &nbsp;
                                             <button type="submit" class="btn
                                                 btn-info btn-sm waves-effect

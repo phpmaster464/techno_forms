@@ -185,6 +185,9 @@
                     </li>
                     <li class="nav_li"  id="supplier_li">
                         <a class="waves-effect nav_a" href="{{route('supplier.index')}}" id="nav_supplier"><i class="menu-icon mdi mdi-truck"></i><span>Supplier</span></a>
+                    </li>
+                    <li class="nav_li"  id="unverified_installer_li">
+                        <a class="waves-effect nav_a" href="{{route('unverified_installer.index')}}" id="nav_unverified_installer"><i class="menu-icon mdi mdi-truck"></i><span>Unverified Installer</span></a>
                     </li> 
                 </ul>
                 <!-- /.menu js__accordion -->
@@ -805,6 +808,27 @@ function set_installer_status(id)
 
 }
 
+function set_unverified_installer_status(id)
+{
+
+    jQuery.ajax({
+        type:"POST",
+        url:"{{ route('unverified_installer.verified') }}",
+        data:{
+            "_token": "{{ csrf_token() }}", 
+            "id" : id
+        }, 
+        dataType:'json',
+        beforeSend:function(){
+
+        },
+        success:function(data){
+         alert('done');
+     }
+ });
+
+}
+
 function set_job_status(id)
 {
 
@@ -951,9 +975,12 @@ function fetch_supplier(supplier_id)
 
  //end of code for inventory cascading dropdown
 
- $(document).ready(function(){
-    $(function(){
-     $('.nav_a').each(function(){
+ $(document).ready(function()
+ {
+    $(function()
+    {
+     $('.nav_a').each(function()
+     {
       var a_tag = $(this).attr('id').replace('nav_','');
       var url = window.location.href;
       var requested = a_tag.toLowerCase();
@@ -962,10 +989,14 @@ function fetch_supplier(supplier_id)
       {
        $('.nav_li').removeClass('current');
        $(this).parents('li').addClass('current'); 
-   }
+      }
 
-});
+    });
  });
+
+    $('.phone').bind('keyup paste', function(){
+        this.value = this.value.replace(/[^0-9]/g, '');
+  });
 
     $('#menu_button').click(function(){
         var current_state = $('#current_state').val();
@@ -1070,6 +1101,14 @@ $("#imageUpload").change(function() {
 
     $("#imageUpload_license").on('change', function(e){
         $('#imagePreview_license').css("background-image", "url("+URL.createObjectURL(event.target.files[0])+")");
+     })
+
+    $("#imageUpload_signature").on('change', function(e){
+        $('#imagePreview_signature').css("background-image", "url("+URL.createObjectURL(event.target.files[0])+")");
+     })
+
+    $("#imageUpload_identity").on('change', function(e){
+        $('#imagePreview_identity').css("background-image", "url("+URL.createObjectURL(event.target.files[0])+")");
      })
 
 </script>

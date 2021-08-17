@@ -14,6 +14,7 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ManufacturerController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ModelController;
+use App\Http\Controllers\UnverifiedInstallerController;
   
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,10 @@ Route::get('/', function () {
 Auth::routes();
   
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/clear_cache', [HomeController::class, 'clear_cache'])->name('clear_cache'); 
 Route::get('/logout', [HomeController::class, 'getlogout'])->name('getlogout');
+Route::get('/register_technician', [UnverifiedInstallerController::class, 'register_unverified_technicians'])->name('register_technician'); 
+Route::post('store_unverified_installer_register', [UnverifiedInstallerController::class,'register_unverified_technicians_store'])->name('unverified_installer.register_unverified_technicians_store'); 
 // Route::get('/change_status','CompanyController@change_status')->name('change_status');
   
 Route::group(['middleware' => ['auth']], function() {
@@ -67,6 +71,6 @@ Route::group(['middleware' => ['auth']], function() {
        Route::resource('supplier', SupplierController::class);
 	   Route::post('supplierStatus', [SupplierController::class,'change_status'])->name('supplier.supplierStatus');
 
-
-    
+       Route::resource('unverified_installer', UnverifiedInstallerController::class);
+       Route::post('unverified_installer', [UnverifiedInstallerController::class,'change_status'])->name('unverified_installer.verified');
 });
