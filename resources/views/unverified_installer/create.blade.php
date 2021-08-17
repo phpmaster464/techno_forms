@@ -114,7 +114,7 @@
                                 <label for="Mobile" class="col-md-3 col-12 control-label">Mobile Number <span
                                         class="mdi mdi-multiplication"></span></label>
                                 <div class="col-md-9 col-12">
-                                    <input type="text" class="form-control" id="Mobile"
+                                    <input type="text" class="form-control phone" id="Mobile"
                                         placeholder="Enter Mobile Number" name="mobile">
                                 </div>
                             </div>
@@ -127,7 +127,7 @@
                                 <label for="Phone" class="col-md-3 col-12 control-label">Phone Number <span
                                         class="mdi mdi-multiplication"></span></label>
                                 <div class="col-md-9 col-12">
-                                    <input type="text" class="form-control" id="Phone" placeholder="Enter Phone Number"
+                                    <input type="text" class="form-control phone" id="Phone" placeholder="Enter Phone Number"
                                         name="phone">
                                 </div>
                             </div>
@@ -228,8 +228,7 @@
                     <div class="row physical_address">
                         <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                             <div class="form-group">
-                                <label for="UnitType" class="col-md-3 col-12 control-label">Unit Type<span
-                                        class="mdi mdi-multiplication"></span></label>
+                                <label for="UnitType" class="col-md-3 col-12 control-label">Unit Type</label>
                                 <div class="col-md-9 col-12">
                                     <!-- <input type="text" class="form-control" id="unit_type"
                                 placeholder="Unit Type" name="unit_type"> -->
@@ -246,8 +245,7 @@
 
                         <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                             <div class="form-group">
-                                <label for="UnitNumber" class="col-md-3 col-12 control-label">Unit Number<span
-                                        class="mdi mdi-multiplication"></span></label>
+                                <label for="UnitNumber" class="col-md-3 col-12 control-label">Unit Number</label>
                                 <div class="col-md-9 col-12">
                                     <input type="text" class="form-control" id="unit_number" placeholder="Unit Number"
                                         name="unit_number">

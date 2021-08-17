@@ -34,6 +34,14 @@ class HomeController extends Controller
         return view('home',compact('company_count','jobs_count','installer_count'));
     }
 
+    public function clear_cache()
+    {
+        \Artisan::call('cache:clear');
+        \Artisan::call('route:clear');
+        \Artisan::call('config:clear');
+        \Artisan::call('config:cache');
+    }
+
     public function getlogout()
     {
         Auth::logout();
