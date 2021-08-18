@@ -228,7 +228,19 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row ">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                <div class="form-group">                                    
+                                            <label for="StreetNumber" class="col-12 control-label">Search Address<span
+                                            class="mdi mdi-multiplication"></span></label>                                   
+                                        <input type="text" class="form-control" id="SearchAddress_sign"
+                                            placeholder="Search Address" name="search_address" autocomplete="off">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="display:none" id="addressdiv1">
+                             
                             <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                 <div class="form-group">
                                     <label for="StreetNumber" class="col-12 control-label">Street Number<span
@@ -262,7 +274,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row ">
+                        <div class="row" style="display:none" id="addressdiv2">
                             <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                 <div class="form-group">
                                     <label for="Suburb" class="col-12 control-label">Town/Suburb<span

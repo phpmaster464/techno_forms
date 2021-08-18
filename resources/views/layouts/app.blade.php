@@ -396,12 +396,20 @@
         <script src="{{ asset('assets/plugin/select2/js/select2.min.js')}}" defer></script>
 
 
-        @if (\Request::is('installer/*')) 
+
+ 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSR5vFOoB3SvPTNoPG1ZAEqX1N84m-7fc&callback=initAutocomplete&libraries=places&v=weekly"
         async
         ></script>
 
-        @endif
+   
+        
+       
+
+     
+        
+
+        
 
         
  
@@ -539,6 +547,266 @@ function fillInAddress() {
 
     }
 
+
+
+
+
+    // This sample uses the Places Autocomplete widget to:
+// 1. Help the user select a place
+// 2. Retrieve the address components associated with that place
+// 3. Populate the form fields with those address components.
+// This sample requires the Places library, Maps JavaScript API.
+// Include the libraries=places parameter when you first load the API.
+// For example: <script
+// src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+if(window.location.href.indexOf('job') > -1)
+    { 
+
+        let autocomplete;
+        let address1Field;
+        let address2Field;
+        let postalField;
+
+function initAutocomplete() {
+  
+   // address1Field = document.querySelector("#SearchAddressone");
+   // autocomplete2 = new google.maps.places.Autocomplete(document.getElementById('autocomplete2'), { types: [ 'geocode' ] });
+    autocomplete = new google.maps.places.Autocomplete(document.getElementById('SearchAddressone'), {
+        componentRestrictions: {
+            country: ["au"]
+        },
+        fields: ["address_components", "geometry"],
+        types: ["address"],
+    });
+    document.getElementById('SearchAddressone').focus();
+    // When the user selects an address from the drop-down, populate the
+    // address fields in the form.
+    autocomplete.addListener("place_changed", fillInAddress);
+}
+
+function fillInAddress() {
+
+    $("#SearchAddressdiv1").show();
+    $("#SearchAddressdiv2").show();
+    // Get the place details from the autocomplete object.
+    const place = autocomplete.getPlace();
+    let address1 = "";
+    let postcode = "";
+
+
+    // Get each component of the address from the place details,
+    // and then fill-in the corresponding field on the form.
+    // place.address_components are google.maps.GeocoderAddressComponent objects
+    // which are documented at http://goo.gle/3l5i5Mr
+    for (const component of place.address_components) {
+        const componentType = component.types[0];
+
+        console.log(componentType);
+        console.log(component.long_name);        
+        console.log(component.short_name);  
+
+        switch(componentType){
+            
+            case "subpremise":{
+                $('#UnitNumber').val(component.long_name);
+            }
+
+            case "street_number":{
+                $('#StreetNumber').val(component.long_name);
+            }
+
+            case "route":{
+         
+                $('#StreetName').val(component.short_name);
+            }
+
+            case "locality":{
+                $('#suburb').val(component.long_name);
+            }
+
+            case "administrative_area_level_1":{
+             
+                $('#State').val(component.short_name).trigger('change');;
+            }
+
+            case "postal_code":{
+         
+                $('#PostCode').val(component.short_name);
+            }
+
+        }      
+
+    }
+   
+}
+
+    }
+/*
+    if(window.location.href.indexOf('job') > -1)
+    { 
+
+        let autocomplete_copy;
+        let address1Field_copy;
+        let address2Field_copy;
+        let postalField;
+
+function initAutocomplete() {
+
+   // address1Field_copy = document.querySelector("#sameAsOwnerAddre_copy");
+    //autocomplete2 = new google.maps.places.Autocomplete(document.getElementById('autocomplete2'), { types: [ 'geocode' ] });
+    
+    autocomplete_copy = new google.maps.places.Autocomplete(document.getElementById('sameAsOwnerAddre_copy'), {
+        componentRestrictions: {
+            country: ["au"]
+        },
+        fields: ["address_components", "geometry"],
+        types: ["address"],
+    });
+    document.getElementById('sameAsOwnerAddre_copy').focus();
+    // When the user selects an address from the drop-down, populate the
+    // address fields in the form.
+    autocomplete_copy.addListener("place_changed", fillInAddress);
+}
+
+function fillInAddress() {
+
+    $("#SearchAddressdiv3").show();
+    $("#SearchAddressdiv4").show();
+    // Get the place details from the autocomplete object.
+    const place = autocomplete.getPlace();
+    let address1 = "";
+    let postcode = "";
+
+
+    // Get each component of the address from the place details,
+    // and then fill-in the corresponding field on the form.
+    // place.address_components are google.maps.GeocoderAddressComponent objects
+    // which are documented at http://goo.gle/3l5i5Mr
+    for (const component of place.address_components) {
+        const componentType = component.types[0];
+
+        console.log(componentType);
+        console.log(component.long_name);        
+        console.log(component.short_name);  
+
+        switch(componentType){
+            
+            case "subpremise":{
+                $('#UnitNumber').val(component.long_name);
+            }
+
+            case "street_number":{
+                $('#StreetNumber1').val(component.long_name);
+            }
+
+            case "route":{
+             
+                $('#StreetName1').val(component.short_name);
+            }
+
+            case "locality":{
+                $('#suburb').val(component.long_name);
+            }
+
+            case "administrative_area_level_1":{
+               
+                $('#State1').val(component.short_name).trigger('change');;
+            }
+
+            case "postal_code":{
+            
+                $('#PostCode1').val(component.short_name);
+            }
+
+        }      
+
+    }
+   
+}
+
+    }
+*/
+
+
+    if(window.location.href.indexOf('register_technician') > -1)
+{
+        let autocomplete;
+        let address1Field;
+        let address2Field;
+        let postalField;
+
+function initAutocomplete() {
+    address1Field = document.querySelector("#SearchAddress_sign");
+ 
+    autocomplete = new google.maps.places.Autocomplete(address1Field, {
+        componentRestrictions: {
+            country: ["au"]
+        },
+        fields: ["address_components", "geometry"],
+        types: ["address"],
+    });
+    address1Field.focus();
+    // When the user selects an address from the drop-down, populate the
+    // address fields in the form.
+    autocomplete.addListener("place_changed", fillInAddress);
+}
+
+function fillInAddress() {
+    $("#addressdiv1").show();
+    $("#addressdiv2").show();
+    // Get the place details from the autocomplete object.
+    const place = autocomplete.getPlace();
+    let address1 = "";
+    let postcode = "";
+
+
+    // Get each component of the address from the place details,
+    // and then fill-in the corresponding field on the form.
+    // place.address_components are google.maps.GeocoderAddressComponent objects
+    // which are documented at http://goo.gle/3l5i5Mr
+    for (const component of place.address_components) {
+        const componentType = component.types[0];
+        console.log(componentType);
+        console.log(component.long_name);        
+        console.log(component.short_name);  
+     
+
+        switch(componentType){
+            
+            case "subpremise":{
+                $('#UnitNumber').val(component.long_name);
+            }
+
+            case "street_number":{
+                $('#street_number').val(component.long_name);
+            }
+
+            case "route":{                
+                $('#street_name').val(component.short_name);
+            }
+
+            case "locality":{
+                $('#suburb').val(component.long_name);
+            }
+
+            case "administrative_area_level_1":{
+          
+                $('#state').val(component.short_name).trigger('change');;
+            }
+
+            case "postal_code":{
+                
+                $('#postcode').val(component.short_name);
+            }
+
+        }      
+
+    }
+   
+}
+
+    }
 
 
 
@@ -852,6 +1120,9 @@ function set_job_status(id)
 
 function set_installation_add(e)
 {
+   
+    $("#SearchAddressdiv3").show();
+    $("#SearchAddressdiv4").show();
  if($(e).is(":checked")){
     $('#PostalAddressType1').val($('#PostalAddressType').val());
     $('#UnitType1').val($('#UnitType').val());
@@ -862,17 +1133,21 @@ function set_installation_add(e)
     $('#Town1').val($('#Town').val());
     $('#State1').val($('#State').val());
     $('#PostCode1').val($('#PostCode').val());
+    $('#SearchAddress_inst').val($('#SearchAddressone').val());
 
 }else{
-    $('#PostalAddressType1').val();
-    $('#UnitType1').val();
-    $('#UnitNumber1').val();
-    $('#StreetNumber1').val();
-    $('#StreetName1').val();
-    $('#StreetType1').val();
-    $('#Town1').val();
-    $('#State1').val();
-    $('#PostCode1').val();
+    $("#SearchAddressdiv3").hide();
+    $("#SearchAddressdiv4").hide();
+    $('#PostalAddressType1').val('');
+    $('#UnitType1').val('');
+    $('#UnitNumber1').val('');
+    $('#StreetNumber1').val('');
+    $('#StreetName1').val('');
+    $('#StreetType1').val('');
+    $('#Town1').val('');
+    $('#State1').val('');
+    $('#PostCode1').val('');
+    $('#SearchAddress_inst').val('');
     
 }
 

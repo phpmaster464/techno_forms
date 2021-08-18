@@ -222,7 +222,20 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                            <div class="form-group">
+                               
+                                        <label for="Search" class="control-label"> Search Address </label>
+                              
+                                    <input type="text" class="form-control" id="SearchAddressone"
+                                        placeholder="Search Address" name="search_address" autocomplete="off">
+                                
+                            </div>
+                        </div>
+                    </div>
+                            <div class="row" style="display:none" id="SearchAddressdiv1">
+                                
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="StreetNumber" class="control-label"> Street Number: <span
@@ -254,7 +267,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" style="display:none" id="SearchAddressdiv2">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="Town" class="control-label"> Town: <span
@@ -263,14 +276,14 @@
                                         <input type="text" class="form-control" id="Town" name="owner_town" value="{{old('owner_town')}}">
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3" >
                                     <div class="form-group">
                                         <label for="State" class="control-label"> State: <span
                                                 class="mdi mdi-multiplication"></span> </label>
                                         <input type="text" class="form-control" id="State" name="owner_state" {{-- disabled --}} value="{{old('owner_state')}}">
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3" >
                                     <div class="form-group">
                                         <label for="PostCode" class="control-label"> Post Code: <span
                                                 class="mdi mdi-multiplication"></span> </label>
@@ -325,7 +338,23 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                            <div class="form-group">
+                               
+                                        <label for="Search" class="control-label"> Search Address </label>
+                              
+                                    <input type="text" class="form-control" id="sameAsOwnerAddre_copy"
+                                        placeholder="Search Address" name="search_address" autocomplete="off">
+                                
+                            </div>
+                        </div>
+                    </div>
+                            <div class="row">
+                       
+
+                            <div class="row" style="display:none" id="SearchAddressdiv3">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="StreetNumber" class="control-label"> Street Number: <span
@@ -357,7 +386,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" style="display:none" id="SearchAddressdiv4">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="Town" class="control-label"> Town: <span

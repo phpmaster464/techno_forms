@@ -212,8 +212,22 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
-                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                            <div class="form-group">
+                               
+                                        <label for="Search" class="control-label"> Search Address </label>
+                              
+                                    <input type="text" class="form-control" id="SearchAddressone"
+                                        placeholder="Search Address" name="search_address" autocomplete="off">
+                                
+                            </div>
+                        </div>
+                    </div>
+                            @if($job->owner_street_number != '' || $job->owner_street_name != '' ||  $street_type->street_type_value !='')
+                            <div class="row"  id="SearchAddressdiv1">
+                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3" >
                                     <div class="form-group">
                                         <label for="StreetNumber" class="control-label"> Street Number: <span
                                                 class="mdi mdi-multiplication"></span> </label>
@@ -244,8 +258,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                            @endif
+
+                            @if($job->owner_town != '' || $job->owner_state != '' ||  $street_type->owner_post_code !='')
+                            <div class="row"  id="SearchAddressdiv2">
+                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3"  >
                                     <div class="form-group">
                                         <label for="Town" class="control-label"> Town: <span
                                                 class="mdi mdi-multiplication"></span>
@@ -269,6 +286,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                         <!-- Inastallation Adress -->
                         <div class="installation-address-wrapper">
                             <h4>Installation Address :</h4>
@@ -316,6 +334,19 @@
                                 </div>
                             </div>
                             <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                            <div class="form-group">
+                               
+                                        <label for="Search" class="control-label"> Search Address </label>
+                              
+                                    <input type="text" class="form-control" id="sameAsOwnerAddre_copy"
+                                        placeholder="Search Address" name="search_address" autocomplete="off">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    @if($job->installation_street_number != '' || $job->installation_street_name != '' ||  $street_type->street_type_value !='')
+                            <div class="row"  id="SearchAddressdiv3">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="StreetNumber" class="control-label"> Street Number: <span
@@ -347,7 +378,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            @endif
+
+                            @if($job->installation_town != '' || $job->installation_state != '' ||  $street_type->installation_post_code !='')
+                            <div class="row"  id="SearchAddressdiv4">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="Town" class="control-label"> Town: <span
@@ -371,6 +405,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
