@@ -55,7 +55,7 @@
                                             class="col-md-3
                                             col-12 control-label">Model</label>
                                         <div class="col-md-6 col-6">
-                                            <input type="text"  class="form-control" id="model_name" name="model_name"   placeholder="Model">
+                                            <input type="text"  class="form-control" id="model_name" value="{{ old('model_name')}}" name="model_name" placeholder="Model">
                                         </div>                                       
                                    </div>
 								   

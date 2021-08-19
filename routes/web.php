@@ -30,11 +30,29 @@ use App\Http\Controllers\UnverifiedInstallerController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/clear_cache', function () {
+    \Artisan::call('cache:clear');
+        \Artisan::call('route:clear');
+        \Artisan::call('config:clear');
+        \Artisan::call('config:cache');
+        echo "<pre>"; 
+        print_r("cache cleared");
+        echo "</pre>";
+        exit(); 
+});
+
+
+
+
+//Route::get('/clear_cache', [HomeController::class, 'clear_cache'])->name('clear_cache'); 
+
+
   
 Auth::routes();
   
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/clear_cache', [HomeController::class, 'clear_cache'])->name('clear_cache'); 
+
 Route::get('/logout', [HomeController::class, 'getlogout'])->name('getlogout');
 Route::get('/register_technician', [UnverifiedInstallerController::class, 'register_unverified_technicians'])->name('register_technician'); 
 Route::post('store_unverified_installer_register', [UnverifiedInstallerController::class,'register_unverified_technicians_store'])->name('unverified_installer.register_unverified_technicians_store'); 

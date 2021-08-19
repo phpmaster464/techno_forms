@@ -296,7 +296,7 @@ class UnverifiedInstallerController extends Controller
 
     	$unverifiedinstaller = UnverifiedInstaller::where('email',$user_array['email'])->first();
 
-    	$installer_array = array('first_name'=>$unverifiedinstaller->first_name,'last_name'=>$unverifiedinstaller->last_name,'email'=>$unverifiedinstaller->email,'mobile'=>$unverifiedinstaller->mobile,'phone'=>$unverifiedinstaller->phone,'unit_type'=>$unverifiedinstaller->unit_type,'unit_number'=>$unverifiedinstaller->unit_number,'street_number'=>$unverifiedinstaller->street_number,'street_name'=>$unverifiedinstaller->street_name,'street_type'=>$unverifiedinstaller->street_type,'suburb'=>$unverifiedinstaller->suburb,'state'=>$unverifiedinstaller->state,'postcode'=>$unverifiedinstaller->postcode,'created_by'=>$unverifiedinstaller->null,'updated_by'=>$unverifiedinstaller->null,'created_at'=>$unverifiedinstaller->null,'updated_at'=>$unverifiedinstaller->null);
+    	$installer_array = array('first_name'=>$unverifiedinstaller->first_name,'last_name'=>$unverifiedinstaller->last_name,'email'=>$unverifiedinstaller->email,'mobile'=>$unverifiedinstaller->mobile,'phone'=>$unverifiedinstaller->phone,'job_type'=>$unverifiedinstaller->job_type,'installer_job_type'=>$unverifiedinstaller->installer_job_type,'unit_type'=>$unverifiedinstaller->unit_type,'unit_number'=>$unverifiedinstaller->unit_number,'street_number'=>$unverifiedinstaller->street_number,'street_name'=>$unverifiedinstaller->street_name,'street_type'=>$unverifiedinstaller->street_type,'suburb'=>$unverifiedinstaller->suburb,'state'=>$unverifiedinstaller->state,'postcode'=>$unverifiedinstaller->postcode,'created_by'=>$unverifiedinstaller->null,'updated_by'=>$unverifiedinstaller->null,'created_at'=>$unverifiedinstaller->null,'updated_at'=>$unverifiedinstaller->null);
 
 		Installer::create($installer_array);
         $roles = array('Installer');
@@ -413,7 +413,20 @@ class UnverifiedInstallerController extends Controller
             $proofidentity = $destination_path . $filename;
         }
 
+
         $input = $request->all();
+        
+        if(isset($input['jtype']) && $input['jtype'] != '')
+        {
+            $jtype = json_encode($input['jtype']);
+            $input['job_type'] = $jtype;
+        }
+
+        if(isset($input['type']) && $input['type'] != '')
+        {
+            $type = json_encode($input['type']);
+            $input['installer_job_type'] = $type;
+        }
         if($signature != '')
         {
             $input['signature'] = $signature;
