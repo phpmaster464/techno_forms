@@ -80,7 +80,7 @@
                                         class="mdi mdi-multiplication"></span></label>
                                 <div class="col-md-9 col-12">
                                     <input type="text" class="form-control" id="FirstName"
-                                        placeholder="Enter First Name" name="first_name">
+                                        placeholder="Enter First Name" value="{{ old('first_name')}}" name="first_name">
                                 </div>
                             </div>
                         </div>
@@ -90,8 +90,7 @@
                                 <label for="LastName" class="col-md-3 col-12 control-label">Last Name <span
                                         class="mdi mdi-multiplication"></span></label>
                                 <div class="col-md-9 col-12">
-                                    <input type="text" class="form-control" id="LastName" placeholder="Enter Last Name"
-                                        name="last_name">
+                                    <input type="text" class="form-control" value="{{ old('last_name')}}" id="LastName" placeholder="Enter Last Name" name="last_name">
                                 </div>
                             </div>
                         </div>
@@ -103,7 +102,7 @@
                                 <label for="email" class="col-md-3 col-12 control-label">Email Address <span
                                         class="mdi mdi-multiplication"></span></label>
                                 <div class="col-md-9 col-12">
-                                    <input type="text" class="form-control" id="Email" placeholder="Enter Email"
+                                    <input type="text" class="form-control" id="Email" placeholder="Enter Email" value="{{ old('email')}}"
                                         name="email">
                                 </div>
                             </div>
@@ -115,7 +114,7 @@
                                         class="mdi mdi-multiplication"></span></label>
                                 <div class="col-md-9 col-12">
                                     <input type="text" class="form-control phone" id="Mobile"
-                                        placeholder="Enter Mobile Number" name="mobile">
+                                        placeholder="Enter Mobile Number" value="{{ old('mobile')}}" name="mobile">
                                 </div>
                             </div>
                         </div>
@@ -128,7 +127,7 @@
                                         class="mdi mdi-multiplication"></span></label>
                                 <div class="col-md-9 col-12">
                                     <input type="text" class="form-control phone" id="Phone" placeholder="Enter Phone Number"
-                                        name="phone">
+                                        value="{{ old('phone')}}" name="phone">
                                 </div>
                             </div>
                         </div>
@@ -203,7 +202,7 @@
                                         class="mdi mdi-multiplication"></span></label>
                                 <div class="col-md-9 col-12">
                                     <input type="text" class="form-control" id="SearchAddress"
-                                        placeholder="Search Address" name="search_address" autocomplete="off">
+                                        placeholder="Search Address" value="{{ old('search_address')}}" name="search_address" autocomplete="off">
                                 </div>
                             </div>
                         </div>
@@ -247,8 +246,7 @@
                             <div class="form-group">
                                 <label for="UnitNumber" class="col-md-3 col-12 control-label">Unit Number</label>
                                 <div class="col-md-9 col-12">
-                                    <input type="text" class="form-control" id="unit_number" placeholder="Unit Number"
-                                        name="unit_number">
+                                    <input type="text" class="form-control" id="unit_number" placeholder="Unit Number" value="{{ old('unit_number')}}" name="unit_number">
                                 </div>
                             </div>
                         </div>
@@ -259,7 +257,7 @@
                                         class="mdi mdi-multiplication"></span></label>
                                 <div class="col-md-9 col-12">
                                     <input type="text" class="form-control" id="street_number"
-                                        placeholder="Street Number" name="street_number">
+                                        placeholder="Street Number" value="{{ old('street_number')}}" name="street_number">
                                 </div>
                             </div>
                         </div>
@@ -269,8 +267,7 @@
                                 <label for="StreetName" class="col-md-3 col-12 control-label">Street Name<span
                                         class="mdi mdi-multiplication"></span></label>
                                 <div class="col-md-9 col-12">
-                                    <input type="text" class="form-control" id="street_name" placeholder="Street Name"
-                                        name="street_name">
+                                    <input type="text" class="form-control" id="street_name" placeholder="Street Name" value="{{ old('street_name')}}" name="street_name">
                                 </div>
                             </div>
                         </div>
@@ -302,7 +299,7 @@
                                     Type<span class="mdi mdi-multiplication"></span></label>
                                 <div class="col-md-9 col-12">
                                     <input type="text" class="form-control" id="postal_delivery_type"
-                                        placeholder="Postal Delivery Type" name="postal_delivery_type">
+                                        placeholder="Postal Delivery Type" value="{{ old('postal_delivery_type')}}" name="postal_delivery_type">
                                 </div>
                             </div>
                         </div>
@@ -312,7 +309,7 @@
                                     Number<span class="mdi mdi-multiplication"></span></label>
                                 <div class="col-md-9 col-12">
                                     <input type="text" class="form-control" id="postal_delivery_number"
-                                        placeholder="Postal Delivery Number" name="postal_delivery_number">
+                                        placeholder="Postal Delivery Number" value="{{ old('postal_delivery_number')}}" name="postal_delivery_number">
                                 </div>
                             </div>
                         </div>
@@ -324,7 +321,7 @@
                                 <label for="Suburb" class="col-md-3 col-12 control-label">Suburb<span
                                         class="mdi mdi-multiplication"></span></label>
                                 <div class="col-md-9 col-12">
-                                    <input type="text" class="form-control" id="suburb" placeholder="Suburb"
+                                    <input type="text" class="form-control" id="suburb" placeholder="Suburb" value="{{ old('suburb')}}"
                                         name="suburb">
                                 </div>
                             </div>
@@ -353,7 +350,7 @@
                                         class="mdi mdi-multiplication"></span></label>
                                 <div class="col-md-9 col-12">
                                     <input type="text" class="form-control" id="postcode" placeholder="Postcode"
-                                        name="postcode">
+                                      value="{{ old('postcode')}}" name="postcode">
                                 </div>
                             </div>
                         </div>

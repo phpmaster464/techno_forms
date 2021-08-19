@@ -73,7 +73,7 @@
                                         <div class="col-md-9 col-12">
                                             <input type="text"
                                                 class="form-control"
-                                                id="pallet_num" name="pallet_number"
+                                                id="pallet_num" value="{{ old('pallet_number')}}" name="pallet_number"
                                                 placeholder="Pallet Number (optional)">
                                                 <p class="help-block">This is a way to group your panels which then can be easily assigned to jobs in the future.</p>
                                         </div>
@@ -83,7 +83,7 @@
                                         <label for="inp-type-5" class="col-md-3
                                         col-12 control-label">Unverified Panel Serials<span class="mdi mdi-multiplication"></span></label>
                                         <div class="col-md-9 col-12">
-                                            <textarea class="form-control" id="inp-type-5" name="unverified_panel_serials" placeholder="Write your meassage"></textarea>
+                                            <textarea class="form-control" id="inp-type-5" name="unverified_panel_serials" placeholder="Write your meassage">{{old('unverified_panel_serials')}}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -93,7 +93,7 @@
                                         <div class="col-md-9 col-12">
                                             <input type="number"
                                                 class="form-control"
-                                                id="enter_wattage" name="wattage">
+                                                id="enter_wattage" value="{{ old('wattage')}}" name="wattage">
                                                 <p class="help-block">Enter value in kW</p>
                                         </div>
                                     </div> 

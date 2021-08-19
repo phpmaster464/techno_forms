@@ -16,6 +16,6 @@ class UnverifiedInstaller extends Model
      */
     protected $table = "unverified_installers";
     protected $fillable = [ 
-        'first_name','last_name','email','phone','mobile','username','password','companyabn','companyname','formdate','todate','companywebsite','postaladdress','unit_type','unit_number','street_number','street_name','street_type','suburb','state','postcode','cecaccnumber','licensenumber','cecdesignernumber','serole','signature','proofidentity','created_by','updated_by'
+        'first_name','last_name','email','phone','mobile','username','password','job_type','installer_job_type','companyabn','companyname','formdate','todate','companywebsite','postaladdress','unit_type','unit_number','street_number','street_name','street_type','suburb','state','postcode','cecaccnumber','licensenumber','cecdesignernumber','serole','signature','proofidentity','created_by','updated_by'
     ];
 }

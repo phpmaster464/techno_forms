@@ -40,6 +40,10 @@ class HomeController extends Controller
         \Artisan::call('route:clear');
         \Artisan::call('config:clear');
         \Artisan::call('config:cache');
+        echo "<pre>"; 
+        print_r("cache cleared");
+        echo "</pre>";
+        exit(); 
     }
 
     public function getlogout()

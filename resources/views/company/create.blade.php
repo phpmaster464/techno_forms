@@ -43,7 +43,7 @@
                             <label for="CompanyName" class="col-md-3 col-12 control-label">Name <span class="mdi mdi-multiplication"></span></label>
                             <div class="col-md-9 col-12">
                                 <input type="text" class="form-control" id="CompanyName"
-                                    placeholder="Enter Name" name="company_name">
+                                    placeholder="Enter Name" value="{{ old('company_name')}}" name="company_name">
                             </div>
                         </div>
                         <div class="form-group">
@@ -51,7 +51,7 @@
                                 Primary Email Address <span class="mdi mdi-multiplication"></span></label>
                             <div class="col-md-9 col-12">
                                 <input type="email" class="form-control" id="CompanyPrimaryEmailAddress"
-                                    placeholder="Enter Primary Email Address " name="company_primary_email">
+                                    placeholder="Enter Primary Email Address " value="{{ old('company_primary_email')}}" name="company_primary_email">
                             </div>
                         </div>
                         <div class="form-group">
@@ -59,7 +59,7 @@
                                 Number <span class="mdi mdi-multiplication"></span></label>
                             <div class="col-md-9 col-12">
                                 <input type="text" class="form-control" id="CompanyContactNumber"
-                                    placeholder="Enter Contact Number" name="company_contact_number">
+                                    placeholder="Enter Contact Number" value="{{ old('company_contact_number')}}" name="company_contact_number">
                             </div>
                         </div>
                     </div>
@@ -72,21 +72,21 @@
                                 Secondary Email Address <!-- <span class="mdi mdi-multiplication"> --></span></label>
                             <div class="col-md-9 col-12">
                                 <input type="email" class="form-control" id="CompanySecondaryEmailAddress"
-                                    placeholder="Enter Secondary Email Address " name="company_secondary_email">
+                                    placeholder="Enter Secondary Email Address " value="{{ old('company_secondary_email')}}" name="company_secondary_email">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="CompanyWebsite" class="col-md-3 col-12 control-label">Website <!-- <span class="mdi mdi-multiplication"></span> --></label>
                             <div class="col-md-9 col-12">
                                 <input type="text" class="form-control" id="CompanyWebsite"
-                                    placeholder="Enter website" name="company_website">
+                                    placeholder="Enter website" value="{{ old('company_website')}}" name="company_website">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="CompanyDescription" class="col-md-3 col-12 control-label">Description <!-- <span class="mdi mdi-multiplication"></span> --></label>
                             <div class="col-md-9 col-12">
                                     <textarea class="form-control" name="" rows="3" class="form-control" placeholder="Enter Description" id="CompanyDescription"
-                                    placeholder="Enter Description" name="company_description"></textarea>
+                                    placeholder="Enter Description" name="company_description">{{old('company_description')}}</textarea>
                             </div>
                         </div>
                          <!-- Company status ( enable / disable) -->

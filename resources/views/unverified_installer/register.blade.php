@@ -80,8 +80,7 @@
                                 <div class="form-group">
                                     <label for="FirstName" class="col-12 control-label">First Name : <span
                                             class="mdi mdi-multiplication"></span></label>
-                                    <input type="text" class="form-control" id="FirstName" placeholder="Enter First Name"
-                                        name="first_name"><span class="required"></span>
+                                    <input type="text" class="form-control" id="FirstName" value="{{ old('first_name')}}" placeholder="Enter First Name" name="first_name"><span class="required"></span>
                                 </div>
                             </div>
     
@@ -89,8 +88,7 @@
                                 <div class="form-group">
                                     <label for="LastName" class="col-12 control-label">Last Name : <span
                                             class="mdi mdi-multiplication"></span></label>
-                                    <input type="text" class="form-control" id="LastName" placeholder="Enter Last Name"
-                                        name="last_name"><span class="required"></span>
+                                    <input type="text" class="form-control" id="LastName" value="{{ old('last_name')}}" placeholder="Enter Last Name" name="last_name"><span class="required"></span>
                                 </div>
                             </div>
                         </div>
@@ -100,24 +98,21 @@
                                 <div class="form-group">
                                     <label for="Emailadrees" class="col-12 control-label">Email :<span
                                             class="mdi mdi-multiplication"></span></label>
-                                    <input type="text" class="form-control" id="Emailadrees" placeholder="Enter Email"
-                                        name="email">
+                                    <input type="text" class="form-control" id="Emailadrees" value="{{ old('email')}}" placeholder="Enter Email" name="email">
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                 <div class="form-group">
                                     <label for="Phone" class="col-12 control-label">Phone : <span
                                             class="mdi mdi-multiplication"></span></label>
-                                    <input type="text" class="form-control phone" id="Phone" placeholder="Enter Phone Number"
-                                        name="phone">
+                                    <input type="text" class="form-control phone" id="Phone" value="{{ old('phone')}}" placeholder="Enter Phone Number" name="phone">
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                 <div class="form-group">
                                     <label for="Mobile" class="col-12 control-label">Mobile Number <span
                                             class="mdi mdi-multiplication"></span></label>
-                                    <input type="text" class="form-control phone" id="Mobile" placeholder="Enter Mobile Number"
-                                        name="mobile">
+                                    <input type="text" class="form-control phone" id="Mobile" value="{{ old('mobile')}}" placeholder="Enter Mobile Number" name="mobile">
                                 </div>
                             </div>
                         </div>
@@ -126,8 +121,7 @@
                                 <div class="form-group">
                                     <label for="Username" class="col-12 control-label">Username :<span
                                             class="mdi mdi-multiplication"></span></label>
-                                    <input type="text" class="form-control" id="username" placeholder="Enter Username"
-                                        name="username">
+                                    <input type="text" class="form-control" id="username" value="{{ old('username')}}" placeholder="Enter Username" name="username">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
@@ -135,10 +129,75 @@
                                     <label for="Password" class="col-12 control-label">Password :<span
                                             class="mdi mdi-multiplication"></span></label>
                                     <input type="text" class="form-control" id="password" placeholder="Enter Password"
-                                        name="password">
+                                      value="{{ old('password')}}" name="password">
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
+                            <div class="form-group">
+                                <label for="CompanySecondaryEmailAddress" class="col-md-3 col-12 control-label">
+                                    Job Type</label>
+                                <div class="col-md-9 col-12">
+                                    <input name="jtype[]" id="jtype1" onchange="change_installer_job_type($(this));"
+                                        type="checkbox" value="Solar PV"><label for="CompanySecondaryEmailAddress"
+                                        class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;Solar
+                                        PV</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input name="jtype[]" id="jtype2" onchange="change_installer_job_type($(this));"
+                                        type="checkbox" value="Solar Water Heater"><label for="SolarWaterHeater"
+                                        class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;Solar Water
+                                        Heater</label>&nbsp;&nbsp;&nbsp;&nbsp;<input name="jtype[]" id="jtype3"
+                                        onchange="change_installer_job_type($(this));" type="checkbox"
+                                        value="Both"><label for="Both"
+                                        class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;Both</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
+                            <div class="form-group" id="typeWrapper">
+                                <label for="CompanySecondaryEmailAddress" class="col-md-3 col-12  control-label">
+                                    Type</label>
+                                <div class="col-md-9 col-12">
+                                    <ul class="checkbox-grid">
+                                        <li>
+                                            <input name="type[]" class="type1" type="checkbox" value="Installer"><label
+                                                for="CompanySecondaryEmailAddress"
+                                                class="control-label type11">&nbsp;&nbsp;Installer&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </li>
+                                        <li>
+
+                                            <input name="type[]" class="type_all" type="checkbox"
+                                                value="Electrician"><label for="CompanySecondaryEmailAddress"
+                                                class="control-label typeall">&nbsp;&nbsp;Electrician&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </li>
+                                        <li>
+
+                                            <input name="type[]" class="type1" type="checkbox" value="Designer"><label
+                                                for="CompanySecondaryEmailAddress"
+                                                class="control-label type11">&nbsp;&nbsp;Designer&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </li>
+                                        <li>
+
+                                            <input name="type[]" class="type2" type="checkbox" value="Plumber"><label
+                                                for="CompanySecondaryEmailAddress"
+                                                class="control-label type22">&nbsp;&nbsp;Plumber&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </li>
+                                        <li>
+
+                                            <input name="type[]" class="type2" type="checkbox" value="Gas Fitter"><label
+                                                for="CompanySecondaryEmailAddress"
+                                                class="control-label type22">&nbsp;&nbsp;Gas
+                                                Fitter&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                         <!--Address Detail -->
                         <div class="row ">
                             <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
@@ -146,7 +205,7 @@
                                     <label for="Company ABN" class="col-12 control-label">Company ABN: :<span
                                             class="mdi mdi-multiplication"></span></label>
                                     <input type="text" class="form-control" id="text" placeholder="Enter Company ABN"
-                                        name="companyabn">
+                                       value="{{ old('companyabn')}}" name="companyabn">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-12 mb-3">
@@ -167,7 +226,7 @@
                                 <div class="form-group">
                                     <label for="formdate" class="col-12 control-label">Form Date : <span
                                             class="mdi mdi-multiplication"></span></label>
-                                    <input type="date" class="form-control" id="formdate" name="formdate"><span
+                                    <input type="date" class="form-control" id="formdate" value="{{ old('formdate')}}" name="formdate"><span
                                         class="required"></span>
                                 </div>
                             </div>
@@ -175,7 +234,7 @@
                                 <div class="form-group">
                                     <label for="todate" class="col-12 control-label">To Date : <span
                                             class="mdi mdi-multiplication"></span></label>
-                                    <input type="date" class="form-control" id="todate" name="todate"><span
+                                    <input type="date" class="form-control" id="todate" value="{{ old('todate')}}" name="todate"><span
                                         class="required"></span>
                                 </div>
                             </div>
@@ -186,7 +245,7 @@
                                     <label for="companywebsite" class="col-12 control-label">Company Website <span
                                             class="mdi mdi-multiplication"></span></label>
                                     <input type="text" class="form-control" id="companyname"
-                                        placeholder="Enter Company Website" name="companywebsite">
+                                        placeholder="Enter Company Website" value="{{ old('companywebsite')}}" name="companywebsite">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
@@ -223,8 +282,7 @@
                             <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                                 <div class="form-group">
                                     <label for="UnitNumber" class="col-12 control-label">Unit Number</label>
-                                    <input type="text" class="form-control" id="unit_number" placeholder="Enter Unit Number"
-                                        name="unit_number">
+                                    <input type="text" class="form-control" value="{{ old('unit_number')}}" id="unit_number" placeholder="Enter Unit Number" name="unit_number">
                                 </div>
                             </div>
                         </div>
@@ -246,7 +304,7 @@
                                     <label for="StreetNumber" class="col-12 control-label">Street Number<span
                                             class="mdi mdi-multiplication"></span></label>
                                     <input type="text" class="form-control" id="street_number" placeholder="Enter Street Number"
-                                        name="street_number">
+                                      value="{{ old('street_number')}}" name="street_number">
                                 </div>
                             </div>
     
@@ -255,7 +313,7 @@
                                     <label for="StreetName" class="col-12 control-label">Street Name<span
                                             class="mdi mdi-multiplication"></span></label>
                                     <input type="text" class="form-control" id="street_name" placeholder="Enter Street Name"
-                                        name="street_name">
+                                       value="{{ old('street_name')}}" name="street_name">
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
@@ -279,7 +337,7 @@
                                 <div class="form-group">
                                     <label for="Suburb" class="col-12 control-label">Town/Suburb<span
                                             class="mdi mdi-multiplication"></span></label>
-                                    <input type="text" class="form-control" id="suburb" placeholder="Enter Town/Suburb" name="suburb">
+                                    <input type="text" class="form-control" id="suburb" placeholder="Enter Town/Suburb" value="{{ old('suburb')}}" name="suburb">
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
@@ -302,7 +360,7 @@
                                     <label for="Postcode" class="col-12 control-label">Postcode<span
                                             class="mdi mdi-multiplication"></span></label>
                                     <input type="text" class="form-control" id="postcode" placeholder="Enter Postcode"
-                                        name="postcode">
+                                      value="{{ old('postcode')}}" name="postcode">
                                 </div>
                             </div>
                         </div>
@@ -314,18 +372,14 @@
                                 <div class="form-group">
                                     <label for="Postcode" class="col-12 control-label">CEC Accreditation
                                         Number<span class="mdi mdi-multiplication"></span></label>
-                                    <input type="text" class="form-control" id="CEC" placeholder="Enter CEC Accreditation
-                                        Number"
-                                        name="cecaccnumber">
+                                    <input type="text" class="form-control" id="CEC" placeholder="Enter CEC Accreditation Number" value="{{ old('cecaccnumber')}}" name="cecaccnumber">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                                 <div class="form-group">
                                     <label for="Postcode" class="col-12 control-label">Lincesed Electrician
                                         Number<span class="mdi mdi-multiplication"></span></label>
-                                    <input type="text" class="form-control" id="postcode" placeholder="Enter Lincesed Electrician
-                                        Number"
-                                        name="licensenumber">
+                                    <input type="text" class="form-control" id="postcode" placeholder="Enter Lincesed Electrician Number" value="{{ old('licensenumber')}}" name="licensenumber">
                                 </div>
                             </div>
                         </div>
@@ -335,7 +389,7 @@
                                     <label for="Postcode" class="col-12 control-label">CEC Designer Number<span
                                             class="mdi mdi-multiplication"></span></label>
                                     <input type="text" class="form-control" id="postcode" placeholder="Enter CEC Designer Number"
-                                        name="cecdesignernumber">
+                                      value="{{ old('cecdesignernumber')}}" name="cecdesignernumber">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-12 mb-3">

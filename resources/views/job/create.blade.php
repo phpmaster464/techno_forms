@@ -43,7 +43,7 @@
                                     <div class="form-group">
                                         <label for="ReferenceNumber" class="control-label">
                                             Reference Number <span class="mdi mdi-multiplication"></span></label>
-                                        <input type="text" class="form-control" id="ReferenceNumber"
+                                        <input type="text" class="form-control" id="ReferenceNumber" value="{{ old('reference_number')}}"
                                             name="reference_number">
                                     </div>
                                 </div>
@@ -334,7 +334,7 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="UnitNumber" class="control-label"> Unit Number: </label>
-                                        <input type="text" class="form-control" id="UnitNumber1" name="installation_unit_number">
+                                        <input type="text" class="form-control" id="UnitNumber1" value="{{ old('installation_unit_number')}}" name="installation_unit_number">
                                     </div>
                                 </div>
                             </div>
@@ -359,14 +359,14 @@
                                     <div class="form-group">
                                         <label for="StreetNumber" class="control-label"> Street Number: <span
                                                 class="mdi mdi-multiplication"></span> </label>
-                                        <input type="text" class="form-control" id="StreetNumber1" name="installation_street_number">
+                                        <input type="text" class="form-control" id="StreetNumber1" value="{{ old('installation_street_number')}}" name="installation_street_number">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="StreetName" class="control-label"> Street Name: <span
                                                 class="mdi mdi-multiplication"></span> </label>
-                                        <input type="text" class="form-control" id="StreetName1" name="installation_street_name">
+                                        <input type="text" class="form-control" id="StreetName1" value="{{ old('installation_street_name')}}" name="installation_street_name">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
@@ -392,21 +392,21 @@
                                         <label for="Town" class="control-label"> Town: <span
                                                 class="mdi mdi-multiplication"></span>
                                         </label>
-                                        <input type="text" class="form-control" id="Town1" name="installation_town">
+                                        <input type="text" class="form-control" id="Town1" value="{{ old('installation_town')}}" name="installation_town">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="State" class="control-label"> State: <span
                                                 class="mdi mdi-multiplication"></span> </label>
-                                        <input type="text" class="form-control" id="State1" name="installation_state" {{-- disabled --}}>
+                                        <input type="text" class="form-control" id="State1" value="{{ old('installation_state')}}" name="installation_state" {{-- disabled --}}>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="PostCode" class="control-label"> Post Code: <span
                                                 class="mdi mdi-multiplication"></span> </label>
-                                        <input type="text" class="form-control" id="PostCode1" name="installation_post_code">
+                                        <input type="text" class="form-control" id="PostCode1" value="{{ old('installation_post_code')}}" name="installation_post_code">
                                     </div>
                                 </div>
                             </div>
@@ -414,7 +414,7 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="NMI" class="control-label"> NMI: </label>
-                                        <input type="text" class="form-control" id="NMI" name="nmi">
+                                        <input type="text" class="form-control" id="NMI" value="{{ old('nmi')}}" name="nmi">
                                     </div>
                                 </div>
                             </div>
@@ -424,7 +424,7 @@
                                         <label for="AdditinalInformation" class="control-label">Additinal Installation
                                             Information:</span></label>
                                         <textarea id="AdditinalInformation" class="form-control" maxlength="225"
-                                            rows="2" name="additional_installation_information"></textarea>
+                                            rows="2" name="additional_installation_information">{{ old('additional_installation_information')}}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-12 mb-3">

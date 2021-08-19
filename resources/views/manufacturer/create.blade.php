@@ -37,7 +37,7 @@
                                             class="col-md-3
                                             col-12 control-label">Manufacturer</label>
                                         <div class="col-md-6 col-6">
-                                            <input type="text"  class="form-control" id="Manufacturer" name="manufacturer_name"   placeholder="Manufacturer">
+                                            <input type="text"  class="form-control" id="Manufacturer" value="{{ old('manufacturer_name')}}" name="manufacturer_name" placeholder="Manufacturer">
                                         </div>                                       
                                    </div>
 <div class="form-group">
