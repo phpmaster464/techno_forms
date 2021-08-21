@@ -410,6 +410,194 @@
                                     </div>
                                 </div>
                             </div>
+							
+							</div>
+							
+						<!-- installer start -->
+                        <div class="owner-details-wrapper" >
+                            <h4>Installer:</h4>
+					
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group select-wrapper">
+                                        <label for="Installer" class="control-label">Select Installer: <span
+                                                class="mdi mdi-multiplication"></span></label>
+												<select name="installer_type" class="form-control select2_1" id="installer_type" >
+												<option></option>
+												@foreach($installers as $installer)												
+												<option value="{{$installer->id}}">{{$installer->first_name}}</option>
+												@endforeach
+											</select>
+                                    </div>
+                                </div>
+							
+                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group select-wrapper">
+                                        <label for="Designer" class="control-label">Select Designer: <span
+                                                class="mdi mdi-multiplication"></span></label>
+                                        <select name="Designer_type" class="form-control select2_1" id="Designer_type">
+												<option></option>
+												@foreach($Designers as $Designer)												
+												<option value="{{$Designer->id}}">{{$Designer->first_name}}</option>
+												@endforeach											
+											</select>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group select-wrapper">
+                                        <label for="Installer_state" class="control-label">Installer State
+                                            <span class="mdi mdi-multiplication"></span></label>
+                                        <select class="form-control" id="Installer_state" name="Installer_state" {{-- disabled --}}>
+                                            <option value="">Select selected</option>
+                                            <option value="1">Select 1</option>
+                                            <option value="2">Select 1</option>
+                                            <option value="3">Select 1</option>
+                                        </select>
+                                    </div>
+                                </div>
+								<div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group select-wrapper">
+                                        <label for="Electrician" class="control-label">Select Electrician                                            <span class="mdi mdi-multiplication"></span></label>
+                                        <select class="form-control" id="Electrician" name="Electrician" {{-- disabled --}}>
+										<option></option>
+                                            @foreach($Electricians as $Electrician)												
+												<option value="{{$Electrician->id}}">{{$Electrician->first_name}}</option>
+												@endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                      </div>                   
+				<!-- installer  end-->
+				
+				<!--panel start -->
+						<button class="add_field_button">Add More Fields</button>
+                        <div class="owner-details-wrapperone" id="newone">
+                            <h4>Panels:</h4>
+                            <div class="row">
+                             <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="Panels_search" class="control-label"> Quick Search: </label>
+                                        <input type="date" class="form-control" id="install_date" name="install_date[]" value="">
+                                    </div>
+                                </div>
+							
+                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="Title" class="control-label"> Total Number of solar panel </label>
+                                        <input type="text" class="form-control" id="total_no_solar_panel" name="total_no_solar_panel[]" value="{{old('no_solar_panel')}}">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group select-wrapper">
+                                        <label for="Panels_Brand" class="control-label">Brand
+                                            <span class="mdi mdi-multiplication"></span></label>
+                                        <select class="form-control" id="Panels_Brand" name="Panels_Brand[]" {{-- disabled --}}>
+                                            <option value="">Select selected</option>
+                                            <option value="1">Select 1</option>
+                                            <option value="2">Select 2</option>
+                                            <option value="3">Select 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+								<div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group select-wrapper">
+                                        <label for="Model" class="control-label">Model                                            <span class="mdi mdi-multiplication"></span></label>
+                                        <select class="form-control" id="Panels_Model" name="Panels_Model[]" {{-- disabled --}}>
+                                            <option value="">Select selected</option>
+                                            <option value="1">Select 1</option>
+                                            <option value="2">Select 2</option>
+                                            <option value="3">Select 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+								
+								<div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="Title" class="control-label"> Enter number of Solar Panels </label>
+                                        <input type="text" class="form-control" id="enter_no_of_solar_panal" name="enter_no_of_solar_panal[]" value="{{old('title')}}">
+                                    </div>
+                                </div>
+                            </div>
+                      </div>
+                           	<!--panel end -->
+							
+							
+							<!-- inverter start -->
+							<button class="add_field_buttontwo">Add More Fields</button>
+                        <div class="owner-details-wrappertwo" >
+                            <h4>Inverter:</h4>
+							
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="Title" class="control-label"> Quick Search: </label>
+                                        <input type="date" class="form-control" id="inverter_Quick_Search" name="inverter_Quick_Search[]" value="{{old('title')}}">
+                                    </div>
+                                </div>
+							
+                               <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group select-wrapper">
+                                        <label for="inverter_Brand" class="control-label">Brand
+                                            <span class="mdi mdi-multiplication"></span></label>
+                                        <select class="form-control" id="inverter_Brand" name="inverter_Brand[]" {{-- disabled --}}>
+                                            <option value="">Select selected</option>
+                                            <option value="1">Select 1</option>
+                                            <option value="2">Select 1</option>
+                                            <option value="3">Select 1</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group select-wrapper">
+                                        <label for="inverter_Series" class="control-label">Series
+                                            <span class="mdi mdi-multiplication"></span></label>
+                                        <select class="form-control" id="inverter_Series" name="inverter_Series[]" {{-- disabled --}}>
+                                            <option value="">Select selected</option>
+                                            <option value="1">Select 1</option>
+                                            <option value="2">Select 1</option>
+                                            <option value="3">Select 1</option>
+                                        </select>
+                                    </div>
+                                </div>
+								<div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group select-wrapper">
+                                        <label for="inverter_Model" class="control-label">Model
+                                            <span class="mdi mdi-multiplication"></span></label>
+                                        <select class="form-control" id="inverter_Model" name="inverter_Model[]" {{-- disabled --}}>
+                                            <option value="">Select selected</option>
+                                            <option value="1">Select 1</option>
+                                            <option value="2">Select 1</option>
+                                            <option value="3">Select 1</option>
+                                        </select>
+                                    </div>
+                                </div>
+								<div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="Enter number of inverter" class="control-label"> Enter number of inverter </label>
+                                        <input type="text" class="form-control" id="Enter_number_of_inverter" name="Enter_number_of_inverter[]" value="{{old('title')}}">
+                                    </div>
+                                </div>
+                            </div>
+                      </div>                   
+				<!-- inverter  end-->
+				<div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="Rated_Power_Output" class="control-label"> Rated Power Output: </label>
+                                        <input type="text" class="form-control" id="Rated_Power_Output" value="{{ old('nmi')}}" name="Rated_Power_Output">
+                                    </div>
+                                </div>
+                            </div>
+							<div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="NMI" class="control-label"> Deeming Period: 10 Years </label>
+                                        <input type="text" class="form-control" id="Deeming_Period" value="{{ old('nmi')}}" name="Deeming_Period">
+                                    </div>
+                                </div>
+                            </div>
+							
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
@@ -442,6 +630,8 @@
                                 </div>
                             </div>
                         </div>
+						
+						
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center d-flex form-group margin-bottom-0 "
                             id="buttonWrapper">
                             <a class="btn btn-primary" href="{{ route('job.index') }}"> Back</a>

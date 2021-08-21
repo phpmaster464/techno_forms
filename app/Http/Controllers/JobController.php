@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
     
 use App\Models\Jobs;
+use App\Models\Panels;
+use App\Models\Inverter;
 use Illuminate\Http\Request;
 use Auth;
 use Spatie\Permission\Models\Role;
@@ -84,7 +86,16 @@ class JobController extends Controller
     {
           $unit_type =  DB::table('unit_types')->get()->toArray();
           $street_types =  DB::table('street_types')->get()->toArray();
-          return view('job.create',compact('unit_type','street_types'));
+		 // $installers =  DB::table('installers')->get()->toArray();
+		 //$installers =  DB::select("SELECT id,first_name ,`installer_job_type` FROM `installers`");
+		 
+		  $installers = DB::table('installers')->where('installer_job_type', 'like', '%Installer%')->get()->toArray();
+		   $Electricians= DB::table('installers')->where('installer_job_type', 'like', '%Electrician%')->get()->toArray();
+		   $Designers = DB::table('installers')->where('installer_job_type', 'like', '%Designer%')->get()->toArray();
+		  
+		  
+		
+          return view('job.create',compact('unit_type','street_types','installers','Electricians','Designers'));
     }
     
     /**
@@ -122,17 +133,52 @@ class JobController extends Controller
             'installation_state' =>  'required',
             'installation_post_code' => 'required'
         ]);
+		
  
         $userId = Auth::id();
 
         $input = $request->all();
-        $input['created_by'] = $userId;
-        
-        $job_data = Jobs::create($input);
+		/*echo "<pre>";
+		print_r($input);
+		echo "</pre>";
+		exit;*/
+        $input['created_by'] = $userId;        
+        $job_data = Jobs::create($input);		
+	    $job_id=$job_data->id;	
+		//$input = $request->all();
+	
+		
+for($i=0; $i<count($input['install_date']); $i++)
+{
+    $Panels= new Panels;
+    $Panels->install_date= $input['install_date'][$i];
+    $Panels->total_no_solar_panel= $input['total_no_solar_panel'][$i];
+	$Panels->Panels_Brand= $input['Panels_Brand'][$i];
+	$Panels->Panels_Model= $input['Panels_Model'][$i];
+	$Panels->enter_no_of_solar_panal= $input['enter_no_of_solar_panal'][$i];
+	$Panels->added_by= $userId;
+	$Panels->status= '1';
+	$Panels->job_id=$job_id;	
+    $Panels->save();
+}
 
-     /*   $jobs_input =  array('name'=>$request->company_name,'email'=>$request->company_primary_email); 
 
-        $this->send_company_email($user_input);*/
+for($i=0; $i<count($input['inverter_Quick_Search']); $i++)
+{
+    $Inverter= new Inverter;
+    $Inverter->inverter_Quick_Search_date= $input['install_date'][$i];
+    $Inverter->inverter_Brand= $input['total_no_solar_panel'][$i];
+	$Inverter->inverter_Series= $input['Panels_Brand'][$i];
+	$Inverter->inverter_Model= $input['Panels_Model'][$i];
+	$Inverter->Enter_number_of_inverter= $input['enter_no_of_solar_panal'][$i];
+	$Inverter->added_by= $userId;
+	$Inverter->status= '1';
+	$Inverter->job_id=$job_id;	
+    $Inverter->save();
+}
+
+
+								
     
         return redirect()->route('job.index')
                         ->with('success','Job Created Successfully.');
@@ -158,12 +204,15 @@ class JobController extends Controller
     public function edit(Jobs $job)
     {
 
-
-        $unit_type =  DB::table('unit_types')->get()->toArray();
-        $street_types =  DB::table('street_types')->get()->toArray();
-
+		$unit_type =  DB::table('unit_types')->get()->toArray();
+		$street_types =  DB::table('street_types')->get()->toArray();
+		$installers = DB::table('installers')->where('installer_job_type', 'like', '%Installer%')->get()->toArray();
+		$Electricians= DB::table('installers')->where('installer_job_type', 'like', '%Electrician%')->get()->toArray();
+		$Designers = DB::table('installers')->where('installer_job_type', 'like', '%Designer%')->get()->toArray();
+		$panels = DB::table('tbl_panels')->where('job_id',$job['id'])->get()->toArray();
+		$inverters = DB::table('tbl_inverters')->where('job_id',$job['id'])->get()->toArray();
        
-        return view('job.edit',compact('unit_type','street_types','job'));
+        return view('job.edit',compact('unit_type','street_types','job','installers','Electricians','Designers','panels','inverters'));
     }
     
     /**
@@ -220,10 +269,42 @@ class JobController extends Controller
         $userId = Auth::id();
 
         $input['updated_by'] = $userId;
-
-       
-        // $company->update($request->all());
         $job->update($input); 
+		$job_id=$job->id;
+		/*echo "<pre>";
+		print_r($input);exit;
+		echo "</pre>";*/
+		
+$Panels=Panels::where('job_id',$job['id'])->delete();
+for($i=0; $i<count($input['install_date']); $i++)
+{
+    $Panels= new Panels;
+	$Panels->install_date= $input['install_date'][$i];
+    $Panels->total_no_solar_panel= $input['total_no_solar_panel'][$i];
+	$Panels->Panels_Brand= $input['Panels_Brand'][$i];
+	$Panels->Panels_Model= $input['Panels_Model'][$i];
+	$Panels->enter_no_of_solar_panal= $input['enter_no_of_solar_panal'][$i];
+	$Panels->added_by= $userId;
+	$Panels->status= '1';
+	$Panels->job_id=$job_id;	
+    $Panels->save();
+}
+
+		
+$Inverter_res=Inverter::where('job_id',$job['id'])->delete();
+for($i=0; $i<count($input['inverter_Quick_Search']); $i++)
+{
+    $Inverter= new Inverter;
+    $Inverter->inverter_Quick_Search_date= $input['install_date'][$i];
+    $Inverter->inverter_Brand= $input['total_no_solar_panel'][$i];
+	$Inverter->inverter_Series= $input['Panels_Brand'][$i];
+	$Inverter->inverter_Model= $input['Panels_Model'][$i];
+	$Inverter->Enter_number_of_inverter= $input['enter_no_of_solar_panal'][$i];
+	$Inverter->added_by= $userId;
+	$Inverter->status= '1';
+	$Inverter->job_id=$job_id;	
+    $Inverter->save();
+}	
 
         return redirect()->route('job.index')
                         ->with('success','Job Updated Successfully');
@@ -282,4 +363,18 @@ class JobController extends Controller
      }); 
 
     }
+	
+	
+	public function delete_extra_panels(Request $request){
+		 $id =$request['id'];
+		 $Panels=Panels::where('id',$id)->delete();
+		
+	}
+	
+	public function delete_extra_inverter(Request $request){
+		 $id =$request['id'];
+		$Inverter_res=Inverter::where('id',$id)->delete();
+		
+		
+	}
 }

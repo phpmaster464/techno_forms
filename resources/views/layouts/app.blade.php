@@ -402,24 +402,90 @@
         async
         ></script>
 
-   
-        
-       
-
-     
-        
-
-        
-
-        
- 
-        
-
 
 <script type="text/javascript"> 
 
-    
+	
+	
+	$(document).ready(function() {
+	var max_fields      = 10; //maximum input boxes allowed
+	var wrapper   		= $(".owner-details-wrapperone"); //Fields wrapper
+	var add_button      = $(".add_field_button"); //Add button ID
+	
+	var x = 1; //initlal text box count
+	$(".add_field_button").click(function(e){ //on add input button click
+		e.preventDefault();
+		if(x < max_fields){ //max input box allowed
+			x++; //text box increment
+			$(wrapper).append('<div><div class="owner-details-wrapperone" id="newone"> <h4>Panels:</h4> <div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Panels_search" class="control-label"> Quick Search: </label> <input type="date" class="form-control" id="install_date" name="install_date[]" value=""> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Total Number of solar panel </label> <input type="text" class="form-control" id="total_no_solar_panel" name="total_no_solar_panel[]" value="{{old('no_solar_panel')}}"> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Panels_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Brand" name="Panels_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div><div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Model" name="Panels_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div><div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Enter number of Solar Panels </label> <input type="text" class="form-control" id="enter_no_of_solar_panal" name="enter_no_of_solar_panal[]" value="{{old('title')}}"> </div> </div> </div> </div><a href="#" class="remove_field">Remove</a></div>'); //add input box
+		}
+	});
+	
+	$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+		e.preventDefault(); $(this).parent('div').remove(); x--;
+	})
+});
 
+$(document).ready(function() {
+	var max_fields      = 10; //maximum input boxes allowed
+	var wrapper   		= $(".owner-details-wrappertwo"); //Fields wrapper
+	var add_button      = $(".add_field_buttontwo"); //Add button ID
+	
+	var x = 1; //initlal text box count
+	$(".add_field_buttontwo").click(function(e){ //on add input button click
+		e.preventDefault();
+		if(x < max_fields){ //max input box allowed
+			x++; //text box increment
+			$(wrapper).append('<div> <div class="owner-details-wrappertwo" > <h4>Inverter:</h4> <div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Quick Search: </label> <input type="date" class="form-control" id="inverter_Quick_Search" name="inverter_Quick_Search[]" value="{{old('title')}}"> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Brand" name="inverter_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Series" class="control-label">Series <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Series" name="inverter_Series[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div><div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Model" name="inverter_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div><div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Enter number of inverter" class="control-label"> Enter number of inverter </label> <input type="text" class="form-control" id="Enter_number_of_inverter" name="Enter_number_of_inverter[]" value="{{old('title')}}"> </div> </div> </div> </div> <a href="#" class="remove_field">Remove</a></div>'); //add input box
+		}
+	});
+	
+	$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+		e.preventDefault(); $(this).parent('div').remove(); x--;
+	})
+});
+
+function delete_extra_panels(id){
+	//alert(id);
+	
+	 jQuery.ajax({
+        type:"POST",
+        url:"{{ route('job.delete_extra_panels') }}",
+        data:{
+            "_token": "{{ csrf_token() }}",  
+            "id" : id
+        }, 
+        dataType:'json',
+        beforeSend:function(){
+
+        },
+        success:function(data){
+         alert('done');
+     }
+ });
+	
+}
+
+function delete_extra_inverter(id){
+	
+	//alert(id);
+	 jQuery.ajax({
+        type:"POST",
+        url:"{{ route('job.delete_extra_inverter') }}",
+        data:{
+            "_token": "{{ csrf_token() }}",  
+            "id" : id
+        }, 
+        dataType:'json',
+        beforeSend:function(){
+
+        },
+        success:function(data){
+         alert('done');
+     }
+ });
+	
+}
 
     // This sample uses the Places Autocomplete widget to:
 // 1. Help the user select a place
@@ -1386,6 +1452,45 @@ $("#imageUpload").change(function() {
         $('#imagePreview_identity').css("background-image", "url("+URL.createObjectURL(event.target.files[0])+")");
      })
 
+
+$(document).ready(function(){
+
+ // Add new element
+ $(".btn-copy").click(function(){
+
+  // Finding total number of elements added
+  var total_element = $(".element").length;
+ alert(total_element);
+  // last <div> with element class id
+  var lastid = $(".element:last").attr("id");
+  var split_id = lastid.split("_");
+  var nextindex = Number(split_id[1]) + 1;
+
+  var max = 5;
+  // Check total number elements
+  if(total_element < max ){
+   // Adding new div container after last occurance of element class
+   $(".element:last").after("<div class='element' id='div_"+ nextindex +"'></div>");
+ 
+   // Adding element to <div>
+   $("#div_" + nextindex).append("<input type='text' placeholder='Enter your skill' id='txt_"+ nextindex +"'>&nbsp;<span id='remove_" + nextindex + "' class='remove'>X</span>");
+ 
+  }
+ 
+ });
+
+ // Remove element
+ $('.container').on('click','.remove',function(){
+ 
+  var id = this.id;
+  var split_id = id.split("_");
+  var deleteindex = split_id[1];
+
+  // Remove <div> with id
+  $("#div_" + deleteindex).remove();
+
+ }); 
+});
 </script>
 
 </body>
