@@ -372,12 +372,14 @@ for($i=0; $i<count($input['inverter_Quick_Search']); $i++)
 	public function delete_extra_panels(Request $request){
 		 $id =$request['id'];
 		 $Panels=Panels::where('id',$id)->delete();
+		 
 		
 	}
 	
 	public function delete_extra_inverter(Request $request){
 		 $id =$request['id'];
 		$Inverter_res=Inverter::where('id',$id)->delete();
+		
 		
 		
 	}

@@ -568,9 +568,9 @@
                         <!-- installer  end-->
 
                         <!--panel start -->
-                      
+                       <input type="button" class="btn btn-info add_field_button" onclick="add_more_button();" value="Add More Fields">
                         <div class="owner-details-wrapper-panel">
-						   <input type="button" class="btn btn-info add_field_button" onclick="add_more_button();" value="Add More Fields">
+						  
 						 @foreach($panels as $k=>$panel)
                             <div class="owner-details-wrapperone">
                                 <div class="heading-one">
@@ -638,7 +638,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="button" class="btn btn-danger"
+                                <input type="button" class="btn btn-danger remove_field"
                                     onclick="delete_extra_panels('{{$panel->id}}');" value="Delete">
 
                             </div>
@@ -651,10 +651,11 @@
 
 
                         <!-- inverter start -->
-                      
-                        <div class="inventory-wrapper">
 						 <input type="button" class="btn btn-info add_field_button"
                                         onclick="add_more_inverter_button();" value="Add More Fields">
+                      
+                        <div class="inventory-wrapper">
+						
 						  @foreach($inverters as $k=>$inverter)
                             <div class="owner-details-wrappertwo">
                                 <div class="heading-one">
@@ -736,8 +737,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="button" class="btn btn-danger"
-                                    onclick="delete_extra_inverter('{{$inverter->id}}');" value="Delete">
+                                <input type="button" class="btn btn-primary remove_field"
+                                     value="Delete">
                             </div>
  @endforeach
 
