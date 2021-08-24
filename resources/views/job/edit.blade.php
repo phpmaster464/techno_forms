@@ -568,15 +568,15 @@
                         <!-- installer  end-->
 
                         <!--panel start -->
-                       
+                      
                         <div class="owner-details-wrapper-panel">
+						   <input type="button" class="btn btn-info add_field_button" onclick="add_more_button();" value="Add More Fields">
 						 @foreach($panels as $k=>$panel)
                             <div class="owner-details-wrapperone">
                                 <div class="heading-one">
                                     <h4>Panels:</h4>
 
-                                    <input type="button" class="btn btn-info add_field_button"
-                                        onclick="add_more_button();" value="Add More Fields">
+                                  
                                 </div>
                                 <div class="row">
                                     <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
@@ -653,13 +653,14 @@
                         <!-- inverter start -->
                       
                         <div class="inventory-wrapper">
+						 <input type="button" class="btn btn-info add_field_button"
+                                        onclick="add_more_inverter_button();" value="Add More Fields">
 						  @foreach($inverters as $k=>$inverter)
                             <div class="owner-details-wrappertwo">
                                 <div class="heading-one">
                                     <h4>Inverter:</h4>
 
-                                    <input type="button" class="btn btn-info add_field_button"
-                                        onclick="add_more_inverter_button();" value="Add More Fields">
+                                   
                                 </div>
                                 <div class="row">
                                     <div class="col-xl-4 col-lg-4 col-md-12 mb-3">

@@ -501,12 +501,13 @@
                         <!-- installer  end-->
 
                         <!--panel start -->
+						 <input type="button" class="btn btn-info add_field_button"
+                                        onclick="add_more_button();" value="Add More Fields">
                         <div class="owner-details-wrapper-panel">
                             <div class="owner-details-wrapperone" id="newone">
                                 <div class="heading-one">
                                     <h4>Panels:</h4>
-                                    <input type="button" class="btn btn-info add_field_button"
-                                        onclick="add_more_button();" value="Add More Fields">
+                                   
                                 </div>
                                 <div class="row">
                                     <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
@@ -565,13 +566,14 @@
                         </div>
 
                         <!-- inverter start -->
+						<input type="button" class="btn btn-info add_field_button"
+                                        onclick="add_more_inverter_button();" value="Add More Fields">
                         <div class="inventory-wrapper">
                             <div class="owner-details-wrappertwo">
                                 <div class="heading-one">
                                     <h4>Inverter:</h4>
 
-                                    <input type="button" class="btn btn-info add_field_button"
-                                        onclick="add_more_inverter_button();" value="Add More Fields">
+                                    
                                 </div>
 
                                 <div class="row">

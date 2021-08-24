@@ -147,7 +147,7 @@ class JobController extends Controller
 	    $job_id=$job_data->id;	
 		//$input = $request->all();
 	
-		
+		if(isset($input['install_date'])){
 for($i=0; $i<count($input['install_date']); $i++)
 {
     $Panels= new Panels;
@@ -162,21 +162,22 @@ for($i=0; $i<count($input['install_date']); $i++)
     $Panels->save();
 }
 
-
+		}
+			if(isset($input['inverter_Quick_Search'])){	
 for($i=0; $i<count($input['inverter_Quick_Search']); $i++)
 {
     $Inverter= new Inverter;
-    $Inverter->inverter_Quick_Search_date= $input['install_date'][$i];
-    $Inverter->inverter_Brand= $input['total_no_solar_panel'][$i];
-	$Inverter->inverter_Series= $input['Panels_Brand'][$i];
-	$Inverter->inverter_Model= $input['Panels_Model'][$i];
-	$Inverter->Enter_number_of_inverter= $input['enter_no_of_solar_panal'][$i];
+    $Inverter->inverter_Quick_Search_date= $input['inverter_Quick_Search'][$i];
+    $Inverter->inverter_Brand= $input['inverter_Brand'][$i];
+	$Inverter->inverter_Series= $input['inverter_Series'][$i];
+	$Inverter->inverter_Model= $input['inverter_Model'][$i];
+	$Inverter->Enter_number_of_inverter= $input['Enter_number_of_inverter'][$i];
 	$Inverter->added_by= $userId;
 	$Inverter->status= '1';
 	$Inverter->job_id=$job_id;	
     $Inverter->save();
 }
-
+			}
 
 								
     
@@ -274,6 +275,7 @@ for($i=0; $i<count($input['inverter_Quick_Search']); $i++)
 		/*echo "<pre>";
 		print_r($input);exit;
 		echo "</pre>";*/
+		if(isset($input['install_date'])){
 		
 $Panels=Panels::where('job_id',$job['id'])->delete();
 for($i=0; $i<count($input['install_date']); $i++)
@@ -289,22 +291,24 @@ for($i=0; $i<count($input['install_date']); $i++)
 	$Panels->job_id=$job_id;	
     $Panels->save();
 }
+		}
 
-		
+	if(isset($input['inverter_Quick_Search'])){	
 $Inverter_res=Inverter::where('job_id',$job['id'])->delete();
 for($i=0; $i<count($input['inverter_Quick_Search']); $i++)
 {
     $Inverter= new Inverter;
-    $Inverter->inverter_Quick_Search_date= $input['install_date'][$i];
-    $Inverter->inverter_Brand= $input['total_no_solar_panel'][$i];
-	$Inverter->inverter_Series= $input['Panels_Brand'][$i];
-	$Inverter->inverter_Model= $input['Panels_Model'][$i];
-	$Inverter->Enter_number_of_inverter= $input['enter_no_of_solar_panal'][$i];
+    $Inverter->inverter_Quick_Search_date= $input['inverter_Quick_Search'][$i];
+    $Inverter->inverter_Brand= $input['inverter_Brand'][$i];
+	$Inverter->inverter_Series= $input['inverter_Series'][$i];
+	$Inverter->inverter_Model= $input['inverter_Model'][$i];
+	$Inverter->Enter_number_of_inverter= $input['Enter_number_of_inverter'][$i];
 	$Inverter->added_by= $userId;
 	$Inverter->status= '1';
 	$Inverter->job_id=$job_id;	
     $Inverter->save();
 }	
+	}
 
         return redirect()->route('job.index')
                         ->with('success','Job Updated Successfully');
