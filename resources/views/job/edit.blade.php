@@ -570,8 +570,8 @@
                         <!--panel start -->
                        <input type="button" class="btn btn-info add_field_button" onclick="add_more_button();" value="Add More Fields">
                         <div class="owner-details-wrapper-panel">
-						  
-						 @foreach($panels as $k=>$panel)
+                          
+                         @foreach($panels as $k=>$panel)
                             <div class="owner-details-wrapperone">
                                 <div class="heading-one">
                                     <h4>Panels:</h4>
@@ -642,7 +642,7 @@
                                     onclick="delete_extra_panels('{{$panel->id}}');" value="Delete">
 
                             </div>
-							   @endforeach
+                               @endforeach
 
                         </div>
                      
@@ -651,12 +651,12 @@
 
 
                         <!-- inverter start -->
-						 <input type="button" class="btn btn-info add_field_button"
+                         <input type="button" class="btn btn-info add_field_button"
                                         onclick="add_more_inverter_button();" value="Add More Fields">
                       
                         <div class="inventory-wrapper">
-						
-						  @foreach($inverters as $k=>$inverter)
+                        
+                          @foreach($inverters as $k=>$inverter)
                             <div class="owner-details-wrappertwo">
                                 <div class="heading-one">
                                     <h4>Inverter:</h4>
@@ -737,8 +737,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="button" class="btn btn-primary remove_field"
-                                     value="Delete">
+                           
+                                     <input type="button" class="btn btn-danger remove_field"
+                                    onclick="add_more_inverter_button('{{$panel->id}}');" value="Delete">
                             </div>
  @endforeach
 
