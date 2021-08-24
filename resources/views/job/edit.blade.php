@@ -739,7 +739,7 @@
                                 </div>
                            
                                      <input type="button" class="btn btn-danger remove_field"
-                                    onclick="add_more_inverter_button('{{$panel->id}}');" value="Delete">
+                                    onclick="add_more_inverter_button('{{$inverter->id}}');" value="Delete">
                             </div>
  @endforeach
 
