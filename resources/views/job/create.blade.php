@@ -510,7 +510,7 @@
                                     <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                         <div class="form-group">
                                             <label for="Panels_search" class="control-label"> Quick Search: </label>
-                                            <input type="date" class="form-control" id="install_date"
+                                            <input type="text" class="form-control" id="install_date"
                                                 name="install_date[]" value="">
                                         </div>
                                     </div>
@@ -579,7 +579,7 @@
                                     <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                         <div class="form-group">
                                             <label for="Title" class="control-label"> Quick Search: </label>
-                                            <input type="date" class="form-control" id="inverter_Quick_Search"
+                                            <input type="text" class="form-control" id="inverter_Quick_Search"
                                                 name="inverter_Quick_Search[]" value="{{old('title')}}">
                                         </div>
                                     </div>
