@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Jobs;
 use App\Models\Panels;
 use App\Models\Inverter;
+use App\Models\PanelSerials;
+use App\Models\InvetrerSerials;
 use Illuminate\Http\Request;
 use Auth;
 use Spatie\Permission\Models\Role;
@@ -151,7 +153,7 @@ for($i=0; $i<count($input['install_date']); $i++)
 {
     $Panels= new Panels;
     $Panels->install_date= $input['install_date'][$i];
-    $Panels->total_no_solar_panel= $input['total_no_solar_panel'][$i];
+    //$Panels->total_no_solar_panel= $input['total_no_solar_panel'][$i];
 	$Panels->Panels_Brand= $input['Panels_Brand'][$i];
 	$Panels->Panels_Model= $input['Panels_Model'][$i];
 	$Panels->enter_no_of_solar_panal= $input['enter_no_of_solar_panal'][$i];
@@ -204,15 +206,19 @@ for($i=0; $i<count($input['inverter_Quick_Search']); $i++)
     public function edit(Jobs $job)
     {
 
-		$unit_type =  DB::table('unit_types')->get()->toArray();
-		$street_types =  DB::table('street_types')->get()->toArray();
-		$installers = DB::table('installers')->where('installer_job_type', 'like', '%Installer%')->get()->toArray();
-		$Electricians= DB::table('installers')->where('installer_job_type', 'like', '%Electrician%')->get()->toArray();
-		$Designers = DB::table('installers')->where('installer_job_type', 'like', '%Designer%')->get()->toArray();
-		$panels = DB::table('tbl_panels')->where('job_id',$job['id'])->get()->toArray();
-		$inverters = DB::table('tbl_inverters')->where('job_id',$job['id'])->get()->toArray();
+        $unit_type =  DB::table('unit_types')->get()->toArray();
+        $street_types =  DB::table('street_types')->get()->toArray();
+        $installers = DB::table('installers')->where('installer_job_type', 'like', '%Installer%')->get()->toArray();
+        $Electricians= DB::table('installers')->where('installer_job_type', 'like', '%Electrician%')->get()->toArray();
+        $Designers = DB::table('installers')->where('installer_job_type', 'like', '%Designer%')->get()->toArray();
+        $panels = DB::table('tbl_panels')->where('job_id',$job['id'])->get()->toArray();
+        $inverters = DB::table('tbl_inverters')->where('job_id',$job['id'])->get()->toArray();
+        $balance = DB::table('tbl_panels')->where('job_id' ,$job['id'])->sum('enter_no_of_solar_panal');
+        $Enter_number_of_inverter = DB::table('tbl_inverters')->where('job_id' ,$job['id'])->sum('Enter_number_of_inverter');
+    
        
-        return view('job.edit',compact('unit_type','street_types','job','installers','Electricians','Designers','panels','inverters'));
+        return view('job.edit',compact('unit_type','street_types','job','installers','Electricians','Designers','panels',
+            'inverters','balance','Enter_number_of_inverter'));
     }
     
     /**
@@ -274,40 +280,91 @@ for($i=0; $i<count($input['inverter_Quick_Search']); $i++)
 		/*echo "<pre>";
 		print_r($input);exit;
 		echo "</pre>";*/
-		if(isset($input['install_date'])){
-		
-$Panels=Panels::where('job_id',$job['id'])->delete();
-for($i=0; $i<count($input['install_date']); $i++)
-{
-    $Panels= new Panels;
-	$Panels->install_date= $input['install_date'][$i];
-    $Panels->total_no_solar_panel= $input['total_no_solar_panel'][$i];
-	$Panels->Panels_Brand= $input['Panels_Brand'][$i];
-	$Panels->Panels_Model= $input['Panels_Model'][$i];
-	$Panels->enter_no_of_solar_panal= $input['enter_no_of_solar_panal'][$i];
-	$Panels->added_by= $userId;
-	$Panels->status= '1';
-	$Panels->job_id=$job_id;	
-    $Panels->save();
-}
-		}
 
-	if(isset($input['inverter_Quick_Search'])){	
-$Inverter_res=Inverter::where('job_id',$job['id'])->delete();
-for($i=0; $i<count($input['inverter_Quick_Search']); $i++)
-{
-    $Inverter= new Inverter;
-    $Inverter->inverter_Quick_Search_date= $input['inverter_Quick_Search'][$i];
-    $Inverter->inverter_Brand= $input['inverter_Brand'][$i];
-	$Inverter->inverter_Series= $input['inverter_Series'][$i];
-	$Inverter->inverter_Model= $input['inverter_Model'][$i];
-	$Inverter->Enter_number_of_inverter= $input['Enter_number_of_inverter'][$i];
-	$Inverter->added_by= $userId;
-	$Inverter->status= '1';
-	$Inverter->job_id=$job_id;	
-    $Inverter->save();
-}	
-	}
+		if(isset($input['install_date']))
+        {       
+                $Panels=Panels::where('job_id',$job['id'])->delete();
+                for($i=0; $i<count($input['install_date']); $i++)
+                {
+                    $Panels= new Panels;
+                    $Panels->install_date= $input['install_date'][$i];
+                   // $Panels->total_no_solar_panel= $input['total_no_solar_panel'][$i];
+                    $Panels->Panels_Brand= $input['Panels_Brand'][$i];
+                    $Panels->Panels_Model= $input['Panels_Model'][$i];
+                    $Panels->enter_no_of_solar_panal= $input['enter_no_of_solar_panal'][$i];
+                    $Panels->added_by= $userId;
+                    $Panels->status= '1';
+                    $Panels->job_id=$job_id;    
+                    $Panels->save();
+
+                    $Panels_id=$Panels->id;
+                            if(isset($input['Panel_Serial_Numbers']))
+                            {       
+                                    $PanelSerials=PanelSerials::where('job_id',$job['id'])->delete();
+                                    for($i=0; $i<count($input['Panel_Serial_Numbers']); $i++)
+                                    {
+                                        $PanelSerials= new PanelSerials;
+                                        $PanelSerials->panel_id= $Panels_id;
+                                        $PanelSerials->job_id=$job_id;
+                                        $PanelSerials->Panel_Serial_Numbers= $input['Panel_Serial_Numbers'][$i];
+                                        $PanelSerials->created_by= $userId;
+                                        $PanelSerials->status= '1';
+                                        $PanelSerials->save();
+                                    }
+                            }else{
+                                $Panels=PanelSerials::where('job_id',$job['id'])->delete();
+                            }
+                }
+        }else{
+            $Panels=Panels::where('job_id',$job['id'])->delete();
+        }
+
+        
+
+
+
+
+
+	if(isset($input['inverter_Quick_Search']))
+    {   
+
+            $Inverter_res=Inverter::where('job_id',$job['id'])->delete();
+            for($i=0; $i<count($input['inverter_Quick_Search']); $i++)
+            {
+                $Inverter= new Inverter;
+                $Inverter->inverter_Quick_Search_date= $input['inverter_Quick_Search'][$i];
+                $Inverter->inverter_Brand= $input['inverter_Brand'][$i];
+                $Inverter->inverter_Series= $input['inverter_Series'][$i];
+                $Inverter->inverter_Model= $input['inverter_Model'][$i];
+                $Inverter->Enter_number_of_inverter= $input['Enter_number_of_inverter'][$i];
+                $Inverter->added_by= $userId;
+                $Inverter->status= '1';
+                $Inverter->job_id=$job_id;  
+                $Inverter->save();
+
+                $Inverter_id=$Inverter->id;
+        if(isset($input['Invetrers_Serial_Numbers']))
+        {       
+                $InverterSerials=InvetrerSerials::where('job_id',$job['id'])->delete();
+                for($i=0; $i<count($input['Invetrers_Serial_Numbers']); $i++)
+                {
+                    $InverterSerials= new InvetrerSerials;
+                    $InverterSerials->inverter_id= $Inverter_id;
+                    $InverterSerials->job_id=$job_id;
+                    $InverterSerials->Invetrers_Serial_Numbers= $input['Invetrers_Serial_Numbers'][$i];
+                    $InverterSerials->created_by= $userId;
+                    $InverterSerials->status= '1';
+                    $InverterSerials->save();
+                }
+        }else{
+            $Panels=InvetrerSerials::where('job_id',$job['id'])->delete();
+        }
+            }   
+    }else{
+            $Inverter_res=Inverter::where('job_id',$job['id'])->delete();
+        }
+
+        
 
         return redirect()->route('job.index')
                         ->with('success','Job Updated Successfully');

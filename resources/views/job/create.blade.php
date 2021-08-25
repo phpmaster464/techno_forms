@@ -500,6 +500,14 @@
                             <input type="button" class="btn btn-info add_field_button"
                                            onclick="add_more_button();" value="Add More Fields">
                         </div>
+                        <!--div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="Title" class="control-label"> Total Number of solar panel
+                                            </label>
+                                            <input type="text" class="form-control" id="total_no_solar_panel"
+                                                name="total_no_solar_panel[]" value="{{old('no_solar_panel')}}">
+                                        </div>
+                                    </div-->
                         <div class="owner-details-wrapper-panel">
                             <div class="owner-details-wrapperone" id="newone">
                                 <div class="heading-one">
@@ -514,14 +522,14 @@
                                                 name="install_date[]" value="">
                                         </div>
                                     </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <!--div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                         <div class="form-group">
                                             <label for="Title" class="control-label"> Total Number of solar panel
                                             </label>
                                             <input type="text" class="form-control" id="total_no_solar_panel"
                                                 name="total_no_solar_panel[]" value="{{old('no_solar_panel')}}">
                                         </div>
-                                    </div>
+                                    </div-->
                                     <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                         <div class="form-group select-wrapper">
                                             <label for="Panels_Brand" class="control-label">Brand
@@ -553,7 +561,7 @@
                                         <div class="form-group">
                                             <label for="Title" class="control-label"> Enter number of Solar Panels
                                             </label>
-                                            <input type="text" class="form-control" id="enter_no_of_solar_panal"
+                                            <input type="text" class="form-control txt" id="enter_no_of_solar_panal"
                                                 name="enter_no_of_solar_panal[]" value="{{old('title')}}">
                                         </div>
                                     </div>

@@ -576,20 +576,20 @@
                                         <div class="form-group">
                                             <label for="Panels_search" class="control-label"> Quick Search: </label>
 
-                                            <input type="date" class="form-control" id="install_date"
+                                            <input type="text" class="form-control" id="install_date"
                                                 name="install_date[]" value="{{$panel->install_date}}">
 
                                         </div>
                                     </div>
 
-                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                    <!--div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                         <div class="form-group">
                                             <label for="Title" class="control-label"> Total Number of solar panel
                                             </label>
                                             <input type="text" class="form-control" id="total_no_solar_panel"
                                                 name="total_no_solar_panel[]" value="{{$panel->total_no_solar_panel}}">
                                         </div>
-                                    </div>
+                                    </div-->
                                     <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                         <div class="form-group select-wrapper">
                                             <label for="Panels_Brand" class="control-label">Brand
@@ -631,8 +631,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="button" class="btn btn-danger remove_field"
-                                    onclick="delete_extra_panels('{{$panel->id}}');" value="Delete">
+                                <a href="#" class="btn btn-primary remove_field" >Delete</a>
 
                             </div>
                                @endforeach
@@ -649,8 +648,7 @@
                                         onclick="add_more_inverter_button();" value="Add More Fields">
                                         </div>
 
-                        <div class="inventory-wrapper">
-                        
+                        <div class="inventory-wrapper">                        
                           @foreach($inverters as $k=>$inverter)
                             <div class="owner-details-wrappertwo">
                                 <div class="heading-one">
@@ -662,7 +660,7 @@
                                     <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                         <div class="form-group">
                                             <label for="Title" class="control-label"> Quick Search: </label>
-                                            <input type="date" class="form-control" id="inverter_Quick_Search"
+                                            <input type="text" class="form-control" id="inverter_Quick_Search"
                                                 name="inverter_Quick_Search[]"
                                                 value="{{$inverter->inverter_Quick_Search_date}}">
                                         </div>
@@ -732,8 +730,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="button" class="btn btn-danger"
-                                    onclick="delete_extra_inverter('{{$inverter->id}}');" value="Delete">
+ <a href="#" class="btn btn-primary remove_field" >Delete</a>
                             </div>
  @endforeach
 
@@ -773,6 +770,35 @@
                                         <textarea id="AdditinalInformation" class="form-control" maxlength="225" rows="2"
                                             name="additional_installation_information"> {{$job->additional_installation_information}}</textarea>
                                     </div>
+                                </div>
+                                <div class="col-xl-2 col-lg-2 col-md-6 mb-3">
+                                        <div class="form-group">
+                                            <label for="Panel Serial Numbers" class="control-label"> Panel Serial Numbers
+                                            </label> 
+                                            @for ($i = 0; $i < $balance; $i++) 
+                                             <div id="Panel_Serial_Numbers{{$i}}">
+                                                <input type="text" class="form-control" id="Panel_Serial_Numbers"
+                                                name="Panel_Serial_Numbers[]"
+                                                value=""><a href="#" class="btn btn-primary remove_field"id="{{$i}}"
+                                                 onclick="Panel_Serial_Numbers(this.id);" >Delete</a></br> 
+                                                </div>
+                                            @endfor
+                                        </div>
+                                </div>
+
+                                <div class="col-xl-2 col-lg-2 col-md-6 mb-3">
+                                        <div class="form-group">
+                                            <label for="Invetrers Serial Numbers" class="control-label"> Invetrers Serial Numbers
+                                            </label> 
+                                            @for ($i = 0; $i < $Enter_number_of_inverter; $i++) 
+                                            <div id="Invetrers_Serial_Numbers{{$i}}">
+                                                <input type="text" class="form-control" id="Invetrers_Serial_Numbers"
+                                                name="Invetrers_Serial_Numbers[]"
+                                                value=""> <a href="#" class="btn btn-primary remove_field" id="{{$i}}"
+                                                onclick="Invetrers_Serial_Numbers(this.id);">Delete</a></br>
+                                            </div>
+                                            @endfor
+                                        </div>
                                 </div>
                             </div>
                             <div class="row">
