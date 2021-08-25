@@ -16,7 +16,7 @@ class Installer extends Model
      */
     protected $table = "installers";
     protected $fillable = [
-        'first_name','last_name','email','mobile','phone','address_type','unit_type','unit_number','street_number','street_name','street_type','postal_delivery_type','postal_delivery_number','suburb','state','postcode','installer_logo','installer_photo','installer_license_photo','job_type','installer_job_type','installer_status','created_by','updated_by'
+        'first_name','last_name','email','mobile','phone','address_type','unit_type','unit_number','address_latitude','address_longitude','street_number','street_name','street_type','postal_delivery_type','postal_delivery_number','suburb','state','postcode','installer_logo','installer_photo','installer_license_photo','job_type','installer_job_type','installer_status','created_by','updated_by'
 
     ];
 }

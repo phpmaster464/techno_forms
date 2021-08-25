@@ -113,7 +113,6 @@ class JobController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required',
-            'phone' => 'required',
             'owner_postal_address_type' => 'required',
             'owner_unit_type' => 'required',
             'company_abn' => 'required',

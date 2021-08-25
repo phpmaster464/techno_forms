@@ -121,7 +121,7 @@
                                 <label for="Mobile" class="col-md-3 col-12 control-label">Mobile Number <span
                                         class="mdi mdi-multiplication"></span></label>
                                 <div class="col-md-9 col-12">
-                                    <input type="text" class="form-control phone" id="Mobile"
+                                    <input type="text" class="form-control phone" maxlength="10" id="Mobile"
                                         placeholder="Enter Mobile Number" value="{{$installer->mobile}}" name="mobile">
                                 </div>
                             </div>
@@ -131,10 +131,9 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                             <div class="form-group">
-                                <label for="Phone" class="col-md-3 col-12 control-label">Phone Number <span
-                                        class="mdi mdi-multiplication"></span></label>
+                                <label for="Phone" class="col-md-3 col-12 control-label">Secondary Contact </label>
                                 <div class="col-md-9 col-12">
-                                    <input type="text" class="form-control phone" id="Phone" placeholder="Enter Phone Number"
+                                    <input type="text" class="form-control phone" id="Phone" maxlength="10" placeholder="Enter Phone Number"
                                         value="{{$installer->phone}}" name="phone">
                                 </div>
                             </div>
@@ -286,8 +285,7 @@
 
                         <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                             <div class="form-group">
-                                <label for="AddressType" class="col-md-3 col-12 control-label">Address Type<span
-                                        class="mdi mdi-multiplication"></span></label>
+                                <label for="AddressType" class="col-md-3 col-12 control-label">Address Type</label>
                                 <div class="col-md-9 col-12">
                                     <!-- <input type="text" class="form-control" id="CompanyName"
                                     placeholder="Search Address" name="company_name"> -->
@@ -345,8 +343,7 @@
 
                         <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                             <div class="form-group">
-                                <label for="StreetNumber" class="col-md-3 col-12 control-label">Street Number<span
-                                        class="mdi mdi-multiplication"></span></label>
+                                <label for="StreetNumber" class="col-md-3 col-12 control-label">Street Number</label>
                                 <div class="col-md-9 col-12">
                                     <input type="text" class="form-control" id="street_number"
                                         placeholder="Street Number" value="{{$installer->street_number}}"
@@ -357,8 +354,7 @@
 
                         <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                             <div class="form-group">
-                                <label for="StreetName" class="col-md-3 col-12 control-label">Street Name<span
-                                        class="mdi mdi-multiplication"></span></label>
+                                <label for="StreetName" class="col-md-3 col-12 control-label">Street Name</label>
                                 <div class="col-md-9 col-12">
                                     <input type="text" class="form-control" id="street_name" placeholder="Street Name"
                                         value="{{$installer->street_name}}" name="street_name">
@@ -368,8 +364,7 @@
 
                         <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                             <div class="form-group">
-                                <label for="StreetType" class="col-md-3 col-12 control-label">Street Type<span
-                                        class="mdi mdi-multiplication"></span></label>
+                                <label for="StreetType" class="col-md-3 col-12 control-label">Street Type</label>
                                 <div class="col-md-9 col-12">
                                     <!-- <input type="text" class="form-control" id="street_type"
                 placeholder="Street Type" name="street_type"> -->
@@ -395,7 +390,7 @@
                         <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                             <div class="form-group">
                                 <label for="PostalDeliveryType" class="col-md-3 col-12 control-label">Postal Delivery
-                                    Type<span class="mdi mdi-multiplication"></span></label>
+                                    Type</label>
                                 <div class="col-md-9 col-12">
                                     <input type="text" class="form-control" id="postal_delivery_type"
                                         placeholder="Postal Delivery Type" value="{{$installer->postal_delivery_type}}"
@@ -406,7 +401,7 @@
                         <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                             <div class="form-group">
                                 <label for="PostalDeliveryNumber" class="col-md-3 col-12 control-label">Postal Delivery
-                                    Number<span class="mdi mdi-multiplication"></span></label>
+                                    Number</label>
                                 <div class="col-md-9 col-12">
                                     <input type="text" class="form-control" id="postal_delivery_number"
                                         placeholder="Postal Delivery Number"
@@ -419,8 +414,7 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                             <div class="form-group">
-                                <label for="Suburb" class="col-md-3 col-12 control-label">Suburb<span
-                                        class="mdi mdi-multiplication"></span></label>
+                                <label for="Suburb" class="col-md-3 col-12 control-label">Suburb</label>
                                 <div class="col-md-9 col-12">
                                     <input type="text" class="form-control" id="suburb" placeholder="Suburb"
                                         value="{{$installer->suburb}}" name="suburb">
@@ -430,8 +424,7 @@
 
                         <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                             <div class="form-group">
-                                <label for="State" class="col-md-3 col-12 control-label">State<span
-                                        class="mdi mdi-multiplication"></span></label>
+                                <label for="State" class="col-md-3 col-12 control-label">State</label>
                                 <div class="col-md-9 col-12">
                                     <!-- <input type="text" class="form-control" id="state"
         placeholder="State" name="state"> -->
@@ -452,8 +445,7 @@
 
                         <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                             <div class="form-group">
-                                <label for="Postcode" class="col-md-3 col-12 control-label">Postcode<span
-                                        class="mdi mdi-multiplication"></span></label>
+                                <label for="Postcode" class="col-md-3 col-12 control-label">Postcode</label>
                                 <div class="col-md-9 col-12">
                                     <input type="text" class="form-control" id="postcode" placeholder="Postcode"
                                         name="postcode">

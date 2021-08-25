@@ -103,18 +103,17 @@
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                 <div class="form-group">
-                                    <label for="Phone" class="col-12 control-label">Phone : <span
-                                            class="mdi mdi-multiplication"></span></label>
-                                    <input type="text" class="form-control phone" id="Phone" value="{{ old('phone')}}" placeholder="Enter Phone Number" name="phone">
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                <div class="form-group">
                                     <label for="Mobile" class="col-12 control-label">Mobile Number <span
                                             class="mdi mdi-multiplication"></span></label>
-                                    <input type="text" class="form-control phone" id="Mobile" value="{{ old('mobile')}}" placeholder="Enter Mobile Number" name="mobile">
+                                    <input type="text" class="form-control phone" id="Mobile" maxlength="10"  value="{{ old('mobile')}}" placeholder="Enter Mobile Number" name="mobile">
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                <div class="form-group">
+                                    <label for="Phone" class="col-12 control-label">Secondary Contact :</label>
+                                    <input type="text" class="form-control phone" id="Phone" maxlength="10" value="{{ old('phone')}}" placeholder="Enter Phone Number" name="phone">
+                                </div>
                         </div>
                         <div class="row ">
                             <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
@@ -202,8 +201,7 @@
                         <div class="row ">
                             <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                                 <div class="form-group">
-                                    <label for="Company ABN" class="col-12 control-label">Company ABN: :<span
-                                            class="mdi mdi-multiplication"></span></label>
+                                    <label for="Company ABN" class="col-12 control-label">Company ABN: :</label>
                                     <input type="text" class="form-control" id="text" placeholder="Enter Company ABN"
                                        value="{{ old('companyabn')}}" name="companyabn">
                                 </div>
@@ -211,7 +209,7 @@
                             <div class="col-xl-6 col-lg-6 col-12 mb-3">
                                 <div class="form-group">
                                     <label for="companyname" class="col-12 control-label">Company/Bussiness Name
-                                        :<span class="mdi mdi-multiplication"></span></label>
+                                        :</label>
                                         <div>
                                             <select id="companyname" name="companyname" class="form-control">
                                                 <option value="Physical">Physical</option>
@@ -251,7 +249,7 @@
                             <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                                 <div class="form-group">
                                     <label for="postal_address" class="col-12 control-label">Postal Address Type
-                                        :<span class="mdi mdi-multiplication"></span></label>
+                                        :</label>
                                     <!-- <input type="text" class="form-control" id="CompanyName"
                                             placeholder="Search Address" name="company_name"> -->
                                             <div>
@@ -297,12 +295,13 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" id="address_latitude">
+                        <input type="hidden" id="address_longitude">
                         <div class="row" style="display:none" id="addressdiv1">
                              
                             <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                 <div class="form-group">
-                                    <label for="StreetNumber" class="col-12 control-label">Street Number<span
-                                            class="mdi mdi-multiplication"></span></label>
+                                    <label for="StreetNumber" class="col-12 control-label">Street Number</label>
                                     <input type="text" class="form-control" id="street_number" placeholder="Enter Street Number"
                                       value="{{ old('street_number')}}" name="street_number">
                                 </div>
@@ -310,16 +309,14 @@
     
                             <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                 <div class="form-group">
-                                    <label for="StreetName" class="col-12 control-label">Street Name<span
-                                            class="mdi mdi-multiplication"></span></label>
+                                    <label for="StreetName" class="col-12 control-label">Street Name</label>
                                     <input type="text" class="form-control" id="street_name" placeholder="Enter Street Name"
                                        value="{{ old('street_name')}}" name="street_name">
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                 <div class="form-group">
-                                    <label for="StreetType" class="col-12 control-label">Street Type<span
-                                            class="mdi mdi-multiplication"></span></label>
+                                    <label for="StreetType" class="col-12 control-label">Street Type</label>
                                             <div>
                                     <select class="form-control" id="street_type" name="street_type">
                                         <option>
@@ -335,15 +332,13 @@
                         <div class="row" style="display:none" id="addressdiv2">
                             <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                 <div class="form-group">
-                                    <label for="Suburb" class="col-12 control-label">Town/Suburb<span
-                                            class="mdi mdi-multiplication"></span></label>
+                                    <label for="Suburb" class="col-12 control-label">Town/Suburb</label>
                                     <input type="text" class="form-control" id="suburb" placeholder="Enter Town/Suburb" value="{{ old('suburb')}}" name="suburb">
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                 <div class="form-group">
-                                    <label for="State" class="col-12 control-label">State<span
-                                            class="mdi mdi-multiplication"></span></label>
+                                    <label for="State" class="col-12 control-label">State</label>
                                             <div>
                                     <select class="form-control" id="state" name="state">
                                         <option>
@@ -357,8 +352,7 @@
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                 <div class="form-group">
-                                    <label for="Postcode" class="col-12 control-label">Postcode<span
-                                            class="mdi mdi-multiplication"></span></label>
+                                    <label for="Postcode" class="col-12 control-label">Postcode</label>
                                     <input type="text" class="form-control" id="postcode" placeholder="Enter Postcode"
                                       value="{{ old('postcode')}}" name="postcode">
                                 </div>

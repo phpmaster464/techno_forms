@@ -296,7 +296,7 @@ class UnverifiedInstallerController extends Controller
 
     	$unverifiedinstaller = UnverifiedInstaller::where('email',$user_array['email'])->first();
 
-    	$installer_array = array('first_name'=>$unverifiedinstaller->first_name,'last_name'=>$unverifiedinstaller->last_name,'email'=>$unverifiedinstaller->email,'mobile'=>$unverifiedinstaller->mobile,'phone'=>$unverifiedinstaller->phone,'job_type'=>$unverifiedinstaller->job_type,'installer_job_type'=>$unverifiedinstaller->installer_job_type,'unit_type'=>$unverifiedinstaller->unit_type,'unit_number'=>$unverifiedinstaller->unit_number,'street_number'=>$unverifiedinstaller->street_number,'street_name'=>$unverifiedinstaller->street_name,'street_type'=>$unverifiedinstaller->street_type,'suburb'=>$unverifiedinstaller->suburb,'state'=>$unverifiedinstaller->state,'postcode'=>$unverifiedinstaller->postcode,'created_by'=>$unverifiedinstaller->null,'updated_by'=>$unverifiedinstaller->null,'created_at'=>$unverifiedinstaller->null,'updated_at'=>$unverifiedinstaller->null);
+    	$installer_array = array('first_name'=>$unverifiedinstaller->first_name,'last_name'=>$unverifiedinstaller->last_name,'email'=>$unverifiedinstaller->email,'mobile'=>$unverifiedinstaller->mobile,'phone'=>$unverifiedinstaller->phone,'job_type'=>$unverifiedinstaller->job_type,'installer_job_type'=>$unverifiedinstaller->installer_job_type,,'address_latitude'=>$unverifiedinstaller->address_latitude,,'address_longitude'=>$unverifiedinstaller->address_longitude,'unit_type'=>$unverifiedinstaller->unit_type,'unit_number'=>$unverifiedinstaller->unit_number,'street_number'=>$unverifiedinstaller->street_number,'street_name'=>$unverifiedinstaller->street_name,'street_type'=>$unverifiedinstaller->street_type,'suburb'=>$unverifiedinstaller->suburb,'state'=>$unverifiedinstaller->state,'postcode'=>$unverifiedinstaller->postcode,'created_by'=>$unverifiedinstaller->null,'updated_by'=>$unverifiedinstaller->null,'created_at'=>$unverifiedinstaller->null,'updated_at'=>$unverifiedinstaller->null);
 
 		Installer::create($installer_array);
         $roles = array('Installer');
@@ -343,7 +343,6 @@ class UnverifiedInstallerController extends Controller
                'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|unique:unverified_installers,email',
-            'phone' => 'required|unique:unverified_installers,phone',
             'mobile' => 'required',
             'username' => 'required',
             'password' => 'required',
@@ -352,15 +351,6 @@ class UnverifiedInstallerController extends Controller
             'formdate' => 'required',
             'todate' => 'required',
             'companywebsite' => 'required',
-            'postaladdress' => 'required',
-            'unit_type' => '',
-            'unit_number' => '',
-            'street_number' => 'required',
-            'street_name' => 'required',
-            'street_type' => 'required',
-            'suburb' => 'required',
-            'state' => 'required',
-            'postcode' => 'required',
             'cecaccnumber' => 'required',
             'licensenumber' => 'required',
             'cecdesignernumber' => 'required',

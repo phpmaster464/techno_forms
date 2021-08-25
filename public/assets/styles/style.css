@@ -706,24 +706,24 @@ button.btn.btn-primary {
 }
 
 .btn-info {
-    background: #00aeff;
+    background: #18385f;
 }
 
 .btn-info:hover,
 .btn-info:active,
 .btn-info:focus {
-    background: #00aeff !important;
+    background: #18385f !important;
 }
 
 .btn-info.btn-bordered {
-    border-color: #00aeff;
-    color: #00aeff;
+    border-color: #18385f;
+    color: #18385f;
 }
 
 .btn-info.btn-bordered:hover,
 .btn-info.btn-bordered:active,
 .btn-info.btn-bordered:focus {
-    border-color: #00aeff;
+    border-color: #18385f;
     color: #ffffff;
 }
 
@@ -887,7 +887,7 @@ button.btn.btn-primary {
 }
 
 .bg-info {
-    background-color: #00aeff !important;
+    background-color: #18385f !important;
 }
 
 .bg-warning {
@@ -1012,7 +1012,7 @@ button.btn.btn-primary {
 .table>thead>tr.info>th,
 .table>thead>tr>td.info,
 .table>thead>tr>th.info {
-    background: #00aeff;
+    background: #18385f;
 }
 
 .table>tbody>tr.primary>td,
@@ -2437,11 +2437,11 @@ Version 1.0
 }
 
 .box-content.info {
-    border-color: #00aeff;
+    border-color: #18385f;
 }
 
 .box-content.info .box-title {
-    color: #00aeff;
+    color: #18385f;
 }
 
 .box-content.warning {
@@ -2763,8 +2763,8 @@ Version 1.0
 }
 
 .checkbox.info input[type="checkbox"]:checked+label:before {
-    background: #00aeff;
-    border-color: #00aeff;
+    background: #18385f;
+    border-color: #18385f;
 }
 
 .checkbox.warning input[type="checkbox"]:checked+label:before {
@@ -3537,7 +3537,7 @@ table.focus-on>tbody>tr.focused.unfocused>td {
 }
 
 .radio.info label:after {
-    background: #00aeff;
+    background: #18385f;
 }
 
 .radio.warning label:after {
@@ -3569,7 +3569,7 @@ table.focus-on>tbody>tr.focused.unfocused>td {
 }
 
 .radio.info input[type="radio"]:checked+label:before {
-    border-color: #00aeff;
+    border-color: #18385f;
 }
 
 .radio.warning input[type="radio"]:checked+label:before {
@@ -3797,8 +3797,8 @@ table.focus-on>tbody>tr.focused.unfocused>td {
 }
 
 .switch.info input[type="checkbox"]:checked+label:before {
-    background: #00aeff;
-    border-color: #00aeff;
+    background: #18385f;
+    border-color: #18385f;
 }
 
 .switch.warning input[type="checkbox"]:checked+label:before {
@@ -4190,12 +4190,12 @@ table.focus-on>tbody>tr.focused.unfocused>td {
 }
 
 .box.box-solid.box-info {
-    border: 1px solid #00aeff;
+    border: 1px solid #18385f;
 }
 
 .box.box-solid.box-info>.box-header {
     color: #ffffff;
-    background-color: #00aeff;
+    background-color: #18385f;
 }
 
 .box.box-solid.box-info>.box-header a,
@@ -5259,7 +5259,7 @@ table.focus-on>tbody>tr.focused.unfocused>td {
 }
 
 .profile-avatar .btn-friend {
-    background: #00aeff;
+    background: #18385f;
 }
 
 .profile-avatar .btn-inbox {
@@ -5390,7 +5390,7 @@ table.focus-on>tbody>tr.focused.unfocused>td {
 }
 
 .contact-social .fa-phone {
-    background: #00aeff;
+    background: #18385f;
 }
 
 .contact-social .fa-envelope {
@@ -5942,7 +5942,7 @@ table.focus-on>tbody>tr.focused.unfocused>td {
 }
 
 .form-control:focus {
-    border-color: #00aeff !important;
+    border-color: #18385f !important;
     -webkit-box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12) !important;
     -moz-box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12) !important;
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12) !important;
@@ -7032,12 +7032,18 @@ main.py-4 {
 
 .job-detail-wrapper,
 .owner-details-wrapper,
-.installation-address-wrapper {
+.installation-address-wrapper,
+.owner-details-wrapper-panel,
+.inventory-wrapper,
+#advanceInstaller {
     padding: 30px 50px;
 }
 
 .job-detail-wrapper,
-.owner-details-wrapper {
+.owner-details-wrapper,
+.installation-address-wrapper,
+.owner-details-wrapper-panel,
+.inventory-wrapper {
     border-bottom: 1px solid #18385f;
     margin-bottom: 30px;
 }
@@ -7114,6 +7120,27 @@ main.py-4 {
     left: -21%;
 }
 
+.heading-one{
+display: flex;
+justify-content: space-between;
+    align-items: baseline;
+    position: relative;
+}
+
+.heading-one h4{
+    width: 50%;
+}
+
+.add-field-wrapper{
+    position: absolute;
+    right: 68px;
+}
+
+.panel-dynamic-wrapper,
+.inveter-dynamic-wrapper{
+    border-top: 1px solid #b3a7a7;
+    /* margin-top: 21px; */
+}
 
 /* ---------------------------- Media Query------------------------ */
 

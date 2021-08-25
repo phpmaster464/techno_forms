@@ -190,18 +190,19 @@
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="Mobile" class="control-label"> Mobile:</label>
-                                        <!-- {{-- <span
-                                                class="mdi mdi-multiplication"></span></label> --}} -->
-                                        <input type="text" class="form-control phone" id="Mobile" maxlength="10" name="mobile"
-                                            value="{{$job->mobile}}">
+                                        <label for="Phone" class="control-label"> Phone: <span
+                                                class="mdi mdi-multiplication"></span></label>
+                                        <input type="text" class="form-control phone" id="Phone" name="phone"
+                                            value="{{$job->phone}}">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="Phone" class="control-label"> Secondary Contact: </label>
-                                        <input type="text" class="form-control phone" id="Phone" maxlength="10" name="phone"
-                                            value="{{$job->phone}}">
+                                        <label for="Mobile" class="control-label"> Mobile:</label>
+                                        <!-- {{-- <span
+                                                class="mdi mdi-multiplication"></span></label> --}} -->
+                                        <input type="text" class="form-control phone" id="Mobile" name="mobile"
+                                            value="{{$job->mobile}}">
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +210,7 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group select-wrapper">
                                         <label for="PostalAddressType" class="control-label">Postal Address Type:
-                                           </label>
+                                            <span class="mdi mdi-multiplication"></span></label>
                                         <select class="form-control" id="PostalAddressType"
                                             name="owner_postal_address_type">
                                             <option value="">select</option>
@@ -264,14 +265,16 @@
                             <div class="row" id="SearchAddressdiv1">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="StreetNumber" class="control-label"> Street Number: </label>
+                                        <label for="StreetNumber" class="control-label"> Street Number: <span
+                                                class="mdi mdi-multiplication"></span> </label>
                                         <input type="text" class="form-control" id="StreetNumber"
                                             name="owner_street_number" value="{{$job->owner_street_number}}">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="StreetName" class="control-label"> Street Name:  </label>
+                                        <label for="StreetName" class="control-label"> Street Name: <span
+                                                class="mdi mdi-multiplication"></span> </label>
                                         <input type="text" class="form-control" id="StreetName" name="owner_street_name"
                                             value="{{$job->owner_street_name}}">
                                     </div>
@@ -279,7 +282,7 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group select-wrapper">
                                         <label for="StreetType" class="control-label">Street Type:
-                                           </label>
+                                            <span class="mdi mdi-multiplication"></span></label>
                                         <select class="form-control" id="StreetType" name="owner_street_type">
                                             <option value="">Select</option>
                                             @php
@@ -301,7 +304,8 @@
                             <div class="row" id="SearchAddressdiv2">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="Town" class="control-label"> Town: 
+                                        <label for="Town" class="control-label"> Town: <span
+                                                class="mdi mdi-multiplication"></span>
                                         </label>
                                         <input type="text" class="form-control" id="Town" name="owner_town"
                                             value="{{$job->owner_town}}">
@@ -309,14 +313,16 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="State" class="control-label"> State:  </label>
+                                        <label for="State" class="control-label"> State: <span
+                                                class="mdi mdi-multiplication"></span> </label>
                                         <input type="text" class="form-control" id="State" name="owner_state"
                                             {{-- disabled --}} value="{{$job->owner_state}}">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="PostCode" class="control-label"> Post Code: </label>
+                                        <label for="PostCode" class="control-label"> Post Code: <span
+                                                class="mdi mdi-multiplication"></span> </label>
                                         <input type="text" class="form-control" id="PostCode" name="owner_post_code"
                                             value="{{$job->owner_post_code}}">
                                     </div>
@@ -463,357 +469,394 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                @endif
                         </div>
-                        @endif
 
-                        <!-- installer start -->
-                        <div class="owner-details-wrapper">
-                            <h4>Installer:</h4>
-                            <div class="row">
-                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group select-wrapper">
-                                        <label for="Installer" class="control-label">Select Installer: </label>
-                                        <select name="installer_type" class="form-control select2_1"
-                                            id="installer_type">
-                                            <option></option>
-                                            @php
-                                            foreach($installers as $k=>$installer){
-                                            @endphp
-                                            @if($job->installer_type == $installer->id)
-                                            <option value="{{$installer->id}}" selected>{{$installer->first_name}}
-                                            </option>
-                                            @else
-                                            <option value="{{$installer->id}}">{{$installer->first_name}}</option>
-                                            @endif
-
-                                            @php
-                                            }
-                                            @endphp
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group select-wrapper">
-                                        <label for="Designer" class="control-label">Select Designer: </label>
-                                        <select name="Designer_type" class="form-control select2_1" id="Designer_type">
-                                            <option></option>
-
-                                            @php
-                                            foreach($Designers as $k=>$Designer){
-                                            @endphp
-                                            @if($job->Designer_type == $Designer->id)
-                                            <option value="{{$Designer->id}}" selected>{{$Designer->first_name}}
-                                            </option>
-                                            @else
-                                            <option value="{{$Designer->id}}">{{$Designer->first_name}}</option>
-                                            @endif
-
-                                            @php
-                                            }
-                                            @endphp
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group select-wrapper">
-                                        <label for="Installer_state" class="control-label">Installer State
-                                           </label>
-                                        <select class="form-control" id="Installer_state" name="Installer_state" <option
-                                            value="">Select selected</option>
-
-                                            <option value="1" @if($job->Installer_state == '1') selected="true"
-                                                @endif>Select 1</option>
-                                            <option value="2" @if($job->Installer_state == '2') selected="true"
-                                                @endif>Select 1</option>
-                                            <option value="3" @if($job->Installer_state == '3') selected="true"
-                                                @endif>Select 1</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group select-wrapper">
-                                        <label for="Electrician" class="control-label">Select Electrician</label>
-                                        <select class="form-control" id="Electrician" name="Electrician" <option>
-                                            </option>
-
-                                            @php
-                                            foreach($Electricians as $k=>$Electrician){
-                                            @endphp
-                                            @if($job->Electrician == $Electrician->id)
-                                            <option value="{{$Electrician->id}}" selected>
-                                                {{$Electrician->first_name}}</option>
-                                            @else
-                                            <option value="{{$Electrician->id}}">{{$Electrician->first_name}}
-                                            </option>
-                                            @endif
-
-                                            @php
-                                            }
-                                            @endphp
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- installer  end-->
-
-                        <!--panel start -->
-                        <div class="add-field-wrapper">
-                        <input type="button" class="btn btn-info add_field_button" onclick="add_more_button();" value="Add More Fields">
-                        </div>
-                        <div class="owner-details-wrapper-panel">
-                          
-                         @foreach($panels as $k=>$panel)
-                            <div class="owner-details-wrapperone">
-                                <div class="heading-one">
-                                    <h4>Panels:</h4>
-
-                                  
-                                </div>
+                            <!-- installer start -->
+                            <div class="owner-details-wrapper">
+                                <h4>Installer:</h4>
                                 <div class="row">
                                     <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                        <div class="form-group">
-                                            <label for="Panels_search" class="control-label"> Quick Search: </label>
-
-                                            <input type="date" class="form-control" id="install_date"
-                                                name="install_date[]" value="{{$panel->install_date}}">
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                        <div class="form-group">
-                                            <label for="Title" class="control-label"> Total Number of solar panel
-                                            </label>
-                                            <input type="text" class="form-control" id="total_no_solar_panel"
-                                                name="total_no_solar_panel[]" value="{{$panel->total_no_solar_panel}}">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                         <div class="form-group select-wrapper">
-                                            <label for="Panels_Brand" class="control-label">Brand
-                                                <span class="mdi mdi-multiplication"></span></label>
-                                            <select class="form-control" id="Panels_Brand" name="Panels_Brand[]" <option
-                                                value="">Select selected</option>
-                                                <option value="1" @if($panel->Panels_Brand== '1') selected="true"
-                                                    @endif>Select 1</option>
-                                                <option value="2" @if($panel->Panels_Brand == '2') selected="true"
-                                                    @endif>Select 1</option>
-                                                <option value="3" @if($panel ->Panels_Brand == '3') selected="true"
-                                                    @endif>Select 1</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                        <div class="form-group select-wrapper">
-                                            <label for="Model" class="control-label">Model<span
+                                            <label for="Installer" class="control-label">Select Installer: <span
                                                     class="mdi mdi-multiplication"></span></label>
-                                            <select class="form-control" id="Panels_Model" name="Panels_Model[]" <option
-                                                value="">Select selected</option>
-                                                <option value="1" @if($panel->Panels_Model == '1') selected="true"
-                                                    @endif>Select 1</option>
-                                                <option value="2" @if($panel->Panels_Model == '2') selected="true"
-                                                    @endif>Select 1</option>
-                                                <option value="3" @if($panel ->Panels_Model == '3') selected="true"
-                                                    @endif>Select 1</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                        <div class="form-group">
-                                            <label for="Title" class="control-label"> Enter number of Solar Panels
-                                            </label>
-                                            <input type="text" class="form-control" id="enter_no_of_solar_panal"
-                                                name="enter_no_of_solar_panal[]"
-                                                value="{{$panel->enter_no_of_solar_panal}}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="button" class="btn btn-danger remove_field"
-                                    onclick="delete_extra_panels('{{$panel->id}}');" value="Delete">
-
-                            </div>
-                               @endforeach
-
-                        </div>
-                     
-
-                        <!--panel end -->
-
-
-                        <!-- inverter start -->
-                        <div class="add-field-wrapper">
-                        <input type="button" class="btn btn-info add_field_button"
-                                        onclick="add_more_inverter_button();" value="Add More Fields">
-                                        </div>
-
-                        <div class="inventory-wrapper">
-                        
-                          @foreach($inverters as $k=>$inverter)
-                            <div class="owner-details-wrappertwo">
-                                <div class="heading-one">
-                                    <h4>Inverter:</h4>
-
-                                   
-                                </div>
-                                <div class="row">
-                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                        <div class="form-group">
-                                            <label for="Title" class="control-label"> Quick Search: </label>
-                                            <input type="date" class="form-control" id="inverter_Quick_Search"
-                                                name="inverter_Quick_Search[]"
-                                                value="{{$inverter->inverter_Quick_Search_date}}">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                        <div class="form-group select-wrapper">
-                                            <label for="inverter_Brand" class="control-label">Brand
-                                                <span class="mdi mdi-multiplication"></span></label>
-                                            <select class="form-control" id="inverter_Brand" name="inverter_Brand[]"
-                                                <option value="">Select selected</option>
-                                                <option value="1" @if($inverter->inverter_Brand == '1')
-                                                    selected="true"
-                                                    @endif>Select 1</option>
-                                                <option value="2" @if($inverter->inverter_Brand == '2')
-                                                    selected="true"
-                                                    @endif>Select 1</option>
-                                                <option value="3" @if($inverter ->inverter_Brand == '3')
-                                                    selected="true"
-                                                    @endif>Select 1</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                        <div class="form-group select-wrapper">
-                                            <label for="inverter_Series" class="control-label">Series
-                                                <span class="mdi mdi-multiplication"></span></label>
-                                            <select class="form-control" id="inverter_Series" name="inverter_Series[]"
-                                                <option value="">Select selected</option>
-                                                <option value="1" @if($inverter->inverter_Series == '1')
-                                                    selected="true"
-                                                    @endif>Select 1</option>
-                                                <option value="2" @if($inverter->inverter_Series == '2')
-                                                    selected="true"
-                                                    @endif>Select 1</option>
-                                                <option value="3" @if($inverter ->inverter_Series == '3')
-                                                    selected="true" @endif>Select 1</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                        <div class="form-group select-wrapper">
-                                            <label for="inverter_Model" class="control-label">Model
-                                                <span class="mdi mdi-multiplication"></span></label>
-                                            <select class="form-control" id="inverter_Model" name="inverter_Model[]"
-                                                <option value="">Select selected</option>
-                                                <option value="1" @if($inverter->inverter_Model == '1')
-                                                    selected="true"
-                                                    @endif>Select 1</option>
-                                                <option value="2" @if($inverter->inverter_Model == '2')
-                                                    selected="true"
-                                                    @endif>Select 1</option>
-                                                <option value="3" @if($inverter ->inverter_Model == '3')
-                                                    selected="true"
-                                                    @endif>Select 1</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                        <div class="form-group">
-                                            <label for="Enter number of inverter" class="control-label"> Enter
-                                                number of
-                                                inverter </label>
-                                            <input type="text" class="form-control" id="Enter_number_of_inverter"
-                                                name="Enter_number_of_inverter[]"
-                                                value="{{$inverter ->Enter_number_of_inverter}}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="button" class="btn btn-danger"
-                                    onclick="delete_extra_inverter('{{$inverter->id}}');" value="Delete">
-                            </div>
- @endforeach
-
-                        </div>
-                       
-                        <div class="rate-dpower-wrapper" id="advanceInstaller">
-                            <div class="row">
-                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="Rated_Power_Output" class="control-label"> Rated Power
-                                            Output:
-                                        </label>
-                                        <input type="text" class="form-control" id="Rated_Power_Output"
-                                            value="{{ $job->Rated_Power_Output}}" name="Rated_Power_Output">
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="NMI" class="control-label"> Deeming Period: 10 Years
-                                        </label>
-                                        <input type="text" class="form-control" id="Deeming_Period"
-                                            value="{{$job->Deeming_Period}}" name="Deeming_Period">
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="NMI" class="control-label"> NMI: </label>
-                                        <input type="text" class="form-control" id="NMI" name="nmi" value="{{$job->nmi}}">
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="AdditinalInformation" class="control-label">Additinal
-                                            Installation
-                                            Information:</span></label>
-                                        <textarea id="AdditinalInformation" class="form-control" maxlength="225" rows="2"
-                                            name="additional_installation_information"> {{$job->additional_installation_information}}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xl-2 col-lg-2 col-md-12 mb-3">
-                                    <div id="container" class="form-group">
-                                        <label for="Status" class="col-md-3 col-12 control-label">Status
-                                        </label>
-                                        <div class="col-md-9 col-12">
-                                            <div class="switch" id="submit">
-                                                @if($job->job_status == "1")
-                                                <input type="hidden" name="job_status" id="edit_job_status" value="1">
-                                                <input type="checkbox" checked id="switch-2"
-                                                    onclick="update_company_status($(this),'edit_job_status');">
+                                            <select name="installer_type" class="form-control select2_1"
+                                                id="installer_type">
+                                                <option></option>
+                                                @php
+                                                foreach($installers as $k=>$installer){
+                                                @endphp
+                                                @if($job->installer_type == $installer->id)
+                                                <option value="{{$installer->id}}" selected>{{$installer->first_name}}
+                                                </option>
                                                 @else
-                                                <input type="hidden" name="job_status" id="edit_job_status" value="0">
-                                                <input type="checkbox" id="switch-2"
-                                                    onclick="update_company_status($(this),'edit_job_status');">
+                                                <option value="{{$installer->id}}">{{$installer->first_name}}</option>
                                                 @endif
 
-                                                <label for="switch-2"></label>
+                                                @php
+                                                }
+                                                @endphp
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                        <div class="form-group select-wrapper">
+                                            <label for="Designer" class="control-label">Select Designer: <span
+                                                    class="mdi mdi-multiplication"></span></label>
+                                            <select name="Designer_type" class="form-control select2_1"
+                                                id="Designer_type">
+                                                <option></option>
+
+                                                @php
+                                                foreach($Designers as $k=>$Designer){
+                                                @endphp
+                                                @if($job->Designer_type == $Designer->id)
+                                                <option value="{{$Designer->id}}" selected>{{$Designer->first_name}}
+                                                </option>
+                                                @else
+                                                <option value="{{$Designer->id}}">{{$Designer->first_name}}</option>
+                                                @endif
+
+                                                @php
+                                                }
+                                                @endphp
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                        <div class="form-group select-wrapper">
+                                            <label for="Installer_state" class="control-label">Installer State
+                                                <span class="mdi mdi-multiplication"></span></label>
+                                            <select class="form-control" id="Installer_state" name="Installer_state"
+                                                <option value="">Select selected</option>
+
+                                                <option value="1" @if($job->Installer_state == '1') selected="true"
+                                                    @endif>Select 1</option>
+                                                <option value="2" @if($job->Installer_state == '2') selected="true"
+                                                    @endif>Select 1</option>
+                                                <option value="3" @if($job->Installer_state == '3') selected="true"
+                                                    @endif>Select 1</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                        <div class="form-group select-wrapper">
+                                            <label for="Electrician" class="control-label">Select Electrician<span
+                                                    class="mdi mdi-multiplication"></span></label>
+                                            <select class="form-control" id="Electrician" name="Electrician" <option>
+                                                </option>
+
+                                                @php
+                                                foreach($Electricians as $k=>$Electrician){
+                                                @endphp
+                                                @if($job->Electrician == $Electrician->id)
+                                                <option value="{{$Electrician->id}}" selected>
+                                                    {{$Electrician->first_name}}</option>
+                                                @else
+                                                <option value="{{$Electrician->id}}">{{$Electrician->first_name}}
+                                                </option>
+                                                @endif
+
+                                                @php
+                                                }
+                                                @endphp
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- installer  end-->
+
+                            <!--panel start -->
+                            <div class="owner-details-wrapper-panel">
+                                <div class="owner-details-wrapperone">
+                                    <div class="heading-one">
+                                        <h4>Panels:</h4>
+                                        @foreach($panels as $k=>$panel)
+                                        <button class="add_field_button">Add More Fields</button>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label for="Panels_search" class="control-label"> Quick Search: </label>
+
+                                                <input type="date" class="form-control" id="install_date"
+                                                    name="install_date[]" value="{{$panel->install_date}}">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label for="Title" class="control-label"> Total Number of solar panel
+                                                </label>
+                                                <input type="text" class="form-control" id="total_no_solar_panel"
+                                                    name="total_no_solar_panel[]"
+                                                    value="{{$panel->total_no_solar_panel}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group select-wrapper">
+                                                <label for="Panels_Brand" class="control-label">Brand
+                                                    <span class="mdi mdi-multiplication"></span></label>
+                                                <select class="form-control" id="Panels_Brand" name="Panels_Brand[]"
+                                                    <option value="">Select selected</option>
+                                                    <option value="1" @if($panel->Panels_Brand== '1') selected="true"
+                                                        @endif>Select 1</option>
+                                                    <option value="2" @if($panel->Panels_Brand == '2') selected="true"
+                                                        @endif>Select 1</option>
+                                                    <option value="3" @if($panel ->Panels_Brand == '3') selected="true"
+                                                        @endif>Select 1</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group select-wrapper">
+                                                <label for="Model" class="control-label">Model<span
+                                                        class="mdi mdi-multiplication"></span></label>
+                                                <select class="form-control" id="Panels_Model" name="Panels_Model[]"
+                                                    <option value="">Select selected</option>
+                                                    <option value="1" @if($panel->Panels_Model == '1') selected="true"
+                                                        @endif>Select 1</option>
+                                                    <option value="2" @if($panel->Panels_Model == '2') selected="true"
+                                                        @endif>Select 1</option>
+                                                    <option value="3" @if($panel ->Panels_Model == '3') selected="true"
+                                                        @endif>Select 1</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label for="Title" class="control-label"> Enter number of Solar Panels
+                                                </label>
+                                                <input type="text" class="form-control" id="enter_no_of_solar_panal"
+                                                    name="enter_no_of_solar_panal[]"
+                                                    value="{{$panel->enter_no_of_solar_panal}}">
                                             </div>
                                         </div>
                                     </div>
+                                    <input type="button" class="btn btn-danger"
+                                        onclick="delete_extra_panels('{{$panel->id}}');" value="Delete">
+                                    @endforeach
                                 </div>
                             </div>
-                        </div>
+                            <!--panel end -->
 
-                    </div>
-                    <!-- inverter  end-->
 
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 text-center d-flex form-group margin-bottom-0 "
-                            id="buttonWrapper">
-                            <a class="btn btn-primary" href="{{ route('job.index') }}">Back</a>
-                            <button type="submit" class="btn btn-info btn-sm waves-effect waves-light">Submit</button>
-                        </div>
+                            <!-- inverter start -->
+
+                            <div class="inventory-wrapper">
+                                <div class="owner-details-wrappertwo">
+                                    <div class="heading-one">
+                                        <h4>Inverter:</h4>
+                                        @foreach($inverters as $k=>$inverter)
+                                        <button class="btn btn-info add_field_buttontwo">Add More Fields</button>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label for="Title" class="control-label"> Quick Search: </label>
+                                                <input type="date" class="form-control" id="inverter_Quick_Search"
+                                                    name="inverter_Quick_Search[]"
+                                                    value="{{$inverter->inverter_Quick_Search_date}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group select-wrapper">
+                                                <label for="inverter_Brand" class="control-label">Brand
+                                                    <span class="mdi mdi-multiplication"></span></label>
+                                                <select class="form-control" id="inverter_Brand" name="inverter_Brand[]"
+                                                    <option value="">Select selected</option>
+                                                    <option value="1" @if($inverter->inverter_Brand == '1')
+                                                        selected="true"
+                                                        @endif>Select 1</option>
+                                                    <option value="2" @if($inverter->inverter_Brand == '2')
+                                                        selected="true"
+                                                        @endif>Select 1</option>
+                                                    <option value="3" @if($inverter ->inverter_Brand == '3')
+                                                        selected="true"
+                                                        @endif>Select 1</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group select-wrapper">
+                                                <label for="inverter_Series" class="control-label">Series
+                                                    <span class="mdi mdi-multiplication"></span></label>
+                                                <select class="form-control" id="inverter_Series"
+                                                    name="inverter_Series[]" <option value="">Select selected</option>
+                                                    <option value="1" @if($inverter->inverter_Series == '1')
+                                                        selected="true"
+                                                        @endif>Select 1</option>
+                                                    <option value="2" @if($inverter->inverter_Series == '2')
+                                                        selected="true"
+                                                        @endif>Select 1</option>
+                                                    <option value="3" @if($inverter ->inverter_Series == '3')
+                                                        selected="true" @endif>Select 1</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group select-wrapper">
+                                                <label for="inverter_Model" class="control-label">Model
+                                                    <span class="mdi mdi-multiplication"></span></label>
+                                                <select class="form-control" id="inverter_Model" name="inverter_Model[]"
+                                                    <option value="">Select selected</option>
+                                                    <option value="1" @if($inverter->inverter_Model == '1')
+                                                        selected="true"
+                                                        @endif>Select 1</option>
+                                                    <option value="2" @if($inverter->inverter_Model == '2')
+                                                        selected="true"
+                                                        @endif>Select 1</option>
+                                                    <option value="3" @if($inverter ->inverter_Model == '3')
+                                                        selected="true"
+                                                        @endif>Select 1</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label for="Enter number of inverter" class="control-label"> Enter
+                                                    number of
+                                                    inverter </label>
+                                                <input type="text" class="form-control" id="Enter_number_of_inverter"
+                                                    name="Enter_number_of_inverter[]"
+                                                    value="{{$inverter ->Enter_number_of_inverter}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label for="Rated_Power_Output" class="control-label"> Rated Power
+                                                    Output:
+                                                </label>
+                                                <input type="text" class="form-control" id="Rated_Power_Output"
+                                                    value="{{ $job->Rated_Power_Output}}" name="Rated_Power_Output">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label for="Rated_Power_Output" class="control-label"> Rated Power
+                                                    Output:
+                                                </label>
+                                                <input type="text" class="form-control" id="Rated_Power_Output"
+                                                    value="{{ $job->Rated_Power_Output}}" name="Rated_Power_Output">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label for="Rated_Power_Output" class="control-label"> Rated Power
+                                                    Output:
+                                                </label>
+                                                <input type="text" class="form-control" id="Rated_Power_Output"
+                                                    value="{{ $job->Rated_Power_Output}}" name="Rated_Power_Output">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label for="Rated_Power_Output" class="control-label"> Rated Power
+                                                    Output:
+                                                </label>
+                                                <input type="text" class="form-control" id="Rated_Power_Output"
+                                                    value="{{ $job->Rated_Power_Output}}" name="Rated_Power_Output">
+                                            </div>
+
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label for="NMI" class="control-label"> Deeming Period: 10 Years
+                                                </label>
+                                                <input type="text" class="form-control" id="Deeming_Period"
+                                                    value="{{$job->Deeming_Period}}" name="Deeming_Period">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label for="NMI" class="control-label"> Deeming Period: 10 Years
+                                                </label>
+                                                <input type="text" class="form-control" id="Deeming_Period"
+                                                    value="{{$job->Deeming_Period}}" name="Deeming_Period">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label for="NMI" class="control-label"> Deeming Period: 10 Years
+                                                </label>
+                                                <input type="text" class="form-control" id="Deeming_Period"
+                                                    value="{{$job->Deeming_Period}}" name="Deeming_Period">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label for="NMI" class="control-label"> Deeming Period: 10 Years
+                                                </label>
+                                                <input type="text" class="form-control" id="Deeming_Period"
+                                                    value="{{$job->Deeming_Period}}" name="Deeming_Period">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label for="NMI" class="control-label"> NMI: </label>
+                                                <input type="text" class="form-control" id="NMI" name="nmi"
+                                                    value="{{$job->nmi}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label for="AdditinalInformation" class="control-label">Additinal
+                                                    Installation
+                                                    Information:</span></label>
+                                                <textarea id="AdditinalInformation" class="form-control" maxlength="225"
+                                                    rows="2"
+                                                    name="additional_installation_information"> {{$job->additional_installation_information}}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
+                                            <div id="container" class="form-group">
+                                                <label for="Status" class="col-md-3 col-12 control-label">Status
+                                                </label>
+                                                <div class="col-md-9 col-12">
+                                                    <div class="switch" id="submit">
+                                                        @if($job->job_status == "1")
+                                                        <input type="hidden" name="job_status" id="edit_job_status"
+                                                            value="1">
+                                                        <input type="checkbox" checked id="switch-2"
+                                                            onclick="update_company_status($(this),'edit_job_status');">
+                                                        @else
+                                                        <input type="hidden" name="job_status" id="edit_job_status"
+                                                            value="0">
+                                                        <input type="checkbox" id="switch-2"
+                                                            onclick="update_company_status($(this),'edit_job_status');">
+                                                        @endif
+
+                                                        <label for="switch-2"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="button" class="btn btn-danger"
+                                        onclick="delete_extra_inverter('{{$inverter->id}}');" value="Delete">
+                                    @endforeach
+                                </div>
+                            </div>
+                            <!-- inverter  end-->
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 text-center d-flex form-group margin-bottom-0 "
+                                    id="buttonWrapper">
+                                    <a class="btn btn-primary" href="{{ route('job.index') }}">Back</a>
+                                    <button type="submit"
+                                        class="btn btn-info btn-sm waves-effect waves-light">Submit</button>
+                                </div>
+                            </div>
                     </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
-</div>
 </div>
 @endsection

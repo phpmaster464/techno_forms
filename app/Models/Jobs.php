@@ -31,6 +31,8 @@ class Jobs extends Model
         'email',
         'phone',
         'mobile',
+        'address_latitude',
+        'address_longitude',
         'owner_postal_address_type',
         'owner_unit_type',
         'owner_unit_number',
