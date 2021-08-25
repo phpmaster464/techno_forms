@@ -427,58 +427,51 @@
 
 
             <script type="text/javascript">
-            function add_more_button() {
+            $(document).ready(function() {
                 var max_fields = 10; //maximum input boxes allowed
-                var wrapper = $(".owner-details-wrapper-panel"); //Fields wrapper
+                var wrapper = $(".owner-details-wrapperone"); //Fields wrapper
                 var add_button = $(".add_field_button"); //Add button ID
+
                 var x = 1; //initlal text box count
-               // $(".add_field_button").click(function(e) { //on add input button click
-                    //e.preventDefault();
+                $(".add_field_button").click(function(e) { //on add input button click
+                    e.preventDefault();
                     if (x < max_fields) { //max input box allowed
                         x++; //text box increment
-                   // $(wrapper).append( '<div class=""> <div class="owner-details-wrapperone" id="newone"> <div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4><input type="button" class="btn btn-info add_field_button" onclick="add_more_button();" value="Add More Fields"></div> <div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Panels_search" class="control-label"> Quick Search: </label> <input type="date" class="form-control" id="install_date" name="install_date[]" value=""> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Total Number of solar panel </label> <input type="text" class="form-control" id="total_no_solar_panel" name="total_no_solar_panel[]" value="{{old('no_solar_panel ')}}"> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Panels_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Brand" name="Panels_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Model" name="Panels_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Enter number of Solar Panels </label> <input type="text" class="form-control" id="enter_no_of_solar_panal" name="enter_no_of_solar_panal[]" value="{{old('title ')}}"> </div> </div> </div> <a href="#" class="btn btn-primary remove_field">Remove</a></div></div>' ); //add input box 
-				     $(wrapper).append( '<div class="panel-dynamic-wrapper"> <div class="owner-details-wrapperone" id="newone"> <div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4></div> <div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Panels_search" class="control-label"> Quick Search: </label> <input type="date" class="form-control" id="install_date" name="install_date[]" value=""> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Total Number of solar panel </label> <input type="text" class="form-control" id="total_no_solar_panel" name="total_no_solar_panel[]" value="{{old('no_solar_panel ')}}"> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Panels_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Brand" name="Panels_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Model" name="Panels_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Enter number of Solar Panels </label> <input type="text" class="form-control" id="enter_no_of_solar_panal" name="enter_no_of_solar_panal[]" value="{{old('title ')}}"> </div> </div> </div> <a href="#" class="btn btn-primary remove_field">Remove</a></div></div>' ); //add input box 
+                    $(wrapper).append( '<div class=""> <div class="owner-details-wrapperone" id="newone"> <div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4><input type="button" class="btn btn-info add_field_button" value="Add More Fields"></div> <div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Panels_search" class="control-label"> Quick Search: </label> <input type="date" class="form-control" id="install_date" name="install_date[]" value=""> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Total Number of solar panel </label> <input type="text" class="form-control" id="total_no_solar_panel" name="total_no_solar_panel[]" value="{{old('no_solar_panel ')}}"> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Panels_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Brand" name="Panels_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Model" name="Panels_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Enter number of Solar Panels </label> <input type="text" class="form-control" id="enter_no_of_solar_panal" name="enter_no_of_solar_panal[]" value="{{old('title ')}}"> </div> </div> </div> </div><a href="#" class="remove_field">Remove</a></div>' ); //add input box 
                     }
-               // }); 
+                }); 
 
                 $(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
                     e.preventDefault();
                     $(this).parent('div').remove();
                     x--;
-
                 })
-            }
+            });
 
-            function add_more_inverter_button() {
+            $(document).ready(function() {
                 var max_fields = 10; //maximum input boxes allowed
-                var wrapper = $(".inventory-wrapper"); //Fields wrapper
+                var wrapper = $(".owner-details-wrappertwo"); //Fields wrapper
                 var add_button = $(".add_field_buttontwo"); //Add button ID
 
                 var x = 1; //initlal text box count
-               // $(".add_field_buttontwo").click(function(e) { //on add input button click
-                   // e.preventDefault();
+                $(".add_field_buttontwo").click(function(e) { //on add input button click
+                    e.preventDefault();
                     if (x < max_fields) { //max input box allowed
                         x++; //text box increment 
-                        //$(wrapper).append(
-                         //   '<div><div class="owner-details-wrappertwo" ><div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4><input type="button" class="btn btn-info add_field_button" onclick="add_more_inverter_button();" value="Add More Fields"></div><div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Quick Search: </label> <input type="date" class="form-control" id="inverter_Quick_Search" name="inverter_Quick_Search[]" value="{{old('
-                            //title ')}}"> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Brand" name="inverter_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Series" class="control-label">Series <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Series" name="inverter_Series[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div><div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Model" name="inverter_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div><div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Enter number of inverter" class="control-label"> Enter number of inverter </label> <input type="text" class="form-control" id="Enter_number_of_inverter" name="Enter_number_of_inverter[]" value="{{old('
-                            //title ')}}"> </div> </div> </div> </div> <a href="#" class="btn btn-primary remove_field" >Remove</a></div>'
-							$(wrapper).append(
-                            '<div class="inveter-dynamic-wrapper"><div class="owner-details-wrappertwo" ><div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4></div><div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Quick Search: </label> <input type="date" class="form-control" id="inverter_Quick_Search" name="inverter_Quick_Search[]" value="{{old('
+                        $(wrapper).append(
+                            '<div><div class="owner-details-wrappertwo" ><div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4><input type="button" class="btn btn-info add_field_button" value="Add More Fields"></div><div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Quick Search: </label> <input type="date" class="form-control" id="inverter_Quick_Search" name="inverter_Quick_Search[]" value="{{old('
                             title ')}}"> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Brand" name="inverter_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Series" class="control-label">Series <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Series" name="inverter_Series[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div><div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Model" name="inverter_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div><div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Enter number of inverter" class="control-label"> Enter number of inverter </label> <input type="text" class="form-control" id="Enter_number_of_inverter" name="Enter_number_of_inverter[]" value="{{old('
-                            title ')}}"> </div> </div> </div> </div> <a href="#" class="btn btn-primary remove_field" >Remove</a></div>'
+                            title ')}}"> </div> </div> </div> </div> <a href="#" class="remove_field">Remove</a></div>'
                         ); //add input box
                     }
-               // });
+                });
 
                 $(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
                     e.preventDefault();
                     $(this).parent('div').remove();
                     x--;
-                    //location.reload();
-                //location.reload();
                 })
-            }
+            });
 
             function delete_extra_panels(id) {
                 //alert(id);
@@ -495,8 +488,7 @@
 
                     },
                     success: function(data) {
-                        alert(data);
-                       location.reload();
+                        alert('done');
                     }
                 });
 
@@ -517,7 +509,7 @@
 
                     },
                     success: function(data) {
-                       location.reload();
+                        alert('done');
                     }
                 });
 
@@ -562,11 +554,6 @@
                 function fillInAddress() {
                     // Get the place details from the autocomplete object.
                     const place = autocomplete.getPlace();
-                    $("#address_latitude").val(place.geometry.location.lat());
-                    $("#address_longitude").val(place.geometry.location.lng());
-                    console.log("lat is"+place.geometry.location.lat());
-                    console.log("lng is"+place.geometry.location.lng());
-
                     let address1 = "";
                     let postcode = "";
 
@@ -578,7 +565,7 @@
                     for (const component of place.address_components) {
                         const componentType = component.types[0];
 
-                        console.log("type"+componentType);
+                        console.log(componentType);
                         console.log(component.long_name);
                         console.log(component.short_name);
 
@@ -696,10 +683,6 @@
                     $("#SearchAddressdiv2").show();
                     // Get the place details from the autocomplete object.
                     const place = autocomplete.getPlace();
-                    $("#address_latitude").val(place.geometry.location.lat());
-                    $("#address_longitude").val(place.geometry.location.lng());
-                    console.log("lat is"+place.geometry.location.lat());
-                    console.log("lng is"+place.geometry.location.lng());
                     let address1 = "";
                     let postcode = "";
 
@@ -865,10 +848,6 @@
                     $("#addressdiv2").show();
                     // Get the place details from the autocomplete object.
                     const place = autocomplete.getPlace();
-                    $("#address_latitude").val(place.geometry.location.lat());
-                    $("#address_longitude").val(place.geometry.location.lng());
-                    console.log("lat is"+place.geometry.location.lat());
-                    console.log("lng is"+place.geometry.location.lng());
                     let address1 = "";
                     let postcode = "";
 

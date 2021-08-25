@@ -31,6 +31,8 @@ class Jobs extends Model
         'email',
         'phone',
         'mobile',
+        'address_latitude',
+        'address_longitude',
         'owner_postal_address_type',
         'owner_unit_type',
         'owner_unit_number',
@@ -55,6 +57,12 @@ class Jobs extends Model
         'created_by',
         'updated_by',
         'created_at',
-        'updated_at'
+        'updated_at',
+		'Rated_Power_Output',
+		'Deeming_Period',
+		'installer_type','Designer_type','Installer_state','Electrician'
+		
     ];
+	
+	
 }
