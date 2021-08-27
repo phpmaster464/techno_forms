@@ -563,8 +563,71 @@
                         <input type="button" class="btn btn-info add_field_button" onclick="add_more_button();" value="Add More Fields">
                         </div>
                         <div class="owner-details-wrapper-panel">
-                          
-                         @foreach($panels as $k=>$panel)
+											
+                         @if(empty($panels))
+                            <div class="owner-details-wrapperone">
+                                <div class="heading-one">
+                                    <h4>Panels:</h4>
+
+                                  
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="Panels_search" class="control-label"> Quick Search: </label>
+
+                                           <input type="text" class="form-control" id="install_date"
+                                                name="install_date[]" value="">
+
+                                        </div>
+                                    </div>
+
+                                   
+                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                        <div class="form-group select-wrapper">
+                                            <label for="Panels_Brand" class="control-label">Brand
+                                                <span class="mdi mdi-multiplication"></span></label>
+                                                <span class="mdi mdi-multiplication"></span></label>
+                                            <select class="form-control" id="Panels_Brand" name="Panels_Brand[]"
+                                                {{-- disabled --}}>
+                                                <option value="">Select selected</option>
+                                                <option value="1">Select 1</option>
+                                                <option value="2">Select 2</option>
+                                                <option value="3">Select 3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                        <div class="form-group select-wrapper">
+                                            <label for="Model" class="control-label">Model<span
+                                                    class="mdi mdi-multiplication"></span></label>
+                                            <select class="form-control" id="Panels_Model" name="Panels_Model[]"
+                                                {{-- disabled --}}>
+                                                <option value="">Select selected</option>
+                                                <option value="1">Select 1</option>
+                                                <option value="2">Select 2</option>
+                                                <option value="3">Select 3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="Title" class="control-label"> Enter number of Solar Panels
+                                            </label>
+                                           <input type="text" class="form-control" id="enter_no_of_solar_panal"
+                                                name="enter_no_of_solar_panal[]"  value="">
+                                        </div>
+                                    </div>
+                                </div>
+                               
+
+                            </div>
+
+                         @else
+							 
+                             @foreach($panels as $k=>$panel)
+
                             <div class="owner-details-wrapperone">
                                 <div class="heading-one">
                                     <h4>Panels:</h4>
@@ -578,23 +641,15 @@
 
                                             <input type="text" class="form-control" id="install_date"
                                                 name="install_date[]" value="{{$panel->install_date}}">
-
                                         </div>
                                     </div>
 
-                                    <!--div class="col-xl-4 col-lg-4 col-md-12 mb-3">
-                                        <div class="form-group">
-                                            <label for="Title" class="control-label"> Total Number of solar panel
-                                            </label>
-                                            <input type="text" class="form-control" id="total_no_solar_panel"
-                                                name="total_no_solar_panel[]" value="{{$panel->total_no_solar_panel}}">
-                                        </div>
-                                    </div-->
+                                  
                                     <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                         <div class="form-group select-wrapper">
                                             <label for="Panels_Brand" class="control-label">Brand
                                                 <span class="mdi mdi-multiplication"></span></label>
-                                            <select class="form-control" id="Panels_Brand" name="Panels_Brand[]" <option
+                                             <select class="form-control" id="Panels_Brand" name="Panels_Brand[]" <option
                                                 value="">Select selected</option>
                                                 <option value="1" @if($panel->Panels_Brand== '1') selected="true"
                                                     @endif>Select 1</option>
@@ -609,7 +664,7 @@
                                         <div class="form-group select-wrapper">
                                             <label for="Model" class="control-label">Model<span
                                                     class="mdi mdi-multiplication"></span></label>
-                                            <select class="form-control" id="Panels_Model" name="Panels_Model[]" <option
+                                          <select class="form-control" id="Panels_Model" name="Panels_Model[]" <option
                                                 value="">Select selected</option>
                                                 <option value="1" @if($panel->Panels_Model == '1') selected="true"
                                                     @endif>Select 1</option>
@@ -625,17 +680,22 @@
                                         <div class="form-group">
                                             <label for="Title" class="control-label"> Enter number of Solar Panels
                                             </label>
-                                            <input type="text" class="form-control" id="enter_no_of_solar_panal"
-                                                name="enter_no_of_solar_panal[]"
-                                                value="{{$panel->enter_no_of_solar_panal}}">
+                                             <input type="text" class="form-control" id="enter_no_of_solar_panal"
+                                                name="enter_no_of_solar_panal[]"  value="{{$panel ->enter_no_of_solar_panal}}">
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#" class="btn btn-primary remove_field" >Delete</a>
-
-                            </div>
+                                @if($k != 0)
+                                    <a href="#" class="btn btn-primary remove_field" >Delete</a>
+                                @endif
+  </div>
                                @endforeach
 
+                          
+
+
+                        @endif
+                        
                         </div>
                      
 
@@ -643,13 +703,82 @@
 
 
                         <!-- inverter start -->
+
                         <div class="add-field-wrapper">
                         <input type="button" class="btn btn-info add_field_button"
                                         onclick="add_more_inverter_button();" value="Add More Fields">
                                         </div>
 
-                        <div class="inventory-wrapper">                        
-                          @foreach($inverters as $k=>$inverter)
+                        <div class="inventory-wrapper">        
+@if(empty($inverter))
+	
+	<div class="owner-details-wrappertwo">
+                                <div class="heading-one">
+                                    <h4>Inverter:</h4>                                   
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="Title" class="control-label"> Quick Search: </label>
+                                            <input type="text" class="form-control" id="inverter_Quick_Search"
+                                                name="inverter_Quick_Search[]" value="{{old('title')}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                        <div class="form-group select-wrapper">
+                                            <label for="inverter_Brand" class="control-label">Brand
+                                                <span class="mdi mdi-multiplication"></span></label>
+                                            <select class="form-control" id="inverter_Brand" name="inverter_Brand[]"
+                                                {{-- disabled --}}>
+                                                <option value="">Select selected</option>
+                                                <option value="1">Select 1</option>
+                                                <option value="2">Select 1</option>
+                                                <option value="3">Select 1</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                        <div class="form-group select-wrapper">
+                                            <label for="inverter_Series" class="control-label">Series
+                                                <span class="mdi mdi-multiplication"></span></label>
+                                           <select class="form-control" id="inverter_Series" name="inverter_Series[]"
+                                                {{-- disabled --}}>
+                                                <option value="">Select selected</option>
+                                                <option value="1">Select 1</option>
+                                                <option value="2">Select 1</option>
+                                                <option value="3">Select 1</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                        <div class="form-group select-wrapper">
+                                            <label for="inverter_Model" class="control-label">Model
+                                                <span class="mdi mdi-multiplication"></span></label>
+                                            <select class="form-control" id="inverter_Model" name="inverter_Model[]"
+                                                {{-- disabled --}}>
+                                                <option value="">Select selected</option>
+                                                <option value="1">Select 1</option>
+                                                <option value="2">Select 1</option>
+                                                <option value="3">Select 1</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="Enter number of inverter" class="control-label"> Enter
+                                                number of
+                                                inverter </label>
+                                           <input type="text" class="form-control" id="Enter_number_of_inverter"
+                                                name="Enter_number_of_inverter[]"     value="{{old('title')}}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+	
+						@else
+								@foreach($inverters as $k=>$inverter)
                             <div class="owner-details-wrappertwo">
                                 <div class="heading-one">
                                     <h4>Inverter:</h4>
@@ -730,11 +859,16 @@
                                         </div>
                                     </div>
                                 </div>
- <a href="#" class="btn btn-primary remove_field" >Delete</a>
-                            </div>
+								@if($k != 0)
+                                    <a href="#" class="btn btn-primary remove_field" >Delete</a>
+                                @endif
+                            
  @endforeach
-
-                        </div>
+</div>
+                        
+@endif
+				</div>		
+                          
                        
                         <div class="rate-dpower-wrapper" id="advanceInstaller">
                             <div class="row">
@@ -790,6 +924,9 @@
                                         <div class="form-group">
                                             <label for="Invetrers Serial Numbers" class="control-label"> Invetrers Serial Numbers
                                             </label> 
+											
+											
+										
                                             @for ($i = 0; $i < $Enter_number_of_inverter; $i++) 
                                             <div id="Invetrers_Serial_Numbers{{$i}}">
                                                 <input type="text" class="form-control" id="Invetrers_Serial_Numbers"

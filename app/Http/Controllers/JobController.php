@@ -211,14 +211,20 @@ for($i=0; $i<count($input['inverter_Quick_Search']); $i++)
         $installers = DB::table('installers')->where('installer_job_type', 'like', '%Installer%')->get()->toArray();
         $Electricians= DB::table('installers')->where('installer_job_type', 'like', '%Electrician%')->get()->toArray();
         $Designers = DB::table('installers')->where('installer_job_type', 'like', '%Designer%')->get()->toArray();
-        $panels = DB::table('tbl_panels')->where('job_id',$job['id'])->get()->toArray();
+		$panels = DB::table('tbl_panels')->where('job_id',$job['id'])->get()->toArray();
+	
+		$balance = DB::table('tbl_panels')->where('job_id' ,$job['id'])->sum('enter_no_of_solar_panal');
+		
+		
+		
+		
         $inverters = DB::table('tbl_inverters')->where('job_id',$job['id'])->get()->toArray();
-        $balance = DB::table('tbl_panels')->where('job_id' ,$job['id'])->sum('enter_no_of_solar_panal');
+		 
         $Enter_number_of_inverter = DB::table('tbl_inverters')->where('job_id' ,$job['id'])->sum('Enter_number_of_inverter');
+		$panel_serial_numbers = DB::table('panel_serial_numbers')->where('job_id' ,$job['id'])->get()->toArray();;
     
        
-        return view('job.edit',compact('unit_type','street_types','job','installers','Electricians','Designers','panels',
-            'inverters','balance','Enter_number_of_inverter'));
+     return view('job.edit',compact('unit_type','street_types','job','installers','Electricians','Designers','panels','inverters','balance','Enter_number_of_inverter','panel_serial_numbers'));
     }
     
     /**
@@ -297,7 +303,9 @@ for($i=0; $i<count($input['inverter_Quick_Search']); $i++)
                     $Panels->job_id=$job_id;    
                     $Panels->save();
 
-                    $Panels_id=$Panels->id;
+                    
+                }
+				$Panels_id=$Panels->id;
                             if(isset($input['Panel_Serial_Numbers']))
                             {       
                                     $PanelSerials=PanelSerials::where('job_id',$job['id'])->delete();
@@ -314,7 +322,6 @@ for($i=0; $i<count($input['inverter_Quick_Search']); $i++)
                             }else{
                                 $Panels=PanelSerials::where('job_id',$job['id'])->delete();
                             }
-                }
         }else{
             $Panels=Panels::where('job_id',$job['id'])->delete();
         }
@@ -340,26 +347,27 @@ for($i=0; $i<count($input['inverter_Quick_Search']); $i++)
                 $Inverter->added_by= $userId;
                 $Inverter->status= '1';
                 $Inverter->job_id=$job_id;  
-                $Inverter->save();
+                $Inverter->save();          
+            } 
+					$Inverter_id=$Inverter->id;
+					if(isset($input['Invetrers_Serial_Numbers']))
+					{       
+							$InverterSerials=InvetrerSerials::where('job_id',$job['id'])->delete();
+							for($i=0; $i<count($input['Invetrers_Serial_Numbers']); $i++)
+							{
+								$InverterSerials= new InvetrerSerials;
+								$InverterSerials->inverter_id= $Inverter_id;
+								$InverterSerials->job_id=$job_id;
+								$InverterSerials->Invetrers_Serial_Numbers= $input['Invetrers_Serial_Numbers'][$i];
+								$InverterSerials->created_by= $userId;
+								$InverterSerials->status= '1';
+								$InverterSerials->save();
+							}
+					}else{
+						$Panels=InvetrerSerials::where('job_id',$job['id'])->delete();
+					}
 
-                $Inverter_id=$Inverter->id;
-        if(isset($input['Invetrers_Serial_Numbers']))
-        {       
-                $InverterSerials=InvetrerSerials::where('job_id',$job['id'])->delete();
-                for($i=0; $i<count($input['Invetrers_Serial_Numbers']); $i++)
-                {
-                    $InverterSerials= new InvetrerSerials;
-                    $InverterSerials->inverter_id= $Inverter_id;
-                    $InverterSerials->job_id=$job_id;
-                    $InverterSerials->Invetrers_Serial_Numbers= $input['Invetrers_Serial_Numbers'][$i];
-                    $InverterSerials->created_by= $userId;
-                    $InverterSerials->status= '1';
-                    $InverterSerials->save();
-                }
-        }else{
-            $Panels=InvetrerSerials::where('job_id',$job['id'])->delete();
-        }
-            }   
+			
     }else{
             $Inverter_res=Inverter::where('job_id',$job['id'])->delete();
         }
