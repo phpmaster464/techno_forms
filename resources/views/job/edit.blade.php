@@ -710,7 +710,7 @@
                                         </div>
 
                         <div class="inventory-wrapper">        
-@if(empty($inverter))
+@if(empty($inverters))
 	
 	<div class="owner-details-wrappertwo">
                                 <div class="heading-one">
@@ -790,9 +790,9 @@
                                         <div class="form-group">
                                             <label for="Title" class="control-label"> Quick Search: </label>
                                             <input type="text" class="form-control" id="inverter_Quick_Search"
-                                                name="inverter_Quick_Search[]"
+                                                name="inverter_Quick_Search[]" 
                                                 value="{{$inverter->inverter_Quick_Search_date}}">
-                                        </div>
+                                        </div> 
                                     </div>
 
                                     <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
@@ -909,14 +909,21 @@
                                         <div class="form-group">
                                             <label for="Panel Serial Numbers" class="control-label"> Panel Serial Numbers
                                             </label> 
+
+
+                                            @php $i = 0; @endphp
                                            @foreach($panels as $key=>$panel)
-                                            <div id="Panel_Serial_Numbers{{$key}}">
+
+                                           @foreach($panel->panel_serial_no as $serial_no)
+                                            @php ++$i; @endphp
+                                           <div id="Panel_Serial_Numbers{{$i}}">
                                                 <input type="text" class="form-control" id="Panel_Serial_Numbers"
-                                                name="Panel_Serial_Numbers[]"
-                                                value={{$panel->panel_serial_no}}><a href="#" class="btn btn-primary remove_field"id="{{$key}}"
+                                                name="Panel_Serial_Numbers[{{$key}}][]"
+                                                value={{$serial_no}}><a href="#" class="btn btn-primary remove_field"id="{{$i}}"
                                                 onclick="Panel_Serial_Numbers(this.id);" >Delete</a></br> 
-                                            </div>
-                                            @endforeach
+                                            </div> 
+                                           @endforeach
+                                           @endforeach
                                         </div>
                                 </div>
 
@@ -925,16 +932,19 @@
                                             <label for="Invetrers Serial Numbers" class="control-label"> Invetrers Serial Numbers
                                             </label> 
 											
-											
-										
+											 @php $i = 0; @endphp
                                            @foreach($inverters as $key=>$inverter)
-                                            <div id="Invetrers_Serial_Numbers{{$key}}">
+
+                                           @foreach($inverter->inverter_serial_no as $serial_no)
+                                            @php ++$i; @endphp
+                                           <div id="Invetrers_Serial_Numbers{{$i}}">
                                                 <input type="text" class="form-control" id="Invetrers_Serial_Numbers"
-                                                name="Invetrers_Serial_Numbers[]"
-                                                value="{{$inverter->inverter_serial_no}}"> <a href="#" class="btn btn-primary remove_field" id="{{$key}}"
-                                                onclick="Invetrers_Serial_Numbers(this.id);">Delete</a></br>
-                                            </div>
-                                            @endforeach
+                                                name="Invetrers_Serial_Numbers[{{$key}}][]"
+                                                value={{$serial_no}}><a href="#" class="btn btn-primary remove_field"id="{{$i}}"
+                                                onclick="Panel_Serial_Numbers(this.id);" >Delete</a></br> 
+                                            </div> 
+                                           @endforeach
+                                           @endforeach
                                         </div>
                                 </div>
                             </div>

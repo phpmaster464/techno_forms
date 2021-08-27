@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PanelSerials extends Model
 {
     use HasFactory;
-    protected $table = "Panel_Serial_Numbers";
+    protected $table = "panel_serial_numbers";
     protected $fillable = [
         'panel_id',
         'job_id',
