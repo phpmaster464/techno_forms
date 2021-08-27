@@ -909,14 +909,14 @@
                                         <div class="form-group">
                                             <label for="Panel Serial Numbers" class="control-label"> Panel Serial Numbers
                                             </label> 
-                                            @for ($i = 0; $i < $balance; $i++) 
-                                             <div id="Panel_Serial_Numbers{{$i}}">
+                                           @foreach($panels as $key=>$panel)
+                                            <div id="Panel_Serial_Numbers{{$key}}">
                                                 <input type="text" class="form-control" id="Panel_Serial_Numbers"
                                                 name="Panel_Serial_Numbers[]"
-                                                value=""><a href="#" class="btn btn-primary remove_field"id="{{$i}}"
-                                                 onclick="Panel_Serial_Numbers(this.id);" >Delete</a></br> 
-                                                </div>
-                                            @endfor
+                                                value={{$panel->panel_serial_no}}><a href="#" class="btn btn-primary remove_field"id="{{$key}}"
+                                                onclick="Panel_Serial_Numbers(this.id);" >Delete</a></br> 
+                                            </div>
+                                            @endforeach
                                         </div>
                                 </div>
 
@@ -927,14 +927,14 @@
 											
 											
 										
-                                            @for ($i = 0; $i < $Enter_number_of_inverter; $i++) 
-                                            <div id="Invetrers_Serial_Numbers{{$i}}">
+                                           @foreach($inverters as $key=>$inverter)
+                                            <div id="Invetrers_Serial_Numbers{{$key}}">
                                                 <input type="text" class="form-control" id="Invetrers_Serial_Numbers"
                                                 name="Invetrers_Serial_Numbers[]"
-                                                value=""> <a href="#" class="btn btn-primary remove_field" id="{{$i}}"
+                                                value="{{$inverter->inverter_serial_no}}"> <a href="#" class="btn btn-primary remove_field" id="{{$key}}"
                                                 onclick="Invetrers_Serial_Numbers(this.id);">Delete</a></br>
                                             </div>
-                                            @endfor
+                                            @endforeach
                                         </div>
                                 </div>
                             </div>
