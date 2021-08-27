@@ -296,9 +296,9 @@ class UnverifiedInstallerController extends Controller
 
     	$unverifiedinstaller = UnverifiedInstaller::where('email',$user_array['email'])->first();
 
-    	$installer_array = array('first_name'=>$unverifiedinstaller->first_name,'last_name'=>$unverifiedinstaller->last_name,'email'=>$unverifiedinstaller->email,'mobile'=>$unverifiedinstaller->mobile,'phone'=>$unverifiedinstaller->phone,'job_type'=>$unverifiedinstaller->job_type,'installer_job_type'=>$unverifiedinstaller->installer_job_type,,'address_latitude'=>$unverifiedinstaller->address_latitude,,'address_longitude'=>$unverifiedinstaller->address_longitude,'unit_type'=>$unverifiedinstaller->unit_type,'unit_number'=>$unverifiedinstaller->unit_number,'street_number'=>$unverifiedinstaller->street_number,'street_name'=>$unverifiedinstaller->street_name,'street_type'=>$unverifiedinstaller->street_type,'suburb'=>$unverifiedinstaller->suburb,'state'=>$unverifiedinstaller->state,'postcode'=>$unverifiedinstaller->postcode,'created_by'=>$unverifiedinstaller->null,'updated_by'=>$unverifiedinstaller->null,'created_at'=>$unverifiedinstaller->null,'updated_at'=>$unverifiedinstaller->null);
-
-		Installer::create($installer_array);
+    	$installer_array = array('first_name'=>$unverifiedinstaller->first_name,'last_name'=>$unverifiedinstaller->last_name,'email'=>$unverifiedinstaller->email,'mobile'=>$unverifiedinstaller->mobile,'phone'=>$unverifiedinstaller->phone,'job_type'=>$unverifiedinstaller->job_type,'installer_job_type'=>$unverifiedinstaller->installer_job_type,'address_latitude'=>$unverifiedinstaller->address_latitude,'address_longitude'=>$unverifiedinstaller->address_longitude,'unit_type'=>$unverifiedinstaller->unit_type,'unit_number'=>$unverifiedinstaller->unit_number,'street_number'=>$unverifiedinstaller->street_number,'street_name'=>$unverifiedinstaller->street_name,'street_type'=>$unverifiedinstaller->street_type,'suburb'=>$unverifiedinstaller->suburb,'state'=>$unverifiedinstaller->state,'postcode'=>$unverifiedinstaller->postcode); 
+  
+		Installer::create($installer_array); 
         $roles = array('Installer');
         $pass = $user_array['password'];
 
@@ -353,7 +353,7 @@ class UnverifiedInstallerController extends Controller
             'companywebsite' => 'required',
             'cecaccnumber' => 'required',
             'licensenumber' => 'required',
-            'cecdesignernumber' => 'required',
+            // 'cecdesignernumber' => 'required',
             'serole' => 'required'
             // 'signature' => 'required',
             // 'proofidentity' => 'required' 
