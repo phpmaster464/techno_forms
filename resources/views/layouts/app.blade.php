@@ -437,7 +437,7 @@
                     if (x < max_fields) { //max input box allowed
                         x++; //text box increment
                    // $(wrapper).append( '<div class=""> <div class="owner-details-wrapperone" id="newone"> <div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4><input type="button" class="btn btn-info add_field_button" onclick="add_more_button();" value="Add More Fields"></div> <div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Panels_search" class="control-label"> Quick Search: </label> <input type="date" class="form-control" id="install_date" name="install_date[]" value=""> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Total Number of solar panel </label> <input type="text" class="form-control" id="total_no_solar_panel" name="total_no_solar_panel[]" value="{{old('no_solar_panel ')}}"> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Panels_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Brand" name="Panels_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Model" name="Panels_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Enter number of Solar Panels </label> <input type="text" class="form-control" id="enter_no_of_solar_panal" name="enter_no_of_solar_panal[]" value="{{old('title ')}}"> </div> </div> </div> <a href="#" class="btn btn-primary remove_field">Remove</a></div></div>' ); //add input box 
-				     $(wrapper).append( ' <div class="owner-details-wrapperone" id="newone"> <div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4></div> <div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Panels_search" class="control-label"> Quick Search: </label> <input type="text" class="form-control" id="install_date" name="install_date[]" value=""> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Panels_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Brand" name="Panels_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Model" name="Panels_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Enter number of Solar Panels </label> <input type="text" class="form-control txt" id="enter_no_of_solar_panal" name="enter_no_of_solar_panal[]" value="{{old('title ')}}"> </div> </div> </div> <a href="#" class="btn btn-primary remove_field">Delete</a></div>' ); //add input box 
+                     $(wrapper).append( ' <div class="owner-details-wrapperone" id="newone"> <div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4></div> <div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Panels_search" class="control-label"> Quick Search: </label> <input type="text" class="form-control" id="install_date" name="install_date[]" value=""> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Panels_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Brand" name="Panels_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Model" name="Panels_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Enter number of Solar Panels </label> <input type="text" class="form-control txt" id="enter_no_of_solar_panal" name="enter_no_of_solar_panal[]" value="{{old('title ')}}"> </div> </div> </div> <a href="#" class="btn btn-primary remove_field">Delete</a></div>' ); //add input box 
                     }
                // }); 
 
@@ -463,7 +463,7 @@
                          //   '<div><div class="owner-details-wrappertwo" ><div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4><input type="button" class="btn btn-info add_field_button" onclick="add_more_inverter_button();" value="Add More Fields"></div><div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Quick Search: </label> <input type="date" class="form-control" id="inverter_Quick_Search" name="inverter_Quick_Search[]" value="{{old('
                             //title ')}}"> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Brand" name="inverter_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Series" class="control-label">Series <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Series" name="inverter_Series[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div><div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Model" name="inverter_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div><div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Enter number of inverter" class="control-label"> Enter number of inverter </label> <input type="text" class="form-control" id="Enter_number_of_inverter" name="Enter_number_of_inverter[]" value="{{old('
                             //title ')}}"> </div> </div> </div> </div> <a href="#" class="btn btn-primary remove_field" >Remove</a></div>'
-							$(wrapper).append(
+                            $(wrapper).append(
                             '<div class="owner-details-wrappertwo" ><div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4></div><div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Quick Search: </label> <input type="text" class="form-control" id="inverter_Quick_Search" name="inverter_Quick_Search[]" value="{{old('
                             title ')}}"> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Brand" name="inverter_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Series" class="control-label">Series <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Series" name="inverter_Series[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div><div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Model" name="inverter_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div><div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Enter number of inverter" class="control-label"> Enter number of inverter </label> <input type="text" class="form-control" id="Enter_number_of_inverter" name="Enter_number_of_inverter[]" value="{{old('
                             title ')}}"> </div> </div> </div> </div> <a href="#" class="btn btn-primary remove_field" >Delete</a>'
@@ -520,7 +520,7 @@
             // For example: <script
             // src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-            if (window.location.href.indexOf('installer') > -1) {
+            /*if (window.location.href.indexOf('installer/create') > -1) {
 
 
                 let autocomplete;
@@ -654,7 +654,7 @@
             // For example: <script
             // src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-            if (window.location.href.indexOf('job') > -1) {
+            if (window.location.href.indexOf('job/create') > -1) {
 
                 let autocomplete;
                 let address1Field;
@@ -738,7 +738,7 @@
 
                 }
 
-            }
+            }*/
             /*
                 if(window.location.href.indexOf('job') > -1)
                 { 
@@ -909,6 +909,645 @@
             }
 
 
+            if (window.location.href.indexOf('company/create') > -1) {
+                let autocomplete;
+                let address1Field;
+                let address2Field;
+                let postalField;
+
+                function initAutocomplete() {
+                    address1Field = document.querySelector("#SearchAddress_sign1");
+
+                    autocomplete = new google.maps.places.Autocomplete(address1Field, {
+                        componentRestrictions: {
+                            country: ["au"]
+                        },
+                        fields: ["address_components", "geometry"],
+                        types: ["address"],
+                    });
+                    address1Field.focus();
+                    // When the user selects an address from the drop-down, populate the
+                    // address fields in the form.
+                    autocomplete.addListener("place_changed", fillInAddress);
+                }
+
+                function fillInAddress() {
+                    $("#addressdiv1").show();
+                    $("#addressdiv2").show();
+                    // Get the place details from the autocomplete object.
+                    const place = autocomplete.getPlace();
+                    $("#address_latitude").val(place.geometry.location.lat());
+                    $("#address_longitude").val(place.geometry.location.lng());
+                    console.log("lat is"+place.geometry.location.lat());
+                    console.log("lng is"+place.geometry.location.lng());
+                    let address1 = "";
+                    let postcode = "";
+
+
+                    // Get each component of the address from the place details,
+                    // and then fill-in the corresponding field on the form.
+                    // place.address_components are google.maps.GeocoderAddressComponent objects
+                    // which are documented at http://goo.gle/3l5i5Mr
+                    for (const component of place.address_components) {
+                        const componentType = component.types[0];
+                        console.log(componentType);
+                        console.log(component.long_name);
+                        console.log(component.short_name);
+
+
+                        switch (componentType) {
+
+                            case "subpremise": {
+                                $('#UnitNumber').val(component.long_name);
+                            }
+
+                            case "street_number": {
+                                $('#street_number').val(component.long_name);
+                            }
+
+                            case "route": {
+                                $('#street_name').val(component.short_name);
+                            }
+
+                            case "locality": {
+                                $('#suburb').val(component.long_name);
+                            }
+
+                            case "administrative_area_level_1": {
+
+                                $('#state').val(component.short_name).trigger('change');;
+                            }
+
+                            case "postal_code": {
+
+                                $('#postcode').val(component.short_name);
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+
+            if (window.location.href.indexOf('/company/') > -1 && window.location.href.indexOf('/edit') > -1) {
+                let autocomplete;
+                let address1Field;
+                let address2Field;
+                let postalField;
+
+                function initAutocomplete() {
+                    address1Field = document.querySelector("#SearchAddress_sign1");
+
+                    autocomplete = new google.maps.places.Autocomplete(address1Field, {
+                        componentRestrictions: {
+                            country: ["au"]
+                        },
+                        fields: ["address_components", "geometry"],
+                        types: ["address"],
+                    });
+                    address1Field.focus();
+                    // When the user selects an address from the drop-down, populate the
+                    // address fields in the form.
+                    autocomplete.addListener("place_changed", fillInAddress);
+                }
+
+                function fillInAddress() {
+                    $("#addressdiv1").show();
+                    $("#addressdiv2").show();
+                    // Get the place details from the autocomplete object.
+                    const place = autocomplete.getPlace();
+                    $("#address_latitude").val(place.geometry.location.lat());
+                    $("#address_longitude").val(place.geometry.location.lng());
+                    console.log("lat is"+place.geometry.location.lat());
+                    console.log("lng is"+place.geometry.location.lng());
+                    let address1 = "";
+                    let postcode = "";
+
+
+                    // Get each component of the address from the place details,
+                    // and then fill-in the corresponding field on the form.
+                    // place.address_components are google.maps.GeocoderAddressComponent objects
+                    // which are documented at http://goo.gle/3l5i5Mr
+                    for (const component of place.address_components) {
+                        const componentType = component.types[0];
+                        console.log(componentType);
+                        console.log(component.long_name);
+                        console.log(component.short_name);
+
+
+                        switch (componentType) {
+
+                            case "subpremise": {
+                                $('#UnitNumber').val(component.long_name);
+                            }
+
+                            case "street_number": {
+                                $('#street_number').val(component.long_name);
+                            }
+
+                            case "route": {
+                                $('#street_name').val(component.short_name);
+                            }
+
+                            case "locality": {
+                                $('#suburb').val(component.long_name);
+                            }
+
+                            case "administrative_area_level_1": {
+
+                                $('#state').val(component.short_name).trigger('change');;
+                            }
+
+                            case "postal_code": {
+
+                                $('#postcode').val(component.short_name);
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+
+            if (window.location.href.indexOf('job/create') > -1) {
+
+                let autocomplete;
+                let address1Field;
+                let address2Field;
+                let postalField;
+
+                function initAutocomplete() {
+     
+                    address1Field = document.querySelector("#SearchAddress_sign2");
+                    address1Field1 = document.querySelector("#sameAsOwnerAddre_copy");
+                   
+                    autocomplete = new google.maps.places.Autocomplete(address1Field, {
+                        componentRestrictions: {
+                            country: ["au"]
+                        },
+                        fields: ["address_components", "geometry"],
+                        types: ["address"],
+                    });
+
+                    autocomplete1 = new google.maps.places.Autocomplete(address1Field1, {
+                        componentRestrictions: {
+                            country: ["au"]
+                        },
+                        fields: ["address_components", "geometry"],
+                        types: ["address"],
+                    });
+
+                    address1Field.focus();
+                    address1Field1.focus();
+                    // When the user selects an address from the drop-down, populate the
+                    // address fields in the form.
+                    autocomplete.addListener("place_changed", fillInAddress);
+                    autocomplete1.addListener("place_changed", fillInAddress1);
+                }
+
+                function fillInAddress() {
+                    $("#SearchAddressdiv1").show();
+                    $("#SearchAddressdiv2").show();
+                    // Get the place details from the autocomplete object.
+                    const place = autocomplete.getPlace();
+                    $("#address_latitude").val(place.geometry.location.lat());
+                    $("#address_longitude").val(place.geometry.location.lng());
+                    console.log("lat is"+place.geometry.location.lat());
+                    console.log("lng is"+place.geometry.location.lng());
+                    let address1 = "";
+                    let postcode = "";
+
+
+                    // Get each component of the address from the place details,
+                    // and then fill-in the corresponding field on the form.
+                    // place.address_components are google.maps.GeocoderAddressComponent objects
+                    // which are documented at http://goo.gle/3l5i5Mr
+                    for (const component of place.address_components) {
+                        const componentType = component.types[0];
+                        console.log(componentType);
+                        console.log(component.long_name);
+                        console.log(component.short_name);
+
+
+                        switch (componentType) {
+
+                            case "subpremise": {
+                                $('#UnitNumber').val(component.long_name);
+                            }
+
+                            case "street_number": {
+                                $('#StreetNumber').val(component.long_name);
+                            }
+
+                            case "route": {
+                                $('#StreetName').val(component.short_name);
+                            }
+
+                            case "locality": {
+                                $('#Town').val(component.long_name);
+                            }
+
+                            case "administrative_area_level_1": {
+
+                                $('#State').val(component.short_name).trigger('change');;
+                            }
+
+                            case "postal_code": {
+
+                                $('#PostCode').val(component.short_name);
+                            }
+
+                        }
+
+                    }
+
+                }
+
+                function fillInAddress1() {
+                    $("#addressdiv3").show();
+                    $("#addressdiv4").show();
+                    // Get the place details from the autocomplete object.
+                    const place = autocomplete.getPlace();
+                    $("#address_latitude").val(place.geometry.location.lat());
+                    $("#address_longitude").val(place.geometry.location.lng());
+                    console.log("lat is"+place.geometry.location.lat());
+                    console.log("lng is"+place.geometry.location.lng());
+                    let address1 = "";
+                    let postcode = "";
+
+
+                    // Get each component of the address from the place details,
+                    // and then fill-in the corresponding field on the form.
+                    // place.address_components are google.maps.GeocoderAddressComponent objects
+                    // which are documented at http://goo.gle/3l5i5Mr
+                    for (const component of place.address_components) {
+                        const componentType = component.types[0];
+                        console.log(componentType);
+                        console.log(component.long_name);
+                        console.log(component.short_name);
+
+
+                        switch (componentType) {
+
+                            case "subpremise": {
+                                $('#UnitNumber1').val(component.long_name);
+                            }
+
+                            case "street_number": {
+                                $('#StreetNumber1').val(component.long_name);
+                            }
+
+                            case "route": {
+                                $('#StreetName1').val(component.short_name);
+                            }
+
+                            case "locality": {
+                                $('#Town1').val(component.long_name);
+                            }
+
+                            case "administrative_area_level_1": {
+
+                                $('#State1').val(component.short_name).trigger('change');;
+                            }
+
+                            case "postal_code": {
+
+                                $('#PostCode1').val(component.short_name);
+                            }
+
+                        }
+
+                    }
+
+                }
+
+
+            }
+
+            if (window.location.href.indexOf('/job/') > -1 && window.location.href.indexOf('/edit') > -1) {
+
+                let autocomplete;
+                let address1Field;
+                let address2Field;
+                let postalField;
+
+                function initAutocomplete() {
+     
+                    address1Field = document.querySelector("#SearchAddress_sign2");
+                    address1Field1 = document.querySelector("#sameAsOwnerAddre_copy");
+                   
+                    autocomplete = new google.maps.places.Autocomplete(address1Field, {
+                        componentRestrictions: {
+                            country: ["au"]
+                        },
+                        fields: ["address_components", "geometry"],
+                        types: ["address"],
+                    });
+
+                    autocomplete1 = new google.maps.places.Autocomplete(address1Field1, {
+                        componentRestrictions: {
+                            country: ["au"]
+                        },
+                        fields: ["address_components", "geometry"],
+                        types: ["address"],
+                    });
+
+                    address1Field.focus();
+                    address1Field1.focus();
+                    // When the user selects an address from the drop-down, populate the
+                    // address fields in the form.
+                    autocomplete.addListener("place_changed", fillInAddress);
+                    autocomplete1.addListener("place_changed", fillInAddress1);
+                }
+
+                function fillInAddress() {
+                    $("#SearchAddressdiv1").show();
+                    $("#SearchAddressdiv2").show();
+                    // Get the place details from the autocomplete object.
+                    const place = autocomplete.getPlace();
+                    $("#address_latitude").val(place.geometry.location.lat());
+                    $("#address_longitude").val(place.geometry.location.lng());
+                    console.log("lat is"+place.geometry.location.lat());
+                    console.log("lng is"+place.geometry.location.lng());
+                    let address1 = "";
+                    let postcode = "";
+
+
+                    // Get each component of the address from the place details,
+                    // and then fill-in the corresponding field on the form.
+                    // place.address_components are google.maps.GeocoderAddressComponent objects
+                    // which are documented at http://goo.gle/3l5i5Mr
+                    for (const component of place.address_components) {
+                        const componentType = component.types[0];
+                        console.log(componentType);
+                        console.log(component.long_name);
+                        console.log(component.short_name);
+
+
+                        switch (componentType) {
+
+                            case "subpremise": {
+                                $('#UnitNumber').val(component.long_name);
+                            }
+
+                            case "street_number": {
+                                $('#StreetNumber').val(component.long_name);
+                            }
+
+                            case "route": {
+                                $('#StreetName').val(component.short_name);
+                            }
+
+                            case "locality": {
+                                $('#Town').val(component.long_name);
+                            }
+
+                            case "administrative_area_level_1": {
+
+                                $('#State').val(component.short_name).trigger('change');;
+                            }
+
+                            case "postal_code": {
+
+                                $('#PostCode').val(component.short_name);
+                            }
+
+                        }
+
+                    }
+
+                }
+
+                function fillInAddress1() {
+                    $("#addressdiv3").show();
+                    $("#addressdiv4").show();
+                    // Get the place details from the autocomplete object.
+                    const place = autocomplete.getPlace();
+                    $("#address_latitude").val(place.geometry.location.lat());
+                    $("#address_longitude").val(place.geometry.location.lng());
+                    console.log("lat is"+place.geometry.location.lat());
+                    console.log("lng is"+place.geometry.location.lng());
+                    let address1 = "";
+                    let postcode = "";
+
+
+                    // Get each component of the address from the place details,
+                    // and then fill-in the corresponding field on the form.
+                    // place.address_components are google.maps.GeocoderAddressComponent objects
+                    // which are documented at http://goo.gle/3l5i5Mr
+                    for (const component of place.address_components) {
+                        const componentType = component.types[0];
+                        console.log(componentType);
+                        console.log(component.long_name);
+                        console.log(component.short_name);
+
+
+                        switch (componentType) {
+
+                            case "subpremise": {
+                                $('#UnitNumber1').val(component.long_name);
+                            }
+
+                            case "street_number": {
+                                $('#StreetNumber1').val(component.long_name);
+                            }
+
+                            case "route": {
+                                $('#StreetName1').val(component.short_name);
+                            }
+
+                            case "locality": {
+                                $('#Town1').val(component.long_name);
+                            }
+
+                            case "administrative_area_level_1": {
+
+                                $('#State1').val(component.short_name).trigger('change');;
+                            }
+
+                            case "postal_code": {
+
+                                $('#PostCode1').val(component.short_name);
+                            }
+
+                        }
+
+                    }
+
+                }
+
+
+            }
+
+            if (window.location.href.indexOf('installer/create') > -1) {
+                let autocomplete;
+                let address1Field;
+                let address2Field;
+                let postalField;
+
+                function initAutocomplete() {
+                    address1Field = document.querySelector("#SearchAddress_sign3");
+
+                    autocomplete = new google.maps.places.Autocomplete(address1Field, {
+                        componentRestrictions: {
+                            country: ["au"]
+                        },
+                        fields: ["address_components", "geometry"],
+                        types: ["address"],
+                    });
+                    address1Field.focus();
+                    // When the user selects an address from the drop-down, populate the
+                    // address fields in the form.
+                    autocomplete.addListener("place_changed", fillInAddress);
+                }
+
+                function fillInAddress() {
+                    $("#addressdiv1").show();
+                    $("#addressdiv2").show();
+                    // Get the place details from the autocomplete object.
+                    const place = autocomplete.getPlace();
+                    $("#address_latitude").val(place.geometry.location.lat());
+                    $("#address_longitude").val(place.geometry.location.lng());
+                    console.log("lat is"+place.geometry.location.lat());
+                    console.log("lng is"+place.geometry.location.lng());
+                    let address1 = "";
+                    let postcode = "";
+
+
+                    // Get each component of the address from the place details,
+                    // and then fill-in the corresponding field on the form.
+                    // place.address_components are google.maps.GeocoderAddressComponent objects
+                    // which are documented at http://goo.gle/3l5i5Mr
+                    for (const component of place.address_components) {
+                        const componentType = component.types[0];
+                        console.log(componentType);
+                        console.log(component.long_name);
+                        console.log(component.short_name);
+
+
+                        switch (componentType) {
+
+                            case "subpremise": {
+                                $('#UnitNumber').val(component.long_name);
+                            }
+
+                            case "street_number": {
+                                $('#street_number').val(component.long_name);
+                            }
+
+                            case "route": {
+                                $('#street_name').val(component.short_name);
+                            }
+
+                            case "locality": {
+                                $('#suburb').val(component.long_name);
+                            }
+
+                            case "administrative_area_level_1": {
+
+                                $('#state').val(component.short_name).trigger('change');;
+                            }
+
+                            case "postal_code": {
+
+                                $('#postcode').val(component.short_name);
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            if (window.location.href.indexOf('/installer/') > -1 && window.location.href.indexOf('/edit') > -1) {
+                let autocomplete;
+                let address1Field;
+                let address2Field;
+                let postalField;
+
+                function initAutocomplete() {
+                    address1Field = document.querySelector("#SearchAddress_sign3");
+
+                    autocomplete = new google.maps.places.Autocomplete(address1Field, {
+                        componentRestrictions: {
+                            country: ["au"]
+                        },
+                        fields: ["address_components", "geometry"],
+                        types: ["address"],
+                    });
+                    address1Field.focus();
+                    // When the user selects an address from the drop-down, populate the
+                    // address fields in the form.
+                    autocomplete.addListener("place_changed", fillInAddress);
+                }
+
+                function fillInAddress() {
+                    $("#addressdiv1").show();
+                    $("#addressdiv2").show();
+                    // Get the place details from the autocomplete object.
+                    const place = autocomplete.getPlace();
+                    $("#address_latitude").val(place.geometry.location.lat());
+                    $("#address_longitude").val(place.geometry.location.lng());
+                    console.log("lat is"+place.geometry.location.lat());
+                    console.log("lng is"+place.geometry.location.lng());
+                    let address1 = "";
+                    let postcode = "";
+
+
+                    // Get each component of the address from the place details,
+                    // and then fill-in the corresponding field on the form.
+                    // place.address_components are google.maps.GeocoderAddressComponent objects
+                    // which are documented at http://goo.gle/3l5i5Mr
+                    for (const component of place.address_components) {
+                        const componentType = component.types[0];
+                        console.log(componentType);
+                        console.log(component.long_name);
+                        console.log(component.short_name);
+
+
+                        switch (componentType) {
+
+                            case "subpremise": {
+                                $('#UnitNumber').val(component.long_name);
+                            }
+
+                            case "street_number": {
+                                $('#street_number').val(component.long_name);
+                            }
+
+                            case "route": {
+                                $('#street_name').val(component.short_name);
+                            }
+
+                            case "locality": {
+                                $('#suburb').val(component.long_name);
+                            }
+
+                            case "administrative_area_level_1": {
+
+                                $('#state').val(component.short_name).trigger('change');;
+                            }
+
+                            case "postal_code": {
+
+                                $('#postcode').val(component.short_name);
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
 
 
 
@@ -1255,7 +1894,9 @@
                 $('.type2').prop("checked", false);
                 $('.type_all').prop("checked", false);
                 var jtype_id = jtype_obj.attr('id');
+                //alert(jtype_id);
                 var ischecked = jtype_obj.is(':checked');
+                //alert(ischecked);
                 if ($('#jtype1').is(':checked')) { // check if checkbox checked
                     $('.type1').show();
                     $('.type11').show();
@@ -1268,7 +1909,15 @@
                     $('.type2').show();
                     $('.type22').show();
                 }
+                /*if ($('#jtype3').is(':checked')) {
+
+                    $('.type1').show();
+                    $('.type11').show();
+                    $('.type2').show();
+                    $('.type22').show();
+                }/*/
                 if ($('#jtype1').is(':checked') && $('#jtype2').is(':checked') || $('#jtype3').is(':checked')) {
+
                     $('.type1').show();
                     $('.type11').show();
                     $('.type2').show();
@@ -1290,7 +1939,7 @@
 
                 if (manufacturerID) {
                     $.ajax({
-                        url: '{{url('inventory / model / ')}}/' + manufacturerID,
+                        url: '{{url('inventory/model/')}}/' + manufacturerID,
                         type: "GET",
                         dataType: "json",
                         success: function(data) {
@@ -1307,7 +1956,7 @@
                 var supplierID = supplier_id;
                 if (supplierID) {
                     $.ajax({
-                        url: '{{url('inventory / supplier / ')}}/' + supplierID,
+                        url: '{{url('inventory/supplier/')}}/' + supplierID,
                         type: "GET",
                         dataType: "json",
                         success: function(data) {

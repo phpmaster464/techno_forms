@@ -26,7 +26,18 @@ use App\Http\Controllers\UnverifiedInstallerController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-  
+Route::get('/clear-cache-all', function() {
+
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('config:clear');
+    Artisan::call('view:clear');
+    Artisan::call('config:cache');
+    
+    dd("Cache Clear All");
+
+});
+
 Route::get('/', function () {
     return view('welcome');
 });

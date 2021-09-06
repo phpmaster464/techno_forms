@@ -104,6 +104,7 @@ class InventoryController extends Controller
      */
     public function store(Request $request)
     {   
+       
 		request()->validate([
             
             'manufacturer_id' => 'required',
@@ -123,6 +124,7 @@ class InventoryController extends Controller
                'wattage' => $request->input('wattage'),
                'created_by' => $userId
             ]);
+
                   return redirect()->route('inventory.index')
                         ->with('success','Inventory Created Successfully.');
     } 

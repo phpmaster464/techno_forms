@@ -139,15 +139,14 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for=" CompanyABN" class="control-label">
-                                            Company ABN: <span class="mdi mdi-multiplication"></span></label>
+                                            Company ABN:</label>
                                         <input type="text" class="form-control" id="CompanyABN" name="company_abn"
                                             {{-- disabled --}} value="{{$job->company_abn}}">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group select-wrapper">
-                                        <label for="OrganisationName" class="control-label">Organisation Name:
-                                            <span class="mdi mdi-multiplication"></span></label>
+                                        <label for="OrganisationName" class="control-label">Organisation Name:</label>
                                         <select class="form-control" id="OrganisationName" name="organisation_name"
                                             <option value="">Select selected</option>
                                             <option value="1" @if($job->organisation_name == '1') selected="true"
@@ -180,7 +179,6 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="Email" class="control-label"> Email:
-                                            <span class="mdi mdi-multiplication"></span>
                                         </label>
                                         <input type="email" class="form-control" id="Email" name="email"
                                             value="{{$job->email}}">
@@ -191,8 +189,6 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="Mobile" class="control-label"> Mobile:</label>
-                                        <!-- {{-- <span
-                                                class="mdi mdi-multiplication"></span></label> --}} -->
                                         <input type="text" class="form-control phone" id="Mobile" maxlength="10" name="mobile"
                                             value="{{$job->mobile}}">
                                     </div>
@@ -203,7 +199,7 @@
                                         <input type="text" class="form-control phone" id="Phone" maxlength="10" name="phone"
                                             value="{{$job->phone}}">
                                     </div>
-                                </div>
+                                </div> 
                             </div>
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
@@ -253,7 +249,7 @@
 
                                         <label for="Search" class="control-label"> Search Address </label>
 
-                                        <input type="text" class="form-control" id="SearchAddressone"
+                                        <input type="text" class="form-control" id="SearchAddress_sign2"
                                             placeholder="Search Address" name="search_address" autocomplete="off">
 
                                     </div>
@@ -343,7 +339,7 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group select-wrapper">
                                         <label for="PostalAddressType" class="control-label">Postal Address Type:
-                                            <span class="mdi mdi-multiplication"></span></label>
+                                            </label>
                                         <select class="form-control" id="PostalAddressType1"
                                             name="installation_postal_address_type">
                                             <option value="">select</option>
@@ -357,7 +353,7 @@
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group select-wrapper">
                                         <label for="UnitType" class="control-label">Unit Type:
-                                            <span class="mdi mdi-multiplication"></span></label>
+                                            </label>
                                         <select class="form-control" id="UnitType1" name="installation_unit_type">
                                             <option value="">Select</option>
                                             @php
@@ -397,8 +393,7 @@
                             <div class="row" id="SearchAddressdiv3">
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="StreetNumber" class="control-label"> Street Number: <span
-                                                class="mdi mdi-multiplication"></span> </label>
+                                        <label for="StreetNumber" class="control-label"> Street Number: </label>
                                         <input type="text" class="form-control" id="StreetNumber1"
                                             name="installation_street_number"
                                             value="{{$job->installation_street_number}}">
@@ -406,16 +401,14 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="StreetName" class="control-label"> Street Name: <span
-                                                class="mdi mdi-multiplication"></span> </label>
+                                        <label for="StreetName" class="control-label"> Street Name:</label>
                                         <input type="text" class="form-control" id="StreetName1"
                                             name="installation_street_name" value="{{$job->installation_street_name}}">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                     <div class="form-group select-wrapper">
-                                        <label for="StreetType" class="control-label">Street Type:
-                                            <span class="mdi mdi-multiplication"></span></label>
+                                        <label for="StreetType" class="control-label">Street Type:</label>
                                         <select class="form-control" id="StreetType1" name="installation_street_type">
                                             <option value="">Select</option>
                                             @php
@@ -438,8 +431,7 @@
                                 <div class="row" id="SearchAddressdiv4">
                                     <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                         <div class="form-group">
-                                            <label for="Town" class="control-label"> Town: <span
-                                                    class="mdi mdi-multiplication"></span>
+                                            <label for="Town" class="control-label"> Town:
                                             </label>
                                             <input type="text" class="form-control" id="Town1" name="installation_town"
                                                 value="{{$job->installation_town}}">
@@ -447,8 +439,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                         <div class="form-group">
-                                            <label for="State" class="control-label"> State: <span
-                                                    class="mdi mdi-multiplication"></span> </label>
+                                            <label for="State" class="control-label"> State:</label>
                                             <input type="text" class="form-control" id="State1"
                                                 name="installation_state" {{-- disabled --}}
                                                 value="{{$job->installation_state}}">
@@ -456,8 +447,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4 col-md-12 mb-3">
                                         <div class="form-group">
-                                            <label for="PostCode" class="control-label"> Post Code: <span
-                                                    class="mdi mdi-multiplication"></span> </label>
+                                            <label for="PostCode" class="control-label"> Post Code:</label>
                                             <input type="text" class="form-control" id="PostCode1"
                                                 name="installation_post_code" value="{{$job->installation_post_code}}">
                                         </div>
@@ -497,7 +487,7 @@
                                     <div class="form-group select-wrapper">
                                         <label for="Designer" class="control-label">Select Designer: </label>
                                         <select name="Designer_type" class="form-control select2_1" id="Designer_type">
-                                            <option></option>
+                                            <option></option> 
 
                                             @php
                                             foreach($Designers as $k=>$Designer){
@@ -560,6 +550,14 @@
 
                         <!--panel start -->
                         <div class="add-field-wrapper">
+                             <div class="col-xl-8 col-lg-10 col-md-12 mb-8" >
+                                        <div class="form-group" style="display:none;">
+                                            <label for="Title" class="control-label"> Total Number of solar panel
+                                            </label> 
+                                            <input type="text" class="one" id="sum"
+                                                name="sum" value="{{old('no_solar_panel')}}">
+                                        </div>
+                         </div>
                         <input type="button" class="btn btn-info add_field_button" onclick="add_more_button();" value="Add More Fields">
                         </div>
                         <div class="owner-details-wrapper-panel">
@@ -705,6 +703,7 @@
                         <!-- inverter start -->
 
                         <div class="add-field-wrapper">
+                            
                         <input type="button" class="btn btn-info add_field_button"
                                         onclick="add_more_inverter_button();" value="Add More Fields">
                                         </div>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\Jobs;
 use App\Models\Installer;
-
+use Auth;
 class HomeController extends Controller
 {
     /**

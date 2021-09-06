@@ -67,7 +67,7 @@ class UnverifiedInstallerController extends Controller
             'last_name' => 'required',
             'email' => 'required|unique:installers,email',
             'mobile' => 'required|unique:installers,mobile', 
-            'phone' => 'required|unique:installers,phone', 
+            //'phone' => 'required|unique:installers,phone', 
         ]);
  
  
@@ -77,6 +77,7 @@ class UnverifiedInstallerController extends Controller
             $destination_path = 'uploads/installer/logo/'; 
             $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
 
+            $filename = str_replace(array( '(', ')' ), '', $filename);
             $image->move($destination_path, $filename);
             $installer_logo = $destination_path . $filename;
         } 
@@ -87,6 +88,7 @@ class UnverifiedInstallerController extends Controller
             $destination_path = 'uploads/installer/photo/'; 
             $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
 
+            $filename = str_replace(array( '(', ')' ), '', $filename);
             $image->move($destination_path, $filename);
             $installer_photo = $destination_path . $filename;
         }
@@ -97,6 +99,7 @@ class UnverifiedInstallerController extends Controller
             $destination_path = 'uploads/installer/license/'; 
             $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
 
+            $filename = str_replace(array( '(', ')' ), '', $filename);
             $image->move($destination_path, $filename);
             $installer_license = $destination_path . $filename;
         }
@@ -196,6 +199,7 @@ class UnverifiedInstallerController extends Controller
             $destination_path = 'uploads/installer/logo'; 
             $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
 
+            $filename = str_replace(array( '(', ')' ), '', $filename);
             $image->move($destination_path, $filename);
             $installer_logo = $destination_path . $filename;
         }
@@ -206,6 +210,7 @@ class UnverifiedInstallerController extends Controller
             $destination_path = 'uploads/installer/photo'; 
             $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
 
+            $filename = str_replace(array( '(', ')' ), '', $filename);
             $image->move($destination_path, $filename);
             $installer_photo = $destination_path . $filename;
         }
@@ -216,6 +221,7 @@ class UnverifiedInstallerController extends Controller
             $destination_path = 'uploads/installer/licence'; 
             $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
 
+            $filename = str_replace(array( '(', ')' ), '', $filename);
             $image->move($destination_path, $filename);
             $installer_license = $destination_path . $filename;
         }
@@ -348,8 +354,8 @@ class UnverifiedInstallerController extends Controller
             'password' => 'required',
             'companyabn' => 'required',
             'companyname' => 'required',
-            'formdate' => 'required',
-            'todate' => 'required',
+            'formdate' => 'required|date',
+            'todate' => 'required|date|after_or_equal:formdate',
             'companywebsite' => 'required',
             'cecaccnumber' => 'required',
             'licensenumber' => 'required',

@@ -114,25 +114,6 @@ class JobController extends Controller
             'owner_type' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required',
-            'owner_postal_address_type' => 'required',
-            'owner_unit_type' => 'required',
-            'company_abn' => 'required',
-            'organisation_name' => 'required',
-            'owner_street_number' => 'required',
-            'owner_street_name' => 'required', 
-            'owner_street_type' => 'required', 
-            'owner_town' => 'required', 
-            'owner_state' => 'required', 
-            'owner_post_code' => 'required',
-            'installation_postal_address_type' => 'required',
-            'installation_unit_type' => '',
-            'installation_street_number' => 'required', 
-            'installation_street_name' => 'required', 
-            'installation_street_type' => 'required', 
-            'installation_town' => 'required',
-            'installation_state' =>  'required',
-            'installation_post_code' => 'required'
         ]);
 		
  
@@ -320,25 +301,7 @@ for($i=0; $i<count($input['inverter_Quick_Search']); $i++)
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required',
-            'phone' => 'required',
             'owner_postal_address_type' => 'required',
-            'owner_unit_type' => 'required',
-            'company_abn' => 'required',
-            'organisation_name' => 'required',
-            'owner_street_number' => 'required',
-            'owner_street_name' => 'required', 
-            'owner_street_type' => 'required', 
-            'owner_town' => 'required', 
-            'owner_state' => 'required', 
-            'owner_post_code' => 'required',
-            'installation_postal_address_type' => 'required',
-            'installation_unit_type' => '',
-            'installation_street_number' => 'required', 
-            'installation_street_name' => 'required', 
-            'installation_street_type' => 'required', 
-            'installation_town' => 'required',
-            'installation_state' =>  'required',
-            'installation_post_code' => 'required'
         ]);
         
 

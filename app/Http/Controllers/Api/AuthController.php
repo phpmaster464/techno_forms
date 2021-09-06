@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Auth;
+
 
 
 
@@ -17,44 +20,30 @@ class AuthController extends Controller
 
 
 	public function forgot_password(Request $request)
-	{
+	{  
+        $email = $request->email;
+        $user_count = User::where('email',$email)->count();
 
-		$credentials = request()->validate(['email' => 'required|email']);
+        if($user_count > 0)
+        {
+            $credentials = request()->validate(['email' => 'required|email']);
 
-        Password::sendResetLink($credentials);
+            Password::sendResetLink($credentials);
 
-        return response()->json(["msg" => 'Reset password link sent on your email id.']);
-  
-
-		// $input = $request->all();
-		// $rules = array(
-		// 	'email' => "required|email",
-		// );
-		// $validator = Validator::make($input, $rules);
-		// if ($validator->fails()) {
-		// 	$arr = array("status" => 400, "message" => $validator->errors()->first(), "data" => array());
-		// } else {
-		// 	try {
-		// 		$response = Password::sendResetLink($request->only('email'), function (Message $message) {
-		// 			$message->subject($this->getEmailSubject());
-		// 		});
-		// 		switch ($response) {
-		// 			case Password::RESET_LINK_SENT:
-		// 			return \Response::json(array("status" => 200, "message" => trans($response), "data" => array()));
-		// 			case Password::INVALID_USER:
-		// 			return \Response::json(array("status" => 400, "message" => trans($response), "data" => array()));
-		// 		}
-		// 	} catch (\Swift_TransportException $ex) {
-		// 		$arr = array("status" => 400, "message" => $ex->getMessage(), "data" => []);
-		// 	} catch (Exception $ex) {
-		// 		$arr = array("status" => 400, "message" => $ex->getMessage(), "data" => []);
-		// 	}
-		// }
-		// return \Response::json($arr);
+            return response()->json(['status'=>200,'message' => 'Reset password link sent on your email id.'], 200);
+        }
+        else
+        {
+            return response()->json(['status'=>404,'message' => 'User Not Found.'], 404); 
+        }
+        
 	}
 
 	public function change_password(Request $request)
 {
+    if (!isset(Auth::guard('api')->user()->id)) {
+        return response()->json(['status'=>400,'message' => 'You must be logged in to change password'], 400); 
+    }
     $input = $request->all();
     $userid = Auth::guard('api')->user()->id;
     $rules = array(
@@ -64,16 +53,17 @@ class AuthController extends Controller
     );
     $validator = Validator::make($input, $rules);
     if ($validator->fails()) {
-        $arr = array("status" => 400, "message" => $validator->errors()->first(), "data" => array());
+        return response()->json(['status'=>400,'message' => $validator->errors()->first()], 400); 
     } else {
         try {
-            if ((Hash::check(request('old_password'), Auth::user()->password)) == false) {
-                $arr = array("status" => 400, "message" => "Check your old password.", "data" => array());
-            } else if ((Hash::check(request('new_password'), Auth::user()->password)) == true) {
-                $arr = array("status" => 400, "message" => "Please enter a password which is not similar then current password.", "data" => array());
+            if ((Hash::check(request('old_password'), Auth::guard('api')->user()->password)) == false) {
+                return response()->json(['message' => 'Check your old password.'], 400); 
+
+            } else if ((Hash::check(request('new_password'), Auth::guard('api')->user()->password)) == true) {
+                return response()->json(["status" => 400,'message' => 'Please enter a password which is not similar then current password.'], 400); 
             } else {
                 User::where('id', $userid)->update(['password' => Hash::make($input['new_password'])]);
-                $arr = array("status" => 200, "message" => "Password updated successfully.", "data" => array());
+                return response()->json(["status" => 200,'message' => 'Password updated successfully.'], 200); 
             }
         } catch (\Exception $ex) {
             if (isset($ex->errorInfo[2])) {
@@ -81,10 +71,9 @@ class AuthController extends Controller
             } else {
                 $msg = $ex->getMessage();
             }
-            $arr = array("status" => 400, "message" => $msg, "data" => array());
+            return response()->json(["status" => 400,'message' => $msg], 400);
         }
     }
-    return \Response::json($arr);
 }
 
 

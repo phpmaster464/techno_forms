@@ -54,6 +54,7 @@ class Jobs extends Model
         'installation_post_code',
         'nmi',
         'additional_installation_information',
+        'job_status',        
         'created_by',
         'updated_by',
         'created_at',

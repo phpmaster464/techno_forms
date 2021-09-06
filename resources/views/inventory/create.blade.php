@@ -92,7 +92,7 @@
                                             col-12 control-label">Enter Wattage<span class="mdi mdi-multiplication"></span></label>
                                         <div class="col-md-9 col-12">
                                             <input type="number"
-                                                class="form-control"
+                                                class="form-control" min="0"
                                                 id="enter_wattage" value="{{ old('wattage')}}" name="wattage">
                                                 <p class="help-block">Enter value in kW</p>
                                         </div>
