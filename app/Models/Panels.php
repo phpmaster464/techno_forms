@@ -14,6 +14,7 @@ class Panels extends Model
         'total_no_solar_panel',
         'Panels_Brand',
         'Panels_Model',
+        'panel_image',
         'enter_no_of_solar_panal',
 		'status',
 		'job_id'

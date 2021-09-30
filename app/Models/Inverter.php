@@ -15,6 +15,7 @@ class Inverter extends Model
         'inverter_Series',
         'inverter_Model',
         'Enter_number_of_inverter',
+        'inverter_image',
 		'status',
 		'created_at',
 		'job_id'

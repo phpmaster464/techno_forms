@@ -15,6 +15,7 @@
     <title>{{ config('app.name', 'Techno Forms') }}</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
@@ -116,7 +117,68 @@
     .slider.round:before {
         border-radius: 50%;
     }
-    </style>
+
+
+    #imagePreview_installer,#imagePreview_designer,#imageUpload_electrician{
+    position: relative;
+    }
+
+    .avatar-preview:hover .avtar-checkbox{
+        display: block;
+    }
+
+    .avtar-checkbox{
+        display: none;
+        position: absolute;
+        top: 50%;
+        }
+
+    #ajaxdownloadimage1,#ajaxdownloadimage2,#ajaxdownloadimage3{
+        color: #fff;
+    }
+
+
+    /* 21-09-2021  autoComplete*/
+ 
+    .autocomplete {
+        /*the container must be positioned relative:*/
+        position: relative;
+        display: inline-block;
+        width:104%;
+        }
+
+        .autocomplete-items {
+        position: absolute;
+        border: 1px solid #d4d4d4;
+        border-bottom: none;
+        border-top: none;
+        z-index: 99;
+        /*position the autocomplete items to be the same width as the container:*/
+        top: 100%;
+        left: 0;
+        right: 0;
+       
+         overflow-y: auto;
+         height: auto;
+        max-height: 150px;
+        }
+        .autocomplete-items div {
+        padding: 10px;
+        cursor: pointer;
+        background-color: #fff;
+        border-bottom: 1px solid #d4d4d4;
+        }
+        .autocomplete-items div:hover {
+        /*when hovering an item:*/
+        background-color: #e9e9e9;
+        }
+        .autocomplete-active {
+        /*when navigating through the items using the arrow keys:*/
+        background-color: DodgerBlue !important;
+        color: #ffffff;
+        }
+    /* 21-09-2021  autoComplete*/
+
     </style>
     @endif
 
@@ -424,6 +486,10 @@
             <script
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSR5vFOoB3SvPTNoPG1ZAEqX1N84m-7fc&callback=initAutocomplete&libraries=places&v=weekly"
                 async></script>
+            <script src="{{ asset('js/address.js') }}" defer></script>
+            <!-- js pdf -->
+            <script src="{{ asset('assets/scripts/jsPdf/jspdf.debug.js')}}"></script>
+            <script src="{{ asset('assets/scripts/jsPdf/html2pdf.js')}}"></script>
 
 
             <script type="text/javascript">
@@ -431,16 +497,17 @@
                 var max_fields = 10; //maximum input boxes allowed
                 var wrapper = $(".owner-details-wrapper-panel"); //Fields wrapper
                 var add_button = $(".add_field_button"); //Add button ID
-                var x = 1; //initlal text box count
+                var x = $(".owner-details-wrapperone").length; //initlal text box count
                // $(".add_field_button").click(function(e) { //on add input button click
                     //e.preventDefault();
                     if (x < max_fields) { //max input box allowed
-                        x++; //text box increment
+                        ++x; //text box increment
+                        //alert(x);
                    // $(wrapper).append( '<div class=""> <div class="owner-details-wrapperone" id="newone"> <div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4><input type="button" class="btn btn-info add_field_button" onclick="add_more_button();" value="Add More Fields"></div> <div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Panels_search" class="control-label"> Quick Search: </label> <input type="date" class="form-control" id="install_date" name="install_date[]" value=""> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Total Number of solar panel </label> <input type="text" class="form-control" id="total_no_solar_panel" name="total_no_solar_panel[]" value="{{old('no_solar_panel ')}}"> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Panels_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Brand" name="Panels_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Model" name="Panels_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Enter number of Solar Panels </label> <input type="text" class="form-control" id="enter_no_of_solar_panal" name="enter_no_of_solar_panal[]" value="{{old('title ')}}"> </div> </div> </div> <a href="#" class="btn btn-primary remove_field">Remove</a></div></div>' ); //add input box 
-                     $(wrapper).append( ' <div class="owner-details-wrapperone" id="newone"> <div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4></div> <div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Panels_search" class="control-label"> Quick Search: </label> <input type="text" class="form-control" id="install_date" name="install_date[]" value=""> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Panels_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Brand" name="Panels_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Model" name="Panels_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Enter number of Solar Panels </label> <input type="text" class="form-control txt" id="enter_no_of_solar_panal" name="enter_no_of_solar_panal[]" value="{{old('title ')}}"> </div> </div> </div> <a href="#" class="btn btn-primary remove_field">Delete</a></div>' ); //add input box 
+                     $(wrapper).append( ' <div class="owner-details-wrapperone" id="newone"> <div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4></div> <div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group autocomplete"> <label for="Panels_search" class="control-label"> Quick Search: </label> <input type="hidden" value="" name="panel_id[]"><input type="text" class="form-control quick_search" id="install_date'+x+'" name="install_date[]" value=""> </div> </div> <div class="Brand  col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Panels_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Brand" name="Panels_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="Model col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="Panels_Model" name="Panels_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 2</option> <option value="3">Select 3</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Enter number of Solar Panels </label> <input type="text" class="form-control txt panel" id="enter_no_of_solar_panal" name="enter_no_of_solar_panal[]" value="{{old('title ')}}"  onkeyup="rated_power()"> </div> </div> </div> <a href="#" class="btn btn-primary remove_field">Delete</a></div>' ); //add input box 
                     }
                // }); 
-
+               quick_search();
                 $(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
                     e.preventDefault();
                     $(this).parent('div').remove();
@@ -454,23 +521,23 @@
                 var wrapper = $(".inventory-wrapper"); //Fields wrapper
                 var add_button = $(".add_field_buttontwo"); //Add button ID
 
-                var x = 1; //initlal text box count
+                var x = $(".owner-details-wrappertwo").length; //initlal text box count 
                // $(".add_field_buttontwo").click(function(e) { //on add input button click
                    // e.preventDefault();
                     if (x < max_fields) { //max input box allowed
-                        x++; //text box increment 
+                        ++x; //text box increment 
                         //$(wrapper).append(
                          //   '<div><div class="owner-details-wrappertwo" ><div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4><input type="button" class="btn btn-info add_field_button" onclick="add_more_inverter_button();" value="Add More Fields"></div><div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Quick Search: </label> <input type="date" class="form-control" id="inverter_Quick_Search" name="inverter_Quick_Search[]" value="{{old('
                             //title ')}}"> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Brand" name="inverter_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Series" class="control-label">Series <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Series" name="inverter_Series[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div><div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Model" name="inverter_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div><div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Enter number of inverter" class="control-label"> Enter number of inverter </label> <input type="text" class="form-control" id="Enter_number_of_inverter" name="Enter_number_of_inverter[]" value="{{old('
                             //title ')}}"> </div> </div> </div> </div> <a href="#" class="btn btn-primary remove_field" >Remove</a></div>'
                             $(wrapper).append(
-                            '<div class="owner-details-wrappertwo" ><div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4></div><div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Title" class="control-label"> Quick Search: </label> <input type="text" class="form-control" id="inverter_Quick_Search" name="inverter_Quick_Search[]" value="{{old('
-                            title ')}}"> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Brand" name="inverter_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Series" class="control-label">Series <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Series" name="inverter_Series[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div><div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Model" name="inverter_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div><div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Enter number of inverter" class="control-label"> Enter number of inverter </label> <input type="text" class="form-control" id="Enter_number_of_inverter" name="Enter_number_of_inverter[]" value="{{old('
-                            title ')}}"> </div> </div> </div> </div> <a href="#" class="btn btn-primary remove_field" >Delete</a>'
+                            '<div class="owner-details-wrappertwo" id="newtow"><div class="heading-one"> <h4 style="visibility: hidden">Panels:</h4></div><div class="row"> <div class="col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group autocomplete"> <label for="Title" class="control-label"> Quick Search: </label><input type="hidden" value="" name="inverter_id[]"> <input type="text" class="form-control quick_search_inverter" id="inverter_Quick_Search'+x+'" name="inverter_Quick_Search[]" value="{{old('
+                            title ')}}"> </div> </div> <div class="Brand col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Brand" class="control-label">Brand <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Brand" name="inverter_Brand[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div> <div class="Series col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Series" class="control-label">Series <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Series" name="inverter_Series[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div><div class="Model col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group select-wrapper"> <label for="inverter_Model" class="control-label">Model <span class="mdi mdi-multiplication"></span></label> <select class="form-control" id="inverter_Model" name="inverter_Model[]" {{-- disabled --}}> <option value="">Select selected</option> <option value="1">Select 1</option> <option value="2">Select 1</option> <option value="3">Select 1</option> </select> </div> </div><div class=" col-xl-4 col-lg-4 col-md-12 mb-3"> <div class="form-group"> <label for="Enter number of inverter" class="control-label"> Enter number of inverter </label> <input type="text" class="form-control" id="Enter_number_of_inverter" name="Enter_number_of_inverter[]" value="{{old('
+                            title ')}}"> </div> </div> </div> <a href="#" class="btn btn-primary remove_field" >Delete</a> </div> '
                         ); //add input box
                     }
                // });
-
+               quick_search_inverter();
                 $(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
                     e.preventDefault();
                     $(this).parent('div').remove();
@@ -482,8 +549,7 @@
 
 
 
-
-
+            
 
            $('.owner-details-wrapper-panel').on("click", ".remove_field", function(e) { //user click on remove text
                     e.preventDefault();
@@ -498,7 +564,38 @@
                  })
 
 
-                
+                 $("#imagePreview_installer").mouseover(function() {
+                 $("#installer_CheckBox").show();
+                 });
+
+                 
+                 //Download button show based on checkbox
+                $(document).ready(function() 
+                {
+                      $('#flip-ch1').hide();
+                      $('#installer_CheckBox').mouseup(function() {
+                      $('#flip-ch1').toggle();
+                        });
+                });
+
+                $(document).ready(function() 
+                {
+                      $('#flip-ch2').hide();
+                      $('#designer_CheckBox').mouseup(function() {
+                      $('#flip-ch2').toggle();
+                        });
+                });
+
+                $(document).ready(function() 
+                {
+                      $('#flip-ch3').hide();
+                      $('#electrician_CheckBox').mouseup(function() {
+                      $('#flip-ch3').toggle();
+                        });
+                });
+
+
+
                  function Panel_Serial_Numbers(id){
                     //alert("Invetrers_Serial_Numbers"+id);
                     $("#Panel_Serial_Numbers"+id).remove();
@@ -833,7 +930,9 @@
                 let postalField;
 
                 function initAutocomplete() {
-                    address1Field = document.querySelector("#SearchAddress_sign");
+
+                     AddressAuto("#SearchAddress_sign","#addressdiv1","#addressdiv2","#UnitNumber","#street_number","#street_name","#suburb","#state","#postcode","#address_latitude","#address_longitude");
+                    /*address1Field = document.querySelector("#SearchAddress_sign");
 
                     autocomplete = new google.maps.places.Autocomplete(address1Field, {
                         componentRestrictions: {
@@ -842,13 +941,13 @@
                         fields: ["address_components", "geometry"],
                         types: ["address"],
                     });
-                    address1Field.focus();
+                    //address1Field.focus();
                     // When the user selects an address from the drop-down, populate the
                     // address fields in the form.
-                    autocomplete.addListener("place_changed", fillInAddress);
+                    autocomplete.addListener("place_changed", fillInAddress);*/
                 }
 
-                function fillInAddress() {
+                /*function fillInAddress() {
                     $("#addressdiv1").show();
                     $("#addressdiv2").show();
                     // Get the place details from the autocomplete object.
@@ -904,7 +1003,7 @@
 
                     }
 
-                }
+                }*/
 
             }
 
@@ -916,7 +1015,10 @@
                 let postalField;
 
                 function initAutocomplete() {
-                    address1Field = document.querySelector("#SearchAddress_sign1");
+
+                     AddressAuto("#SearchAddress_sign1","#addressdiv1","#addressdiv2","#UnitNumber","#street_number","#street_name","#suburb","#state","#postcode","#address_latitude","#address_longitude");
+ 
+                    /*address1Field = document.querySelector("#SearchAddress_sign1");
 
                     autocomplete = new google.maps.places.Autocomplete(address1Field, {
                         componentRestrictions: {
@@ -925,13 +1027,13 @@
                         fields: ["address_components", "geometry"],
                         types: ["address"],
                     });
-                    address1Field.focus();
+                    //address1Field.focus();
                     // When the user selects an address from the drop-down, populate the
                     // address fields in the form.
-                    autocomplete.addListener("place_changed", fillInAddress);
+                    autocomplete.addListener("place_changed", fillInAddress);*/
                 }
 
-                function fillInAddress() {
+                /*function fillInAddress() {
                     $("#addressdiv1").show();
                     $("#addressdiv2").show();
                     // Get the place details from the autocomplete object.
@@ -987,7 +1089,7 @@
 
                     }
 
-                }
+                }*/
 
             }
 
@@ -999,7 +1101,11 @@
                 let postalField;
 
                 function initAutocomplete() {
-                    address1Field = document.querySelector("#SearchAddress_sign1");
+
+
+                     AddressAuto("#SearchAddress_sign1","#addressdiv1","#addressdiv2","#UnitNumber","#street_number","#street_name","#suburb","#state","#postcode","#address_latitude","#address_longitude");
+ 
+                    /*address1Field = document.querySelector("#SearchAddress_sign1");
 
                     autocomplete = new google.maps.places.Autocomplete(address1Field, {
                         componentRestrictions: {
@@ -1008,13 +1114,13 @@
                         fields: ["address_components", "geometry"],
                         types: ["address"],
                     });
-                    address1Field.focus();
+                    //address1Field.focus();
                     // When the user selects an address from the drop-down, populate the
                     // address fields in the form.
-                    autocomplete.addListener("place_changed", fillInAddress);
+                    autocomplete.addListener("place_changed", fillInAddress);*/
                 }
 
-                function fillInAddress() {
+                /*function fillInAddress() {
                     $("#addressdiv1").show();
                     $("#addressdiv2").show();
                     // Get the place details from the autocomplete object.
@@ -1070,10 +1176,9 @@
 
                     }
 
-                }
+                }*/
 
             }
-
 
             if (window.location.href.indexOf('job/create') > -1) {
 
@@ -1083,9 +1188,13 @@
                 let postalField;
 
                 function initAutocomplete() {
-     
+                    
+                    //AddressAuto("#SearchAddress_sign2","#SearchAddressdiv1","#SearchAddressdiv2","#UnitNumber","#StreetNumber","#StreetName","#Town","#State","#PostCode","#address_latitude","#address_longitude");
+
+                    AddressAuto("#sameAsOwnerAddre_copy","#addressdiv3","#addressdiv4","#UnitNumber1","#StreetNumber1","#StreetName1","#Town1","#State1","#PostCode1","#installation_address_latitude","#installation_address_longitude");
+
                     address1Field = document.querySelector("#SearchAddress_sign2");
-                    address1Field1 = document.querySelector("#sameAsOwnerAddre_copy");
+                    //address1Field1 = document.querySelector("#sameAsOwnerAddre_copy");
                    
                     autocomplete = new google.maps.places.Autocomplete(address1Field, {
                         componentRestrictions: {
@@ -1095,20 +1204,20 @@
                         types: ["address"],
                     });
 
-                    autocomplete1 = new google.maps.places.Autocomplete(address1Field1, {
+                    /*autocomplete1 = new google.maps.places.Autocomplete(address1Field1, {
                         componentRestrictions: {
                             country: ["au"]
                         },
                         fields: ["address_components", "geometry"],
                         types: ["address"],
-                    });
+                    });*/
 
-                    address1Field.focus();
-                    address1Field1.focus();
+                    //address1Field.focus();
+                    //address1Field1.focus();
                     // When the user selects an address from the drop-down, populate the
                     // address fields in the form.
                     autocomplete.addListener("place_changed", fillInAddress);
-                    autocomplete1.addListener("place_changed", fillInAddress1);
+                    //autocomplete1.addListener("place_changed", fillInAddress1);
                 }
 
                 function fillInAddress() {
@@ -1169,13 +1278,13 @@
 
                 }
 
-                function fillInAddress1() {
+                /*function fillInAddress1() {
                     $("#addressdiv3").show();
                     $("#addressdiv4").show();
                     // Get the place details from the autocomplete object.
-                    const place = autocomplete.getPlace();
-                    $("#address_latitude").val(place.geometry.location.lat());
-                    $("#address_longitude").val(place.geometry.location.lng());
+                    const place = autocomplete1.getPlace();
+                    $("#installation_address_latitude").val(place.geometry.location.lat());
+                    $("#installation_address_longitude").val(place.geometry.location.lng());
                     console.log("lat is"+place.geometry.location.lat());
                     console.log("lng is"+place.geometry.location.lng());
                     let address1 = "";
@@ -1225,13 +1334,13 @@
 
                     }
 
-                }
+                }*/
 
 
             }
 
             if (window.location.href.indexOf('/job/') > -1 && window.location.href.indexOf('/edit') > -1) {
-
+            
                 let autocomplete;
                 let address1Field;
                 let address2Field;
@@ -1239,8 +1348,13 @@
 
                 function initAutocomplete() {
      
+                    //AddressAuto("#SearchAddress_sign2","#SearchAddressdiv1","#SearchAddressdiv2","#UnitNumber","#StreetNumber","#StreetName","#Town","#State","#PostCode","#address_latitude","#address_longitude");
+
+                    AddressAuto("#sameAsOwnerAddre_copy","#addressdiv3","#addressdiv4","#UnitNumber1","#StreetNumber1","#StreetName1","#Town1","#State1","#PostCode1","#installation_address_latitude","#installation_address_longitude");
+
+
                     address1Field = document.querySelector("#SearchAddress_sign2");
-                    address1Field1 = document.querySelector("#sameAsOwnerAddre_copy");
+                    //address1Field1 = document.querySelector("#sameAsOwnerAddre_copy");
                    
                     autocomplete = new google.maps.places.Autocomplete(address1Field, {
                         componentRestrictions: {
@@ -1250,20 +1364,20 @@
                         types: ["address"],
                     });
 
-                    autocomplete1 = new google.maps.places.Autocomplete(address1Field1, {
+                    /*autocomplete1 = new google.maps.places.Autocomplete(address1Field1, {
                         componentRestrictions: {
                             country: ["au"]
                         },
                         fields: ["address_components", "geometry"],
                         types: ["address"],
-                    });
+                    });*/
 
-                    address1Field.focus();
-                    address1Field1.focus();
+                    //address1Field.focus();
+                    //address1Field1.focus();
                     // When the user selects an address from the drop-down, populate the
                     // address fields in the form.
                     autocomplete.addListener("place_changed", fillInAddress);
-                    autocomplete1.addListener("place_changed", fillInAddress1);
+                    //autocomplete1.addListener("place_changed", fillInAddress1);
                 }
 
                 function fillInAddress() {
@@ -1324,11 +1438,11 @@
 
                 }
 
-                function fillInAddress1() {
+                /*function fillInAddress1() {
                     $("#addressdiv3").show();
                     $("#addressdiv4").show();
                     // Get the place details from the autocomplete object.
-                    const place = autocomplete.getPlace();
+                    const place = autocomplete1.getPlace();
                     $("#address_latitude").val(place.geometry.location.lat());
                     $("#address_longitude").val(place.geometry.location.lng());
                     console.log("lat is"+place.geometry.location.lat());
@@ -1380,7 +1494,7 @@
 
                     }
 
-                }
+                }*/
 
 
             }
@@ -1392,7 +1506,10 @@
                 let postalField;
 
                 function initAutocomplete() {
-                    address1Field = document.querySelector("#SearchAddress_sign3");
+
+                    AddressAuto("#SearchAddress_sign3","#addressdiv1","#addressdiv2","#UnitNumber","#street_number","#street_name","#suburb","#state","#postcode","#address_latitude","#address_longitude");
+
+                    /*address1Field = document.querySelector("#SearchAddress_sign3");
 
                     autocomplete = new google.maps.places.Autocomplete(address1Field, {
                         componentRestrictions: {
@@ -1404,10 +1521,10 @@
                     address1Field.focus();
                     // When the user selects an address from the drop-down, populate the
                     // address fields in the form.
-                    autocomplete.addListener("place_changed", fillInAddress);
+                    autocomplete.addListener("place_changed", fillInAddress);*/
                 }
 
-                function fillInAddress() {
+                /*function fillInAddress() {
                     $("#addressdiv1").show();
                     $("#addressdiv2").show();
                     // Get the place details from the autocomplete object.
@@ -1463,7 +1580,7 @@
 
                     }
 
-                }
+                }*/
 
             }
 
@@ -1474,7 +1591,10 @@
                 let postalField;
 
                 function initAutocomplete() {
-                    address1Field = document.querySelector("#SearchAddress_sign3");
+
+                    AddressAuto("#SearchAddress_sign3","#addressdiv1","#addressdiv2","#UnitNumber","#street_number","#street_name","#suburb","#state","#postcode","#address_latitude","#address_longitude");
+
+                    /*address1Field = document.querySelector("#SearchAddress_sign3");
 
                     autocomplete = new google.maps.places.Autocomplete(address1Field, {
                         componentRestrictions: {
@@ -1483,13 +1603,13 @@
                         fields: ["address_components", "geometry"],
                         types: ["address"],
                     });
-                    address1Field.focus();
+                    //address1Field.focus();
                     // When the user selects an address from the drop-down, populate the
                     // address fields in the form.
-                    autocomplete.addListener("place_changed", fillInAddress);
+                    autocomplete.addListener("place_changed", fillInAddress);*/
                 }
 
-                function fillInAddress() {
+                /*function fillInAddress() {
                     $("#addressdiv1").show();
                     $("#addressdiv2").show();
                     // Get the place details from the autocomplete object.
@@ -1545,7 +1665,7 @@
 
                     }
 
-                }
+                }*/
 
             }
 
@@ -1712,7 +1832,7 @@
                     beforeSend: function() {
 
                     },
-                    success: function(data) {
+                    success: function(downloadimage) {
                         alert('done');
                     }
                 });
@@ -1847,6 +1967,10 @@
 
                 $("#SearchAddressdiv3").show();
                 $("#SearchAddressdiv4").show();
+
+                $("#addressdiv3").show();
+                $("#addressdiv4").show();
+
                 if ($(e).is(":checked")) {
                     $('#PostalAddressType1').val($('#PostalAddressType').val());
                     $('#UnitType1').val($('#UnitType').val());
@@ -1973,6 +2097,26 @@
 
 
 
+    function generate_pdf(){
+
+        th = 8.5 * 72;
+
+        html2canvas(document.body, { 
+            canvas:canvas,
+            onrendered: function(canvas) {
+                var iframe = document.createElement('iframe');
+                iframe.setAttribute('style','position:absolute;right:0; top:0; bottom:0; height:100%; width:500px');
+                document.body.appendChild(iframe);
+                iframe.src = pdf.output('datauristring');   
+
+           //var div = document.createElement('pre');
+           //div.innerText=pdf.output();
+           //document.body.appendChild(div);
+       }
+   });
+
+    }
+
 
 
 
@@ -2049,9 +2193,212 @@
                 }
 
 
+                //start edit 21-09-2021 
 
+                quick_search();
+                quick_search_inverter();
+                one_checkbox('.replacing_panels');
+                one_checkbox('.Additionalpanels');
+                one_checkbox('.system_installed');
             });
 
+
+            function one_checkbox(selector){
+                $(document).on('click', selector, function() {      
+                    $(selector).not(this).prop('checked', false);      
+                });
+            }
+
+            function quick_search(){
+                $(".quick_search").on("keyup",function(){
+                    var keyword = $(this).val();
+
+                    var idd = $(this).attr("id");
+                   
+                    //console.log(keyword);
+                    $.ajax({
+                    url:"{{ route('job.quick_search') }}",
+                    method:"POST",
+                    data : { 
+                        "_token": "{{ csrf_token() }}",
+                        keyword : keyword },
+                        success:function(data)
+                        {
+                            //console.log(data.length);
+                            //if(data.length >0){  
+                                autocomplete(document.getElementById(idd), data);
+                                Brand_Model();
+                            //}
+                        }
+                    });
+                
+                });
+            }
+
+            function autocomplete(inp, arr) {
+                //console.log(arr);
+                /*the autocomplete function takes two arguments,
+                the text field element and an array of possible autocompleted values:*/
+                var currentFocus;
+                /*execute a function when someone writes in the text field:*/
+                inp.addEventListener("input", function(e) {
+                    var a, b, i, val = this.value;
+                    /*close any already open lists of autocompleted values*/
+                     closeAllLists();
+                    if (!val) { return false;}
+                    currentFocus = 0;
+                    /*create a DIV element that will contain the items (values):*/
+                    a = document.createElement("DIV");
+                    a.setAttribute("id", this.id + "autocomplete-list");
+                    a.setAttribute("class", "autocomplete-items");
+                    /*append the DIV element as a child of the autocomplete container:*/
+                    this.parentNode.appendChild(a);
+                    /*for each item in the array...*/
+                    for (i = 0; i < arr.length; i++) {
+                        /*check if the item starts with the same letters as the text field value:*/
+                        //if (arr['search'].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        /*create a DIV element for each matching element:*/
+                        b = document.createElement("DIV");
+                        b.setAttribute("class", "search_watt");
+                        b.setAttribute("data-watt", arr[i]['model_number']);
+                        b.setAttribute("data-brand", arr[i]['LHAAN']);
+                        b.setAttribute("search", arr[i]['search']);
+                        b.innerHTML += arr[i]['search'] ; 
+                        //b.innerHTML += "<span class='search_watt' data-watt='"+arr[i]['model_number']+"' data-brand='"+arr[i]['LHAAN']+"'>"+ arr[i]['search'] + "</span>"; 
+                        a.appendChild(b);
+                    
+                    }
+                });
+                
+            }
+                /*execute a function presses a key on the keyboard:*/
+                function closeAllLists(elmnt) {
+
+                    var x = document.getElementsByClassName("autocomplete-items");
+                    for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != document.getElementById("install_date")) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                    }
+                }
+                document.addEventListener("click", function (e) {
+                     closeAllLists(e.target);
+                });
+               
+                function Brand_Model(){
+                    $(".search_watt").on("click",function(){
+                        var watt= $(this).attr("data-watt");
+                        var brand= $(this).attr("data-brand");
+                        var search= $(this).attr("search");
+                        
+                        //$(this).parent().parent().parent().siblings("div.Brand").css({"color": "red", "border": "2px solid red"});
+                        
+                        $(this).parent().siblings(".quick_search").val(search);
+                        $(this).parent().parent().parent().siblings("div.Brand").find("select#Panels_Brand").html('<option value="">Select</option><option value="'+brand+'" selected>'+brand+'</option>');
+                        $(this).parent().parent().parent().siblings("div.Model").find("select#Panels_Model").html('<option value="">Select</option><option value="'+watt+'" selected>'+watt+'</option>');
+                    });
+                }
+            //End
+            //start 22-09-2021
+            function quick_search_inverter(){
+                $(".quick_search_inverter").on("keyup",function(){
+                    var keyword = $(this).val();
+                    var id_in = $(this).attr("id");
+                    $.ajax({
+                    url:"{{ route('job.quick_search_inverter') }}",
+                    method:"POST",
+                    data : { 
+                        "_token": "{{ csrf_token() }}",
+                        keyword : keyword },
+                        success:function(data)
+                        {  
+                                //console.log(data);
+                                autocomplete_inverter(document.getElementById(id_in), data);
+                                Brand_Series_Model();
+                        }
+                    });
+                
+                });
+            }
+
+            function autocomplete_inverter(inp, arr) {
+                var currentFocus;
+                inp.addEventListener("input", function(e) {
+                    var a, b, i, val = this.value;
+                     closeAllLists();
+                    if (!val) { return false;}
+                    currentFocus = 0;
+                    a = document.createElement("DIV");
+                    a.setAttribute("id", this.id + "autocomplete-list");
+                    a.setAttribute("class", "autocomplete-items");
+                    this.parentNode.appendChild(a);
+                    for (i = 0; i < arr.length; i++) {
+                        b = document.createElement("DIV");
+                        b.setAttribute("class", "search_inverter");
+                        b.setAttribute("data-brand", arr[i]['brand']);
+                        b.setAttribute("data-series", arr[i]['series']);
+                        b.setAttribute("data-model", arr[i]['model']);
+                        b.setAttribute("search", arr[i]['search']);
+                        b.innerHTML += arr[i]['search'] ; 
+                        a.appendChild(b);
+                    }
+                });   
+            }
+            function Brand_Series_Model(){
+                $(".search_inverter").on("click",function(){
+                    var brand = $(this).attr("data-brand");
+                    var series= $(this).attr("data-series");
+                    var model = $(this).attr("data-model");
+                    var search= $(this).attr("search");
+
+                    //$(this).parent().parent().parent().siblings("div.Brand").css({"color": "red", "border": "2px solid red"});
+                    
+                    $(this).parent().siblings(".quick_search_inverter").val(search);
+                    $(this).parent().parent().parent().siblings("div.Brand").find("select#inverter_Brand").html('<option value="">Select</option><option value="'+brand+'" selected>'+brand+'</option>');
+                    $(this).parent().parent().parent().siblings("div.Series").find("select#inverter_Series").html('<option value="">Select</option><option value="'+series+'" selected>'+series+'</option>');
+                    $(this).parent().parent().parent().siblings("div.Model").find("select#inverter_Model").html('<option value="">Select</option><option value="'+model+'" selected>'+model+'</option>');
+                });
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //end
             function change_current_menu(menu_link) {
                 $(".menu li").removeClass("current");
 
@@ -2107,7 +2454,22 @@
                     .files[0]) + ")");
             })
 
-
+            function rated_power(){
+                $("#Rated_Power_Output").val('');
+                var nop = 0, formula_count = 0;
+                var id= document.getElementsByName('enter_no_of_solar_panal[]');
+                id.forEach(function(element) {
+                    if(element.value != ''){
+                    nop = parseInt(nop) + parseInt(element.value);
+                    }    
+                });
+                //console.log(nop);
+                formula_count = (300 * nop)/1000;
+                //console.log(formula_count);
+                if(formula_count != NaN && formula_count > 0){
+                    $("#Rated_Power_Output").val(formula_count);
+                }
+            }   
             $(document).ready(function() {
 
                 // Add new element
@@ -2138,6 +2500,93 @@
 
                 });
 
+
+                 //Download Multiple image Ajax
+                $(".imagedown").click(function() {
+                   //var imagearray[];
+                   var imagearray = [];
+                    $(".imagedown").each(function() {
+                        var id= $(this).attr("id");
+                        //console.log(id);
+                        //console.log('#'+id);
+                        if ($('.'+id).is(':checked')) {
+                            var checked = $('#'+id).attr("data-imagevalue");
+                            imagearray.push(checked);
+
+                          }  
+
+                    });
+                    console.log(imagearray);
+                   $.ajax({
+                    url:"{{ route('job.zipFileDownload') }}",
+                    method:"GET",
+                    data : { imagearray : imagearray },
+                    success:function(data)
+                    {
+                        console.log(data);   
+                    }
+                });
+                });
+
+                //edit code 
+
+                var chArray = new Array();
+
+        	    $('.panel_image_save').change(function() {
+        	    		var v = $(this).val();
+        	        if(this.checked) {
+        	        
+        	        	
+        	        		chArray.push(v);
+        	         
+        	        }else{
+        	        	chArray=  $.grep(chArray, function(value) {
+        	  					return value != v;
+        						});
+        	        }
+	  		       //console.log(chArray); 
+	    		});
+        	    $("#panel_save_image").click(function(){
+        	    	
+        	    if(chArray.length  > 0){
+        	        $.ajax({
+                            url:"{{ route('job.zipFileDownload_new') }}",
+                            method:"GET",
+                            data : { chArray : chArray },
+                            success:function(data)
+                            {	
+                            	var url= data.replace(/"/g," ")
+                                window.open(url, "_blank");  
+                            }
+        	        });
+	  			}else{
+                    alert('Please select image');
+                }
+
+	  		   });
+                //delete image
+                $(".panel_delete").click(function(){
+                    var id= $(this).attr("id");
+                    $("#panel_delete_"+id).attr("value","0");
+                    $(this).attr("value","Deleted");
+                });
+                $(".invetrers_delete").click(function(){
+                    var id= $(this).attr("id");
+                    $("#invetrers_delete_"+id).attr("value","0");
+                    $(this).attr("value","Deleted");
+                });
+
+
+
+                $("#NMI").on('keyup',function() { 
+                    var value= $(this).val();
+                    if(value !=''){
+                        $('#garn_div').removeClass("hidden");
+                    }else{
+                        $('#garn_div').addClass("hidden");
+                    }
+                }); 
+
                 // Remove element
                 $('.container').on('click', '.remove', function() {
 
@@ -2150,6 +2599,8 @@
 
                 });
             });
+
+
             </script>
 
 </body>

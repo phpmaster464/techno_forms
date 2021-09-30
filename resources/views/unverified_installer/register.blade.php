@@ -215,10 +215,11 @@
                         <div class="row ">
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
-                                    <label for="Company ABN" class="col-12 control-label">Company ABN: :</label>
+                                    <label for="Company ABN" class="col-12 control-label">Company ABN: <span
+                                            class="mdi mdi-multiplication"></span></label>
                                     <input type="text" class="form-control" id="text" placeholder="Enter Company ABN"
                                         value="{{ old('companyabn')}}" name="companyabn">
-                                </div>
+                                </div> 
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
@@ -314,7 +315,7 @@
 
                         <input type="hidden" id="address_latitude">
                         <input type="hidden" id="address_longitude">
-                        <div class="row" style="display:none" id="addressdiv1">
+                        <div class="row" id="addressdiv1">
 
                             <div class="col-md-4 mb-3">
                                 <div class="form-group">
@@ -348,7 +349,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row" style="display:none" id="addressdiv2">
+                        <div class="row" id="addressdiv2">
                             <div class="col-md-4 mb-3">
                                 <div class="form-group">
                                     <label for="Suburb" class="col-12 control-label">Town/Suburb</label>
@@ -438,8 +439,11 @@
                                     <canvas id="canvas" name="signed">Canvas is not supported</canvas>
                                     <div>
                                         <br />
-                                        <button id="clear" class="btn btn-danger btn-sm"
-                                            onclick="init_Sign_Canvas()">Clear Signature</button>
+                                        <!-- <button id="clear" class="btn btn-danger btn-sm"
+                                            onclick="init_Sign_Canvas()">Clear Signature</button> -->
+
+                                        <input type="button" id="clear" class="btn btn-danger btn-sm"
+                                        onclick="init_Sign_Canvas()" value="Clear Signature">
                                         <textarea id="signature64" name="signed" style="display: none"></textarea>
                                         <input type="text" style="display: none;" class="form-control" id="iamgeval"
                                             name="iamgeval">

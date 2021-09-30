@@ -51,4 +51,6 @@ class HomeController extends Controller
         Auth::logout();
         return redirect()->to('/login');
     }
+
+    
 }

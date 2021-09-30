@@ -279,6 +279,9 @@
                                 <div class="col-md-9 col-12">
                                     <input type="text" class="form-control" id="SearchAddress_sign3"
                                         placeholder="Search Address" name="search_address" autocomplete="off">
+
+                                        <input type="hidden" id="address_latitude" name="address_latitude" value="{{$installer->address_latitude}}">
+                                        <input type="hidden" id="address_longitude" name="address_longitude" value="{{$installer->address_longitude}}">
                                 </div>
                             </div>
                         </div>

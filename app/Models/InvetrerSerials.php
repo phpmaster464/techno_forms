@@ -14,6 +14,7 @@ class InvetrerSerials extends Model
         'panel_id',
         'job_id',
         'invetrers_serial_numbers',
+        'inverter_serial_number_scanned',
         'created_at',
         'created_by',
         'updated_at',

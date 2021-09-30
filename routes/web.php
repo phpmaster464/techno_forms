@@ -41,6 +41,10 @@ Route::get('/clear-cache-all', function() {
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/registered', function () {
+    return view('registered_successful');
+}); 
   
 Auth::routes();
   
@@ -68,7 +72,19 @@ Route::group(['middleware' => ['auth']], function() {
      Route::resource('job', JobController::class);
      Route::post('jobStatus', [JobController::class,'change_status'])->name('job.jobStatus');
 	 Route::post('delete_extra_panels', [JobController::class,'delete_extra_panels'])->name('job.delete_extra_panels');
-	  Route::post('delete_extra_inverter', [JobController::class,'delete_extra_inverter'])->name('job.delete_extra_inverter');
+	 Route::post('delete_extra_inverter', [JobController::class,'delete_extra_inverter'])->name('job.delete_extra_inverter');
+     Route::get('view/{id}', [JobController::class,'view'])->name('job.view');
+     Route::get('zipFileDownload', [JobController::class,'zipFileDownload'])->name('job.zipFileDownload');
+     //edit
+     Route::get('zipFileDownload_new', [JobController::class,'zipFileDownload_new'])->name('job.zipFileDownload_new');
+     Route::get('generatePDF/{id}', [JobController::class,'generatePDF'])->name('job.generatePDF');
+
+     //start edit 21-09-2021 
+     Route::post('quick_search', [JobController::class,'quick_search'])->name('job.quick_search');
+     //end edit
+     //start edit 22-09-2021
+     Route::post('quick_search_inverter', [JobController::class,'quick_search_inverter'])->name('job.quick_search_inverter');
+     //end edit
 
     Route::resource('inventory', InventoryController::class);
     Route::post('inventoryStatus', [InventoryController::class,'change_status'])->name('inventory.inventoryStatus');

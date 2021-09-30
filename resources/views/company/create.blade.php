@@ -310,8 +310,8 @@
                         </div>
                     </div>
 
-                    <input type="hidden" id="address_latitude">
-                    <input type="hidden" id="address_longitude">
+                    <input type="hidden" id="address_latitude" name="address_latitude">
+                    <input type="hidden" id="address_longitude" name="address_longitude">
                     <div class="row"  id="addressdiv1">
 
                         <div class="col-md-4 mb-3">

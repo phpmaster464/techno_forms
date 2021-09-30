@@ -205,8 +205,8 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" id="address_latitude">
-                        <input type="hidden" id="address_longitude">
+                        <input type="hidden" id="address_latitude" name="address_latitude">
+                        <input type="hidden" id="address_longitude" name="address_longitude">
                         <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
                             <div class="form-group">
                                 <label for="AddressType" class="col-md-3 col-12 control-label">Address Type</label>
