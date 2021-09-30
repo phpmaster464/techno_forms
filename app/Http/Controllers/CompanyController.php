@@ -1,7 +1,7 @@
 <?php
     
 namespace App\Http\Controllers;
-    
+     
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -95,11 +95,27 @@ class CompanyController extends Controller
     public function store(Request $request)
     {   
         request()->validate([
-            'company_name' => 'required',
-            'company_primary_email' => 'required|unique:company_data,company_primary_email',
-            'company_secondary_email' => 'nullable|unique:company_data,company_secondary_email',
-            'company_contact_number' => 'required|unique:company_data,company_contact_number', 
-        ]);
+        'company_name' => 'required',
+        'company_primary_email' => 'required|unique:company_data,company_primary_email',
+        'company_secondary_email' => 'nullable|different:company_primary_email|unique:company_data,company_secondary_email', 
+        'company_contact_number' => 'required|unique:company_data,company_contact_number',
+        //'phone' => 'different:company_contact_number|unique:company_data,phone',
+            'username' => 'required',
+            'password' => 'required',
+            'companyabn' => 'required',
+            'companyname' => 'required',
+            'postcode' => 'numeric',
+            'fromdate' => 'required|date',
+            'todate' => 'required|date|after_or_equal:fromdate',
+            //'company_website' => 'required',
+            'cecaccnumber' => 'required',
+            'licensenumber' => 'required',
+            'cecdesignernumber' => 'required',
+            'serole' => 'required'
+            // 'signature' => 'required',
+            // 'proofidentity' => 'required' 
+        ]
+    );
  
  
         $company_logo = '';
@@ -108,13 +124,41 @@ class CompanyController extends Controller
             $destination_path = 'uploads/company_logo/'; 
             $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
 
+            $filename = str_replace(array( '(', ')' ), '', $filename);
             $image->move($destination_path, $filename);
             $company_logo = $destination_path . $filename;
+        }
+        $proofidentity = '';
+        if ($request->hasFile('proofidentity')) {
+            $image=$request->file('proofidentity');
+            $destination_path = 'uploads/unverified_installer/proof_id/'; 
+            $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
+
+            $filename = str_replace(array( '(', ')' ), '', $filename);
+            $image->move($destination_path, $filename);
+            $proofidentity = $destination_path . $filename;
         }
 
         $userId = Auth::id();
 
         $input = $request->all();
+
+        if(isset($input['jtype']) && $input['jtype'] != '')
+        {
+            $jtype = json_encode($input['jtype']);
+            $input['job_type'] = $jtype;
+        }
+
+        if(isset($input['type']) && $input['type'] != '')
+        {
+            $type = json_encode($input['type']);
+            $input['installer_job_type'] = $type;
+        }
+        if($proofidentity != '')
+        {
+            $input['proofidentity'] = $proofidentity;
+        }
+        
         $input['created_by'] = $userId;
         if($company_logo != '')
         {
@@ -177,7 +221,13 @@ class CompanyController extends Controller
      */
     public function edit(company $company)
     {
-        return view('company.edit',compact('company'));
+        $unit_types = DB::table('unit_types')->get()->toArray();
+        $street_types = DB::table('street_types')->get()->toArray();
+        $states = DB::table('au_states')->get()->toArray();
+
+
+        
+        return view('company.edit',compact('company','unit_types','street_types','states'));
     }
     
     /**
@@ -190,22 +240,51 @@ class CompanyController extends Controller
     public function update(Request $request, company $company)
     {
 
-         request()->validate([
-            'company_name' => 'required',
-            'company_primary_email' => 'required',
+
+    request()->validate([
+        'company_name' => 'required',
+        'company_primary_email' => 'required',
+        'cecaccnumber' => 'required',
+        'licensenumber' => 'required',
+        'cecdesignernumber' => 'required',
+        'serole' => 'required'
         ]);
 
-         $company_logo = '';
+        $company_logo = '';
         if ($request->hasFile('company_logo')) {
             $image=$request->file('company_logo');
             $destination_path = 'uploads/company_logo/'; 
             $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
 
+            $filename = str_replace(array( '(', ')' ), '', $filename);
             $image->move($destination_path, $filename);
             $company_logo = $destination_path . $filename;
         }
 
+        $proofidentity = '';
+        if ($request->hasFile('proofidentity')) {
+            $image=$request->file('proofidentity');
+            $destination_path = 'uploads/unverified_installer/proof_id/'; 
+            $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
+
+            $filename = str_replace(array( '(', ')' ), '', $filename);
+            $image->move($destination_path, $filename);
+            $proofidentity = $destination_path . $filename;
+        }
+
         $input = $request->all();
+
+        if(isset($input['jtype']) && $input['jtype'] != '')
+        {
+            $jtype = json_encode($input['jtype']);
+            $input['job_type'] = $jtype;
+        }
+
+        if(isset($input['type']) && $input['type'] != '')
+        {
+            $type = json_encode($input['type']);
+            $input['installer_job_type'] = $type;
+        }
 
         if($company_logo != '')
         {
@@ -214,6 +293,14 @@ class CompanyController extends Controller
         else
         {
             unset($input['company_logo']);
+        }
+        if($proofidentity != '')
+        {
+            $input['proofidentity'] = $proofidentity;
+        }
+        else
+        {
+            unset($input['proofidentity']);
         }
 
         $userId = Auth::id();

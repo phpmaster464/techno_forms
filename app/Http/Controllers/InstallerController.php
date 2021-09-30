@@ -71,6 +71,7 @@ class InstallerController extends Controller
             }
  
         }
+
  
         return view('installer.index',compact('installers'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -101,8 +102,10 @@ class InstallerController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|unique:installers,email',
-            'mobile' => 'required|unique:installers,mobile', 
-            'phone' => 'required|unique:installers,phone', 
+            'mobile' => 'required|unique:installers,mobile',
+            //'phone' => 'different:mobile|unique:installers,phone',
+            //'postcode' => 'numeric',
+            //'checkbox' =>'accepted' 
         ]);
  
  
@@ -112,18 +115,24 @@ class InstallerController extends Controller
             $destination_path = 'uploads/installer/logo/'; 
             $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
 
+            $filename = str_replace(array( '(', ')' ), '', $filename);
             $image->move($destination_path, $filename);
+
             $installer_logo = $destination_path . $filename;
+            
         } 
 
-         $installer_photo = '';
+
+        $installer_photo = '';
         if ($request->hasFile('installer_photo')) {
             $image=$request->file('installer_photo');
             $destination_path = 'uploads/installer/photo/'; 
             $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
 
+            $filename = str_replace(array( '(', ')' ), '', $filename);
             $image->move($destination_path, $filename);
             $installer_photo = $destination_path . $filename;
+            
         }
 
         $installer_license = '';
@@ -132,8 +141,10 @@ class InstallerController extends Controller
             $destination_path = 'uploads/installer/license/'; 
             $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
 
+            $filename = str_replace(array( '(', ')' ), '', $filename);
             $image->move($destination_path, $filename);
             $installer_license = $destination_path . $filename;
+
         }
 
         $userId = Auth::id();
@@ -219,12 +230,49 @@ class InstallerController extends Controller
                request()->validate([
                 'first_name' => 'required',
                 'last_name' => 'required',
+                //'postcode' => 'numeric',
                 // 'email' => 'required|unique:installers,email',
                 // 'mobile' => 'required|unique:installers,mobile', 
                 // 'phone' => 'required|unique:installers,phone', 
             ]);
 
          $installer_logo = '';
+        if ($request->hasFile('installer_logo')) {
+            $image=$request->file('installer_logo');
+            $destination_path = 'uploads/installer/logo/'; 
+            $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
+
+            $filename = str_replace(array( '(', ')' ), '', $filename);
+            $image->move($destination_path, $filename);
+            $installer_logo = $destination_path . $filename;
+        } 
+
+
+        $installer_photo = '';
+        if ($request->hasFile('installer_photo')) {
+            $image=$request->file('installer_photo');
+            $destination_path = 'uploads/installer/photo/'; 
+            $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
+
+            $filename = str_replace(array( '(', ')' ), '', $filename);
+            $image->move($destination_path, $filename);
+            $installer_photo = $destination_path . $filename;
+
+        }
+
+        $installer_license = '';
+        if ($request->hasFile('installer_license_photo')) {
+            $image=$request->file('installer_license_photo');
+            $destination_path = 'uploads/installer/license/'; 
+            $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
+
+            $filename = str_replace(array( '(', ')' ), '', $filename);
+            $image->move($destination_path, $filename);
+            $installer_license = $destination_path . $filename;
+           
+        }
+
+         /*$installer_logo = '';
         if ($request->hasFile('installer_logo')) {
             $image=$request->file('installer_logo');
             $destination_path = 'uploads/installer/logo'; 
@@ -234,6 +282,7 @@ class InstallerController extends Controller
             $installer_logo = $destination_path . $filename;
         }
 
+    
          $installer_photo = '';
         if ($request->hasFile('installer_photo')) {
             $image=$request->file('installer_photo');
@@ -245,16 +294,17 @@ class InstallerController extends Controller
         }
 
         $installer_license = '';
-        if ($request->hasFile('installer_license')) {
-            $image=$request->file('installer_license');
-            $destination_path = 'uploads/installer/licence'; 
+        if ($request->hasFile('installer_license_photo')) {
+            $image=$request->file('installer_license_photo');
+            $destination_path = 'uploads/installer/license/'; 
             $filename = sha1(time() . time()) . preg_replace('/\s+/', '', $image->getClientOriginalName()); //to trim whitespace in file na
 
             $image->move($destination_path, $filename);
             $installer_license = $destination_path . $filename;
-        }
-        $input = $request->all();
+        }*/
 
+       $input = $request->all();
+       
         if(isset($input['jtype']) && $input['jtype'] != '')
         {
         	$jtype = json_encode($input['jtype']);
@@ -282,8 +332,6 @@ class InstallerController extends Controller
 
 
         $userId = Auth::id();
-
-        $input['updated_by'] = $userId;
     
         // $company->update($request->all());
         $installer->update($input); 

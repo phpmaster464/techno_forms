@@ -55,7 +55,7 @@
                                             class="col-md-3
                                             col-12 control-label">Supplier</label>
                                         <div class="col-md-6 col-6">
-                                            <input type="text"  class="form-control" id="supplier_name" name="supplier_name"   placeholder="Supplier">
+                                            <input type="text"  class="form-control" id="supplier_name" value="{{ old('supplier_name')}}"name="supplier_name" placeholder="Supplier">
                                         </div>                                       
                                    </div>
 								   

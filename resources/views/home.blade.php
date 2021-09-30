@@ -28,8 +28,8 @@
                         <span class="fa fa-building"></span>
                     </div>
                     <div class="col-lg-8 col-xs-12">
-                        <h4 class="counter text-info">Total Companys</h4>
-                        <p class="text text-info">210</p>
+                        <h4 class="counter text-info">Total Companies</h4>
+                        <p class="text text-info">{{ $company_count }} </p>
                     </div>
                 </div>
                 <!-- /.box-content -->
@@ -41,7 +41,7 @@
                     </div>
                     <div class="col-lg-8 col-xs-12">
                     <h4 class="counter text-info">Total Jobs</h4>
-                        <p class="text text-info">400</p>
+                        <p class="text text-info">{{ $jobs_count }} </p>
                     </div>
                 </div>
                 <!-- /.box-content -->
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-lg-8 col-xs-12">
                     <h4 class="counter text-info">Total Customers</h4>
-                        <p class="text text-info">120</p>
+                        <p class="text text-info">{{ $installer_count }} </p>
                     </div>
                 </div>
                 <!-- /.box-content -->

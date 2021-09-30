@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Company;
+use App\Models\Jobs;
+use App\Models\Installer;
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -23,7 +26,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+    $company_count = Company::count();
+    $jobs_count = Jobs::count();
+    $installer_count = Installer::count();
+       
+        return view('home',compact('company_count','jobs_count','installer_count'));
+    }
+
+    public function clear_cache()
+    {
+        \Artisan::call('cache:clear');
+        \Artisan::call('route:clear');
+        \Artisan::call('config:clear');
+        \Artisan::call('config:cache');
+        echo "<pre>"; 
+        print_r("cache cleared");
+        echo "</pre>";
+        exit(); 
     }
 
     public function getlogout()
@@ -31,4 +51,6 @@ class HomeController extends Controller
         Auth::logout();
         return redirect()->to('/login');
     }
+
+    
 }

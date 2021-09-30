@@ -4,7 +4,8 @@
     </IfModule>
 
     RewriteEngine On
-
+    php_value memory_limit -1
+    php_value max_execution_time 900
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
@@ -19,3 +20,12 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# Disable index view
+Options -Indexes
+
+# Hide a specific file
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>

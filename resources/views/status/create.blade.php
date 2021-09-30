@@ -32,7 +32,7 @@
     <div class="col-xs-6 col-sm-6 col-md-6">
         <div class="form-group">
             <strong>Name<span class="fa fa-asterisk"></span>:</strong>
-            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+            {!! Form::text('name', null, array('placeholder' => 'Name','value' => '{{ old('name')}}','class' => 'form-control')) !!}
         </div>
     </div>
     <div class="col-xs-6 col-sm-6 col-md-6">

@@ -71,10 +71,10 @@
                                        <div class="switch" id="submit">
                     @if($supplier->status == 1)
                     <input type="checkbox" checked id="switch-2"
-                        onclick="update_company_status($(this),'create_supplier_status');">
+                        onclick="update_company_status($(this),'create_model_status');">
                     @else
                     <input type="checkbox" id="switch-2"
-                        onclick="update_company_status($(this),'create_supplier_status');">
+                        onclick="update_company_status($(this),'create_model_status');">
                     @endif
 
                     <label for="switch-2"></label>

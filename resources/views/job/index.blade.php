@@ -95,6 +95,8 @@
                                             <td id="td10">
                                             @can('job-edit')
                                                 <a class="btn btn-primary" href="{{ route('job.edit',$job->id) }}">Edit</a>
+                                                <a class="btn btn-primary" href="{{ route('job.view',$job->id) }}">View</a>
+                                                
                                             @endcan
                                            </td>
                                             

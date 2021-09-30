@@ -35,9 +35,7 @@ class InventoryController extends Controller
     public function index()
     {
         $inventory = Inventory::all();
-
             foreach ($inventory as $key => $value) {
-
                $manufacturer = Manufacturer::where('id',$value->manufacturer_id)->select('manufacturer_name')->get();
                $model = Pmodel::where('id',$value->model_id)->select('model_name')->get();
                $supplier = Supplier::where('id',$value->supplier_id)->select('supplier_name')->get();
@@ -73,7 +71,7 @@ class InventoryController extends Controller
         $model = Pmodel::where("manufacturer_id",$id)
                     ->where("status",1)
                     ->select("model_name","id")->get();
-         $html = "<select class='form-control' id='select_model' name='model_id' onchange='fetch_supplier($(this).val());'><option>Select Model</option>";  
+         $html = "<select class='form-control' id='select_model' name='model_id' onchange='fetch_supplier($(this).val());'><option value=''>Select Model</option>";  
          foreach ($model as $key => $value) { 
             $html .= "<option value=".$value->id.">".$value->model_name."</option>";
         }
@@ -86,7 +84,7 @@ class InventoryController extends Controller
         $model = Supplier::where("model_id",$id)
         ->where("status",1)
         ->select("supplier_name","id")->get();
-        $html = "<select class='form-control' id='select_supplier' name='supplier_id'><option>Select Supplier</option>";   
+        $html = "<select class='form-control' id='select_supplier' name='supplier_id'><option value=''>Select Supplier</option>";   
         foreach ($model as $key => $value) {
             $html .= "<option value=".$value->id.">".$value->supplier_name."</option>";
         }
@@ -106,45 +104,28 @@ class InventoryController extends Controller
      */
     public function store(Request $request)
     {   
-
-
-
-       /* request()->validate([
-            'job_type' => 'required',
-            'reference_number' => 'required',
-            'owner_type' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'owner_postal_address_type' => 'required',
-            'owner_unit_type' => 'required',
-            'company_abn' => 'required',
-            'organisation_name' => 'required',
-            'owner_street_number' => 'required',
-            'owner_street_name' => 'required', 
-            'owner_street_type' => 'required', 
-            'owner_town' => 'required', 
-            'owner_state' => 'required', 
-            'owner_post_code' => 'required',
-            'installation_postal_address_type' => 'required',
-            'installation_unit_type' => 'required',
-            'installation_street_number' => 'required', 
-            'installation_street_name' => 'required', 
-            'installation_street_type' => 'required', 
-            'installation_town' => 'required',
-            'installation_state' =>  'required',
-            'installation_post_code' => 'required'
-        ]);*/
- 
+       
+		request()->validate([
+            
+            'manufacturer_id' => 'required',
+            'model_id' => 'required',
+            'supplier_id' => 'required',
+            'unverified_panel_serials' => 'required',
+            'wattage' => 'required',
+           
+        ]);
         $userId = Auth::id();
+        $inventory = inventory::create(
+            ['manufacturer_id' => $request->input('manufacturer_id'),
+            'model_id' => $request->input('model_id'),
+             'supplier_id' => $request->input('supplier_id'),
+              'pallet_number' => $request->input('pallet_number'),
+              'unverified_panel_serials' => $request->input('unverified_panel_serials'),
+               'wattage' => $request->input('wattage'),
+               'created_by' => $userId
+            ]);
 
-        $input = $request->all(); 
-        $input['created_by'] = $userId;
-        
-        $inventory = Inventory::create($input);
-    
-        return redirect()->route('inventory.index')
+                  return redirect()->route('inventory.index')
                         ->with('success','Inventory Created Successfully.');
     } 
     
@@ -186,13 +167,11 @@ class InventoryController extends Controller
     {       
 
         $input = $request->all();
-
-        $userId = Auth::id();
+               $userId = Auth::id();
 
         $input['updated_by'] = $userId;
     
         $inventory->update($input); 
-    
         return redirect()->route('inventory.index')
                         ->with('success','Job Updated Successfully');
     }
